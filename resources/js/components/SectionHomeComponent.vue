@@ -23,7 +23,6 @@
                 </div>
             </div>
             <div class="row mt-lg-4 pt-lg-4">
-            
             <div class="col-12 col-md-6 text-start pe-md-5 mb-5 mb-md-0 hero-col-izq d-none d-md-block">
                 <h1 class="hero-title fw-bolder mb-4">
                 <span class="text-white">AMF</span><span class="amf-green-text-2">PRO</span>
@@ -33,7 +32,6 @@
                 </p>
                 <button class="btn btn-amf-accent fw-bold text-white px-4 py-2" type="button" @click="openModal">MANUAL</button>
             </div>
-            
             <div class="col-12 col-md-6 text-start ps-md-5 pt-md-3 hero-col-der">
                 <div class="d-none d-md-block">
                     <p class="hero-description text-white mb-4 pe-lg-4 mt-4">
