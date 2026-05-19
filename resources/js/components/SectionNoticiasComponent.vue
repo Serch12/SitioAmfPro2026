@@ -20,14 +20,12 @@
                   <div class="news-card-vertical bg-white rounded-5 overflow-hidden h-100 shadow-sm border"
                       :class="{ 'expanded': selectedNews === noticia.id }"
                       @click="toggleNews(noticia.id)">
-                    
                     <div v-if="selectedNews === noticia.id" class="close-btn">×</div>
                     <img :src="obtenerRutaImagen(noticia.imagen)" class="w-100 news-img">
                     
                     <div class="p-4">
                       <span class="text-muted small">{{ noticia.fecha }}</span>
                       <h5 class="fw-bold amf-green-text-2 mt-1">{{ noticia.titulo }}</h5>
-                      
                       <div v-if="selectedNews === noticia.id" class="expanded-info">
                         <div class="small text-dark mt-3" v-html="noticia.detalle"></div>
                         <button @click.stop="compartirNoticia(noticia)" class="btn btn-sm btn-outline-success mt-4 mb-2 shadow-sm rounded-pill px-3">
