@@ -142,34 +142,34 @@
                         <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="slide-inner">
-                            <img src="recursos/item.png" alt="Nosotros 1">
+                            <img src="recursos/Item.png" alt="Nosotros 1">
                             
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-inner">
-                            <img src="recursos/item-2.png" alt="Nosotros 2">
+                            <img src="recursos/Item-2.png" alt="Nosotros 2">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-inner">
-                            <img src="recursos/item-3.png" alt="Nosotros 3">
+                            <img src="recursos/Item-3.png" alt="Nosotros 3">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-inner">
-                            <img src="recursos/item.png" alt="Nosotros 4">
+                            <img src="recursos/Item.png" alt="Nosotros 4">
                             
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-inner">
-                            <img src="recursos/item-2.png" alt="Nosotros 5">
+                            <img src="recursos/Item-2.png" alt="Nosotros 5">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-inner">
-                            <img src="recursos/item-3.png" alt="Nosotros 6">
+                            <img src="recursos/Item-3.png" alt="Nosotros 6">
                             </div>
                         </div>
                         </div>
