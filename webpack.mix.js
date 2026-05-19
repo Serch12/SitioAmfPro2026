@@ -12,8 +12,9 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .vue({ version: 2 }) // <--- ¡ESTA LÍNEA ES LA QUE ENSEÑA A LEER .VUE!
-   .sass('resources/sass/app.scss', 'public/css')
-   .options({
-       progress: false
-   });
+ .vue()
+ .sass('resources/sass/app.scss', 'public/css')
+ .version();
+ if (mix.inProduction()) {
+     mix.version();
+ }
