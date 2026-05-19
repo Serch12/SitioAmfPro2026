@@ -5,7 +5,7 @@
         <div class="row align-items-center flex-nowrap m-0">
           
           <div class="col-4 text-start px-0">
-            <div class="hash-tag fw-bold text-secondary text-truncate">#UnidosSomos</div>
+            <div class="hash-tag fw-bold text-secondary text-truncate">#UnidosSomosMásFuertes</div>
           </div>
           
           <div class="col-4 text-center px-0">
