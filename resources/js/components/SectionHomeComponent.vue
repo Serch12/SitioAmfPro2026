@@ -4,7 +4,7 @@
         <div class="container py-3 position-relative" style="z-index: 2;height: 750px;">
             <div class="d-block d-md-none text-center pt-4 m-4">
                 <h1 class="hero-title fw-bolder mb-3">
-                    <span class="text-white">AMF</span><span class="amf-green-text-2">PRO</span>
+                    <span class="text-white">AMF</span><span class="amf-green-text-2"></span>
                 </h1>
                 <p class="hero-description text-white mb-3 px-3 text-center">
                     Conoce a tu Asociación y lo que tiene para ti. Tu afiliación con nosotros es directa al contar con el registro en la Federación Mexicana de Futbol.
