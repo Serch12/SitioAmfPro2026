@@ -80,27 +80,41 @@
               <div class="sidebar-box bg-white p-4 rounded-4 mb-4 shadow-sm border">
                 <h6 class="fw-bold amf-green-text-2 mb-4 text-center">Nuestras Redes</h6>
                 
-                <div class="social-embed-container mb-4" v-if="redes.instagram">
-                  <p class="x-small fw-bold text-muted mb-2 d-flex align-items-center justify-content-center">
-                     <img src="recursos/instagram.png" style="width:16px; margin-right:5px;"> Último Post en Instagram
-                  </p>
-                  <a :href="redes.instagram.permalink" target="_blank" class="text-decoration-none text-dark">
-                    <img :src="redes.instagram.media_url" class="w-100 rounded-3 border mb-2" style="height: 250px; object-fit: cover;">
-                    <p class="x-small text-muted truncate-text-2 mb-0">{{ redes.instagram.caption }}</p>
-                  </a>
+                <div v-if="cargandoRedes" class="text-center py-4">
+                  <div class="spinner-border text-success spinner-border-sm"></div>
+                  <p class="small text-muted mt-2">Cargando publicaciones...</p>
                 </div>
-                <div v-else-if="cargandoRedes" class="text-center py-3"><div class="spinner-border text-success spinner-border-sm"></div></div>
 
-                <div class="social-embed-container" v-if="redes.facebook">
-                  <p class="x-small fw-bold text-muted mb-2 d-flex align-items-center justify-content-center">
-                     <img src="recursos/facebook.png" style="width:16px; margin-right:5px;"> Último Post en Facebook
-                  </p>
-                  <a :href="redes.facebook.permalink_url" target="_blank" class="text-decoration-none text-dark">
-                    <img :src="redes.facebook.full_picture" class="w-100 rounded-3 border mb-2" style="height: 226px; object-fit: cover;">
-                    <p class="x-small text-muted truncate-text-2 mb-0">{{ redes.facebook.message }}</p>
-                  </a>
+                <div v-else>
+                  <div v-if="redes.instagram && redes.instagram.length > 0">
+                    <p class="x-small fw-bold text-muted mb-3 border-bottom pb-2 d-flex align-items-center">
+                      <img src="recursos/instagram.png" style="width:16px; margin-right:5px;"> Instagram
+                    </p>
+                    
+                    <div v-for="(igPost, index) in redes.instagram" :key="'ig-'+index" class="social-embed-container mb-4 pb-3 border-bottom border-light">
+                      <a :href="igPost.permalink" target="_blank" class="text-decoration-none text-dark">
+                        <img :src="igPost.media_url" class="w-100 rounded-3 border mb-2 shadow-sm" style="height: 250px; object-fit: cover;">
+                        <p class="x-small text-muted truncate-text-2 mb-0">{{ igPost.caption }}</p>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div v-if="redes.facebook && redes.facebook.length > 0" class="mt-4">
+                    <p class="x-small fw-bold text-muted mb-3 border-bottom pb-2 d-flex align-items-center">
+                      <img src="recursos/facebook.png" style="width:16px; margin-right:5px;"> Facebook
+                    </p>
+                    
+                    <div v-for="(fbPost, index) in redes.facebook" :key="'fb-'+index" class="social-embed-container mb-4 pb-3 border-bottom border-light">
+                      <a :href="fbPost.permalink_url" target="_blank" class="text-decoration-none text-dark">
+                        <img v-if="fbPost.full_picture" :src="fbPost.full_picture" class="w-100 rounded-3 border mb-2 shadow-sm" style="height: 226px; object-fit: cover;">
+                        <p class="x-small text-muted truncate-text-2 mb-0">{{ fbPost.message }}</p>
+                      </a>
+                    </div>
+                  </div>
+                  <div v-if="(!redes.instagram || redes.instagram.length === 0) && (!redes.facebook || redes.facebook.length === 0)" class="text-center text-muted small py-3">
+                    No hay publicaciones recientes.
+                  </div>
                 </div>
-                <div v-else-if="cargandoRedes" class="text-center py-3"><div class="spinner-border text-success spinner-border-sm"></div></div>
               </div>
 
               <div class="sidebar-box bg-white p-4 rounded-4 shadow-sm border">
@@ -144,8 +158,8 @@ export default {
       
       cargandoRedes: true,
       redes: {
-        instagram: null,
-        facebook: null
+        instagram: [],
+        facebook: []
       }
     }
   },

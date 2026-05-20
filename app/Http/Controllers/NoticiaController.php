@@ -45,38 +45,40 @@ class NoticiaController extends Controller
 
     public function ultimasRedes()
     {
-        // Usamos caché por 2 horas (7200 segundos) para que tu página cargue rápido
-        // y Meta no te bloquee por hacer peticiones en cada visita.
+        // Usamos caché por 2 horas (7200 segundos)
         $datos = Cache::remember('ultimas_redes_sociales', 7200, function () {
             
             $token = env('META_ACCESS_TOKEN');
             $pageId = env('FB_PAGE_ID');
 
-            $facebookData = null;
-            $instagramData = null;
+            // 1. INICIALIZAMOS COMO ARREGLOS VACÍOS (Esto evita el error .length en Vue)
+            $facebookData = [];
+            $instagramData = [];
 
             if ($token && $pageId) {
                 
-                // 1. OBTENEMOS EL POST DE FACEBOOK
+                // 1. OBTENEMOS LOS POSTS DE FACEBOOK
                 $fbResponse = Http::get("https://graph.facebook.com/v19.0/{$pageId}/posts", [
                     'fields' => 'permalink_url,message,full_picture',
                     'access_token' => $token,
-                    'limit' => 1
+                    'limit' => 2
                 ]);
 
-                if ($fbResponse->successful() && isset($fbResponse->json()['data'][0])) {
-                    $facebookData = $fbResponse->json()['data'][0];
+                if ($fbResponse->successful() && isset($fbResponse->json()['data'])) {
+                    // Guardamos el arreglo completo, sin el [0]
+                    $facebookData = $fbResponse->json()['data'];
                 }
 
-                // 2. OBTENEMOS EL POST DE INSTAGRAM
-                // Al estar vinculados, le preguntamos a la página de FB por su cuenta de IG
+                // 2. OBTENEMOS LOS POSTS DE INSTAGRAM
                 $igResponse = Http::get("https://graph.facebook.com/v19.0/{$pageId}", [
-                    'fields' => 'instagram_business_account{media.limit(1){id,media_url,permalink,caption}}',
+                    // Cambiamos media.limit(1) por media.limit(2) para traer los últimos dos
+                    'fields' => 'instagram_business_account{media.limit(2){id,media_url,permalink,caption}}',
                     'access_token' => $token
                 ]);
 
-                if ($igResponse->successful() && isset($igResponse->json()['instagram_business_account']['media']['data'][0])) {
-                    $instagramData = $igResponse->json()['instagram_business_account']['media']['data'][0];
+                if ($igResponse->successful() && isset($igResponse->json()['instagram_business_account']['media']['data'])) {
+                    // Guardamos el ARREGLO completo, quitamos el [0] del final
+                    $instagramData = $igResponse->json()['instagram_business_account']['media']['data'];
                 }
             }
 
@@ -85,7 +87,7 @@ class NoticiaController extends Controller
                 'instagram' => $instagramData
             ];
         });
-    
+
         return response()->json($datos);
     }
 }
