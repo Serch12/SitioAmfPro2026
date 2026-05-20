@@ -4,7 +4,7 @@
         <div class="container py-3 position-relative" style="z-index: 2;height: 750px;">
             <div class="d-block d-md-none text-center pt-4 m-4">
                 <h1 class="hero-title fw-bolder mb-3">
-                    <span class="text-white">AMF</span><span class="amf-green-text-2"></span>
+                    <span class="text-white">AMF</span><span class="amf-green-text-2">PRO</span>
                 </h1>
                 <p class="hero-description text-white mb-3 px-3 text-center">
                     Conoce a tu Asociación y lo que tiene para ti. Tu afiliación con nosotros es directa al contar con el registro en la Federación Mexicana de Futbol.
@@ -25,7 +25,7 @@
             <div class="row mt-lg-4 pt-lg-4">
             <div class="col-12 col-md-6 text-start pe-md-5 mb-5 mb-md-0 hero-col-izq d-none d-md-block">
                 <h1 class="hero-title fw-bolder mb-4">
-                <span class="text-white">AMF</span><span class="amf-green-text-2"></span>
+                <span class="text-white">AMF</span><span class="amf-green-text-2">PRO</span>
                 </h1>
                 <p class="hero-description text-white mb-4 pe-lg-4">
                 Conoce a tu Asociación y lo que tiene para ti. Tu afiliación con nosotros es directa al contar con el registro en la Federación Mexicana de Futbol.
