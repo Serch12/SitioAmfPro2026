@@ -6,11 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+    <title>AMFPro</title>
     <link rel="icon" href="{{ asset('recursos/logo.png') }}" type="image/png">
 
     @if (isset($evento) && $evento == 'Si')
-        <title>{{ $info->titulo }} - AMFPro</title>
-
         <meta property="og:url" content="{{ url()->current() }}" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="{{$info->titulo}}">
@@ -21,8 +20,6 @@
         <meta name="twitter:title" content="{{$info->titulo}}" />
         <meta name="twitter:image" content="https://amfpro.mx/intranet/public/ArchivosSistema/Post/{{ rawurlencode($info->imagen_p) }}" />
     @else
-        <title>AMFPro</title>
-
         <meta property="og:title" content="Asociación Mexicana de Futbolistas">
         <meta property="og:image" content="{{ asset('recursos/logo.png') }}">
         <meta property="og:description" content="La AMFpro busca representar y proteger los intereses de las y los Futbolistas profesionales en México.">

@@ -335,7 +335,7 @@ export default {
       updateMetaTags(noticia) {
           if (!noticia) {
               // Metas por defecto de la página de Noticias
-              document.title = "Noticias y Comunicados - AMFpro";
+              document.title = "AMFpro";
               this.setMeta('description', "Entérate de las últimas noticias, comunicados y acciones de la Asociación Mexicana de Futbolistas.");
               this.setMeta('og:title', "Noticias y Comunicados - AMFpro", true);
               this.setMeta('og:description', "Entérate de las últimas noticias, comunicados y acciones de la Asociación Mexicana de Futbolistas.", true);
