@@ -606,7 +606,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@use "sass:color";
 /* --- ESTILOS DEL HEADER (Landing Page) --- */
 .header-main {
   .hash-tag { font-size: 0.65rem; }
@@ -814,16 +814,16 @@ $primary-color: green;
   width: $size; height: $size; display: inline-block; background: transparent;
   @include transform(rotate(45deg)); font-size: 0;
   span {
-    position: relative; width: $size/2; height: $size/2; @include transform(scale(1.1)); display: inline-block;
+    position: relative; width: $size * 0.5; height: $size * 0.5; @include transform(scale(1.1)); display: inline-block;
     &::before {
       content: ""; background-color: $primary-color; position: absolute; left: 0; top: 0; display: block;
-      width: $size/2; height: $size/2; transform-origin: 100% 100%;
+      width: $size * 0.5; height: $size * 0.5; transform-origin: 100% 100%;
       @include animation(folding 2.5s infinite linear both);
     }
   }
-  .leaf2 { @include transform(rotateZ(90deg) scale(1.1)); &::before { animation-delay: 0.3s; background-color: darken($primary-color, 5%); } }
-  .leaf3 { @include transform(rotateZ(270deg) scale(1.1)); &::before { animation-delay: 0.9s; background-color: darken($primary-color, 5%); } }
-  .leaf4 { @include transform(rotateZ(180deg) scale(1.1)); &::before { animation-delay: 0.6s; background-color: darken($primary-color, 10%); } }
+  .leaf2 { @include transform(rotateZ(90deg) scale(1.1)); &::before { animation-delay: 0.3s; background-color: color.adjust($primary-color, $lightness: -5%); } }
+  .leaf3 { @include transform(rotateZ(270deg) scale(1.1)); &::before { animation-delay: 0.9s; background-color: color.adjust($primary-color, $lightness: -5%); } }
+  .leaf4 { @include transform(rotateZ(180deg) scale(1.1)); &::before { animation-delay: 0.6s; background-color: color.adjust($primary-color, $lightness: -10%); } }
 }
 
 @include keyframes(folding, folding animation) {
@@ -841,11 +841,11 @@ $primary-color: green;
     @include animation(shadow 0.5s ease infinite alternate);
   }
   .loadingtexto {
-    font-size: 15px; letter-spacing: 0.1em; display: block; color: white; position: relative; top: $size/2; z-index: 2;
+    font-size: 15px; letter-spacing: 0.1em; display: block; color: white; position: relative; top: $size * 0.5; z-index: 2;
     @include animation(text 0.5s ease infinite alternate);
   }
 }
-@include keyframes(text, text animation) { 100% { top: ($size/2) + 10; } }
+@include keyframes(text, text animation) { 100% { top: ($size * 0.5) + 10; } }
 @include keyframes(shadow, shadow animation) { 100% { bottom: -18px; width: $size * 2; } }
 
 .loadingprincipal {

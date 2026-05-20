@@ -633,6 +633,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "sass:color";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 /** Estilos generales */
@@ -700,7 +701,7 @@ $amf-accent: #50c026;
     border-radius: 6px;
     font-size: 0.9rem;
     transition: transform 0.2s ease, background-color 0.2s;
-    &:hover { background-color: darken($amf-accent, 8%); transform: translateY(-2px); }
+    &:hover { background-color: color.adjust($amf-accent, $lightness: -8%); transform: translateY(-2px); }
   }
 
   .nosotros-panel {

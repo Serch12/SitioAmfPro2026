@@ -374,6 +374,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "sass:color";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
@@ -394,7 +395,7 @@ $amf-dark: #3E9452; $amf-main: #3e9452; $amf-accent: #50c026;
     }
   }
   .expanded-info { animation: slideUp 0.5s ease forwards; }
-  .btn-accent-green { background-color: $amf-accent; border: none; &:hover { background-color: darken($amf-accent, 10%); } }
+  .btn-accent-green { background-color: $amf-accent; border: none; &:hover { background-color: color.adjust($amf-accent, $lightness: -10%); } }
   
   .tag-badge {
     background-color: $amf-accent; color: white; padding: 5px 12px; border-radius: 5px;

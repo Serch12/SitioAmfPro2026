@@ -665,6 +665,7 @@ export default {
 </script>
 
 <style lang="scss">
+@use "sass:color";
 /* --- ESTILOS DEL HEADER ORIGINAL --- */
 .header-main {
   .hash-tag {
@@ -884,8 +885,8 @@ $primary-color: green;
   font-size: 0;
   span {
     position: relative;
-    width: $size/2;
-    height: $size/2;
+    width: $size * 0.5;
+    height: $size * 0.5;
     transform: scale(1.1);
     display: inline-block;
     &::before {
@@ -894,14 +895,14 @@ $primary-color: green;
       position: absolute;
       left: 0; top: 0;
       display: block;
-      width: $size/2; height: $size/2;
+      width: $size * 0.5; height: $size * 0.5;
       transform-origin: 100% 100%;
       animation: folding 2.5s infinite linear both;
     }
   }
-  .leaf2 { transform: rotateZ(90deg) scale(1.1); &::before { animation-delay: 0.3s; background-color: darken($primary-color, 5%); } }
-  .leaf3 { transform: rotateZ(270deg) scale(1.1); &::before { animation-delay: 0.9s; background-color: darken($primary-color, 5%); } }
-  .leaf4 { transform: rotateZ(180deg) scale(1.1); &::before { animation-delay: 0.6s; background-color: darken($primary-color, 10%); } }
+  .leaf2 { transform: rotateZ(90deg) scale(1.1); &::before { animation-delay: 0.3s; background-color: color.adjust($primary-color, $lightness: -5%); } }
+  .leaf3 { transform: rotateZ(270deg) scale(1.1); &::before { animation-delay: 0.9s; background-color: color.adjust($primary-color, $lightness: -5%); } }
+  .leaf4 { transform: rotateZ(180deg) scale(1.1); &::before { animation-delay: 0.6s; background-color: color.adjust($primary-color, $lightness: -10%); } }
 }
 
 @keyframes folding {
@@ -923,11 +924,11 @@ $primary-color: green;
   }
   .loadingtexto {
     font-size: 15px; letter-spacing: 0.1em; display: block; color: white;
-    position: relative; top: $size/2; z-index: 2;
+    position: relative; top: $size * 0.5; z-index: 2;
     animation: text 0.5s ease infinite alternate;
   }
 }
-@keyframes text { 100% { top: ($size/2) + 10; } }
+@keyframes text { 100% { top: ($size * 0.5) + 10; } }
 @keyframes shadow { 100% { bottom: -18px; width: $size * 2; } }
 
 .loadingprincipal {
