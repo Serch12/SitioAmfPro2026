@@ -438,7 +438,7 @@ export default {
                 // Pertenece a la web normal
                 baseUrl = this.isLocalhost 
                     ? 'http://localhost/amfpro-web-2026/public/ArchivosSistema/Afiliados/'
-                    : 'https://deployment.amfpro.mx/ArchivosSistema/Afiliados/';
+                    : 'https://pre-produccion.amfpro.mx/ArchivosSistema/Afiliados/';
             }
 
             return `${baseUrl}${this.afiliado.nui}/${nombreArchivo}`;
