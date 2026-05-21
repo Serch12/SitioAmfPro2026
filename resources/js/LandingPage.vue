@@ -23,14 +23,25 @@
     </header>
 
     <FloatingMenu 
+      v-show="!noticiaEnDetalle"
       @go-to-section="scrollToSection" 
       @go-to-position="scrollToPosition" 
     />
 
-    <SectionHome :scrollPosition="scrollPosition" />
-    <SectionTalentos :scrollPosition="scrollPosition" />
-    <SectionJuridico />
-    <SectionNoticias />
+    <div v-if="!noticiaEnDetalle">
+      <SectionHome :scrollPosition="scrollPosition" />
+      <SectionTalentos :scrollPosition="scrollPosition" />
+      <SectionJuridico />
+      
+      <SectionNoticias @noticia-seleccionada="mostrarDetalle" />
+    </div>
+
+    <DetalleNoticia 
+      v-else 
+      :noticia="noticiaEnDetalle" 
+      @regresar="cerrarDetalle" 
+    />
+
     <SectionFooter />
   </div>
 </template>
@@ -42,6 +53,8 @@ import SectionTalentos from './components/SectionTalentosComponent.vue';
 import SectionJuridico from './components/SectionJuridicoComponent.vue';
 import SectionNoticias from './components/SectionNoticiasComponent.vue';
 import SectionFooter from './components/SectionFooterComponent.vue';
+// IMPORTAMOS EL NUEVO COMPONENTE
+import DetalleNoticia from './components/DetalleNoticiaComponent.vue';
 
 export default {
   components: {
@@ -50,11 +63,13 @@ export default {
     SectionTalentos,
     SectionJuridico,
     SectionNoticias,
-    SectionFooter
+    SectionFooter,
+    DetalleNoticia // LO REGISTRAMOS AQUÍ
   },
   data() {
     return {
       scrollPosition: 0,
+      noticiaEnDetalle: null, // VARIABLE PARA SABER QUÉ NOTICIA MOSTRAR
     };
   },
   mounted() {
@@ -67,6 +82,31 @@ export default {
     handleScroll() {
       this.scrollPosition = window.scrollY;
     },
+    mostrarDetalle(noticia) {
+      this.noticiaEnDetalle = noticia;
+      
+      // MAGIA 1: Cambiamos la URL silenciosamente para que la puedan copiar
+      const slug = noticia.ruta || noticia.id;
+      window.history.pushState(null, '', '/noticias/' + slug);
+
+      // Hacemos scroll suave hacia arriba
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    // MÉTODO QUE SE ACTIVA AL DAR CLIC EN "REGRESAR"
+    cerrarDetalle() {
+      this.noticiaEnDetalle = null;
+
+      // MAGIA 2: Regresamos la URL a la normalidad (directorio raíz)
+      window.history.pushState(null, '', '/');
+
+      // Scroll de regreso a la sección de noticias
+      this.$nextTick(() => {
+          const section = document.querySelector('.section-noticias'); 
+          if (section) {
+              section.scrollIntoView({ behavior: 'smooth' });
+          }
+      });
+    }
   }
 }
 </script>

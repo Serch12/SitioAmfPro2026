@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Noticias;
+use App\Models\ImagenesComunicado;
 use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Http;
@@ -89,5 +90,12 @@ class NoticiaController extends Controller
         });
 
         return response()->json($datos);
+    }
+
+    public function obtenerGaleria($id){
+        // Supongamos que tienes un modelo NoticiaGaleria vinculado a la noticia
+        // o que las fotos están en una tabla separada
+        $imagenes = ImagenesComunicado::where('id_comunicado',$id)->get();
+        return response()->json($imagenes);
     }
 }

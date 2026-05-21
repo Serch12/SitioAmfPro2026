@@ -38,6 +38,7 @@ Route::get('/afiliacion', function () {
 // ==========================================
 Route::get('/noticias/listado-noticias', [NoticiaController::class, 'listaNoticias'])->name('noticias.listado');
 Route::get('/noticias/listado-comunicados', [NoticiaController::class, 'listaComunicados'])->name('noticias.comunicados');
+Route::get('/noticias/{id}/galeria', [NoticiaController::class, 'obtenerGaleria'])->name('noticias.comunicados');
 Route::get('/noticias/ultimas-redes', [NoticiaController::class, 'ultimasRedes'])->name('noticias.redes');
 
 Route::get('/torneos_agrupados_ano', [TalentosController::class, 'torneosAgrupadosYear'])->name('torneos.agrupados');
@@ -79,12 +80,13 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/noticias/{ruta}', function ($ruta) {
     $info = Noticias::where('ruta', $ruta)->first();
     if ($info) {
-        return view('welcome', [
+        // CAMBIO AQUÍ: Retorna 'home' en lugar de 'welcome' si 'home' es tu plantilla principal
+        return view('home', [
             'evento' => 'Si',
             'info'   => $info
         ]);
     }
-    return view('welcome', ['evento' => '']);
+    return view('home', ['evento' => '']);
 });
 
 

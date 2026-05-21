@@ -18,23 +18,20 @@
                     :class="getColClass(noticia.id)">
                   
                   <div class="news-card-vertical bg-white rounded-5 overflow-hidden h-100 shadow-sm border"
-                      :class="{ 'expanded': selectedNews === noticia.id }"
-                      @click="toggleNews(noticia.id)">
-                    <div v-if="selectedNews === noticia.id" class="close-btn">×</div>
+                      style="cursor: pointer; transition: transform 0.3s ease;"
+                      onmouseover="this.style.transform='translateY(-5px)'"
+                      onmouseout="this.style.transform='translateY(0)'"
+                      @click="irAlDetalle(noticia)">
+                    
                     <img :src="obtenerRutaImagen(noticia.imagen)" class="w-100 news-img">
                     
                     <div class="p-4">
                       <span class="text-muted small">{{ noticia.fecha }}</span>
                       <h5 class="fw-bold amf-green-text-2 mt-1">{{ noticia.titulo }}</h5>
-                      <div v-if="selectedNews === noticia.id" class="expanded-info">
-                        <div class="small text-dark mt-3" v-html="noticia.detalle"></div>
-                        <button @click.stop="compartirNoticia(noticia)" class="btn btn-sm btn-outline-success mt-4 mb-2 shadow-sm rounded-pill px-3">
-                          <i class="material-icons" style="font-size: 1rem; vertical-align: text-bottom;">share</i> 
-                          Compartir Noticia
-                        </button>
-                      </div>
-                      <div v-else class="small text-muted mb-0 mt-2 truncate-text-2" v-html="noticia.desc"></div>
+                      
+                      <div class="small text-muted mb-0 mt-2 truncate-text-2" v-html="noticia.desc"></div>
                     </div>
+                    
                   </div>
                 </div>
               </div>
@@ -214,28 +211,15 @@ export default {
               if (indexNoticia !== -1) {
                   const noticiaEnlazada = this.noticiasList[indexNoticia];
 
-                  // 1. CALCULAMOS EN QUÉ PÁGINA ESTÁ Y CAMBIAMOS A ELLA
-                  // Math.floor divide la posición entre 4 (tus itemsPerPage) y le suma 1
+                  // 1. Calculamos la página para que la paginación concuerde
                   const paginaCorrecta = Math.floor(indexNoticia / this.itemsPerPage) + 1;
                   this.currentPage = paginaCorrecta;
 
-                  // 2. Expandimos la noticia y seteamos metas
-                  this.selectedNews = noticiaEnlazada.id;
-                  this.updateMetaTags(noticiaEnlazada);
+                  // 2. ¡AQUÍ ESTÁ LA SOLUCIÓN! Emitimos la noticia para que el LandingPage la abra
+                  this.irAlDetalle(noticiaEnlazada);
                   
-                  // 3. Hacemos el Scroll exacto
-                  this.$nextTick(() => {
-                      setTimeout(() => {
-                          const el = document.querySelector('.section-noticias');
-                          if (el) {
-                              const headerOffset = 100; 
-                              const elementPosition = el.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              
-                              window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                          }
-                      }, 800); 
-                  });
+                  // Actualizamos los metas de Vue por si acaso (opcional, tu blade ya lo hace)
+                  this.updateMetaTags(noticiaEnlazada);
               }
 
               if (this.filtros.busqueda) {
@@ -312,6 +296,10 @@ export default {
           } else {
               this.updateMetaTags(null); // Regresa a los metas por defecto
           }
+      },
+      irAlDetalle(noticia) {
+          // Emitimos la noticia completa hacia la Landing Page
+          this.$emit('noticia-seleccionada', noticia);
       },
       getColClass(id) {
           if (this.selectedNews === id) return 'col-12';
