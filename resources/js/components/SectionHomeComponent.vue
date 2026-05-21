@@ -235,7 +235,7 @@
                 <img src="recursos/melvin-brown.png" alt="Melvin Brown Casados" class="imagen-asesor">
                 </div>
 
-                <h3 class="nombre-asesor">MELVIN BROWN<br>CASADOS</h3>
+                <!-- <h3 class="nombre-asesor">MELVIN BROWN<br>CASADOS</h3> -->
             </div>
 
             <div class="timeline-asesor">
