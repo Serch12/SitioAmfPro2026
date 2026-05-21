@@ -6,7 +6,6 @@
         <p class="text-muted text-start small mx-auto mb-5" style="max-width: 800px;">
           La AMFpro, a través de su coordinación jurídica brinda asesoría y seguimiento de las acciones legales interpuestas por sus afiliados y afiliadas; por lo que, te sugerimos nos contactes si necesitas apoyo en los siguientes casos:
         </p>
-
         <div v-for="category in categories" :key="category.title" class="mb-5">
           <h4 class="text-start fw-normal mb-4" style="color:#50c026;">{{ category.title }}</h4>
           <div class="row text-start g-4">
@@ -14,21 +13,17 @@
                 :key="point.id" 
                 class="col-12 col-md-4 d-flex align-items-start mb-2"
                 @mouseenter="point.show = true"
-                @mouseleave="point.show = false">
-              
+                @mouseleave="point.show = false">  
               <span class="legal-badge me-3">{{ point.id }}</span>
-              
               <div class="flex-grow-1">
                 <div class="fw-bold small lh-1 transition-color" :class="{'amf-green-text-2': point.show}">
                   {{ point.text }}:
                 </div>
-                
                 <transition name="expand">
                   <div v-if="point.show" class="detail-text small mt-1">
                     {{ point.detalle }}
                   </div>
                 </transition>
-
                 <a href="javascript:void(0)" class="amf-green-text-2 x-small d-block mt-1">
                   <p v-if="point.show === true" style="color:red;">(menos)</p>
                   <p v-else>(más)</p>
@@ -37,20 +32,15 @@
             </div>
           </div>
         </div>
-
         <h5 class="fw-bold mt-5 mb-5" style="color:#50c026;">Algunos documentos descargables para tu conocimiento</h5>
-        
         <div class="row g-4 justify-content-center">
           <div v-for="doc in docsData" :key="doc.title" class="col-12 col-sm-6 col-md-3">
             <div class="doc-card-mirror rounded-5 d-flex flex-column align-items-center">
-              
               <div class="sliding-overlay"></div>
-
               <div class="icon-wrapper d-flex align-items-center justify-content-center w-100">
                 <img :src="doc.icon" class="img-fluid doc-icon icon-default" style="height: 150px;">
                 <img :src="doc.icon_grey" class="img-fluid doc-icon icon-hover-grey" style="height: 150px;">
               </div>
-
               <div class="content-wrapper p-4 d-flex flex-column align-items-center w-100">
                 <h6 class="fw-bold text-center flex-grow-1 mb-4" style="font-size: 0.9rem; z-index: 3;">
                   {{ doc.title }}
@@ -59,7 +49,6 @@
                   Ir
                 </a>
               </div>
-              
             </div>
           </div>
         </div>
