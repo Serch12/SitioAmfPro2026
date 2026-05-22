@@ -19,10 +19,7 @@ use App\Models\Noticias;
 
 Auth::routes();
 
-// ==========================================
-// 1. RUTAS PÚBLICAS Y VISTAS BASE
-// ==========================================
-// Le cambiamos el nombre '/' a 'inicio' para evitar conflictos con la función url('/')
+
 Route::get('/', function () {
     return view('home')->with('evento','');
 })->name('inicio');

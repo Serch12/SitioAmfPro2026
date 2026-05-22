@@ -114,7 +114,7 @@
                 </div>
               </div>
 
-              <div class="sidebar-box bg-white p-4 rounded-4 shadow-sm border">
+              <!-- <div class="sidebar-box bg-white p-4 rounded-4 shadow-sm border">
                 <h6 class="fw-bold amf-green-text-2 mb-3 text-center">Etiquetas</h6>
                 <div class="d-flex flex-wrap gap-2 justify-content-center">
                   <span v-for="tag in etiquetas" :key="tag" 
@@ -124,7 +124,7 @@
                     {{ tag }}
                   </span>
                 </div>
-              </div>
+              </div> -->
 
             </div>
           </div>

@@ -2,6 +2,8 @@
   <transition name="fade-slide">
     <div class="detalle-noticia-wrapper bg-white">
       
+      <div class="reading-progress-bar" :style="{ width: scrollProgress + '%' }"></div>
+
       <div class="news-hero" :style="{ backgroundImage: `url('${obtenerRutaImagen(noticia.imagen)}')` }">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
@@ -11,7 +13,17 @@
           
           <div class="badge-category mb-2">{{ noticia.categoria }}</div>
           <h1 class="display-3 fw-black text-white mb-3">{{ noticia.titulo }}</h1>
-          <p class="lead text-white-50" style="color:#50c026 !important;">{{ noticia.fecha }}</p>
+          
+          <div class="meta-info d-flex align-items-center gap-3 fw-bold" style="color:#50c026;">
+            <span class="d-flex align-items-center gap-1">
+              <i class="material-icons" style="font-size: 1.1rem;">calendar_month</i> {{ noticia.fecha }}
+            </span>
+            <span class="text-white-50">•</span>
+            <span class="d-flex align-items-center gap-1 text-white-50">
+              <i class="material-icons" style="font-size: 1.1rem;">schedule</i> {{ tiempoLectura }} min de lectura
+            </span>
+          </div>
+
         </div>
       </div>
 
@@ -21,11 +33,14 @@
             
             <div class="noticia-texto mb-5" v-html="detalleProcesado"></div>
 
-            <div class="share-section border-top border-bottom py-4 mb-5 d-flex align-items-center justify-content-between">
+            <div class="share-section border-top border-bottom py-4 mb-5 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
               <span class="fw-bold text-muted">¿Te gustó esta noticia? Compártela:</span>
-              <button @click="compartirNoticia(noticia)" class="btn btn-success rounded-pill px-4 d-inline-flex align-items-center gap-2">
-                <i class="material-icons">share</i> Compartir
-              </button>
+              
+              <div class="d-flex gap-2">
+                <button @click="copiarEnlace" class="btn btn-success rounded-pill px-4 d-inline-flex align-items-center gap-2">
+                  <i class="material-icons" style="font-size: 1.2rem;">link</i> Copiar Link
+                </button>
+              </div>
             </div>
 
             <div v-if="galeriaImagenes && galeriaImagenes.length > 0" class="gallery-section mt-5 pt-4">
@@ -79,12 +94,16 @@ export default {
     return {
       lightboxVisible: false,
       lightboxIndex: 0,
-      galeriaImagenes: [], // Guardamos las imágenes de Axios aquí
+      galeriaImagenes: [], 
+      scrollProgress: 0, 
     }
   },
   mounted() {
-    // Al abrir el componente, mandamos llamar a las imágenes de esta noticia
     this.cargarGaleria();
+    window.addEventListener('scroll', this.calcularProgreso);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.calcularProgreso);
   },
   computed: {
     detalleProcesado() {
@@ -96,33 +115,58 @@ export default {
         }
         return `src="http://amfpro.mx/intranet/public/ArchivosSistema/Post/${path}"`;
       });
+    },
+    // NUEVA FUNCIÓN PREMIUM: Calcula el tiempo estimado de lectura
+    tiempoLectura() {
+      if (!this.noticia.detalle) return 1;
+      // Quitamos las etiquetas HTML para dejar solo el texto puro
+      const textoPlano = this.noticia.detalle.replace(/<[^>]+>/g, '');
+      // Contamos las palabras dividiendo por los espacios
+      const totalPalabras = textoPlano.split(/\s+/).filter(word => word.length > 0).length;
+      // Una persona promedio lee 200 palabras por minuto
+      const minutos = Math.ceil(totalPalabras / 200);
+      return minutos === 0 ? 1 : minutos;
     }
   },
   methods: {
-    // MÉTODO PARA TRAER LAS FOTOS CON AXIOS
     async cargarGaleria() {
       try {
-        // Asegúrate de que esta URL exista en tu Laravel
         const response = await axios.get(`noticias/${this.noticia.id}/galeria`);
         this.galeriaImagenes = response.data;
       } catch (error) {
         console.error("Error al cargar la galería:", error);
       }
     },
-
     obtenerRutaImagen(nombreImagen) {
       if (!nombreImagen) return 'recursos/default.png';
-      
       let ruta = nombreImagen.startsWith('http') 
         ? nombreImagen 
         : 'http://amfpro.mx/intranet/public/ArchivosSistema/Post/' + nombreImagen;
-        
       return encodeURI(ruta);
     },
-    compartirNoticia(noticia) {
-        const url = `${window.location.origin}/noticias/${noticia.ruta || noticia.id}`;
+    calcularProgreso() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const height = scrollHeight - clientHeight;
+      if (height > 0) {
+        this.scrollProgress = (scrollTop / height) * 100;
+      } else {
+        this.scrollProgress = 0;
+      }
+    },
+    copiarEnlace() {
+        const url = `${window.location.origin}/noticias/${this.noticia.ruta || this.noticia.id}`;
         navigator.clipboard.writeText(url).then(() => {
-            alert("¡Enlace de noticia copiado al portapapeles!");
+            if (window.Swal) {
+                window.Swal.fire({
+                    toast: true, position: 'top-end', icon: 'success', title: '¡Enlace copiado!',
+                    text: 'Listo para compartir con tus amigos.', showConfirmButton: false,
+                    timer: 3000, timerProgressBar: true, background: '#fff', color: '#333', iconColor: '#50c026'
+                });
+            } else if (window.toastr) {
+                window.toastr.success('Listo para compartir', '¡Enlace copiado!');
+            }
         });
     },
     abrirLightbox(index) {
@@ -135,24 +179,30 @@ export default {
       document.body.style.overflow = 'auto'; 
     },
     prevImg() {
-      if (this.lightboxIndex > 0) {
-        this.lightboxIndex--;
-      } else {
-        this.lightboxIndex = this.galeriaImagenes.length - 1; 
-      }
+      if (this.lightboxIndex > 0) { this.lightboxIndex--; } 
+      else { this.lightboxIndex = this.galeriaImagenes.length - 1; }
     },
     nextImg() {
-      if (this.lightboxIndex < this.galeriaImagenes.length - 1) {
-        this.lightboxIndex++;
-      } else {
-        this.lightboxIndex = 0; 
-      }
+      if (this.lightboxIndex < this.galeriaImagenes.length - 1) { this.lightboxIndex++; } 
+      else { this.lightboxIndex = 0; }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.reading-progress-bar {
+  position: fixed;
+  top: 65px; 
+  left: 0;
+  height: 7px; 
+  background-color: #50c026;
+  z-index: 999999; 
+  transition: width 0.1s ease;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0 2px 10px rgba(80, 192, 38, 0.6); 
+}
+
 .detalle-noticia-wrapper {
   position: relative;
   min-height: 100vh;
@@ -182,10 +232,12 @@ export default {
     }
   }
 
+  /* BOTÓN ALINEADO MILIMÉTRICAMENTE */
   .btn-back {
     display: inline-flex;
     align-items: center;
-    gap: 8px; 
+    justify-content: center; /* Asegura el centrado en el eje flex */
+    gap: 6px; 
     background: rgba(255,255,255,0.15);
     border: 1px solid rgba(255,255,255,0.3);
     color: white;
@@ -195,7 +247,14 @@ export default {
     transition: all 0.3s ease;
     font-weight: 500;
     
-    i { font-size: 1.2rem; }
+    i { 
+      font-size: 1.3rem; 
+      line-height: 0; /* Mata la caja invisible del ícono */
+    }
+    span {
+      line-height: 1; /* Iguala la altura de la fuente */
+      padding-top: 2px; /* Ajuste óptico fino para la fuente Roboto */
+    }
     
     &:hover { 
       background: #50c026; 
@@ -208,7 +267,7 @@ export default {
     background: #50c026;
     color: white;
     display: inline-block;
-    padding: 6px 16px;
+    padding: 0px 16px;
     border-radius: 4px;
     font-weight: bold;
     font-size: 0.85rem;
@@ -220,8 +279,23 @@ export default {
     font-size: 1.15rem;
     line-height: 1.9;
     color: #444;
+    text-align: justify; 
     
-    ::v-deep p { margin-bottom: 1.5rem; }
+    ::v-deep p:first-of-type::first-letter {
+      font-size: 4rem;
+      float: left;
+      margin-top: 8px;
+      margin-right: 12px;
+      margin-bottom: -5px;
+      font-weight: 900;
+      color: #50c026;
+      line-height: 0.8;
+      text-transform: uppercase;
+    }
+
+    ::v-deep p { 
+      margin-bottom: 0.3rem; 
+    }
     ::v-deep img { 
       max-width: 100%; 
       height: auto; 
