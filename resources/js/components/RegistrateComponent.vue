@@ -339,26 +339,130 @@
     </div>
 
     <div class="modal fade" id="avisoprivacidad" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 10000;">
-      <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-          <div class="modal-header" style="background-color: #50C026;">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true" style="color: white;">&times;</span>
+      <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+        <div class="modal-content border-0 rounded-4 shadow-lg">
+          
+          <div class="modal-header border-0 px-4 py-3" style="background-color: #50C026;">
+            <h5 class="modal-title text-white fw-bold">Aviso de Privacidad</h5>
+            <button type="button" class="close bg-transparent border-0" data-dismiss="modal" aria-label="Close" style="font-size: 1.8rem; line-height: 1;">
+              <span aria-hidden="true" style="color: white; font-weight: 300;">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <div class="container">
-              <div align="center" class="p-5">
-                <img src="estilos_pagina/assets/images/LOGO_AMFpro_color.svg" width="200px" alt="">
-                <h3><strong>AM FUT PRO, A.C. <br>Aviso de Privacidad del Registro de Afiliados</strong></h3>
+          
+          <div class="modal-body px-4 px-lg-5 py-4" style="text-align: justify; line-height: 1.7; color: #444; font-size: 0.95rem;">
+            <div class="container-fluid">
+              
+              <div align="center" class="pb-4 mb-4 border-bottom">
+                <img src="recursos/logo.png" width="180px" alt="Logo AMFpro" class="mb-3">
+                <h3 class="fw-black text-dark display-6 mb-2">AM FUT PRO, A.C.</h3>
+                <h5 class="text-muted fw-bold">Aviso de Privacidad del Registro de Afiliados</h5>
               </div>
-              <p>AM FUT PRO, A.C., es responsable del tratamiento de sus datos personales...</p>
-              <div align="right"><p>Fecha de última actualización: 26 de Febrero de 2024.</p></div>
+
+              <h4 class="fw-bold mt-4 mb-3" style="color: #50C026; font-size: 1.25rem;">
+                ¿Quién es el Responsable de recabar los datos personales para el Registro de Afiliados?
+              </h4>
+              <p>
+                <strong>AM FUT PRO, A.C.</strong>, (en lo sucesivo “AMFpro”), con domicilio ubicado en Avenida Industria Automotriz, número 33, Interior 203, Colonia Corredor Industrial, Toluca Lerma, C.P. 52004, Estado de México, es responsable del tratamiento de sus datos personales en términos de lo establecido por los artículos 3, fracción XIV de la Ley Federal de Protección de Datos Personales en Posesión de Particulares (LFPDPPP), 47 de su Reglamento (RLFPDPPP), así como por las disposiciones contenidas en los artículos 1, 3 y 5 del Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo (RGPD).
+              </p>
+
+              <h4 class="fw-bold mt-4 mb-3" style="color: #50C026; font-size: 1.25rem;">
+                ¿Cuáles son las finalidades de tratamiento de datos personales que se recaban para el Registro de Afiliados?
+              </h4>
+              
+              <h6 class="fw-bold text-dark mt-3 mb-2">Finalidades primarias:</h6>
+              
+              <p class="mb-2"><strong>1.1.</strong> AMFpro tratará los datos de identificación y deportivos del Titular para las siguientes finalidades:</p>
+              <ol type="a" class="ps-4 mb-3">
+                <li>Dar de alta a los jugadores asociados en los sistemas y bases de datos de la AMFpro;</li>
+                <li>Realizar los trámites de afiliación y registro como asociado de la AMFpro;</li>
+                <li>Identificar y contactar a los jugadores asociados;</li>
+                <li>Generar las credenciales de los jugadores afiliados de la AMFpro;</li>
+                <li>Confirmar, actualizar y corregir los datos personales de contacto registrados por la AMFpro;</li>
+                <li>Brindar asesoría jurídica a los asociados;</li>
+                <li>Mantener a los asociados informados sobre el estatus de sus procesos legales;</li>
+                <li>Enviar a los asociados información sobre eventos y actividades que realice la AMFpro;</li>
+                <li>Registrar y confirmar la asistencia de los asociados a las diferentes actividades realizadas por la asociación;</li>
+                <li>Envío de noticias de última hora (flashes informativos), de interés para los futbolistas asociados;</li>
+                <li>Contactar a los asociados, ya sea por correo electrónico o telefónicamente para compartirles información a la que tengan derecho como miembros de la AMFpro;</li>
+                <li>Atender sus dudas y comentarios de los asociados recibidos a través del correo electrónico, redes sociales, telefónicamente o por videoconferencias;</li>
+                <li>Elaboración y gestión del historial deportivo de los asociados, así como para dar seguimiento a su estatus como jugador profesional;</li>
+                <li>Integrar los expedientes físicos y electrónicos de los asociados para la resolución de controversias;</li>
+                <li>Representar al jugador asociado ante la Comisión de Conciliación y Resolución de Controversias;</li>
+                <li>Llevar a cabo el patrocinio de los asociados (únicamente de aquellos jugadores sin contrato);</li>
+                <li>Realizar el registro de los asociados en los diplomados, cursos, eventos y actividades “en línea” organizados por la AMFpro; y,</li>
+                <li>Cumplir con las disposiciones legales aplicables a la prestación de los servicios que brinda la AMFpro.</li>
+              </ol>
+
+              <p class="mb-2"><strong>1.2.</strong> AMFpro tratará los datos patrimoniales del Titular para las siguientes finalidades:</p>
+              <ol type="a" class="ps-4 mb-4">
+                <li>Gestionar el pago de sus beneficios económicos debido al trabajo de intermediación que lleva a cabo ésta, y</li>
+                <li>Dar cumplimiento a la Ley Federal para la Prevención e Identificación de Operaciones con Recursos de Procedencia Ilícita.</li>
+              </ol>
+
+              <h6 class="fw-bold text-dark mt-3 mb-2">Finalidades secundarias:</h6>
+              <p class="mb-2">AMFpro tratará los datos de identificación del Titular para las siguientes finalidades no esenciales:</p>
+              <ol type="a" class="ps-4 mb-4">
+                <li>Ofrecerle promociones, descuentos de instituciones educativas nacionales e internacionales con las que la asociación tiene convenios;</li>
+                <li>Fines estadísticos; y,</li>
+                <li>Publicidad, prospección comercial y mercadotecnia.</li>
+              </ol>
+
+              <h4 class="fw-bold mt-4 mb-3" style="color: #50C026; font-size: 1.25rem;">
+                ¿Cómo se pueden ejercer los derechos de acceso, rectificación, cancelación u oposición, de los datos personales del Registro de Afiliados?
+              </h4>
+              <p class="mb-3">
+                El Titular podrá en todo momento ejercer sus derechos ARCO (acceso, rectificación, cancelación u oposición) respecto de sus datos personales presentando una solicitud en el formato que usted considere pertinente, misma que debe contener la información y documentación siguiente:
+              </p>
+              
+              <ol class="ps-4 mb-3">
+                <li>Nombre del Titular, domicilio y otro medio (correo electrónico, teléfono celular, etc.), para comunicarle la respuesta a su solicitud;</li>
+                <li>Los documentos vigentes que acrediten su identidad (copia simple en formato impreso o electrónico de su credencial de elector, pasaporte o Visa Fm2 o Fm3) o, en su caso, la representación legal del Titular (copia simple en formato impreso o electrónico de la carta poder simple con firma autógrafa del Titular, el mandatario y sus correspondientes identificaciones oficiales vigentes: credencial de elector, pasaporte o Visa Fm2 o Fm3);</li>
+                <li>La descripción clara y precisa de los datos respecto de los que busca ejercer alguno de los Derechos ARCO, y cualquier otro elemento o documento que facilite la localización de los datos personales del Titular.</li>
+              </ol>
+
+              <p class="mb-3">
+                En el caso de las solicitudes de rectificación de datos personales, el Titular deberá también indicar las modificaciones a realizarse y aportar la documentación que sustente su petición.
+              </p>
+              <p class="mb-3">
+                Para dar cumplimiento a la obligación de acceso a sus datos personales, se hará previa acreditación de la identidad del Titular o personalidad del representante; poniendo la información a disposición en sitio en el domicilio del Responsable. Se podrá acordar otro medio entre el Titular y el Responsable siempre que la información solicitada así lo permita.
+              </p>
+              <p class="mb-2">
+                Para ejercer sus derechos ARCO, la revocación de su consentimiento y los demás derechos previstos en la LFPDPPP ponemos a su disposición los siguientes medios:
+              </p>
+              
+              <ul class="ps-4 mb-3" style="list-style-type: square;">
+                <li><strong>Correo electrónico:</strong> arco@amfpro.mx</li>
+                <li><strong>Presencialmente:</strong> Avenida Industria Automotriz, número 33, Interior 203, Colonia Corredor Industrial, Toluca Lerma, C.P. 52004, Estado de México.</li>
+              </ul>
+
+              <p class="mb-4">
+                AMFpro responderá al Titular en un plazo máximo de veinte días hábiles, contados desde la fecha hábil en que se recibió la solicitud a efecto de que, si resulta procedente, haga efectiva la misma dentro de los quince días hábiles siguientes a que se comunique la respuesta. En todos los casos, la respuesta se dará por la misma vía por la que haya presentado su solicitud o en su caso por cualquier otro medio acordado con el Titular. Los plazos antes referidos podrán ser ampliados en términos de la LFPDPPP.
+              </p>
+
+              <h4 class="fw-bold mt-4 mb-3" style="color: #50C026; font-size: 1.25rem;">
+                ¿Con quienes se transfieren los datos personales del Registro de Afiliados?
+              </h4>
+              <p class="mb-3">
+                Los datos personales recabados por la AMFpro, podrán compartirse con la Federación Mexicana de Fútbol Asociación, A.C., y sus integrantes, a efecto de gestionar actividades de intermediación de pago de salarios que requieran nuestros asociados. Esta transferencia es necesaria para dar cumplimiento a los trabajos establecidos en beneficio de los asociados, por lo que será necesario contar con el consentimiento expreso del titular de los datos, el cual será recabado a través de un formato específico.
+              </p>
+              <p class="mb-3">
+                También le comunicamos que sus datos personales podrán compartirse con los proveedores de bienes y servicios que nos auxilian, para proveer de estos a los requeridos por nuestros asociados, los cuáles son necesarios para dar cumplimiento a nuestra función de intermediación, por lo que para esta transferencia no será necesario contar con el consentimiento expreso del titular de los datos, de conformidad con lo señalado por el artículo 37, fracción VII de la LFPDPPP, así como por lo dispuesto por el artículo 44 del RGPD. Los receptores de los datos personales, están obligados por virtud del contrato correspondiente, a mantener la confidencialidad de los datos personales suministrados y a observar el presente Aviso de Privacidad.
+              </p>
+              <p class="mb-4">
+                Salvo los casos señalados con anterioridad y a menos que se actualice alguno de los supuestos contenidos en el artículo 37 de la LFPDPPP y 49 del RGPD, los datos proporcionados por nuestros Asociados y visitantes no serán transmitidos en ninguna otra circunstancia.
+              </p>
+
+              <div class="text-end border-top pt-3 mt-4 text-muted" style="font-size: 0.85rem;">
+                <p class="mb-0">Fecha de última actualización: 26 de Febrero de 2024.</p>
+              </div>
+
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          
+          <div class="modal-footer border-0 px-4 py-3 bg-light rounded-bottom-4">
+            <button type="button" class="btn btn-secondary rounded-pill px-4" data-dismiss="modal">Cerrar</button>
           </div>
+
         </div>
       </div>
     </div>
