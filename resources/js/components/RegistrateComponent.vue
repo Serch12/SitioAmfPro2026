@@ -13,14 +13,14 @@
           
           <div class="col-4 text-center px-0">
             <a href="">
-              <!-- <img src="recursos/logo.png" alt="Logo AMFPRO" class="logo-header bg-white rounded px-2">  -->
+              <img src="recursos/logo.png" alt="Logo AMFPRO" class="logo-header rounded px-2"> 
             </a>
           </div>
           
           <div class="col-4 text-end d-flex justify-content-end gap-2 px-0">
-            <img src="recursos/x.png" alt="X" class="social-nav filter-white">
-            <img src="recursos/facebook.png" alt="FB" class="social-nav filter-white">
-            <img src="recursos/instagram.png" alt="IG" class="social-nav filter-white">
+            <img src="recursos/x.png" alt="X" class="social-nav ">
+            <img src="recursos/facebook.png" alt="FB" class="social-nav ">
+            <img src="recursos/instagram.png" alt="IG" class="social-nav ">
           </div>
 
         </div>
@@ -798,12 +798,12 @@ export default {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-.filter-white {
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
-  transition: opacity 0.3s;
-  &:hover { opacity: 1; }
-}
+// .filter-white {
+//   filter: brightness(0) invert(1);
+//   opacity: 0.8;
+//   transition: opacity 0.3s;
+//   &:hover { opacity: 1; }
+// }
 
 .logo-header {
   height: 32px; 
