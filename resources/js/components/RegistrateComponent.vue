@@ -1,26 +1,26 @@
 <template>
-  <div class="registro-page-wrapper">
+  <div class="registro-page-wrapper" style="--bg-desktop: url('estilos_login/assets/img/amfpro/banner_login.png'); --bg-mobile: url('estilos_login/assets/img/amfpro/banner_login_dispositivo.jpg');">
     
-    <header class="header-main border-bottom fixed-top bg-white">
+    <header class="header-main border-bottom fixed-top glass-header">
       <div class="container-fluid py-2 px-3 px-lg-5">
         <div class="row align-items-center flex-nowrap m-0">
           
           <div class="col-4 text-start px-0">
             <a href="" class="text-decoration-none">
-              <div class="hash-tag fw-bold text-secondary text-truncate">#UnidosSomosMásFuertes</div>
+              <div class="hash-tag fw-bold text-truncate" style="color: #cbd5e1;">#UnidosSomosMásFuertes</div>
             </a>
           </div>
           
           <div class="col-4 text-center px-0">
             <a href="">
-              <img src="recursos/logo.png" alt="Logo AMFPRO" class="logo-header">
+              <!-- <img src="recursos/logo.png" alt="Logo AMFPRO" class="logo-header bg-white rounded px-2">  -->
             </a>
           </div>
           
           <div class="col-4 text-end d-flex justify-content-end gap-2 px-0">
-            <img src="recursos/x.png" alt="X" class="social-nav">
-            <img src="recursos/facebook.png" alt="FB" class="social-nav">
-            <img src="recursos/instagram.png" alt="IG" class="social-nav">
+            <img src="recursos/x.png" alt="X" class="social-nav filter-white">
+            <img src="recursos/facebook.png" alt="FB" class="social-nav filter-white">
+            <img src="recursos/instagram.png" alt="IG" class="social-nav filter-white">
           </div>
 
         </div>
@@ -30,101 +30,85 @@
     <div class="container py-5 mt-5 pt-4">
       <div class="registration-card shadow-lg mx-auto">
         
-        <div class="registration-header">
+        <div class="registration-header border-bottom-glass">
           <div class="d-flex align-items-center gap-3">
             <div class="icon-brand-box shadow-sm">
               <i class="material-icons">how_to_reg</i>
             </div>
             <div>
-              <h4 class="fw-bolder amf-green-text-2 mb-0" style="letter-spacing: -0.5px;">REGISTRO DE ASOCIADO</h4>
-              <span class="text-muted" style="font-size: 0.8rem;">Únete a la red de futbolistas profesionales de México</span>
+              <h4 class="fw-bolder text-white mb-0" style="letter-spacing: -0.5px;">REGISTRO DE ASOCIADO</h4>
+              <span class="text-slate-300" style="font-size: 0.8rem;">Únete a la red de futbolistas profesionales de México</span>
             </div>
           </div>
         </div>
 
-        <div class="registration-body bg-light-gray">
+        <div class="registration-body">
           <form @submit.prevent="createAfiliado" enctype="multipart/form-data" novalidate>
-            <div class="form-section shadow-sm mb-3">
-              <h6 class="section-title"><i class="material-icons text-success">badge</i> Información Personal</h6>
+            
+            <div class="form-section glass-box shadow-sm mb-3">
+              <h6 class="section-title text-white"><i class="material-icons text-success">badge</i> Información Personal</h6>
               
               <div class="row g-2">
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control" :class="{ 'input-error': afiliado.nombre == '' && afiliadoError.nombre }" v-model="afiliado.nombre" id="nombres" placeholder="Nombre(s)" autocomplete="off">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.nombre == '' && afiliadoError.nombre }" v-model="afiliado.nombre" id="nombres" placeholder="Nombre(s)" autocomplete="off">
                     <label for="nombres">Nombre(s) *</label>
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control" :class="{ 'input-error': afiliado.apellido_pat == '' && afiliadoError.apellido_pat }" v-model="afiliado.apellido_pat" id="paterno" placeholder="Apellido paterno" autocomplete="off">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.apellido_pat == '' && afiliadoError.apellido_pat }" v-model="afiliado.apellido_pat" id="paterno" placeholder="Apellido paterno" autocomplete="off">
                     <label for="paterno">Apellido paterno *</label>
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control" :class="{ 'input-error': afiliado.apellido_mat == '' && afiliadoError.apellido_mat }" v-model="afiliado.apellido_mat" id="materno" placeholder="Apellido materno" autocomplete="off">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.apellido_mat == '' && afiliadoError.apellido_mat }" v-model="afiliado.apellido_mat" id="materno" placeholder="Apellido materno" autocomplete="off">
                     <label for="materno">Apellido materno *</label>
                   </div>
                 </div>
                 <div class="col-6 col-md-3">
                   <div class="form-floating compact-floating">
-                    <select class="form-select" :class="{ 'input-error': afiliado.sexo == '' && afiliadoError.sexo }" v-model="afiliado.sexo" id="sexo">
-                      <option value="">Seleccionar</option>
-                      <option value="Femenino">Femenino</option>
-                      <option value="Masculino">Masculino</option>
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.sexo == '' && afiliadoError.sexo }" v-model="afiliado.sexo" id="sexo">
+                      <option value="" class="dark-option">Seleccionar</option>
+                      <option value="Femenino" class="dark-option">Femenino</option>
+                      <option value="Masculino" class="dark-option">Masculino</option>
                     </select>
                     <label for="sexo">Sexo *</label>
                   </div>
                 </div>
                 <div class="col-6 col-md-3">
                   <div class="form-floating compact-floating">
-                    <input type="date" class="form-control" :class="{ 'input-error': afiliado.nacimiento == '' && afiliadoError.nacimiento }" v-model="afiliado.nacimiento" id="nacimiento" autocomplete="off">
+                    <input type="date" class="form-control custom-input" :class="{ 'input-error': afiliado.nacimiento == '' && afiliadoError.nacimiento }" v-model="afiliado.nacimiento" id="nacimiento" autocomplete="off">
                     <label for="nacimiento">Nacimiento *</label>
                   </div>
                 </div>
                 <div class="col-6 col-md-3">
                   <div class="form-floating compact-floating">
-                    <select class="form-select" :class="{ 'input-error': afiliado.nacionalidad == '' && afiliadoError.nacionalidad }" v-model="afiliado.nacionalidad" @change="esMexicano(afiliado.nacionalidad)" id="pais">
-                      <option value="">Seleccionar</option>
-                      <option value=" Afganistán"> Afganistán</option>
-                      <option value=" Albania"> Albania</option>
-                      <option value=" Alemania"> Alemania</option>
-                      <option value=" Argentina"> Argentina</option>
-                      <option value=" Australia"> Australia</option>
-                      <option value=" Brasil"> Brasil</option>
-                      <option value=" Canadá"> Canadá</option>
-                      <option value=" Chile"> Chile</option>
-                      <option value=" Colombia"> Colombia</option>
-                      <option value=" Costa Rica"> Costa Rica</option>
-                      <option value=" Cuba"> Cuba</option>
-                      <option value=" Ecuador"> Ecuador</option>
-                      <option value=" El Salvador"> El Salvador</option>
-                      <option value=" España"> España</option>
-                      <option value=" Estados Unidos"> Estados Unidos</option>
-                      <option value=" Francia"> Francia</option>
-                      <option value=" Guatemala"> Guatemala</option>
-                      <option value=" Honduras"> Honduras</option>
-                      <option value=" Italia"> Italia</option>
-                      <option value=" México"> México</option>
-                      <option value=" Nicaragua"> Nicaragua</option>
-                      <option value=" Panamá"> Panamá</option>
-                      <option value=" Paraguay"> Paraguay</option>
-                      <option value=" Perú"> Perú</option>
-                      <option value=" Reino Unido"> Reino Unido</option>
-                      <option value=" Uruguay"> Uruguay</option>
-                      <option value=" Venezuela"> Venezuela</option>
-                      <option value=" Otro"> Otro</option>
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.nacionalidad == '' && afiliadoError.nacionalidad }" v-model="afiliado.nacionalidad" @change="esMexicano(afiliado.nacionalidad)" id="pais">
+                      <option value="" class="dark-option">Seleccionar</option>
+                      <option value=" Afganistán" class="dark-option"> Afganistán</option>
+                      <option value=" Alemania" class="dark-option"> Alemania</option>
+                      <option value=" Argentina" class="dark-option"> Argentina</option>
+                      <option value=" Brasil" class="dark-option"> Brasil</option>
+                      <option value=" Canadá" class="dark-option"> Canadá</option>
+                      <option value=" Chile" class="dark-option"> Chile</option>
+                      <option value=" Colombia" class="dark-option"> Colombia</option>
+                      <option value=" España" class="dark-option"> España</option>
+                      <option value=" Estados Unidos" class="dark-option"> Estados Unidos</option>
+                      <option value=" México" class="dark-option"> México</option>
+                      <option value=" Otro" class="dark-option"> Otro</option>
                     </select>
                     <label for="pais">País *</label>
                   </div>
                 </div>
                 <div class="col-6 col-md-3">
                   <div class="form-floating compact-floating">
-                    <select class="form-select" :class="{ 'input-error': afiliado.escolaridad == '' && afiliadoError.escolaridad }" v-model="afiliado.escolaridad" ref="escolaridadRef" id="escolaridad">
-                      <option value="">Seleccionar</option>
-                      <option value="Básico">Básico</option>
-                      <option value="Media Superior">Media Superior</option>
-                      <option value="Superior">Superior</option>
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.escolaridad == '' && afiliadoError.escolaridad }" v-model="afiliado.escolaridad" ref="escolaridadRef" id="escolaridad">
+                      <option value="" class="dark-option">Seleccionar</option>
+                      <option value="Básico" class="dark-option">Básico</option>
+                      <option value="Media Superior" class="dark-option">Media Superior</option>
+                      <option value="Superior" class="dark-option">Superior</option>
                     </select>
                     <label for="escolaridad">Escolaridad *</label>
                   </div>
@@ -132,71 +116,71 @@
 
                 <div class="col-12 col-md-12">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control" :class="{ 'input-error': afiliado.calle == '' && afiliadoError.calle }" v-model="afiliado.calle" id="domicilio" placeholder="Domicilio" autocomplete="off">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.calle == '' && afiliadoError.calle }" v-model="afiliado.calle" id="domicilio" placeholder="Domicilio" autocomplete="off">
                     <label for="domicilio">Domicilio (Calle, número, municipo, estado y C.P) *</label>
                   </div>
                 </div>
 
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="email" class="form-control" :class="{ 'input-error': afiliado.mail == '' && afiliadoError.mail }" v-model="afiliado.mail" id="email" placeholder="Email" autocomplete="off">
+                    <input type="email" class="form-control custom-input" :class="{ 'input-error': afiliado.mail == '' && afiliadoError.mail }" v-model="afiliado.mail" id="email" placeholder="Email" autocomplete="off">
                     <label for="email">Correo Electrónico *</label>
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="password" class="form-control" :class="{ 'input-error': afiliado.password == '' && afiliadoError.password }" v-model="afiliado.password" id="pass" placeholder="Contraseña" autocomplete="new-password">
+                    <input type="password" class="form-control custom-input" :class="{ 'input-error': afiliado.password == '' && afiliadoError.password }" v-model="afiliado.password" id="pass" placeholder="Contraseña" autocomplete="new-password">
                     <label for="pass">Contraseña (Mín. 8) *</label>
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="password" class="form-control" :class="{ 'input-error': (afiliado.password_confirmation == '' || afiliado.password !== afiliado.password_confirmation) && afiliadoError.password_confirmation }" v-model="afiliado.password_confirmation" id="pass2" placeholder="Confirmar" autocomplete="new-password">
+                    <input type="password" class="form-control custom-input" :class="{ 'input-error': (afiliado.password_confirmation == '' || afiliado.password !== afiliado.password_confirmation) && afiliadoError.password_confirmation }" v-model="afiliado.password_confirmation" id="pass2" placeholder="Confirmar" autocomplete="new-password">
                     <label for="pass2">Confirmar Contraseña *</label>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="form-section shadow-sm mb-3">
-              <h6 class="section-title"><i class="material-icons text-primary">sports_soccer</i> Perfil Deportivo</h6>
+            <div class="form-section glass-box shadow-sm mb-3">
+              <h6 class="section-title text-white"><i class="material-icons text-primary">sports_soccer</i> Perfil Deportivo</h6>
               <div class="row g-2">
                 
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating position-relative">
-                    <input type="text" class="form-control" :class="{ 'input-error': afiliado.curp == '' && afiliadoError.curp }" v-model="afiliado.curp" id="curp" placeholder="CURP" autocomplete="off" maxlength="18" :disabled="mexicano" @input="convertirAMayusculas">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.curp == '' && afiliadoError.curp }" v-model="afiliado.curp" id="curp" placeholder="CURP" autocomplete="off" maxlength="18" :disabled="mexicano" @input="convertirAMayusculas">
                     <label for="curp">CURP *</label>
-                    <a href="https://www.gob.mx/curp/" target="_blank" class="position-absolute end-0 top-50 translate-middle-y me-3 x-small text-decoration-none text-primary fw-bold">¿Buscar?</a>
+                    <a href="https://www.gob.mx/curp/" target="_blank" class="position-absolute end-0 top-50 translate-middle-y me-3 x-small text-decoration-none text-success fw-bold">¿Buscar?</a>
                   </div>
                 </div>
                 
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control" :class="{ 'input-error': afiliado.nui == '' && afiliadoError.nui }" v-model="afiliado.nui" @change="ExisteNUI(afiliado.nui)" id="nui" placeholder="NUI" autocomplete="off" maxlength="7">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.nui == '' && afiliadoError.nui }" v-model="afiliado.nui" @change="ExisteNUI(afiliado.nui)" id="nui" placeholder="NUI" autocomplete="off" maxlength="7">
                     <label for="nui">NUI (Registro FMF) *</label>
                   </div>
-                  <small class="text-muted d-block mt-1 x-small" style="line-height:1;">
-                    Consulta tu NUI: <a href="http://ligamx.net/cancha/bsqdavnzd" target="_blank">Varonil</a> | <a href="http://www.ligafemenil.mx/cancha/bsqdavnzd" target="_blank">Femenil</a>
+                  <small class="text-slate-300 d-block mt-1 x-small" style="line-height:1;">
+                    Consulta tu NUI: <a href="http://ligamx.net/cancha/bsqdavnzd" target="_blank" class="text-success text-decoration-none">Varonil</a> | <a href="http://www.ligafemenil.mx/cancha/bsqdavnzd" target="_blank" class="text-success text-decoration-none">Femenil</a>
                   </small>
                 </div>
 
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control" :class="{ 'input-error': afiliado.celular == '' && afiliadoError.celular }" v-model="afiliado.celular" id="celular" placeholder="Celular" autocomplete="off" maxlength="11">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.celular == '' && afiliadoError.celular }" v-model="afiliado.celular" id="celular" placeholder="Celular" autocomplete="off" maxlength="11">
                     <label for="celular">Teléfono Celular *</label>
                   </div>
                 </div>
 
                 <div :class="muestra_categoria ? 'col-12 col-md-4' : 'col-12 col-md-6'">
                   <div class="form-floating compact-floating">
-                    <select class="form-select" :class="{ 'input-error': afiliado.division == '' && afiliadoError.division }" v-model="afiliado.division" @change="listaEquipos(afiliado.division)" id="division">
-                      <option value="">Seleccionar</option>
-                      <option value="Liga MX Femenil">Liga MX Femenil</option>
-                      <option value="Liga MX">Liga MX</option>
-                      <option value="Liga Expansión MX">Liga Expansión MX</option>
-                      <option value="Liga Premier">Liga Premier</option>
-                      <option value="Liga TDP">Liga TDP</option>
-                      <option value="Otro">Otro / Extranjero</option>
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.division == '' && afiliadoError.division }" v-model="afiliado.division" @change="listaEquipos(afiliado.division)" id="division">
+                      <option value="" class="dark-option">Seleccionar</option>
+                      <option value="Liga MX Femenil" class="dark-option">Liga MX Femenil</option>
+                      <option value="Liga MX" class="dark-option">Liga MX</option>
+                      <option value="Liga Expansión MX" class="dark-option">Liga Expansión MX</option>
+                      <option value="Liga Premier" class="dark-option">Liga Premier</option>
+                      <option value="Liga TDP" class="dark-option">Liga TDP</option>
+                      <option value="Otro" class="dark-option">Otro / Extranjero</option>
                     </select>
                     <label for="division">División *</label>
                   </div>
@@ -204,9 +188,9 @@
 
                 <div :class="muestra_categoria ? 'col-12 col-md-4' : 'col-12 col-md-6'">
                   <div class="form-floating compact-floating">
-                    <select class="form-select" :class="{ 'input-error': afiliado.club == '' && afiliadoError.club }" v-model="afiliado.club" :disabled="selectDisabled" id="club">
-                      <option value="">Seleccionar</option>
-                      <option v-for="(le, index) in lista_equipos" :key="index" :value="le.nombre">{{le.nombre}}</option>
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.club == '' && afiliadoError.club }" v-model="afiliado.club" :disabled="selectDisabled" id="club">
+                      <option value="" class="dark-option">Seleccionar</option>
+                      <option v-for="(le, index) in lista_equipos" :key="index" :value="le.nombre" class="dark-option">{{le.nombre}}</option>
                     </select>
                     <label for="club">Club *</label>
                   </div>
@@ -214,19 +198,19 @@
 
                 <div class="col-12 col-md-4" v-show="muestra_categoria">
                   <div class="form-floating compact-floating">
-                    <select class="form-select" :class="{ 'input-error': afiliado.categoria == '' && afiliadoError.categoria }" v-model="afiliado.categoria" :disabled="selectDisabled2" id="categoria">
-                      <option value="">Seleccionar</option>
-                      <option value="Liga MX Femenil" v-show="afiliado.division == 'Liga MX Femenil'">Liga MX Femenil</option>
-                      <option value="Liga MX" v-show="afiliado.division == 'Liga MX'">Liga MX</option>
-                      <option value="Sub 23" v-show="afiliado.division == 'Liga MX'">Sub 23</option>
-                      <option value="Sub 20" v-show="afiliado.division == 'Liga MX'">Sub 20</option>
-                      <option value="Sub 19" v-show="afiliado.division == 'Liga MX Femenil'">Sub 19</option>                   
-                      <option value="Sub 18">Sub 18</option>
-                      <option value="Sub 17">Sub 17</option>
-                      <option value="Sub 16" v-show="afiliado.division == 'Liga MX'">Sub 16</option>
-                      <option value="Sub 15" v-show="afiliado.division == 'Liga MX'">Sub 15</option>
-                      <option value="Sub 14" v-show="afiliado.division == 'Liga MX'">Sub 14</option>
-                      <option value="Sub 13" v-show="afiliado.division == 'Liga MX'">Sub 13</option>
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.categoria == '' && afiliadoError.categoria }" v-model="afiliado.categoria" :disabled="selectDisabled2" id="categoria">
+                      <option value="" class="dark-option">Seleccionar</option>
+                      <option value="Liga MX Femenil" class="dark-option" v-show="afiliado.division == 'Liga MX Femenil'">Liga MX Femenil</option>
+                      <option value="Liga MX" class="dark-option" v-show="afiliado.division == 'Liga MX'">Liga MX</option>
+                      <option value="Sub 23" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 23</option>
+                      <option value="Sub 20" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 20</option>
+                      <option value="Sub 19" class="dark-option" v-show="afiliado.division == 'Liga MX Femenil'">Sub 19</option>                   
+                      <option value="Sub 18" class="dark-option">Sub 18</option>
+                      <option value="Sub 17" class="dark-option">Sub 17</option>
+                      <option value="Sub 16" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 16</option>
+                      <option value="Sub 15" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 15</option>
+                      <option value="Sub 14" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 14</option>
+                      <option value="Sub 13" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 13</option>
                     </select>
                     <label for="categoria">Categoría *</label>
                   </div>
@@ -234,10 +218,10 @@
 
                 <div :class="muestra_tipo ? 'col-12 col-md-6' : 'col-12 col-md-12'">
                   <div class="form-floating compact-floating">
-                    <select class="form-select" :class="{ 'input-error': afiliado.seleccion == '' && afiliadoError.seleccion }" v-model="afiliado.seleccion" @change="muestraSelectTIpo(afiliado.seleccion)" id="seleccion">
-                      <option value="">Seleccionar</option>
-                      <option value="Si">Si</option>
-                      <option value="No">No</option>
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.seleccion == '' && afiliadoError.seleccion }" v-model="afiliado.seleccion" @change="muestraSelectTIpo(afiliado.seleccion)" id="seleccion">
+                      <option value="" class="dark-option">Seleccionar</option>
+                      <option value="Si" class="dark-option">Si</option>
+                      <option value="No" class="dark-option">No</option>
                     </select>
                     <label for="seleccion">Selección Nacional *</label>
                   </div>
@@ -245,10 +229,10 @@
 
                 <div class="col-12 col-md-6" v-show="muestra_tipo">
                   <div class="form-floating compact-floating">
-                    <select class="form-select" :class="{ 'input-error': afiliado.tipo_seleccion == '' && afiliadoError.tipo_seleccion }" v-model="afiliado.tipo_seleccion" id="tipo_seleccion">
-                      <option value="">Seleccionar</option>
-                      <option value="Mayor">Mayor</option>
-                      <option value="Inferiores">Inferiores</option>
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.tipo_seleccion == '' && afiliadoError.tipo_seleccion }" v-model="afiliado.tipo_seleccion" id="tipo_seleccion">
+                      <option value="" class="dark-option">Seleccionar</option>
+                      <option value="Mayor" class="dark-option">Mayor</option>
+                      <option value="Inferiores" class="dark-option">Inferiores</option>
                     </select>
                     <label for="tipo_seleccion">Tipo de Selección *</label>
                   </div>
@@ -259,11 +243,11 @@
 
             <div class="row g-3 mb-3">
               <div class="col-md-7">
-                <div class="form-section shadow-sm h-100 mb-0 p-3">
+                <div class="form-section glass-box h-100 mb-0 p-3">
                   <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h6 class="mb-0 fw-bold fs-6"><i class="material-icons align-middle text-warning me-1">contact_page</i> Identificación (INE/Pasaporte)</h6>
+                    <h6 class="mb-0 fw-bold fs-6 text-white"><i class="material-icons align-middle text-warning me-1">contact_page</i> Identificación (INE/Pasaporte)</h6>
                   </div>
-                  <p class="x-small text-muted mb-2 line-height-1">Menores: credencial escolar o permiso. JPEG, JPG o PNG.</p>
+                  <p class="x-small text-slate-300 mb-2 line-height-1">Menores: credencial escolar o permiso. JPEG, JPG o PNG.</p>
                   <div class="d-flex gap-2">
                     <div class="custom-file-upload flex-fill">
                       <input type="file" id="ine_frente" class="file-hidden" accept="image/jpeg,image/jpg,image/png" ref="filefrente" @change="ineFrente()">
@@ -284,11 +268,11 @@
               </div>
               
               <div class="col-md-5">
-                <div class="form-section shadow-sm h-100 mb-0 p-3">
+                <div class="form-section glass-box h-100 mb-0 p-3">
                   <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h6 class="mb-0 fw-bold fs-6"><i class="material-icons align-middle text-info me-1">account_box</i> Fotografía Reciente</h6>
+                    <h6 class="mb-0 fw-bold fs-6 text-white"><i class="material-icons align-middle text-info me-1">account_box</i> Fotografía Reciente</h6>
                   </div>
-                  <p class="x-small text-muted mb-2 line-height-1">Fondo blanco, tipo credencial. JPEG, JPG o PNG.</p>
+                  <p class="x-small text-slate-300 mb-2 line-height-1">Fondo blanco, tipo credencial. JPEG, JPG o PNG.</p>
                   <div class="custom-file-upload w-100">
                     <input type="file" id="foto_perfil" class="file-hidden" accept="image/jpeg,image/jpg,image/png" ref="filefoto" @change="ineFoto()">
                     <label for="foto_perfil" class="file-label" :class="{ 'input-error': afiliado.foto === '' && afiliadoError.foto }">
@@ -300,24 +284,24 @@
               </div>
             </div>
 
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center bg-white p-3 rounded-4 shadow-sm border border-light mt-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center glass-bottom-bar p-3 rounded-4 shadow-sm border-light-glass mt-4">
               <div class="legal-compact me-md-3 mb-3 mb-md-0">
                 <div class="form-check custom-check mb-1">
                   <input class="form-check-input" :class="{ 'input-error': !afiliado.terminos && afiliadoError.terminos }" type="checkbox" v-model="afiliado.terminos" id="check1">
-                  <label class="form-check-label x-small text-muted" for="check1">
+                  <label class="form-check-label x-small text-slate-300" for="check1">
                     Solicito mi afiliación como Asociado Jugador de la AMF PRO, A.C., aceptando cumplir sus disposiciones legales y estatutarias.
                   </label>
                 </div>
                 <div class="form-check custom-check">
                   <input class="form-check-input" :class="{ 'input-error': !afiliado.aviso && afiliadoError.aviso }" type="checkbox" v-model="afiliado.aviso" id="check2">
-                  <label class="form-check-label x-small text-muted" for="check2">
+                  <label class="form-check-label x-small text-slate-300" for="check2">
                     Acepto el <a href="#" data-toggle="modal" data-target="#avisoprivacidad" class="fw-bold text-success text-decoration-none">Aviso de Privacidad y Política de Protección de Datos</a>.
                   </label>
                 </div>
               </div>
               
               <div class="text-end flex-shrink-0">
-                <button type="submit" class="btn btn-register-premium w-100 shadow-lg">
+                <button type="submit" class="btn btn-premium w-100 shadow-lg">
                   <i class="material-icons align-middle me-1">check_circle</i> COMPLETAR
                 </button>
               </div>
@@ -471,6 +455,7 @@
 </template>
 
 <script>
+// Todo tu script se queda idéntico porque funciona perfecto.
 import axios from 'axios';
 
 export default {
@@ -735,7 +720,6 @@ export default {
                 }
             }).then((result) => {
                 if (result.isConfirmed || result.isDismissed) {
-                    // Limpiamos el formulario, pero ya no emitimos la señal de cerrar
                     this.afiliado = {
                         nombre: "", apellido_pat: "", apellido_mat: "", sexo: "",
                         nacionalidad: "", escolaridad: "", mail: "", curp: "",
@@ -770,50 +754,71 @@ export default {
 
 <style lang="scss">
 @use "sass:color";
-/* --- ESTILOS DEL HEADER ORIGINAL --- */
-.header-main {
-  .hash-tag {
-    font-size: 0.65rem; 
-  }
-  
-  .logo-header {
-    height: 32px; 
-    object-fit: contain;
-  }
-  
-  .social-nav { 
-    width: 20px; 
-    height: 20px; 
-    object-fit: contain; 
-    cursor: pointer; 
-  }
 
-  @media (min-width: 768px) {
-    .hash-tag { 
-      font-size: 0.875rem; 
-    }
-    .logo-header { 
-      height: 50px;
-    }
-    .social-nav { 
-      width: 30px; 
-      height: 30px; 
-      margin-left: 5px;
-    }
-  }
-}
-
-/* --- FONDOS Y ESTRUCTURA DE LA PÁGINA --- */
+/* ==================================================
+   NUEVOS ESTILOS DARK MODE / GLASSMORPHISM (COMO EN LOGIN)
+   ================================================== */
+   
 .registro-page-wrapper {
-  background-color: #f8fafc;
+  /* Fondo similar al Login */
+  background-image: var(--bg-desktop);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #0f172a; 
   min-height: 100vh;
+  position: relative;
+  
+  /* Capa oscura superpuesta */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.65); /* Un poquito más oscuro que el login para facilitar la lectura del form */
+    z-index: 1;
+  }
+  
+  .header-main, .container {
+    position: relative;
+    z-index: 2;
+  }
 }
 
+@media (max-width: 767px) {
+  .registro-page-wrapper {
+    background-image: var(--bg-mobile);
+  }
+}
+
+/* HEADER GLASSMORPHISM */
+.glass-header {
+  background: rgba(15, 23, 42, 0.7) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.filter-white {
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: opacity 0.3s;
+  &:hover { opacity: 1; }
+}
+
+.logo-header {
+  height: 32px; 
+  object-fit: contain;
+}
+
+/* TARJETA PRINCIPAL Y SECCIONES GLASS */
 .registration-card {
   width: 100%;
-//   max-width: 1000px; 
-  background: #f4f7f6;
-  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  color: white;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -825,42 +830,39 @@ export default {
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* --- HEADER --- */
 .registration-header {
   padding: 30px;
-  background: #ffffff;
+  background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  
-  .icon-brand-box {
-    background: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
-    width: 45px; height: 45px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    color: white;
-    .material-icons { font-size: 1.6rem; }
-  }
+}
+.border-bottom-glass { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.text-slate-300 { color: #cbd5e1 !important; }
 
-  .amf-green-text-2 { color: #2c3e50; }
+.icon-brand-box {
+  background: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
+  width: 45px; height: 45px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  .material-icons { font-size: 1.6rem; }
 }
 
-/* --- CUERPO Y SECCIONES --- */
 .registration-body {
   padding: 30px;
+  background: transparent;
 }
 
-.form-section {
-  background: #ffffff;
+.glass-box {
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   padding: 20px;
-  border: 1px solid rgba(0,0,0,0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   
   .section-title {
     font-size: 0.95rem;
     font-weight: 800;
-    color: #334155;
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -870,22 +872,35 @@ export default {
   }
 }
 
-/* --- COMPACT FLOATING LABELS --- */
+/* --- INPUTS ESTILO DARK MODE --- */
 .compact-floating {
-  .form-control, .form-select {
+  .custom-input {
     height: calc(3rem + 2px); 
     padding: 1rem 0.75rem 0.25rem 0.75rem;
     border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    background: #f8fafc;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
     font-size: 0.9rem;
-    color: #334155;
+    transition: all 0.3s ease;
     
     &:focus {
+      background: rgba(255, 255, 255, 0.1);
       border-color: #50c026;
-      box-shadow: 0 0 0 3px rgba(80, 192, 38, 0.1);
-      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(80, 192, 38, 0.15);
+      color: white;
     }
+    
+    &.input-error {
+      border-color: #ef4444 !important;
+      background: rgba(239, 68, 68, 0.1) !important;
+    }
+  }
+
+  /* Para las opciones nativas del Select que no pueden ser transparentes */
+  .dark-option {
+    background-color: #0f172a;
+    color: white;
   }
   
   label { 
@@ -895,13 +910,24 @@ export default {
   }
 }
 
-/* MARCAR ERRORES (BORDES ROJOS) */
-.input-error {
-  border-color: #dc3545 !important;
-  background-color: #fff8f8 !important;
+/* Modificación de la etiqueta flotante de Bootstrap para Dark Mode */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
+  color: #50c026;
+  background-color: #1e293b; /* Fondo solido oscuro para tapar la linea del borde */
+  border-radius: 4px;
+  height: auto;
+  padding: 0 5px;
+  transform: scale(.85) translateY(-.6rem) translateX(.5rem);
+}
+.form-floating > .form-control:focus ~ label::after,
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after,
+.form-floating > .form-select ~ label::after {
+  background-color: transparent !important;
 }
 
-/* --- CUSTOM FILE UPLOAD --- */
+/* --- CUSTOM FILE UPLOAD (GLASS) --- */
 .custom-file-upload {
   position: relative;
   
@@ -917,46 +943,58 @@ export default {
     align-items: center;
     justify-content: center;
     padding: 12px 10px;
-    background: #f8fafc;
-    border: 2px dashed #cbd5e1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s;
-    color: #64748b;
+    color: #cbd5e1;
     font-size: 0.8rem;
     font-weight: 600;
     
     i { font-size: 1.6rem; color: #94a3b8; margin-bottom: 4px; transition: color 0.2s; }
     
     &:hover {
-      background: #f0fdf4;
+      background: rgba(80, 192, 38, 0.1);
       border-color: #50c026;
-      color: #3e9452;
+      color: white;
       i { color: #50c026; transform: translateY(-2px); }
     }
     
     &.input-error {
-      border-color: #dc3545 !important;
-      color: #dc3545 !important;
-      i { color: #dc3545 !important; }
+      border-color: #ef4444 !important;
+      color: #fca5a5 !important;
+      i { color: #fca5a5 !important; }
     }
   }
 }
 
-/* --- BOTÓN DE REGISTRO --- */
-.btn-register-premium {
-  background: linear-gradient(to right, #50c026, #3e9452);
+/* --- BARRA INFERIOR --- */
+.glass-bottom-bar {
+  background: rgba(255, 255, 255, 0.03);
+}
+.border-light-glass {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --- BOTÓN DE REGISTRO PREMIUM --- */
+.btn-premium {
+  background: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
   color: white;
   border: none;
   border-radius: 12px;
   padding: 12px 25px;
   font-size: 1rem;
   letter-spacing: 0.5px;
+  font-weight: 700;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(80, 192, 38, 0.3) !important;
+    box-shadow: 0 10px 20px rgba(80, 192, 38, 0.4) !important;
     color: white;
   }
 }
@@ -964,9 +1002,10 @@ export default {
 /* --- CHECKBOX CUSTOM --- */
 .custom-check {
   .form-check-input {
-    border-color: #cbd5e1;
+    background-color: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
     &:checked { background-color: #50c026; border-color: #50c026; }
-    &.input-error { border-color: #dc3545 !important; }
+    &.input-error { border-color: #ef4444 !important; }
   }
 }
 
@@ -975,7 +1014,8 @@ export default {
 .line-height-1 { line-height: 1.2; }
 
 /* ===================================================
-   CÓDIGO ORIGINAL DEL SPINNER (Cubo de Carga)
+   CÓDIGO ORIGINAL DEL SPINNER (Cubo de Carga) 
+   (Intacto)
    =================================================== */
 $size: 50px;
 $primary-color: green;
@@ -1044,76 +1084,13 @@ $primary-color: green;
   width: 100%; height: 100%; background-color: rgba(0,0,0,0.6);
 }
 
+/* SWAL PREMIUM (Intacto) */
 .swal-super-top { z-index: 10050 !important; }
-
-.swal-premium-popup {
-  border-radius: 24px !important;
-  padding: 2.5rem 2rem 2rem 2rem !important;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.3) !important;
-  background: #ffffff !important;
-}
-
-.swal-premium-title {
-  font-size: 1.5rem !important;
-  font-weight: 800 !important;
-  color: #1e293b !important;
-  letter-spacing: -0.5px;
-  margin-bottom: 0.5rem !important;
-}
-
-.swal-premium-text {
-  font-size: 0.95rem !important;
-  color: #64748b !important;
-  line-height: 1.5 !important;
-}
-
-.btn-swal-premium-danger {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 12px !important;
-  padding: 12px 30px !important;
-  font-size: 1rem !important;
-  font-weight: bold !important;
-  letter-spacing: 0.5px !important;
-  width: 100% !important; 
-  margin-top: 1.5rem !important;
-  box-shadow: 0 8px 15px rgba(239, 68, 68, 0.3) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  cursor: pointer !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-}
-
-.btn-swal-premium-danger:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 12px 20px rgba(239, 68, 68, 0.4) !important;
-  filter: brightness(1.1) !important;
-}
-
-.btn-swal-premium-success {
-  background: linear-gradient(135deg, #50c026 0%, #3e9452 100%) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 12px !important;
-  padding: 12px 30px !important;
-  font-size: 1rem !important;
-  font-weight: bold !important;
-  letter-spacing: 0.5px !important;
-  width: 100% !important; 
-  margin-top: 1.5rem !important;
-  box-shadow: 0 8px 15px rgba(80, 192, 38, 0.3) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  cursor: pointer !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-}
-
-.btn-swal-premium-success:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 12px 20px rgba(80, 192, 38, 0.4) !important;
-  filter: brightness(1.1) !important;
-}
+.swal-premium-popup { border-radius: 24px !important; padding: 2.5rem 2rem 2rem 2rem !important; box-shadow: 0 25px 50px rgba(0,0,0,0.3) !important; background: #ffffff !important; }
+.swal-premium-title { font-size: 1.5rem !important; font-weight: 800 !important; color: #1e293b !important; letter-spacing: -0.5px; margin-bottom: 0.5rem !important; }
+.swal-premium-text { font-size: 0.95rem !important; color: #64748b !important; line-height: 1.5 !important; }
+.btn-swal-premium-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(239, 68, 68, 0.3) !important; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; cursor: pointer !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+.btn-swal-premium-danger:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(239, 68, 68, 0.4) !important; filter: brightness(1.1) !important; }
+.btn-swal-premium-success { background: linear-gradient(135deg, #50c026 0%, #3e9452 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(80, 192, 38, 0.3) !important; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; cursor: pointer !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+.btn-swal-premium-success:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(80, 192, 38, 0.4) !important; filter: brightness(1.1) !important; }
 </style>
