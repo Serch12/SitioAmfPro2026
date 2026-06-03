@@ -48,33 +48,32 @@
       </div>
     </section>
 
-    <!-- 2. INSTITUCIONES Y LIGAS -->
-   <section class="bg-white py-5 shadow-sm position-relative z-3 border-bottom border-light overflow-hidden">
+    <section class="bg-white py-5 shadow-sm position-relative z-3 border-bottom border-light overflow-hidden">
       <div class="container-fluid px-4 px-xl-5">
         <div class="row text-center g-4 align-items-center justify-content-center">
           
-          <div class="col-xl-auto col-lg-4 col-md-6 border-end-xl px-xl-4">
+          <div class="col-xl-auto col-lg-4 col-md-6 border-end-xl px-xl-4 reveal-up">
             <p class="text-muted small fw-bold tracking-widest mb-4">MIEMBROS</p>
-            <img src="recursos/logo_aif.png" alt="AIF" class="circle-logo mx-auto">
+            <img src="recursos/logo_aif.png" alt="AIF" class="circle-logo mx-auto reveal-scale-zoom delay-1">
           </div>
           
-          <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4">
+          <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4 reveal-up delay-1">
             <p class="text-muted small fw-bold tracking-widest mb-4">INSTITUCIONES</p>
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
-              <img src="recursos/logo_fifa.png" alt="FIFA" class="circle-logo">
-              <img src="recursos/logo_seleccion.png" alt="FMF" class="circle-logo">
-              <img src="recursos/logo_concacaf.png" alt="Concacaf" class="circle-logo">
+              <img src="recursos/logo_fifa.png" alt="FIFA" class="circle-logo reveal-scale-zoom delay-2">
+              <img src="recursos/logo_seleccion.png" alt="FMF" class="circle-logo reveal-scale-zoom delay-3">
+              <img src="recursos/logo_concacaf.png" alt="Concacaf" class="circle-logo reveal-scale-zoom delay-4">
             </div>
           </div>
           
-          <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4">
+          <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4 reveal-up delay-2">
             <p class="text-muted small fw-bold tracking-widest mb-4">LIGAS</p>
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
-              <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo">
-              <img src="recursos/logo_ligaexpansion.png" alt="FMF" class="circle-logo">
-              <img src="recursos/logo_ligapremier.png" alt="Concacaf" class="circle-logo">
-              <img src="recursos/logo_ligatdp.png" alt="Concacaf" class="circle-logo">
-              <img src="recursos/logo_ligamxfemenil.png" alt="Concacaf" class="circle-logo">
+              <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo reveal-scale-zoom delay-3">
+              <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo reveal-scale-zoom delay-4">
+              <img src="recursos/logo_ligapremier.png" alt="Liga Premier" class="circle-logo reveal-scale-zoom delay-5">
+              <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo reveal-scale-zoom delay-6">
+              <img src="recursos/logo_ligamxfemenil.png" alt="Liga MX Femenil" class="circle-logo reveal-scale-zoom delay-6">
             </div>
           </div>
 
@@ -542,7 +541,7 @@ export default {
       });
     }, options);
 
-    document.querySelectorAll('.reveal-up, .reveal-mask-wrapper, .reveal-scale-x').forEach(el => {
+    document.querySelectorAll('.reveal-up, .reveal-mask-wrapper, .reveal-scale-x, .reveal-scale-zoom').forEach(el => {
       this.observer.observe(el);
     });
   },
@@ -927,6 +926,15 @@ $amf-red: #cf152d;
 
 .reveal-scale-x { transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
 .is-visible .reveal-scale-x, .is-visible.reveal-scale-x { transform: scaleX(1); }
+.reveal-scale-zoom { 
+  opacity: 0; 
+  transform: scale(0.5) translateY(20px); 
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.is-visible .reveal-scale-zoom, .is-visible.reveal-scale-zoom { 
+  opacity: 1; 
+  transform: scale(1) translateY(0); 
+}
 
 .delay-1 { transition-delay: 0.15s; }
 .delay-2 { transition-delay: 0.3s; }
