@@ -886,7 +886,7 @@ $amf-red: #cf152d;
 /* =========================================================
    5. CONVENIOS
    ========================================================= */
-.stacking-cards-container { position: relative; padding-bottom: 10vh; }
+.stacking-cards-container { position: relative; padding-bottom: 1vh; }
 .stack-card { position: sticky; margin-bottom: 4rem; }
 
 #card-1 { top: 12vh; }
