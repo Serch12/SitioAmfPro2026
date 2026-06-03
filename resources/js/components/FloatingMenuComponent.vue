@@ -29,19 +29,20 @@
       </div>
 
       <nav class="floating-menu" :class="{ 'is-open': isOpen }">
-        <button @click="handleNav('inicio', 0)" style="--i:1">
+        <!-- Eliminamos los números estáticos, ahora todo funciona por el ID -->
+        <button @click="handleNav('inicio')" style="--i:1">
           <i class="material-icons">home</i>
           <span class="tooltip-text">Inicio</span>
         </button>
-        <button @click="handleNav('nosotros', 720)" style="--i:2">
+        <button @click="handleNav('nosotros')" style="--i:2">
           <i class="material-icons">groups</i>
           <span class="tooltip-text">Nosotros</span>  
         </button>
-        <button @click="handleNav('asesor-deportivo', 770)" style="--i:3">
+        <button @click="handleNav('asesor-deportivo')" style="--i:3">
           <i class="material-icons">person</i>
           <span class="tooltip-text">Asesor Deportivo</span>
         </button>
-        <button @click="handleNav('convenios', 820)" style="--i:4">
+        <button @click="handleNav('convenios')" style="--i:4">
           <i class="material-icons">handshake</i>
           <span class="tooltip-text">Convenios</span>
         </button>
@@ -138,11 +139,11 @@ export default {
       const baseUrl = document.querySelector('base') ? document.querySelector('base').href : '/';
       window.location.href = baseUrl + 'login';
     },
-    handleNav(id, desktopPosY) {
-      const isDesktop = window.innerWidth > 991;
-
-      if (isDesktop && desktopPosY !== undefined) {
-        window.scrollTo({ top: desktopPosY, behavior: "smooth" });
+    
+    // Función de navegación mejorada y dinámica
+    handleNav(id) {
+      if (id === 'inicio') {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         const el = document.getElementById(id);
         if (el) {

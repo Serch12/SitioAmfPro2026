@@ -3,9 +3,11 @@
       <div class="footer-top-grey pt-5">
         <div class="container position-relative">
           <div class="contact-header-container">
-            <h2 class="contact-title fw-bold">CONTÁCTO</h2>
+            <!-- Animación para el título -->
+            <h2 class="contact-title fw-bold reveal-up">CONTÁCTO</h2>
             
-            <div class="goal-wrapper">
+            <!-- Animación para la portería -->
+            <div class="goal-wrapper reveal-up delay-1">
               <img src="recursos/porteria-area-footer.png" class="goal-footer" alt="Portería Contacto">
             </div>
           </div>
@@ -15,22 +17,25 @@
       <div class="footer-bottom-green pb-5">
         
         <div class="container position-relative">
-          <img src="recursos/balon.png" class="ball-footer" alt="Balón">
+          <!-- Animación especial para el balón -->
+          <img src="recursos/balon.png" class="ball-footer reveal-ball delay-2" alt="Balón">
+          
           <div class="row text-center text-white mb-5 contact-details">
-            <div class="col-md-4 mb-4">
+            <!-- Datos en cascada -->
+            <div class="col-md-4 mb-4 reveal-up delay-3">
               <h6 class="fw-bold mb-1">Teléfono</h6>
               <p class="mb-0">728 690 6040</p>
             </div>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 reveal-up delay-4">
               <h6 class="fw-bold mb-1">Horario de atención</h6>
               <p class="small mb-0">Lunes a jueves de 10:00 am a 5:00 pm</p>
               <p class="small mb-0">Viernes de 10:00 am a 3:00 pm</p>
             </div>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 reveal-up delay-5">
               <h6 class="fw-bold mb-1">Correo electrónico</h6>
               <a href="mailto:contacto@amfpro.mx" class="text-white text-decoration-underline">contacto@amfpro.mx</a>
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-12 mt-3 reveal-up delay-6">
               <h6 class="fw-bold mb-1">Dirección</h6>
               <p class="small mb-0 px-lg-5">
                 Av. Industria Automotriz n.33 int. 203 Col. Parque Industrial Lerma, Lerma, Estado de México. CP. 52004
@@ -38,7 +43,8 @@
             </div>
           </div>
 
-          <div class="map-wrapper-footer mx-auto">
+          <!-- Animación para el mapa -->
+          <div class="map-wrapper-footer mx-auto reveal-up delay-6">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.766539253981!2d-99.55750252478924!3d19.29251618195714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd8ac8153eeb45%3A0xc015a83f0cd31d06!2sAsociaci%C3%B3n%20Mexicana%20de%20Futbolistas%20(AMFpro)!5e0!3m2!1ses!2smx!4v1772567701133!5m2!1ses!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
@@ -47,9 +53,34 @@
 </template>
 
 <script>
-    export default {
-        
+export default {
+  data() {
+    return {
+      observer: null
     }
+  },
+  mounted() {
+    // Inicializamos el Intersection Observer para animar los elementos al hacer scroll
+    const options = { root: null, rootMargin: '0px', threshold: 0.15 };
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, options);
+
+    // Le decimos al Observer qué elementos vigilar
+    this.$nextTick(() => {
+      document.querySelectorAll('.reveal-up, .reveal-ball').forEach(el => {
+        this.observer.observe(el);
+      });
+    });
+  },
+  beforeDestroy() {
+    if (this.observer) this.observer.disconnect();
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -97,9 +128,36 @@ $amf-accent: #50c026;
 /** Finaliza Estilos generales */
 
 
+/* =========================================================
+   SISTEMA DE ANIMACIONES (REVEAL) 
+   ========================================================= */
+.reveal-up { 
+  opacity: 0; 
+  transform: translateY(40px); 
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.is-visible.reveal-up { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
 
+/* Animación especial con rebote para el balón */
+.reveal-ball {
+  opacity: 0;
+  transform: translateY(-80px) rotate(-180deg) scale(0.5);
+  transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efecto spring/rebote */
+}
+.is-visible.reveal-ball {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg) scale(1);
+}
 
-
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+.delay-4 { transition-delay: 0.6s; }
+.delay-5 { transition-delay: 0.75s; }
+.delay-6 { transition-delay: 0.9s; }
 
 
 /** estilos de seccion del footer */

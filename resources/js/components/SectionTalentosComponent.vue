@@ -1,6 +1,6 @@
 <template>
    <div>
-      <section class="section-hero text-white text-center pb-5" :class="{ 'hero-visible': this.scrollPosition > 1350 }" id="talentos">
+      <section class="section-hero text-white text-center pb-5" id="talentos">
         <div class="container py-2 position-relative">
             
             <div class="small mb-0 reveal-item">AMFPRO</div>
@@ -36,26 +36,39 @@
             </div>
         </div>
       </section>
+      
+      <!-- Agregamos la clase 'section-trayectoria' al observador para disparar el contador -->
       <section class="bg-white text-center section-trayectoria">
         <div class="container px-md-5">
             <div class="row g-0 border-top border-white-50 pt-4 px-lg-3 stats-container">
+            
+            <!-- Estadísticas con el nuevo efecto Flip + Odómetro -->
             <div v-for="(stat, index) in stats" 
                 :key="stat.label" 
                 class="col-6 col-md-3 stat-item"
                 :class="{'border-end border-white-50': (index + 1) % 4 !== 0}">
-                <div class="stat-label">{{ stat.label }}</div>
-                <div class="stat-number">{{ stat.val }}</div>
+                
+                <div class="stat-label text-secondary fw-bold">{{ stat.label }}</div>
+                
+                <!-- Animación Flip en cascada -->
+                <div class="stat-number-wrapper reveal-flip" :style="{ transitionDelay: `${0.15 * index}s` }">
+                  <!-- Mostrar el contador en tiempo real (stat.current) -->
+                  <div class="stat-number">{{ Math.floor(stat.current) }}</div>
+                </div>
             </div>
+
             </div>
-            <p class="section-sub text-muted mt-5 mb-0">Nuestra trayectoria en los</p>
-            <h2 class="section-main-title amf-green-text fw-bold mb-3">TORNEOS</h2>
-            <p class="quote-text section-sub text-secondary fw-bold mt-2 mb-5">"La disciplina convierte sueños en victorias."</p>
+            
+            <p class="section-sub text-secondary mt-5 mb-0 reveal-up">Nuestra trayectoria en los</p>
+            <h2 class="section-main-title amf-green-text fw-bold mb-3 reveal-up delay-1">TORNEOS</h2>
+            <p class="quote-text section-sub text-secondary fw-bold mt-2 mb-5 reveal-up delay-2">"La disciplina convierte sueños en victorias."</p>
         </div>
       </section>
+      
       <section class="section-torneos">
         <div class="container">
             <div class="row justify-content-center g-4"> 
-            <div v-for="player in playersData" :key="player.year" class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
+            <div v-for="player in playersData" :key="player.year" class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center reveal-up">
                 <div class="player-card text-white text-center"> 
                 <div class="photo-wrapper d-flex justify-content-center">
                     <img :src="player.img" class="player-photo" alt="Jugador AMFPRO">
@@ -88,12 +101,15 @@
       </section>
       <section class="py-5 bg-white text-center section-galeria">
           <div class="container px-md-5">
-            <p class="section-sub text-muted mb-0">Nuestros torneos en</p>
-            <h2 class="section-main-title amf-green-text fw-bold mb-5">GALERÍA</h2>
+            <p class="section-sub text-secondary mb-0 reveal-up">Nuestros torneos en</p>
+            <h2 class="section-main-title amf-green-text fw-bold mb-5 reveal-up delay-1">GALERÍA</h2>
 
-            <div class="row align-items-center">
+            <div class="row align-items-center reveal-up delay-2">
               <div class="col-12 col-lg-2 text-lg-start mb-4 mb-lg-0 d-flex flex-column align-items-center align-items-lg-start">
-                <label class="small text-muted fw-bold mb-2">Año de torneos</label>
+                <label class="small text-secondary fw-bold mb-2 d-flex align-items-center">
+                  <i class="material-icons me-1" style="font-size: 1.1rem;">filter_alt</i>
+                  Año de torneos
+                </label>
                 <div class="year-selector-wrapper position-relative">
                   <select v-model="anioSeleccionado" class="custom-select-badge" :disabled="cargandoTorneos">
                     <option v-for="year in aniosDisponibles" :key="year" :value="year">{{ year }}</option>
@@ -106,7 +122,7 @@
                 
                 <div v-if="cargandoTorneos" class="text-center py-5">
                   <div class="spinner-border text-success" role="status"></div>
-                  <p class="mt-2 text-muted">Buscando torneos...</p>
+                  <p class="mt-2 text-secondary">Buscando torneos...</p>
                 </div>
 
                 <div v-else class="galeria-scroll-container">
@@ -119,15 +135,15 @@
                         </div>
                       </div>
                       <div class="gallery-caption mt-2 text-center">
-                        <div class="torneo-name fw-bold text-dark">{{ torneo.copa }}</div>
-                        <div class="torneo-year text-muted small">{{ torneo.year }} - Ver galería</div>
+                        <div class="torneo-name fw-bold text-secondary">{{ torneo.copa }}</div>
+                        <div class="torneo-year text-secondary small">{{ torneo.year }} - Ver galería</div>
                       </div>
                       
                     </div>
                   </div>
                   <div v-if="torneosDelAno.length === 0" class="col-12 text-center py-4">
-                    <i class="material-icons text-muted" style="font-size: 3rem;">event_busy</i>
-                    <p class="text-muted mt-2">Aún no hay torneos cargados para el año {{ anioSeleccionado }}.</p>
+                    <i class="material-icons text-secondary" style="font-size: 3rem;">event_busy</i>
+                    <p class="text-secondary mt-2">Aún no hay torneos cargados para el año {{ anioSeleccionado }}.</p>
                   </div>
                 </div>
               </div>
@@ -165,34 +181,34 @@
         </div>
         <section class="section-success py-5 text-white text-center position-relative" style="height: 740px;">
         <div class="container px-md-5">
-            <div class="row g-4 justify-content-center mb-5">
-            <div v-for="n in 6" :key="n" class="col-2">
-                <div class="success-profile-wrapper">
-                <img :src="`recursos/casoexito-${n}-color.png`" class="img-fluid success-img-color" alt="Éxito Color">
-                
-                <img :src="`recursos/casoexito-${n}.png`" class="img-fluid success-img-bw grayscale" alt="Éxito B&N">
-                
-                <div class="success-overlay">
-                    <div class="overlay-content p-2">
-                    <div class="player-name-overlay fw-bold">Fulanito Martínez</div>
-                    <div class="player-club-overlay">Reclutado por Club de Tecos FB</div>
-                    </div>
-                </div>
-                </div>
+            <div class="row g-4 justify-content-center mb-5 reveal-up">
+              <div v-for="caso in casosExito" :key="caso.id" class="col-2">
+                  <div class="success-profile-wrapper">
+                      <img :src="`recursos/casoexito-${caso.id}-color.png`" class="img-fluid success-img-color" :alt="`Éxito ${caso.nombre} Color`">
+                      
+                      <img :src="`recursos/casoexito-${caso.id}.png`" class="img-fluid success-img-bw grayscale" :alt="`Éxito ${caso.nombre} B&N`">
+                      
+                      <div class="success-overlay">
+                          <div class="overlay-content p-2">
+                              <div class="player-name-overlay fw-bold">{{ caso.nombre }}</div>
+                              <div class="player-club-overlay">Reclutado por {{ caso.club }}</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             </div>
-            </div>
-
-            <div class="row justify-content-center mt-5">
+            <div class="row justify-content-center mt-5 reveal-up delay-1">
             <div class="col-11 col-md-10 col-lg-8">
                 <p class="text-center">
                 Para unirte a este gran proyecto, mantente atento a nuestras redes sociales, donde publicamos las convocatorias para los próximos escauteos y la selección de nuevos integrantes de Talentos AMFPRO.
                 </p>
             </div>
             </div>
-            <h2 class="section-main-title fw-bold mt-5" style="color: #50c026;">ASESORÍA Y</h2>
-            <h2 class="section-main-title fw-bold mb-5">SEGUIMIENTO JURÍDICO</h2>
+            <h2 class="section-main-title fw-bold mt-5 reveal-up delay-2" style="color: #50c026;">ASESORÍA Y</h2>
+            <h2 class="section-main-title fw-bold mb-5 reveal-up delay-3">SEGUIMIENTO JURÍDICO</h2>
         </div>
 
+        <!-- El mazo se queda sin animación para que no se descentre NUNCA -->
         <div class="split-icon-container">
             <img src="recursos/mazo-icon.png">
         </div>
@@ -207,6 +223,8 @@ export default {
     props: ['scrollPosition'],
     data() {
         return {
+            observer: null,
+            numerosAnimados: false, // Control para saber si ya contamos
             listaCopas: [
                 { nombre: 'COPA CHIVAS', img: 'recursos/copa-1.png' },
                 { nombre: 'COPA BAJÍO', img: 'recursos/copa-2.png' },
@@ -215,31 +233,32 @@ export default {
                 { nombre: 'COPA VALLARTA', img: 'recursos/copa-5.png' },
                 { nombre: 'COPA CANCÚN', img: 'recursos/copa-6.png' }
             ],
-            
-            // Variables de la galería conectada a BD
+            casosExito: [
+              { id: 1, nombre: 'Osmar Piña', club: 'Academia de Toluca FC' },
+              { id: 2, nombre: 'Emerson Ponce', club: 'Academia de Toluca FC' },
+              { id: 3, nombre: 'Ronaldo Aguilar', club: 'Academia del Club Atlás' },
+              { id: 4, nombre: 'Johan Guerrero', club: 'Fuerzas Básicas Cruz Azul' },
+              { id: 5, nombre: 'Alan Valdivia', club: 'Fuerzas Básicas Tecos' },
+              { id: 6, nombre: 'Brian Gutiérrez', club: 'Fuerzas Básicas UDG' }
+            ],
             anioSeleccionado: 2023,
-            torneosDelAno: [], // Aquí guardamos los torneos que devuelve Laravel
+            torneosDelAno: [], 
             cargandoTorneos: false,
             
             galeriaAbierta: false,
             torneoActivo: null,
             fotoActualIndex: 0,
-            imagenesTorneoActual: [], // Aquí guardamos las fotos del torneo abierto
+            imagenesTorneoActual: [], 
             cargandoImagenes: false,
-            torneos_experiencia:0,
-            total_jugadores:0,
-            total_torneos:0,
+            
+            // Agregamos 'current' para que empiece a contar desde cero visualmente
             stats: [
-                { val: 0, label: 'Torneos Oficiales' }, 
-                { val: 0, label: 'Talentos' },
-                { val: 0, label: 'Experiencia' }, 
-                { val: 3, label: 'Sedes' }
+                { val: 0, current: 0, label: 'Torneos Oficiales' }, 
+                { val: 0, current: 0, label: 'Talentos' },
+                { val: 0, current: 0, label: 'Experiencia' }, 
+                { val: 3, current: 0, label: 'Sedes' }
             ],
-            playersData: [
-                { year: '2023', img: 'recursos/jugador1.png', copas: '4', cats: '2007/10', parts: '90', case: '0' },
-                { year: '2024', img: 'recursos/jugador2.png', copas: '6', cats: '2007/15', parts: '120', case: '5' },
-                { year: '2025', img: 'recursos/jugador3.png', copas: '7', cats: '2010/15', parts: '120', case: '9' }
-            ]
+            playersData: []
         }
     },
     computed: {
@@ -262,8 +281,64 @@ export default {
       this.obtenerTorneos(this.anioSeleccionado);
       this.datosAgrupados();
       this.datosTalentos();
+
+      const options = { root: null, rootMargin: '0px', threshold: 0.15 };
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            
+            // Si el Hero es visible
+            if(entry.target.classList.contains('section-hero')) {
+              entry.target.classList.add('hero-visible');
+            }
+
+            // Si los números son visibles y no se han animado aún
+            if(entry.target.classList.contains('section-trayectoria') && !this.numerosAnimados) {
+              this.animarContadores();
+              this.numerosAnimados = true;
+            }
+          }
+        });
+      }, options);
+
+      this.refrescarAnimaciones();
+    },
+    beforeDestroy() {
+      if (this.observer) this.observer.disconnect();
     },
     methods: {
+      // Contador Javascript: Incrementa los números desde 0 a su valor real
+      animarContadores() {
+        this.stats.forEach(stat => {
+          let start = 0;
+          const target = stat.val;
+          if (target === 0) {
+            stat.current = 0;
+            return;
+          }
+          const duration = 2000; // La cuenta durará 2 segundos
+          const increment = target / (duration / 16);
+
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= target) {
+              stat.current = target;
+              clearInterval(timer);
+            } else {
+              stat.current = start;
+            }
+          }, 16);
+        });
+      },
+      refrescarAnimaciones() {
+        this.$nextTick(() => {
+          // Observamos ahora también la section-trayectoria y los flips
+          document.querySelectorAll('.reveal-up, .reveal-item, .section-hero, .section-trayectoria, .reveal-flip').forEach(el => {
+            if (this.observer) this.observer.observe(el);
+          });
+        });
+      },
       datosAgrupados() {
         axios.get('torneos_agrupados_ano').then(response => {
           this.playersData = response.data.map((item, index) => {
@@ -276,7 +351,7 @@ export default {
               case: item.jugadores_seleccionados 
             };
           });
-
+          this.refrescarAnimaciones(); 
         }).catch(error => {
           console.error("Error al cargar torneos agrupados:", error);
         });
@@ -286,6 +361,12 @@ export default {
           this.stats[0].val = response.data.total_torneos;
           this.stats[1].val = response.data.total_jugadores;
           this.stats[2].val = response.data.total_experiencia;
+          
+          // Por si la conexión a BD tardó y el usuario ya estaba viendo esta sección
+          if (this.numerosAnimados) {
+            this.animarContadores();
+          }
+          this.refrescarAnimaciones();
         })
       },
       async obtenerTorneos(ano) {
@@ -293,6 +374,7 @@ export default {
         try {
           const respuesta = await axios.get(`filtra_torneo/${ano}`);
           this.torneosDelAno = respuesta.data;
+          this.refrescarAnimaciones(); 
         } catch (error) {
           console.error("Error al cargar los torneos:", error);
           this.torneosDelAno = [];
@@ -309,10 +391,7 @@ export default {
         document.body.style.overflow = 'hidden';
 
         try {
-          // Usamos id_talento según tu modelo
           const respuesta = await axios.get(`imagenes_torneo/${torneo.id_talento}`);
-          
-          // Mapeamos el campo "img" de tu modelo IMGTalentos
           this.imagenesTorneoActual = respuesta.data.map(imgObj => imgObj.img); 
 
           if (this.imagenesTorneoActual.length === 0) {
@@ -330,12 +409,9 @@ export default {
         }
       },
 
-      // Helper para las rutas de las imágenes (Igual que en noticias)
       obtenerRutaImagen(nombreImagen) {
           if (!nombreImagen) return 'recursos/default.png';
           if (nombreImagen.startsWith('http')) return nombreImagen;
-          
-          // Ajusta esta ruta según la carpeta real donde guardas las fotos de talentos
           return 'http://amfpro.mx/intranet/public/ArchivosSistema/GaleriaTalentos/' + nombreImagen;
       },
 
@@ -406,6 +482,34 @@ $amf-accent: #50c026;
 }
 /** Finaliza Estilos generales */
 
+/* SISTEMA DE ANIMACIÓN REVEAL-UP */
+.reveal-up { 
+  opacity: 0; 
+  transform: translateY(40px); 
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.is-visible.reveal-up, .is-visible .reveal-up { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+/* EFECTO FLIP 3D PARA NÚMEROS (Estilo Marcador/Scoreboard) */
+.reveal-flip {
+  opacity: 0;
+  transform: perspective(600px) rotateX(-90deg);
+  transform-origin: center top;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.is-visible.reveal-flip, .is-visible .reveal-flip {
+  opacity: 1;
+  transform: perspective(600px) rotateX(0deg);
+}
+
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+
+
 /** estilos de la primera seccion */
 .section-hero { 
   background: $amf-dark; 
@@ -428,8 +532,7 @@ $amf-accent: #50c026;
     font-size: 0.8rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.9);
-    text-align: justify; /* Justificado como en la imagen original */
-  
+    text-align: justify; 
   }
   .goal-split-container {
     position: absolute;
@@ -437,13 +540,11 @@ $amf-accent: #50c026;
     transform: translateX(-50%);
     z-index: 10;
     top: -64px;
-  
   }
   .goal-img-split {
     filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.2)); 
   }
 
-  /* Laptops y pantallas medianas */
   @media (max-width: 1400px) {
     .goal-img-split {
       filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.2)); 
@@ -457,7 +558,6 @@ $amf-accent: #50c026;
     }
   }
 
-  /* Tablets y laptops pequeñas */
   @media (max-width: 1024px) {
     .goal-img-split {
       filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.2)); 
@@ -473,7 +573,6 @@ $amf-accent: #50c026;
     }
   }
 
-  /* Dispositivos móviles (Pantalla vertical) */
   @media (max-width: 768px) {
       .goal-img-split {
         max-width: 600px;
@@ -491,25 +590,20 @@ $amf-accent: #50c026;
         font-size: 0.6rem;
         font-weight: 400;
         color: rgba(255, 255, 255, 0.9);
-        text-align: justify; /* Justificado como en la imagen original */
-    
+        text-align: justify; 
     }
   }
 
   .reveal-item {
     opacity: 0;
-    transform: translateY(50px); /* Empiezan desplazados hacia abajo */
+    transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  /* La imagen de la portería la desplazamos un poco diferente para mejor efecto */
   .goal-split-container.reveal-item {
     transform: translateX(-50%) translateY(80px) scale(0.95);
   }
 
-  /* =========================================
-     ESTADOS VISIBLES (CUANDO EL SCROLL LLEGA)
-     ========================================= */
   &.hero-visible {
     .reveal-item {
       opacity: 1;
@@ -519,13 +613,7 @@ $amf-accent: #50c026;
     .goal-split-container.reveal-item {
       transform: translateX(-50%) translateY(0) scale(1);
     }
-
-    /* Tiempos de cascada para que no aparezcan de golpe */
-    .delay-1 { transition-delay: 0.15s; }
-    .delay-2 { transition-delay: 0.3s; }
-    .delay-3 { transition-delay: 0.5s; }
   }
-  
 }
 /** finaliza estilos de la primera seccion */
 
@@ -573,10 +661,9 @@ $amf-accent: #50c026;
 .section-torneos{
   .player-card {
     width: 100%;
-    max-width: 320px; /* Evita que la tarjeta crezca demasiado en monitores grandes */
+    max-width: 320px; 
     position: relative;
-    margin: 0 auto; /* Centrado horizontal del bloque */
-  
+    margin: 0 auto; 
   }
 
   .photo-wrapper {
@@ -586,29 +673,22 @@ $amf-accent: #50c026;
   }
 
   .player-photo {
-    /* Tamaño responsivo usando clamp para evitar deformación */
-    // width: clamp(120px, 15vw, 160px); 
-    // height: clamp(120px, 15vw, 160px); 
     object-fit: cover;
-    /* El margen negativo inferior crea el efecto de solapamiento compartido */
     margin-bottom: -60px; 
-  
   }
 
   .card-green-body {
-    background-color: $amf-main; /* Color original mantenido */
+    background-color: $amf-main; 
     border-radius: 2.2rem;
     position: relative;
     z-index: 1;
-  
   }
 
   .year-pill {
-    background-color: $amf-accent; /* Color original mantenido */
+    background-color: $amf-accent; 
     border-radius: 10px;
     font-weight: 900;
     display: inline-block;
-  
   }
 }
 /** finaliza estilos de la parte de torneos */
@@ -638,15 +718,15 @@ $amf-accent: #50c026;
     font-size: clamp(14px, 1.5vw, 24px);
     line-height: 1.2;
     margin-bottom: 5px;
-    color: black;
   }
 
   .stat-number {
     font-size: clamp(40px, 5vw, 80px);
-    // font-weight: 800;
-    color: #50c026;
+    color: #50c026; /* Color limpio y elegante */
     line-height: 1;
-}
+    font-weight: 900;
+    display: inline-block;
+  }
 }
 /** finaliza estilos de la parte de torneos trayectoria */
 
@@ -681,13 +761,11 @@ $amf-accent: #50c026;
   .gallery-caption {
     .torneo-name {
       font-weight: 600;
-      color: #444;
       font-size: 0.95rem;
       line-height: 1;
     }
     .torneo-year {
       font-weight: 400;
-      color: #777;
       font-size: 0.85rem;
     }
   }
@@ -800,7 +878,7 @@ $amf-accent: #50c026;
 
     .hover-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(80, 192, 38, 0.6); /* Verde semi-transparente */
+      background: rgba(80, 192, 38, 0.6); 
       display: flex; align-items: center; justify-content: center;
       opacity: 0; transition: opacity 0.3s ease;
     }
@@ -847,7 +925,7 @@ $amf-accent: #50c026;
     .lightbox-img {
       max-width: 100%; max-height: 90%; border-radius: 8px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain;
-      animation: fadeIn 0.4s ease; /* Transición suave al cambiar foto */
+      animation: fadeIn 0.4s ease; 
     }
 
     .lightbox-caption {
@@ -862,16 +940,14 @@ $amf-accent: #50c026;
    ========================================= */
 .galeria-scroll-container {
   display: flex;
-  flex-wrap: nowrap; /* Fuerza a que TODO se mantenga en una sola fila */
-  overflow-x: auto; /* Habilita el scroll horizontal si hay muchos items */
-  gap: 20px; /* Separación entre tarjetas */
-  padding-bottom: 20px; /* Espacio para que la sombra (hover) no se corte */
+  flex-wrap: nowrap; 
+  overflow-x: auto; 
+  gap: 20px; 
+  padding-bottom: 20px; 
   
-  /* Desplazamiento suave tipo app móvil */
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   
-  /* Oculta la barra de scroll fea en navegadores webkit (Chrome, Safari, Edge) */
   &::-webkit-scrollbar {
     height: 6px;
   }
@@ -884,27 +960,21 @@ $amf-accent: #50c026;
     border-radius: 10px;
   }
   &:hover::-webkit-scrollbar-thumb {
-    background: #50c026; /* Se pinta verde al pasar el mouse */
+    background: #50c026; 
   }
 
   .galeria-item {
-    /* Define cuánto va a medir cada tarjeta */
     flex: 0 0 auto;
-    
-    /* En PC (4 por fila aprox) */
     width: calc(25% - 15px);
     
-    /* En Tablet (3 por fila aprox) */
     @media (max-width: 991px) {
       width: calc(33.333% - 14px);
     }
     
-    /* En Móvil (2 por fila aprox) */
     @media (max-width: 768px) {
       width: calc(50% - 10px);
     }
     
-    /* En Móvil muy pequeño (1 y media por fila) */
     @media (max-width: 480px) {
       width: 70%;
     }
