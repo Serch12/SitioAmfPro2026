@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer-contact position-relative" id="contacto">
+    <footer class="footer-contact position-relative bg-light" id="contacto">
       <div class="footer-top-grey pt-5">
         <div class="container position-relative">
           <div class="contact-header-container">
@@ -172,7 +172,6 @@ $amf-accent: #50c026;
     @media (max-width: 1024px) {
       display: none;
     }
-    background-color: white; // Gris más suave como el de la imagen
     position: relative;
     min-height: 280px;
 

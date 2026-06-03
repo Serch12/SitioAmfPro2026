@@ -48,7 +48,7 @@
                 class="col-6 col-md-3 stat-item"
                 :class="{'border-end border-white-50': (index + 1) % 4 !== 0}">
                 
-                <div class="stat-label text-secondary fw-bold">{{ stat.label }}</div>
+                <div class="stat-label text-dark fw-bold">{{ stat.label }}</div>
                 
                 <!-- Animación Flip en cascada -->
                 <div class="stat-number-wrapper reveal-flip" :style="{ transitionDelay: `${0.15 * index}s` }">
@@ -59,9 +59,9 @@
 
             </div>
             
-            <p class="section-sub text-secondary mt-5 mb-0 reveal-up">Nuestra trayectoria en los</p>
+            <p class="section-sub text-dark mt-5 mb-0 reveal-up">Nuestra trayectoria en los</p>
             <h2 class="section-main-title amf-green-text fw-bold mb-3 reveal-up delay-1">TORNEOS</h2>
-            <p class="quote-text section-sub text-secondary fw-bold mt-2 mb-5 reveal-up delay-2">"La disciplina convierte sueños en victorias."</p>
+            <p class="quote-text section-sub text-dark mt-2 mb-5 reveal-up delay-2">"La disciplina convierte sueños en victorias."</p>
         </div>
       </section>
       
@@ -101,12 +101,12 @@
       </section>
       <section class="py-5 bg-white text-center section-galeria">
           <div class="container px-md-5">
-            <p class="section-sub text-secondary mb-0 reveal-up">Nuestros torneos en</p>
+            <p class="section-sub text-dark mb-0 reveal-up">Nuestros torneos en</p>
             <h2 class="section-main-title amf-green-text fw-bold mb-5 reveal-up delay-1">GALERÍA</h2>
 
             <div class="row align-items-center reveal-up delay-2">
               <div class="col-12 col-lg-2 text-lg-start mb-4 mb-lg-0 d-flex flex-column align-items-center align-items-lg-start">
-                <label class="small text-secondary fw-bold mb-2 d-flex align-items-center">
+                <label class="small text-dark fw-bold mb-2 d-flex align-items-center">
                   <i class="material-icons me-1" style="font-size: 1.1rem;">filter_alt</i>
                   Año de torneos
                 </label>
@@ -122,7 +122,7 @@
                 
                 <div v-if="cargandoTorneos" class="text-center py-5">
                   <div class="spinner-border text-success" role="status"></div>
-                  <p class="mt-2 text-secondary">Buscando torneos...</p>
+                  <p class="mt-2 text-dark">Buscando torneos...</p>
                 </div>
 
                 <div v-else class="galeria-scroll-container">
@@ -135,15 +135,15 @@
                         </div>
                       </div>
                       <div class="gallery-caption mt-2 text-center">
-                        <div class="torneo-name fw-bold text-secondary">{{ torneo.copa }}</div>
-                        <div class="torneo-year text-secondary small">{{ torneo.year }} - Ver galería</div>
+                        <div class="torneo-name fw-bold text-dark">{{ torneo.copa }}</div>
+                        <div class="torneo-year text-dark small">{{ torneo.year }} - Ver galería</div>
                       </div>
                       
                     </div>
                   </div>
                   <div v-if="torneosDelAno.length === 0" class="col-12 text-center py-4">
-                    <i class="material-icons text-secondary" style="font-size: 3rem;">event_busy</i>
-                    <p class="text-secondary mt-2">Aún no hay torneos cargados para el año {{ anioSeleccionado }}.</p>
+                    <i class="material-icons text-dark" style="font-size: 3rem;">event_busy</i>
+                    <p class="text-dark mt-2">Aún no hay torneos cargados para el año {{ anioSeleccionado }}.</p>
                   </div>
                 </div>
               </div>
@@ -226,12 +226,14 @@ export default {
             observer: null,
             numerosAnimados: false, // Control para saber si ya contamos
             listaCopas: [
-                { nombre: 'COPA CHIVAS', img: 'recursos/copa-1.png' },
-                { nombre: 'COPA BAJÍO', img: 'recursos/copa-2.png' },
-                { nombre: 'COPA MAZATLÁN', img: 'recursos/copa-3.png' },
-                { nombre: 'COPA ACAPULCO', img: 'recursos/copa-4.png' },
-                { nombre: 'COPA VALLARTA', img: 'recursos/copa-5.png' },
-                { nombre: 'COPA CANCÚN', img: 'recursos/copa-6.png' }
+                { nombre: 'COPA BAJÍO', img: 'recursos/copa-1.png' },
+                { nombre: 'COPA CHIVAS', img: 'recursos/copa-2.png' },
+                { nombre: 'COPA SULTANES', img: 'recursos/copa-3.png' },
+                { nombre: 'COPA TECOS', img: 'recursos/copa-4.png' },
+                { nombre: 'USA CUP', img: 'recursos/copa-5.png' },
+                { nombre: 'COPA VALLARTA', img: 'recursos/copa-6.png' },
+                { nombre: 'COPA RECORD', img: 'recursos/copa-7.png' },
+                { nombre: 'COPA TITANES', img: 'recursos/copa-8.png' },
             ],
             casosExito: [
               { id: 1, nombre: 'Osmar Piña', club: 'Academia de Toluca FC' },

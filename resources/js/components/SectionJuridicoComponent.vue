@@ -23,7 +23,7 @@
               <div class="category-icon-wrapper shadow-sm rounded-circle d-flex align-items-center justify-content-center bg-white me-3" style="width: 50px; height: 50px;">
                 <i class="material-icons amf-green-text fs-4">{{ category.icon }}</i>
               </div>
-              <h4 class="fw-bold text-dark mb-0">{{ category.title }}</h4>
+              <h4 class="fw-bold amf-green-text mb-0">{{ category.title }}</h4>
             </div>
 
             <!-- Grid de Tarjetas de Derechos -->
@@ -61,7 +61,7 @@
           <div class="row justify-content-center mt-6 mb-5 reveal-up">
             <div class="col-12 text-center">
               <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3">Descargas</h6>
-              <h3 class="display-6 fw-black text-dark mb-4">Documentos de Conocimiento</h3>
+              <h3 class="display-6 fw-black amf-green-text mb-4">Documentos de Conocimiento</h3>
             </div>
           </div>
 
@@ -79,7 +79,7 @@
                   <!-- Contenedor del ícono -->
                   <div class="icon-container mb-4 position-relative z-2">
                     <div class="icon-box rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 55px; height: 55px; background-color: rgba(62, 148, 82, 0.1);">
-                       <img :src="doc.icon_grey" class="img-fluid main-icon" style="height: 28px; object-fit: contain;">
+                       <img :src="doc.icon_grey" class="img-fluid main-icon" style="height: 40px; object-fit: contain;">
                     </div>
                   </div>
 
@@ -201,10 +201,10 @@ export default {
                 }
             ],
             docsData: [
-                { title: 'Reglamento de la comisión de controversias', icon: 'recursos/documento.png', icon_grey: 'recursos/documento-gris.png', url_link: 'https://fmf.mx/docs/reglamentos/441.pdf'},
-                { title: 'Reglamento de transferencias', icon: 'recursos/dobledocumento.png', icon_grey: 'recursos/dobledocumento-gris.png', url_link: 'https://fmf.mx/docs/reglamentos/472.pdf' },
-                { title: 'Código de Ética', icon: 'recursos/ball.png', icon_grey: 'recursos/ball-gris.png', url_link: 'https://fmf.mx/docs/reglamentos/475.pdf' },
-                { title: 'Derechos de la mujer futbolista', icon: 'recursos/pesa.png', icon_grey: 'recursos/pesa-gris.png', url_link: '#' }
+                { title: 'Reglamento de la comisión de controversias', icon: 'recursos/documento.png', icon_grey: 'recursos/documento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/441.pdf'},
+                { title: 'Reglamento de transferencias', icon: 'recursos/dobledocumento.png', icon_grey: 'recursos/dobledocumento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/472.pdf' },
+                { title: 'Código de Ética', icon: 'recursos/ball.png', icon_grey: 'recursos/ball-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/475.pdf' },
+                { title: 'Derechos de la mujer futbolista', icon: 'recursos/pesa.png', icon_grey: 'recursos/pesa-verde.png', url_link: '#' }
             ]
         }
     },
@@ -338,7 +338,7 @@ p, span, div, a {
   }
 
   .download-link {
-    color: $amf-main;
+    color: $amf-accent;
     transition: color 0.3s ease;
     .transition-icon {
       transition: transform 0.4s ease;
@@ -360,7 +360,7 @@ p, span, div, a {
     }
 
     .doc-title {
-      color: $amf-main !important;
+      color: $amf-accent !important;
     }
 
     .download-link {
@@ -376,18 +376,12 @@ p, span, div, a {
    SECCIÓN DE CONTACTO (GLASSMORPHISM)
    ========================================================= */
 .section-contacto {
-  .split-icon-container-2 {
+  .split-icon-container-2{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
-    top: -55px; /* Mitad afuera, mitad adentro */
-    
-    img {
-      height: 110px;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
-    }
+    bottom: -160px;;
   }
 
   .contact-glass-card {

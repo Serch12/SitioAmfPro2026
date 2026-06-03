@@ -1,52 +1,88 @@
 <template>
-    <section class="py-5 bg-white text-center mt-5 section-noticias">       
-      <div class="container mt-5 pt-4">
-        <h2 class="section-main-title fw-bold text-center mb-5">NOTICIAS</h2>
+    <section class="py-6 bg-light text-center mt-5 section-noticias relative-container">       
+      <div class="container px-md-5">
+        
+        <!-- Título Principal Premium -->
+        <div class="row justify-content-center mb-5 reveal-up">
+            <div class="col-lg-8 text-center">
+              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3">Mantente informado</h6>
+              <h2 class="display-3 fw-black amf-green-text mb-4 text-uppercase">NOTICIAS</h2>
+              <div class="accent-line mx-auto mb-4"></div>
+            </div>
+        </div>
 
         <div class="row text-start text-dark">
           <div class="col-lg-8 order-2 order-lg-1">
             
-            <div v-if="noticiasList.length === 0" class="text-center py-5 text-muted">
-              <i class="material-icons" style="font-size: 3rem;">article</i>
-              <p class="mt-3">No se encontraron noticias con los filtros seleccionados.</p>
+            <div v-if="noticiasList.length === 0" class="text-center py-5 text-muted reveal-up delay-1">
+              <i class="material-icons opacity-50" style="font-size: 4rem;">article</i>
+              <p class="mt-3 fs-5">No se encontraron noticias con los filtros seleccionados.</p>
             </div>
 
             <div v-else>
               <div v-for="(fila, index) in noticiasEnFilas" :key="'fila-'+index" class="row g-4 mb-4 position-relative">
                 <div v-for="noticia in fila" :key="noticia.id" 
-                    class="news-col-transition"
+                    class="news-col-transition reveal-up"
                     :class="getColClass(noticia.id)">
                   
-                  <div class="news-card-vertical bg-white rounded-5 overflow-hidden h-100 shadow-sm border"
-                      style="cursor: pointer; transition: transform 0.3s ease;"
-                      onmouseover="this.style.transform='translateY(-5px)'"
-                      onmouseout="this.style.transform='translateY(0)'"
+                  <!-- Tarjeta de Noticia Ultra-Premium -->
+                  <div class="premium-news-card bg-white rounded-4 overflow-hidden h-100 shadow-sm border border-light d-flex flex-column"
                       @click="irAlDetalle(noticia)">
                     
-                    <img :src="obtenerRutaImagen(noticia.imagen)" class="w-100 news-img">
-                    
-                    <div class="p-4">
-                      <span class="text-muted small">{{ noticia.fecha }}</span>
-                      <h5 class="fw-bold amf-green-text-2 mt-1">{{ noticia.titulo }}</h5>
+                    <div class="news-img-wrapper position-relative overflow-hidden">
+                      <img :src="obtenerRutaImagen(noticia.imagen)" class="w-100 news-img">
                       
-                      <div class="small text-muted mb-0 mt-2 truncate-text-2" v-html="noticia.desc"></div>
+                      <!-- Sombra interior en hover para dar profundidad 3D -->
+                      <div class="img-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+                      
+                      <!-- Badge Categoría flotante -->
+                      <span v-if="noticia.categoria" class="badge-category position-absolute top-0 start-0 m-3 px-3 py-1 fw-bold text-uppercase shadow-sm">
+                        {{ noticia.categoria }}
+                      </span>
+                    </div>
+                    
+                    <div class="p-4 p-md-5 d-flex flex-column flex-grow-1 card-content-wrapper">
+                      <div class="d-flex align-items-center mb-3">
+                        <span class="badge-date rounded-pill px-3 py-1 small fw-bold shadow-sm d-inline-flex align-items-center">
+                          <i class="material-icons fs-6 me-1">calendar_today</i>
+                          {{ noticia.fecha }}
+                        </span>
+                      </div>
+                      
+                      <!-- Título con Truncado (3 puntos) y Tooltip Nativo -->
+                      <h4 class="fw-bold text-dark mb-3 news-title truncate-text-title" 
+                          :title="noticia.titulo">
+                        {{ noticia.titulo }}
+                      </h4>
+                      
+                      <div class="text-secondary small mb-4 mt-auto truncate-text-2 lh-lg" v-html="noticia.desc"></div>
+                      
+                      <div class="read-more-link d-inline-flex align-items-center fw-bold text-uppercase tracking-wider small mt-3">
+                        <span class="link-text">Leer Artículo</span>
+                        <i class="material-icons ms-2 transition-icon fs-5">arrow_forward</i>
+                      </div>
                     </div>
                     
                   </div>
                 </div>
               </div>
 
-              <div class="d-flex justify-content-center mt-5" v-if="totalPages > 1">
+              <!-- Paginación Premium -->
+              <div class="d-flex justify-content-center mt-6 reveal-up" v-if="totalPages > 1">
                 <nav>
-                  <ul class="pagination custom-pagination">
+                  <ul class="pagination custom-pagination shadow-sm rounded-pill overflow-hidden">
                     <li class="page-item" :class="{ disabled: currentPage === 1 }">
-                      <a class="page-link" @click.prevent="changePage(currentPage - 1)" href="#">&lt;</a>
+                      <a class="page-link" @click.prevent="changePage(currentPage - 1)" href="#">
+                        <i class="material-icons">chevron_left</i>
+                      </a>
                     </li>
                     <li v-for="page in totalPages" :key="page" class="page-item" :class="{ active: currentPage === page }">
                       <a class="page-link" @click.prevent="changePage(page)" href="#">{{ page }}</a>
                     </li>
                     <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-                      <a class="page-link" @click.prevent="changePage(currentPage + 1)" href="#">&gt;</a>
+                      <a class="page-link" @click.prevent="changePage(currentPage + 1)" href="#">
+                        <i class="material-icons">chevron_right</i>
+                      </a>
                     </li>
                   </ul>
                 </nav>
@@ -54,28 +90,38 @@
             </div>
           </div>
 
-          <div class="col-lg-4 order-1 order-lg-2 mb-5 mb-lg-0">
+          <!-- Sidebar Premium -->
+          <div class="col-lg-4 order-1 order-lg-2 mb-5 mb-lg-0 reveal-up delay-2">
             <div class="sidebar-news sticky-top" style="top: 100px;">
-              <button class="btn btn-accent-green w-100 fw-bold text-white mb-4 rounded-3 py-2" @click="resetFiltros">
-                TODAS LAS NOTICIAS
+              <button class="btn btn-premium-green w-100 fw-bold text-uppercase tracking-wider mb-4 rounded-pill py-3 shadow-sm" @click="resetFiltros">
+                Mostrar Todas
               </button>
 
-              <div class="sidebar-box bg-white p-4 rounded-4 mb-4 shadow-sm border">
-                <h6 class="fw-bold amf-green-text-2 mb-3 text-center">Categorías</h6>
-                <select class="form-select border-success rounded-3 mb-3" v-model="filtros.categoria" @change="getNoticias">
-                  <option value="">Elegir la categoría</option>
+              <div class="premium-sidebar-box bg-white p-4 p-md-5 rounded-4 mb-4 shadow-sm border border-light">
+                <div class="d-flex align-items-center mb-4">
+                  <i class="material-icons amf-green-text fs-4 me-2">filter_alt</i>
+                  <h5 class="fw-bold text-dark mb-0">Filtros</h5>
+                </div>
+                
+                <p class="small text-muted fw-bold text-uppercase mb-2 tracking-wider">Categoría</p>
+                <select class="form-select premium-input rounded-3 mb-4 shadow-none" v-model="filtros.categoria" @change="getNoticias">
+                  <option value="">Todas las categorías</option>
                   <option value="Noticias">Noticias</option>
                   <option value="Comunicados">Comunicados</option>
                 </select>
                 
+                <p class="small text-muted fw-bold text-uppercase mb-2 tracking-wider">Búsqueda</p>
                 <div class="position-relative">
-                  <input type="text" class="form-control border-success rounded-3 pe-5" placeholder="Buscar" v-model="filtros.busqueda" @input="debounceSearch">
-                  <i class="material-icons position-absolute top-50 end-0 translate-middle-y me-3 text-success">search</i>
+                  <input type="text" class="form-control premium-input rounded-3 pe-5 shadow-none" placeholder="Buscar palabras clave..." v-model="filtros.busqueda" @input="debounceSearch">
+                  <i class="material-icons position-absolute top-50 end-0 translate-middle-y me-3 text-muted">search</i>
                 </div>
               </div>
 
-              <div class="sidebar-box bg-white p-4 rounded-4 mb-4 shadow-sm border">
-                <h6 class="fw-bold amf-green-text-2 mb-4 text-center">Nuestras Redes</h6>
+              <div class="premium-sidebar-box bg-white p-4 p-md-5 rounded-4 mb-4 shadow-sm border border-light">
+                <div class="d-flex align-items-center mb-4">
+                  <i class="material-icons amf-green-text fs-4 me-2">public</i>
+                  <h5 class="fw-bold text-dark mb-0">Redes</h5>
+                </div>
                 
                 <div v-if="cargandoRedes" class="text-center py-4">
                   <div class="spinner-border text-success spinner-border-sm"></div>
@@ -83,28 +129,40 @@
                 </div>
 
                 <div v-else>
+                  <!-- Instagram -->
                   <div v-if="redes.instagram && redes.instagram.length > 0">
-                    <p class="x-small fw-bold text-muted mb-3 border-bottom pb-2 d-flex align-items-center">
-                      <img src="recursos/instagram.png" style="width:16px; margin-right:5px;"> Instagram
+                    <p class="x-small fw-bold text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase tracking-wider">
+                      <img src="recursos/instagram.png" style="width:16px; margin-right:8px; filter: grayscale(100%);"> Instagram
                     </p>
                     
-                    <div v-for="(igPost, index) in redes.instagram" :key="'ig-'+index" class="social-embed-container mb-4 pb-3 border-bottom border-light">
+                    <div v-for="(igPost, index) in redes.instagram" :key="'ig-'+index" class="social-embed-container mb-4">
                       <a :href="igPost.permalink" target="_blank" class="text-decoration-none text-dark">
-                        <img :src="igPost.media_url" class="w-100 rounded-3 border mb-2 shadow-sm" style="height: 250px; object-fit: cover;">
-                        <p class="x-small text-muted truncate-text-2 mb-0">{{ igPost.caption }}</p>
+                        <div class="position-relative overflow-hidden rounded-3 shadow-sm mb-2 social-img-wrapper">
+                          <img :src="igPost.media_url" class="w-100" style="height: 200px; object-fit: cover;">
+                          <div class="social-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                            <i class="material-icons text-white fs-1">open_in_new</i>
+                          </div>
+                        </div>
+                        <p class="x-small text-muted truncate-text-2 mb-0 lh-lg">{{ igPost.caption }}</p>
                       </a>
                     </div>
                   </div>
 
-                  <div v-if="redes.facebook && redes.facebook.length > 0" class="mt-4">
-                    <p class="x-small fw-bold text-muted mb-3 border-bottom pb-2 d-flex align-items-center">
-                      <img src="recursos/facebook.png" style="width:16px; margin-right:5px;"> Facebook
+                  <!-- Facebook -->
+                  <div v-if="redes.facebook && redes.facebook.length > 0" class="mt-5">
+                    <p class="x-small fw-bold text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase tracking-wider">
+                      <img src="recursos/facebook.png" style="width:16px; margin-right:8px; filter: grayscale(100%);"> Facebook
                     </p>
                     
-                    <div v-for="(fbPost, index) in redes.facebook" :key="'fb-'+index" class="social-embed-container mb-4 pb-3 border-bottom border-light">
+                    <div v-for="(fbPost, index) in redes.facebook" :key="'fb-'+index" class="social-embed-container mb-4">
                       <a :href="fbPost.permalink_url" target="_blank" class="text-decoration-none text-dark">
-                        <img v-if="fbPost.full_picture" :src="fbPost.full_picture" class="w-100 rounded-3 border mb-2 shadow-sm" style="height: 226px; object-fit: cover;">
-                        <p class="x-small text-muted truncate-text-2 mb-0">{{ fbPost.message }}</p>
+                        <div class="position-relative overflow-hidden rounded-3 shadow-sm mb-2 social-img-wrapper" v-if="fbPost.full_picture">
+                          <img :src="fbPost.full_picture" class="w-100" style="height: 200px; object-fit: cover;">
+                          <div class="social-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                            <i class="material-icons text-white fs-1">open_in_new</i>
+                          </div>
+                        </div>
+                        <p class="x-small text-muted truncate-text-2 mb-0 lh-lg">{{ fbPost.message }}</p>
                       </a>
                     </div>
                   </div>
@@ -113,18 +171,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="sidebar-box bg-white p-4 rounded-4 shadow-sm border">
-                <h6 class="fw-bold amf-green-text-2 mb-3 text-center">Etiquetas</h6>
-                <div class="d-flex flex-wrap gap-2 justify-content-center">
-                  <span v-for="tag in etiquetas" :key="tag" 
-                        class="tag-badge" 
-                        :class="{'bg-dark text-white': filtros.etiqueta === tag}"
-                        @click="filtrarPorEtiqueta(tag)">
-                    {{ tag }}
-                  </span>
-                </div>
-              </div> -->
 
             </div>
           </div>
@@ -142,9 +188,22 @@ export default {
     this.getRedesSociales();
     // Establecemos los metas por defecto al cargar la sección
     this.updateMetaTags(null);
+    
+    // Configuración del Intersection Observer para el Reveal Up
+    const options = { root: null, rootMargin: '0px', threshold: 0.15 };
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, options);
+
+    this.refrescarAnimaciones();
   },
   data() {
     return {
+      observer: null,
       selectedNews: null,
       currentPage: 1,
       itemsPerPage: 4,
@@ -178,6 +237,13 @@ export default {
     }
   },
   methods: {
+      refrescarAnimaciones() {
+        this.$nextTick(() => {
+          document.querySelectorAll('.reveal-up').forEach(el => {
+            if (this.observer) this.observer.observe(el);
+          });
+        });
+      },
       getNoticias() {
           this.currentPage = 1;
           this.selectedNews = null;
@@ -193,7 +259,7 @@ export default {
               this.noticiasList = response.data.map(n => ({
                   id: n.id_p,
                   titulo: n.titulo || 'Sin título',
-                  fecha: n.fecha_texto || '', 
+                  fecha: this.formatearFechaEspanol(n.fecha_texto),
                   desc: n.subtitulo || '',
                   detalle: n.informacion || '',
                   imagen: n.imagen_p,
@@ -229,6 +295,7 @@ export default {
                       (n.desc && n.desc.toLowerCase().includes(query))
                   );
               }
+              this.refrescarAnimaciones();
           })
           .catch(error => { console.error("Error al cargar datos:", error); });
       },
@@ -236,15 +303,12 @@ export default {
       compartirNoticia(noticia) {
           let basePath = window.location.origin + window.location.pathname;
           
-          // Si estás trabajando en local y la URL tiene "/public/"
           if (basePath.includes('/public/')) {
               basePath = basePath.substring(0, basePath.indexOf('/public/') + 8);
           } else {
-              // Si ya estás en el servidor en vivo (amfpro.mx)
               basePath = window.location.origin + '/';
           }
 
-          // Armamos el enlace final
           const urlCompartir = `${basePath}noticias/${noticia.ruta}`;
           
           navigator.clipboard.writeText(urlCompartir).then(() => {
@@ -289,16 +353,14 @@ export default {
       toggleNews(id) {
           this.selectedNews = this.selectedNews === id ? null : id;
           
-          // === MAGIA DE LOS METAS AQUÍ ===
           if (this.selectedNews) {
               const noticiaSeleccionada = this.noticiasList.find(n => n.id === id);
               this.updateMetaTags(noticiaSeleccionada);
           } else {
-              this.updateMetaTags(null); // Regresa a los metas por defecto
+              this.updateMetaTags(null);
           }
       },
       irAlDetalle(noticia) {
-          // Emitimos la noticia completa hacia la Landing Page
           this.$emit('noticia-seleccionada', noticia);
       },
       getColClass(id) {
@@ -314,27 +376,21 @@ export default {
               this.currentPage = page;
               this.selectedNews = null; 
               this.updateMetaTags(null);
+              this.refrescarAnimaciones();
           }
       },
-      
-      // ==========================================
-      // FUNCIONES PARA INYECTAR METAS DINÁMICOS
-      // ==========================================
       updateMetaTags(noticia) {
           if (!noticia) {
-              // Metas por defecto de la página de Noticias
               document.title = "AMFpro";
               this.setMeta('description', "Entérate de las últimas noticias, comunicados y acciones de la Asociación Mexicana de Futbolistas.");
               this.setMeta('og:title', "Noticias y Comunicados - AMFpro", true);
               this.setMeta('og:description', "Entérate de las últimas noticias, comunicados y acciones de la Asociación Mexicana de Futbolistas.", true);
-              this.setMeta('og:image', "http://amfpro.mx/recursos/logo.png", true); // Pon un logo por defecto tuyo
+              this.setMeta('og:image', "http://amfpro.mx/recursos/logo.png", true); 
               return;
           }
 
-          // Limpiamos etiquetas HTML de la descripción para que el meta quede limpio
           const plainDesc = noticia.desc ? noticia.desc.replace(/<[^>]+>/g, '') : 'Noticia AMFpro';
 
-          // Actualizamos los metas con la información de la noticia seleccionada
           document.title = `${noticia.titulo} - AMFpro`;
           this.setMeta('description', plainDesc);
           this.setMeta('og:title', noticia.titulo, true);
@@ -356,6 +412,13 @@ export default {
           }
           
           meta.setAttribute('content', content);
+      },
+      formatearFechaEspanol(fechaString) {
+          if (!fechaString) return '';
+          const fecha = new Date(fechaString.replace(/-/g, '/'));
+          if (isNaN(fecha.getTime())) return fechaString;
+          const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
+          return fecha.toLocaleDateString('es-MX', opciones);
       }
   }
 }
@@ -363,51 +426,240 @@ export default {
 
 <style lang="scss" scoped>
 @use "sass:color";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@700;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-.amf-landing-page { font-family: 'Roboto', sans-serif !important; }
-$amf-dark: #3E9452; $amf-main: #3e9452; $amf-accent: #50c026;
-.amf-green-text-2 { color: #50c026 !important; }
+/* =========================================================
+   VARIABLES GLOBALES
+   ========================================================= */
+$amf-dark: #112a18;
+$amf-main: #50c026;
+$amf-accent: #50c026;
 
-.section-noticias {
-  .news-col-transition { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-  .news-card-vertical {
-    cursor: pointer; transition: all 0.4s ease; position: relative;
-    &.expanded { cursor: default; .news-img { height: 500px; } }
-    .news-img { height: 350px; object-fit: cover; transition: height 0.5s ease; }
-    .close-btn {
-      position: absolute; top: 15px; right: 15px; z-index: 10;
-      background: rgba(0,0,0,0.5); color: white; width: 30px; height: 30px;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+h1, h2, h3, h4, h5, h6, .fw-black { 
+  font-family: 'Montserrat', sans-serif !important; 
+  font-weight: 900; 
+}
+
+p, span, div, a, button, input, select {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.amf-green-text { color: $amf-main !important; }
+.tracking-widest { letter-spacing: 4px; }
+.tracking-wider { letter-spacing: 2px; }
+.accent-line { width: 100px; height: 8px; background-color: $amf-main; border-radius: 4px; }
+.py-6 { padding-top: 6rem; padding-bottom: 6rem; }
+.mt-6 { margin-top: 5rem; }
+.mb-6 { margin-bottom: 5rem; }
+
+/* SISTEMA DE ANIMACIÓN REVEAL-UP */
+.reveal-up { 
+  opacity: 0; 
+  transform: translateY(40px); 
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.is-visible.reveal-up, .is-visible .reveal-up { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+
+/* =========================================================
+   TARJETAS DE NOTICIAS ULTRA-PREMIUM
+   ========================================================= */
+.premium-news-card {
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-style: preserve-3d;
+
+  .news-img-wrapper {
+    height: 250px;
+    
+    .news-img {
+      height: 100%;
+      object-fit: cover;
+      /* Transición suave para el zoom cinemático */
+      transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .img-overlay {
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(17, 42, 24, 0.6) 100%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .badge-category {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: $amf-main;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
   }
-  .expanded-info { animation: slideUp 0.5s ease forwards; }
-  .btn-accent-green { background-color: $amf-accent; border: none; &:hover { background-color: color.adjust($amf-accent, $lightness: -10%); } }
-  
-  .tag-badge {
-    background-color: $amf-accent; color: white; padding: 5px 12px; border-radius: 5px;
-    font-size: 0.7rem; font-weight: bold; cursor: pointer; transition: all 0.2s ease;
-    &:hover { opacity: 0.8; transform: translateY(-2px); }
-  }
-  
-  .custom-pagination {
-    .page-link { border: none; background-color: $amf-accent; color: white; margin: 0 5px; border-radius: 8px !important; font-weight: bold; &:hover { background-color: white; color: $amf-accent; } }
-    .page-item.active .page-link { background-color: white; color: $amf-accent; border: 1px solid $amf-accent; }
+
+  .card-content-wrapper {
+    background-color: white;
+    z-index: 2;
   }
 
-  .truncate-text { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
-  .truncate-text-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .badge-date {
+    background-color: rgba(62, 148, 82, 0.1);
+    color: $amf-main;
+    transition: all 0.4s ease;
+  }
 
-  .social-embed-container {
-    transition: transform 0.3s ease;
-    &:hover { transform: translateY(-3px); }
+  /* Truncado a 2 líneas con puntos suspensivos */
+  .truncate-text-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Límite exacto de 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 58px; /* Mantiene la alineación aunque el título sea de 1 sola línea */
+    line-height: 1.3;
+  }
+
+  /* Efecto de Subrayado Animado Mágico */
+  .news-title {
+    transition: color 0.4s ease;
+    background-image: linear-gradient(transparent calc(100% - 3px), $amf-main 3px);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position: left bottom;
+    transition: background-size 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease;
+  }
+
+  .read-more-link {
+    color: $amf-main;
+    transition: color 0.3s ease;
+    
+    .transition-icon {
+      /* Curva elástica para que la flecha "rebote" hacia adelante */
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+  }
+
+  /* ACCIONES AL PASAR EL RATÓN (HOVER) */
+  &:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(17, 42, 24, 0.15) !important;
+    border-color: rgba(62, 148, 82, 0.4) !important;
+
+    .news-img-wrapper {
+      .news-img {
+        transform: scale(1.1) rotate(1.5deg); /* Zoom cinemático */
+      }
+      .img-overlay {
+        opacity: 1; /* Sombra de profundidad */
+      }
+      .badge-category {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+      }
+    }
+
+    .badge-date {
+      background-color: $amf-main;
+      color: white;
+    }
+
+    .news-title {
+      color: $amf-main !important;
+      background-size: 100% 100%; /* Dibuja la línea verde */
+    }
+
+    .read-more-link {
+      color: $amf-dark;
+      .transition-icon {
+        transform: translateX(8px) scale(1.1); /* Flecha dispara adelante */
+      }
+    }
   }
 }
 
-@keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* =========================================================
+   SIDEBAR & FILTROS PREMIUM
+   ========================================================= */
+.btn-premium-green {
+  background-color: $amf-main; 
+  color: white; 
+  border: none;
+  transition: all 0.3s ease;
+  &:hover { 
+    background-color: $amf-dark; 
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 20px rgba(62, 148, 82, 0.3) !important;
+  }
+}
 
-::v-deep .expanded-info p,
-::v-deep .truncate-text-2 p { margin-bottom: 0.5rem; }
-::v-deep .truncate-text-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; p { display: inline; } }
+.premium-input {
+  border: 1px solid #e9ecef;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  &:focus {
+    border-color: $amf-main;
+    background-color: white;
+    box-shadow: 0 0 0 0.25rem rgba(62, 148, 82, 0.1);
+  }
+}
+
+.social-img-wrapper {
+  .social-hover-overlay {
+    background-color: rgba(62, 148, 82, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(3px);
+  }
+}
+
+.social-embed-container:hover {
+  .social-hover-overlay {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   PAGINACIÓN
+   ========================================================= */
+.custom-pagination {
+  background-color: white;
+  padding: 5px;
+  
+  .page-link { 
+    border: none; 
+    background-color: transparent; 
+    color: #6c757d; 
+    margin: 0 2px; 
+    border-radius: 50% !important; 
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold; 
+    transition: all 0.3s ease;
+    
+    &:hover { 
+      background-color: rgba(62, 148, 82, 0.1); 
+      color: $amf-main; 
+    } 
+  }
+  .page-item.active .page-link { 
+    background-color: $amf-main; 
+    color: white; 
+    box-shadow: 0 5px 15px rgba(62, 148, 82, 0.3);
+  }
+  .page-item.disabled .page-link {
+    opacity: 0.5;
+  }
+}
+
+.truncate-text-2 { 
+  display: -webkit-box; 
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden; 
+}
 </style>

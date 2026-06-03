@@ -20,7 +20,7 @@
                 Asociación Mexicana
               </h1>
             </div>
-            <div class="mb-5 reveal-up delay-1 d-flex justify-content-center w-100">
+            <div class="reveal-up delay-1 d-flex justify-content-center w-100">
               <h1 class="fw-black amf-green-text hero-title-fit text-uppercase m-0">
                 de Futbolistas Profesionales
               </h1>
@@ -825,7 +825,7 @@ $amf-red: #cf152d;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
 
     .lightbox-img {
-      max-width: 100%; max-height: 90%; border-radius: 8px;
+      max-width: 100%; max-height: 90%; border-radius: 145px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain;
       animation: fadeIn 0.4s ease; 
     }
