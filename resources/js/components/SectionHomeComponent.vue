@@ -15,7 +15,7 @@
           
           <div class="col-12 mx-auto text-center">
             
-            <div class="mb-3 reveal-up d-flex justify-content-center w-100">
+            <div class="reveal-up d-flex justify-content-center w-100">
               <h1 class="fw-black text-white hero-title-fit text-uppercase m-0">
                 Asociación Mexicana
               </h1>
