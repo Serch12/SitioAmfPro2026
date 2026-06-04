@@ -2,11 +2,11 @@
     <section class="py-6 bg-light text-center mt-5 section-noticias relative-container">       
       <div class="container px-md-5">
         
-        <!-- Título Principal Premium -->
+        <!-- Título Principal Premium (Estandarizado) -->
         <div class="row justify-content-center mb-5 reveal-up">
             <div class="col-lg-8 text-center">
-              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3">Mantente informado</h6>
-              <h2 class="display-3 fw-black amf-green-text mb-4 text-uppercase">NOTICIAS</h2>
+              <h6 class="std-subtitle text-muted mb-3">Mantente informado</h6>
+              <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase">NOTICIAS</h2>
               <div class="accent-line mx-auto mb-4"></div>
             </div>
         </div>
@@ -16,7 +16,7 @@
             
             <div v-if="noticiasList.length === 0" class="text-center py-5 text-muted reveal-up delay-1">
               <i class="material-icons opacity-50" style="font-size: 4rem;">article</i>
-              <p class="mt-3 fs-5">No se encontraron noticias con los filtros seleccionados.</p>
+              <p class="std-text mt-3">No se encontraron noticias con los filtros seleccionados.</p>
             </div>
 
             <div v-else>
@@ -36,28 +36,28 @@
                       <div class="img-overlay position-absolute top-0 start-0 w-100 h-100"></div>
                       
                       <!-- Badge Categoría flotante -->
-                      <span v-if="noticia.categoria" class="badge-category position-absolute top-0 start-0 m-3 px-3 py-1 fw-bold text-uppercase shadow-sm">
+                      <span v-if="noticia.categoria" class="std-subtitle badge-category position-absolute top-0 start-0 m-3 px-3 py-2 fw-bold text-uppercase shadow-sm">
                         {{ noticia.categoria }}
                       </span>
                     </div>
                     
                     <div class="p-4 p-md-5 d-flex flex-column flex-grow-1 card-content-wrapper">
                       <div class="d-flex align-items-center mb-3">
-                        <span class="badge-date rounded-pill px-3 py-1 small fw-bold shadow-sm d-inline-flex align-items-center">
+                        <span class="badge-date rounded-pill px-3 py-1 std-text-small fw-bold shadow-sm d-inline-flex align-items-center">
                           <i class="material-icons fs-6 me-1">calendar_today</i>
                           {{ noticia.fecha }}
                         </span>
                       </div>
                       
-                      <!-- Título con Truncado (3 puntos) y Tooltip Nativo -->
-                      <h4 class="fw-bold text-dark mb-3 news-title truncate-text-title" 
+                      <!-- Título con Truncado (3 puntos) y Tooltip Nativo (Estandarizado) -->
+                      <h4 class="std-title-card fw-bold text-dark mb-3 news-title truncate-text-title" 
                           :title="noticia.titulo">
                         {{ noticia.titulo }}
                       </h4>
                       
-                      <div class="text-secondary small mb-4 mt-auto truncate-text-2 lh-lg" v-html="noticia.desc"></div>
+                      <div class="std-text-small text-secondary mb-4 mt-auto truncate-text-2" v-html="noticia.desc"></div>
                       
-                      <div class="read-more-link d-inline-flex align-items-center fw-bold text-uppercase tracking-wider small mt-3">
+                      <div class="read-more-link d-inline-flex align-items-center fw-bold text-uppercase tracking-wider std-text-small mt-3">
                         <span class="link-text">Leer Artículo</span>
                         <i class="material-icons ms-2 transition-icon fs-5">arrow_forward</i>
                       </div>
@@ -77,7 +77,7 @@
                       </a>
                     </li>
                     <li v-for="page in totalPages" :key="page" class="page-item" :class="{ active: currentPage === page }">
-                      <a class="page-link" @click.prevent="changePage(page)" href="#">{{ page }}</a>
+                      <a class="page-link std-text-small fw-bold" @click.prevent="changePage(page)" href="#">{{ page }}</a>
                     </li>
                     <li class="page-item" :class="{ disabled: currentPage === totalPages }">
                       <a class="page-link" @click.prevent="changePage(currentPage + 1)" href="#">
@@ -93,26 +93,26 @@
           <!-- Sidebar Premium -->
           <div class="col-lg-4 order-1 order-lg-2 mb-5 mb-lg-0 reveal-up delay-2">
             <div class="sidebar-news sticky-top" style="top: 100px;">
-              <button class="btn btn-premium-green w-100 fw-bold text-uppercase tracking-wider mb-4 rounded-pill py-3 shadow-sm" @click="resetFiltros">
+              <button class="btn btn-premium-green w-100 fw-bold text-uppercase std-subtitle mb-4 rounded-pill py-3 shadow-sm" @click="resetFiltros">
                 Mostrar Todas
               </button>
 
               <div class="premium-sidebar-box bg-white p-4 p-md-5 rounded-4 mb-4 shadow-sm border border-light">
                 <div class="d-flex align-items-center mb-4">
                   <i class="material-icons amf-green-text fs-4 me-2">filter_alt</i>
-                  <h5 class="fw-bold text-dark mb-0">Filtros</h5>
+                  <h5 class="std-title-card fw-bold text-dark mb-0">Filtros</h5>
                 </div>
                 
-                <p class="small text-muted fw-bold text-uppercase mb-2 tracking-wider">Categoría</p>
-                <select class="form-select premium-input rounded-3 mb-4 shadow-none" v-model="filtros.categoria" @change="getNoticias">
+                <p class="std-subtitle text-muted mb-2">Categoría</p>
+                <select class="form-select premium-input rounded-3 mb-4 shadow-none std-text-small" v-model="filtros.categoria" @change="getNoticias">
                   <option value="">Todas las categorías</option>
                   <option value="Noticias">Noticias</option>
                   <option value="Comunicados">Comunicados</option>
                 </select>
                 
-                <p class="small text-muted fw-bold text-uppercase mb-2 tracking-wider">Búsqueda</p>
+                <p class="std-subtitle text-muted mb-2">Búsqueda</p>
                 <div class="position-relative">
-                  <input type="text" class="form-control premium-input rounded-3 pe-5 shadow-none" placeholder="Buscar palabras clave..." v-model="filtros.busqueda" @input="debounceSearch">
+                  <input type="text" class="form-control premium-input rounded-3 pe-5 shadow-none std-text-small" placeholder="Buscar palabras clave..." v-model="filtros.busqueda" @input="debounceSearch">
                   <i class="material-icons position-absolute top-50 end-0 translate-middle-y me-3 text-muted">search</i>
                 </div>
               </div>
@@ -120,18 +120,18 @@
               <div class="premium-sidebar-box bg-white p-4 p-md-5 rounded-4 mb-4 shadow-sm border border-light">
                 <div class="d-flex align-items-center mb-4">
                   <i class="material-icons amf-green-text fs-4 me-2">public</i>
-                  <h5 class="fw-bold text-dark mb-0">Redes</h5>
+                  <h5 class="std-title-card fw-bold text-dark mb-0">Redes</h5>
                 </div>
                 
                 <div v-if="cargandoRedes" class="text-center py-4">
                   <div class="spinner-border text-success spinner-border-sm"></div>
-                  <p class="small text-muted mt-2">Cargando publicaciones...</p>
+                  <p class="std-text-small text-muted mt-2">Cargando publicaciones...</p>
                 </div>
 
                 <div v-else>
                   <!-- Instagram -->
                   <div v-if="redes.instagram && redes.instagram.length > 0">
-                    <p class="x-small fw-bold text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase tracking-wider">
+                    <p class="std-subtitle text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase">
                       <img src="recursos/instagram.png" style="width:16px; margin-right:8px; filter: grayscale(100%);"> Instagram
                     </p>
                     
@@ -143,14 +143,14 @@
                             <i class="material-icons text-white fs-1">open_in_new</i>
                           </div>
                         </div>
-                        <p class="x-small text-muted truncate-text-2 mb-0 lh-lg">{{ igPost.caption }}</p>
+                        <p class="std-text-small text-muted truncate-text-2 mb-0">{{ igPost.caption }}</p>
                       </a>
                     </div>
                   </div>
 
                   <!-- Facebook -->
                   <div v-if="redes.facebook && redes.facebook.length > 0" class="mt-5">
-                    <p class="x-small fw-bold text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase tracking-wider">
+                    <p class="std-subtitle text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase">
                       <img src="recursos/facebook.png" style="width:16px; margin-right:8px; filter: grayscale(100%);"> Facebook
                     </p>
                     
@@ -162,11 +162,11 @@
                             <i class="material-icons text-white fs-1">open_in_new</i>
                           </div>
                         </div>
-                        <p class="x-small text-muted truncate-text-2 mb-0 lh-lg">{{ fbPost.message }}</p>
+                        <p class="std-text-small text-muted truncate-text-2 mb-0">{{ fbPost.message }}</p>
                       </a>
                     </div>
                   </div>
-                  <div v-if="(!redes.instagram || redes.instagram.length === 0) && (!redes.facebook || redes.facebook.length === 0)" class="text-center text-muted small py-3">
+                  <div v-if="(!redes.instagram || redes.instagram.length === 0) && (!redes.facebook || redes.facebook.length === 0)" class="text-center text-muted std-text-small py-3">
                     No hay publicaciones recientes.
                   </div>
                 </div>
@@ -186,10 +186,8 @@ export default {
   mounted() {
     this.getNoticias();
     this.getRedesSociales();
-    // Establecemos los metas por defecto al cargar la sección
     this.updateMetaTags(null);
     
-    // Configuración del Intersection Observer para el Reveal Up
     const options = { root: null, rootMargin: '0px', threshold: 0.15 };
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -264,27 +262,21 @@ export default {
                   detalle: n.informacion || '',
                   imagen: n.imagen_p,
                   categoria: n.categoria || '',
-                  ruta: n.ruta || '' // <-- IMPORTANTE: Asegúrate de mapear la ruta aquí
+                  ruta: n.ruta || '' 
               }));
 
               const urlActual = window.location.href;
               const urlParts = urlActual.split('?')[0].split('/');
               const slug = urlParts.pop() || urlParts.pop(); 
 
-              // Buscamos si la palabra final coincide con alguna noticia
               const indexNoticia = this.noticiasList.findIndex(n => n.ruta === slug);
               
               if (indexNoticia !== -1) {
                   const noticiaEnlazada = this.noticiasList[indexNoticia];
-
-                  // 1. Calculamos la página para que la paginación concuerde
                   const paginaCorrecta = Math.floor(indexNoticia / this.itemsPerPage) + 1;
                   this.currentPage = paginaCorrecta;
 
-                  // 2. ¡AQUÍ ESTÁ LA SOLUCIÓN! Emitimos la noticia para que el LandingPage la abra
                   this.irAlDetalle(noticiaEnlazada);
-                  
-                  // Actualizamos los metas de Vue por si acaso (opcional, tu blade ya lo hace)
                   this.updateMetaTags(noticiaEnlazada);
               }
 
@@ -426,8 +418,68 @@ export default {
 
 <style lang="scss" scoped>
 @use "sass:color";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* =========================================================
+   SISTEMA DE TIPOGRAFÍA ESTANDARIZADA (ROBOTO 100%)
+   ========================================================= */
+
+/* Obligamos a usar Roboto, pero respetamos estrictamente los íconos */
+h1, h2, h3, h4, h5, h6, p, a, button, li, ul, strong, input, select, span { 
+  font-family: 'Roboto', sans-serif !important; 
+}
+div:not(.material-icons), span:not(.material-icons) {
+  font-family: 'Roboto', sans-serif;
+}
+.material-icons {
+  font-family: 'Material Icons' !important;
+}
+
+/* Pesos estandarizados */
+.fw-black { font-weight: 900 !important; }
+.fw-bold { font-weight: 700 !important; }
+.fw-light { font-weight: 300 !important; }
+
+/* 1. Títulos Principales (Hero / Números gigantes) */
+.std-title-hero {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+}
+
+/* 2. Títulos de Sección (NOSOTROS, CONVENIOS, OBJETIVO) */
+.std-title-section {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+/* 3. Títulos de Tarjetas (Misión, Visión, Nombres) */
+.std-title-card {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.3;
+}
+
+/* 4. Subtítulos (Etiquetas superiores, "PREPÁRATE FUERA DEL CAMPO") */
+.std-subtitle {
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* 5. Textos Generales (Párrafos) */
+.std-text {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.8;
+}
+
+/* 6. Textos Pequeños (Listas, detalles en tarjetas) */
+.std-text-small {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  line-height: 1.6;
+}
+
 
 /* =========================================================
    VARIABLES GLOBALES
@@ -435,15 +487,6 @@ export default {
 $amf-dark: #112a18;
 $amf-main: #50c026;
 $amf-accent: #50c026;
-
-h1, h2, h3, h4, h5, h6, .fw-black { 
-  font-family: 'Montserrat', sans-serif !important; 
-  font-weight: 900; 
-}
-
-p, span, div, a, button, input, select {
-  font-family: 'Roboto', sans-serif !important;
-}
 
 .amf-green-text { color: $amf-main !important; }
 .tracking-widest { letter-spacing: 4px; }
@@ -480,7 +523,6 @@ p, span, div, a, button, input, select {
     .news-img {
       height: 100%;
       object-fit: cover;
-      /* Transición suave para el zoom cinemático */
       transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     
@@ -510,18 +552,16 @@ p, span, div, a, button, input, select {
     transition: all 0.4s ease;
   }
 
-  /* Truncado a 2 líneas con puntos suspensivos */
   .truncate-text-title {
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Límite exacto de 2 líneas */
+    -webkit-line-clamp: 2; 
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    min-height: 58px; /* Mantiene la alineación aunque el título sea de 1 sola línea */
+    min-height: 58px; 
     line-height: 1.3;
   }
 
-  /* Efecto de Subrayado Animado Mágico */
   .news-title {
     transition: color 0.4s ease;
     background-image: linear-gradient(transparent calc(100% - 3px), $amf-main 3px);
@@ -536,12 +576,10 @@ p, span, div, a, button, input, select {
     transition: color 0.3s ease;
     
     .transition-icon {
-      /* Curva elástica para que la flecha "rebote" hacia adelante */
       transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
-  /* ACCIONES AL PASAR EL RATÓN (HOVER) */
   &:hover {
     transform: translateY(-12px);
     box-shadow: 0 25px 50px rgba(17, 42, 24, 0.15) !important;
@@ -549,10 +587,10 @@ p, span, div, a, button, input, select {
 
     .news-img-wrapper {
       .news-img {
-        transform: scale(1.1) rotate(1.5deg); /* Zoom cinemático */
+        transform: scale(1.1) rotate(1.5deg); 
       }
       .img-overlay {
-        opacity: 1; /* Sombra de profundidad */
+        opacity: 1; 
       }
       .badge-category {
         transform: translateY(-3px);
@@ -567,13 +605,13 @@ p, span, div, a, button, input, select {
 
     .news-title {
       color: $amf-main !important;
-      background-size: 100% 100%; /* Dibuja la línea verde */
+      background-size: 100% 100%; 
     }
 
     .read-more-link {
       color: $amf-dark;
       .transition-icon {
-        transform: translateX(8px) scale(1.1); /* Flecha dispara adelante */
+        transform: translateX(8px) scale(1.1); 
       }
     }
   }
@@ -638,7 +676,6 @@ p, span, div, a, button, input, select {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold; 
     transition: all 0.3s ease;
     
     &:hover { 

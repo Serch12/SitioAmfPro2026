@@ -100,10 +100,16 @@
               <h2 class="std-title-section fw-black amf-green-text mb-0">NOSOTROS</h2>
               <div class="accent-line mx-auto mt-3"></div>
             </div>
+             <div class="premium-objective-card p-4 p-md-5 rounded-4 bg-white shadow-sm border border-light position-relative overflow-hidden reveal-up">
+              <div class="position-relative z-2">
+                <p class="std-text text-secondary text-justify mb-4">
+                  En febrero del 2017 comenzó a gestarse la <strong class="amf-green-text fw-bold">Asociación Mexicana de Futbolistas</strong> (AMFpro), cuando por iniciativa de Jugadores emblema a nivel nacional en activo, así como ex Futbolistas, se llevó a cabo la primera mesa de trabajo que sentaría las bases para la conformación de la AMFpro como organismo independiente Rafael Márquez, Óscar Pérez, Oribe Peralta, Carlos Salcido, Christian Giménez, Paulo Da Silva, Javier Hernández, Andrés Guardado, Guillermo Ochoa y Yasser Corona, junto con los ex Jugadores Álvaro Ortiz y Edson Zwaricz delinearon la primera etapa en la que entre las principales acciones son la primera reunión formal con los capitanes y representantes de los clubes de la Liga MX y Ascenso MX.
+                </p>
+              </div>
+            </div>
 
-            <p class="std-text text-secondary text-justify mb-5 fw-light reveal-up delay-1">
-              En febrero del 2017 comenzó a gestarse la <strong class="amf-green-text fw-bold">Asociación Mexicana de Futbolistas</strong> (AMFpro), cuando por iniciativa de Jugadores emblema a nivel nacional en activo, así como ex Futbolistas, se llevó a cabo la primera mesa de trabajo que sentaría las bases para la conformación de la AMFpro como organismo independiente Rafael Márquez, Óscar Pérez, Oribe Peralta, Carlos Salcido, Christian Giménez, Paulo Da Silva, Javier Hernández, Andrés Guardado, Guillermo Ochoa y Yasser Corona, junto con los ex Jugadores Álvaro Ortiz y Edson Zwaricz delinearon la primera etapa en la que entre las principales acciones son la primera reunión formal con los capitanes y representantes de los clubes de la Liga MX y Ascenso MX.
-            </p>
+            
+            
              <div class="d-inline-flex align-items-center mb-4 bg-light px-3 py-2 rounded-pill shadow-sm border border-light">
                 <i class="material-icons text-success me-2 fs-5">campaign</i>
                 <span class="std-subtitle text-muted mb-0" style="letter-spacing: 1px;">Presentación de la AMFPRO ante prensa</span>
@@ -169,7 +175,7 @@
                 <div class="premium-credo-card p-4 rounded-4 bg-white shadow-sm h-100 border border-light">
                   <img src="recursos/nosotros-folder.png" alt="Representar" class="credo-icon mb-4">
                   <h4 class="std-title-card fw-bold mb-3" style="color:#50c026 !important;">Misión</h4>
-                  <p class="std-text-small text-secondary text-justify mb-0">Representar y proteger los intereses de los Futbolistas profesionales en México, a través de la materialización de diversas acciones coordinadas en aras del respeto a su dignidad, honorabilidad, integridad, salud, seguridad y libertad, al promover, fomentar y estimular su profesionalización.</p>
+                  <p class="std-text text-secondary text-justify mb-0">Representar y proteger los intereses de los Futbolistas profesionales en México, a través de la materialización de diversas acciones coordinadas en aras del respeto a su dignidad, honorabilidad, integridad, salud, seguridad y libertad, al promover, fomentar y estimular su profesionalización.</p>
                 </div>
               </div>
               <!-- Visión -->
@@ -177,7 +183,7 @@
                 <div class="premium-credo-card p-4 rounded-4 bg-white shadow-sm h-100 border border-light">
                   <img src="recursos/nosotros-flecha.png" alt="Reconocimiento" class="credo-icon mb-4">
                   <h4 class="std-title-card fw-bold mb-3" style="color:#50c026 !important;">Visión</h4>
-                  <p class="std-text-small text-secondary text-justify mb-0">Ser reconocidos como una Asociación confiable y sólida, fomentar la preservación y óptimo desarrollo de los derechos e intereses de las y los Futbolistas profesionales en México, convirtiéndose en un referente a nivel internacional.</p>
+                  <p class="std-text text-secondary text-justify mb-0">Ser reconocidos como una Asociación confiable y sólida, fomentar la preservación y óptimo desarrollo de los derechos e intereses de las y los Futbolistas profesionales en México, convirtiéndose en un referente a nivel internacional.</p>
                 </div>
               </div>
 
@@ -320,8 +326,8 @@
                 <img src="recursos/logo-cruyff.png" alt="Cruyff" class="mb-4 convenio-logo" style="max-height: 60px; width: auto; align-self: flex-start;">
                 <h3 class="std-title-card fw-black text-dark mb-4">Posgrados y cursos en Administración y Negocios del Futbol ONLINE</h3>
                 
-                <p class="std-text-small text-secondary text-justify mb-3">Sus programas de formación han sido diseñados por profesionales de la industria del deporte, enriquecidos por las experiencias personales de profesores y alumnos. Sus programas son singulares, elaborados con base en las necesidades específicas de deportistas y profesionales del deporte.</p>
-                <p class="std-text-small text-secondary text-justify mb-4 fw-bold">La potente experiencia de aprendizaje que los estudiantes viven es a su vez impulsada por su modelo de aprendizaje que se basa en:</p>
+                <p class="std-text text-secondary text-justify mb-3">Sus programas de formación han sido diseñados por profesionales de la industria del deporte, enriquecidos por las experiencias personales de profesores y alumnos. Sus programas son singulares, elaborados con base en las necesidades específicas de deportistas y profesionales del deporte.</p>
+                <p class="std-text text-secondary text-justify mb-4 fw-bold">La potente experiencia de aprendizaje que los estudiantes viven es a su vez impulsada por su modelo de aprendizaje que se basa en:</p>
                 
                 <div class="row g-3">
                     <div class="col-sm-6">
@@ -361,7 +367,7 @@
               <div class="col-lg-8 p-4 p-md-5 d-flex flex-column justify-content-center">
                 <img src="recursos/logo-uvn.svg" alt="UVN" class="mb-4 convenio-logo" style="max-height: 50px; width: auto; align-self: flex-start;">
                 <h3 class="std-title-card fw-black text-dark mb-4">Universidad 100% en línea especializada en la gente que trabaja y dispone de muy poco tiempo para otras actividades.</h3>
-                <p class="std-text-small text-secondary text-justify mb-4">Todos sus programas están diseñados para estudiar solo 20 minutos al día debido a que los alumnos tienen experiencia laboral y solo refuerzan la parte teórica de conceptos que ya manejas en tu día a día de manera práctica. Prepa en 2 o 4 meses. Todo desde tu celular con acceso a Internet, muy práctico y sin tareas.</p>
+                <p class="std-text text-secondary text-justify mb-4">Todos sus programas están diseñados para estudiar solo 20 minutos al día debido a que los alumnos tienen experiencia laboral y solo refuerzan la parte teórica de conceptos que ya manejas en tu día a día de manera práctica. Prepa en 2 o 4 meses. Todo desde tu celular con acceso a Internet, muy práctico y sin tareas.</p>
                 <div class="row g-4">
                     <div class="col-sm-6">
                         <h6 class="std-text fw-bold mb-3 border-bottom pb-2" style="color: #A8192E;">Carreras Profesionales (3 años)</h6>
@@ -411,7 +417,7 @@
                 <img src="recursos/logo-conamat.png" alt="CONAMAT" class="mb-4 convenio-logo" style="max-height: 60px; width: auto; align-self: flex-start;">
                 <!-- <h3 class="std-title-card fw-black text-dark mb-4">Cursar la preparatoria en 4 meses con el <br><span class="text-muted fw-normal">“Curso de preparación para certificación en un sólo examen”</span></h3> -->
                  <h3 class="std-title-card fw-black text-dark mb-4">Cursar la preparatoria en 4 meses con el “Curso de preparación para certificación en un sólo examen”</h3>
-                <p class="std-text-small text-secondary text-justify mb-0">Inscríbete al curso 100% en línea y obtén tu certificado con validez oficial de la SEP a través de una plataforma disponible las 24 horas al día y con pagos accesibles.</p>
+                <p class="std-text text-secondary text-justify mb-0">Inscríbete al curso 100% en línea y obtén tu certificado con validez oficial de la SEP a través de una plataforma disponible las 24 horas al día y con pagos accesibles.</p>
               </div>
               <div class="col-lg-4 text-white p-4 p-md-5 d-flex flex-column justify-content-center align-items-center text-center position-relative" style="background-color: #003B73;">
                 <div class="position-relative z-2">
