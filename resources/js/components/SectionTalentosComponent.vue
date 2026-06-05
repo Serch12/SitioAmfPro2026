@@ -188,7 +188,7 @@
         </div>
 
         <!-- 6. CASOS DE ÉXITO (EFECTO SHINE) MANTENIENDO TU HTML Y TAMAÑOS AL FINAL -->
-        <section class="section-success py-5 text-white text-center position-relative" style="height: 740px;">
+        <section class="section-success py-5 text-white text-center position-relative">
           <div class="container px-md-5">
             <div class="row g-4 justify-content-center mb-5 reveal-up">
               <div v-for="(caso, index) in casosExito" :key="caso.id" class="col-6 col-md-4 col-lg-2" :class="'delay-' + (index % 6 + 1)">
@@ -223,9 +223,9 @@
               </div>
             </div>
             <h2 class="section-main-title fw-bold mt-5 reveal-up delay-2" style="color: #50c026;">ASESORÍA Y</h2>
-            <h2 class="section-main-title fw-bold mb-5 reveal-up delay-3">SEGUIMIENTO JURÍDICO</h2>
+            <h2 class="section-main-title fw-bold mb-5 reveal-up delay-3 espacio-extra-movil">SEGUIMIENTO JURÍDICO</h2>
           </div>
-
+          <br><br><br><br><br>
           <!-- El mazo se queda sin animación para que no se descentre NUNCA (Intacto) -->
           <div class="split-icon-container">
               <img src="recursos/mazo-icon.png">
@@ -589,6 +589,8 @@ $amf-accent: #50c026;
       .hero-title { font-size: 4rem; letter-spacing: -2px; }
       .hero-description { margin-top: 36px; font-size: 0.6rem; font-weight: 400; color: rgba(255, 255, 255, 0.9); text-align: justify; }
   }
+
+  
 
   .reveal-item {
     opacity: 0;
