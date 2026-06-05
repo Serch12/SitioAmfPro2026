@@ -21,9 +21,9 @@
           
           <div class="header-side right-side">
             <div class="social-group">
-              <a href="#" class="social-item"><img src="recursos/x.png" alt="X"></a>
-              <a href="#" class="social-item"><img src="recursos/facebook.png" alt="FB"></a>
-              <a href="#" class="social-item"><img src="recursos/instagram.png" alt="IG"></a>
+              <a href="https://twitter.com/AMFproMX" class="social-item" target="_blank"><img src="recursos/x.png" alt="X"></a>
+              <a href="https://facebook.com/AMFproMX" class="social-item" target="_blank"><img src="recursos/facebook.png" alt="FB"></a>
+              <a href="https://instagram.com/AMFproMX" class="social-item" target="_blank"><img src="recursos/instagram.png" alt="IG"></a>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@800&display=swap');
 
 $amf-main: #50c026;
@@ -138,7 +138,7 @@ $amf-dark: #112a18;
     border-bottom: 1px solid rgba(255,255,255,0.5);
 
     .logo-header {
-      height: 48px;
+      height: 40px;
     }
   }
 
@@ -153,8 +153,8 @@ $amf-dark: #112a18;
     
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #3e9452, #50c026, #74ff3b);
-      box-shadow: 0 0 10px rgba(80, 192, 38, 0.8);
+      background: linear-gradient(90deg, #3e9452, #50c026, #50c026);
+      // box-shadow: 0 0 10px rgba(80, 192, 38, 0.8);
       width: 0%;
       transition: width 0.1s ease-out;
       border-radius: 0 5px 5px 0;
@@ -198,7 +198,7 @@ $amf-dark: #112a18;
     align-items: center;
     
     .logo-header {
-      height: 70px;
+      height: 60px;
       transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       z-index: 2;
