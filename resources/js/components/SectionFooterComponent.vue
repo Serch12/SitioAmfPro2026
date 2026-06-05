@@ -24,8 +24,6 @@
 
         <div class="container position-relative z-3 pt-5 mt-lg-5">
           
-          <img src="recursos/balon.png" class="ball-footer reveal-ball delay-2" alt="Balón">
-          
           <div class="row g-4 mb-5 text-start justify-content-center">
             
             <div class="col-12 col-md-6 col-lg-3 reveal-up delay-3">
@@ -104,7 +102,7 @@ export default {
 
     // Le decimos al Observer qué elementos vigilar
     this.$nextTick(() => {
-      document.querySelectorAll('.reveal-up, .reveal-ball').forEach(el => {
+      document.querySelectorAll('.reveal-up').forEach(el => {
         this.observer.observe(el);
       });
     });
@@ -151,17 +149,6 @@ p, span, div, a {
 .is-visible.reveal-up { 
   opacity: 1; 
   transform: translateY(0); 
-}
-
-/* Animación especial con rebote para el balón */
-.reveal-ball {
-  opacity: 0;
-  transform: translateY(-120px) rotate(-180deg) scale(0.5);
-  transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efecto spring/rebote */
-}
-.is-visible.reveal-ball {
-  opacity: 1;
-  transform: translateY(0) rotate(0deg) scale(1);
 }
 
 .delay-1 { transition-delay: 0.15s; }
@@ -220,22 +207,6 @@ p, span, div, a {
     padding-top: 320px; 
 
     @media (max-width: 1024px) { padding-top: 40px; }
-
-    /* Estilos del Balón Interactivo */
-    .ball-footer {
-      position: absolute;
-      top: -328px; 
-      right: 40px; 
-      width: 70px;
-      z-index: 20;
-      filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4));
-      
-      @media (max-width: 1024px) {
-        width: 45px;
-        right: 20px;
-        top: 0px;
-      }
-    }
 
     /* Tarjetas Glassmorphism de Contacto */
     .premium-glass-card {
