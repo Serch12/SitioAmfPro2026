@@ -6,24 +6,24 @@
 
       <div class="news-hero" :style="{ backgroundImage: `url('${obtenerRutaImagen(noticia.imagen)}')` }">
         <div class="hero-overlay"></div>
-        <div class="container hero-content">
-          <button @click="$emit('regresar')" class="btn-back mb-4">
-            <i class="material-icons">arrow_back</i> <span>Regresar al listado</span>
-          </button>
-          
-          <div class="badge-category mb-2">{{ noticia.categoria }}</div>
-          <h1 class="display-3 fw-black text-white mb-3">{{ noticia.titulo }}</h1>
-          
-          <div class="meta-info d-flex align-items-center gap-3 fw-bold" style="color:#50c026;">
-            <span class="d-flex align-items-center gap-1">
-              <i class="material-icons" style="font-size: 1.1rem;">calendar_month</i> {{ noticia.fecha }}
-            </span>
-            <span class="text-white-50">•</span>
-            <span class="d-flex align-items-center gap-1 text-white-50">
-              <i class="material-icons" style="font-size: 1.1rem;">schedule</i> {{ tiempoLectura }} min de lectura
-            </span>
+        <div class="container hero-content w-100">
+          <h1 class="display-3 fw-black text-white mb-4">{{ noticia.titulo }}</h1>
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-4 w-100 pb-2">
+            <div class="meta-info d-flex flex-wrap align-items-center gap-3 fw-bold" style="color:#50c026;">
+              <div class="badge-category m-0">{{ noticia.categoria }}</div>
+              <span class="text-white-50 d-none d-sm-inline">•</span>
+              <span class="d-flex align-items-center gap-1">
+                <i class="material-icons" style="font-size: 1.1rem;">calendar_month</i> {{ noticia.fecha }}
+              </span>
+              <span class="text-white-50">•</span>
+              <span class="d-flex align-items-center gap-1 text-white-50">
+                <i class="material-icons" style="font-size: 1.1rem;">schedule</i> {{ tiempoLectura }} min de lectura
+              </span>
+            </div>
+            <button @click="$emit('regresar')" class="btn-back m-0 flex-shrink-0">
+              <i class="material-icons">arrow_back</i> <span>Regresar al listado</span>
+            </button>
           </div>
-
         </div>
       </div>
 
@@ -266,11 +266,12 @@ export default {
   .badge-category {
     background: #50c026;
     color: white;
-    display: inline-block;
-    padding: 0px 16px;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
     border-radius: 4px;
     font-weight: bold;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
