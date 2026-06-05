@@ -424,4 +424,18 @@ export default {
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
+@media (max-width: 768px) {
+  .news-hero {
+    background-size: cover !important; 
+    background-position: center center !important; 
+    background-attachment: scroll !important; 
+    height: 55vh !important; 
+    padding-bottom: 2rem !important;
+  }
+  .news-hero .display-3 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+}
 </style>
