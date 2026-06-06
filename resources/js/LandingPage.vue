@@ -118,27 +118,60 @@ $amf-dark: #112a18;
 
 .header-main {
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  background: rgba(255, 255, 255, 0.98);
-  height: 100px; /* Un poco más alto al inicio para mayor presencia */
+  /* ESTADO BASE: Transparente sobre el video oscuro */
+  background: transparent;
+  height: 100px;
   z-index: 1100;
-  border-bottom: 1px solid rgba(0,0,0,0.03);
+  border-bottom: 1px solid transparent;
   animation: headerDrop 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   position: fixed;
   width: 100%;
   top: 0;
 
-  /* EFECTO ULTRA GLASS AL HACER SCROLL */
+  /* OCULTAMOS LOGO Y REDES AL INICIO */
+  .header-center, .right-side {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* EFECTO ULTRA GLASS AL HACER SCROLL (Aparece todo) */
   &.is-scrolled {
     height: 75px;
-    background: rgba(255, 255, 255, 0.75);
-    /* Saturate hace que los colores detrás brillen, dándole un look de cristal real */
+    background: rgba(255, 255, 255, 0.90);
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
     box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+
+    /* HACEMOS APARECER EL LOGO Y LAS REDES */
+    .header-center, .right-side {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
 
     .logo-header {
       height: 40px;
+    }
+
+    /* Invertimos colores al hacer scroll para contrastar con el blanco */
+    .left-side .hash-tag-gradient {
+      background: linear-gradient(to right, #999 0%, #333 50%, #50c026 100%);
+      -webkit-background-clip: text;
+      background-size: 200% auto;
+    }
+
+    .right-side .social-group .social-item {
+      background: rgba(0,0,0,0.03);
+      img {
+        filter: grayscale(100%) opacity(70%);
+      }
+      &:hover img {
+        filter: brightness(0) invert(1);
+        transform: scale(1.2);
+      }
     }
   }
 
@@ -154,7 +187,6 @@ $amf-dark: #112a18;
     .progress-fill {
       height: 100%;
       background: linear-gradient(90deg, #3e9452, #50c026, #50c026);
-      // box-shadow: 0 0 10px rgba(80, 192, 38, 0.8);
       width: 0%;
       transition: width 0.1s ease-out;
       border-radius: 0 5px 5px 0;
@@ -172,14 +204,14 @@ $amf-dark: #112a18;
         font-size: 0.95rem;
         text-transform: uppercase;
         letter-spacing: 1.5px;
-        /* Efecto Metálico/Neón en el texto */
-        background: linear-gradient(to right, #999 0%, #333 50%, #50c026 100%);
+        /* ESTADO BASE: Blanco radiante para el fondo del video */
+        background: linear-gradient(to right, #ffffff 0%, #e0e0e0 50%, #50c026 100%);
         background-size: 200% auto;
         color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
         animation: shineText 5s linear infinite;
-        transition: transform 0.3s ease;
+        transition: all 0.5s ease;
         display: inline-block;
       }
       
@@ -236,12 +268,13 @@ $amf-dark: #112a18;
       .social-item {
         width: 42px;
         height: 42px;
-        background: rgba(0,0,0,0.03);
+        /* ESTADO BASE: Círculos blancos translúcidos para el video oscuro */
+        background: rgba(255, 255, 255, 0.15);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efecto Rebote */
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); 
         position: relative;
         overflow: hidden;
 
@@ -252,7 +285,8 @@ $amf-dark: #112a18;
           transition: all 0.4s ease;
           position: relative;
           z-index: 2;
-          filter: grayscale(100%) opacity(70%);
+          /* ESTADO BASE: Íconos blancos brillantes para el video oscuro */
+          filter: brightness(0) invert(1);
         }
 
         /* Aura de fondo al hacer hover */
@@ -277,7 +311,7 @@ $amf-dark: #112a18;
           }
 
           img {
-            filter: brightness(0) invert(1); /* Pone el ícono blanco perfecto */
+            filter: brightness(0) invert(1); /* Mantiene el blanco al hacer hover */
             transform: scale(1.2);
           }
         }
