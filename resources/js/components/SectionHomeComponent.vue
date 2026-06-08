@@ -5,7 +5,7 @@
    <section class="hero-section" id="inicio">
       <div class="hero-bg-elements">
         <video autoplay muted loop playsinline class="hero-video">
-          <source src="recursos/video_3d.mp4" type="video/mp4">
+          <source src="recursos/video_3.mp4" type="video/mp4">
         </video>
         <div class="hero-gradient-overlay"></div>
       </div>
