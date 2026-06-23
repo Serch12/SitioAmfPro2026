@@ -1,32 +1,20 @@
 <template>
   <div class="amf-premium-landing bg-amf-dark">
     
-   <!-- 1. HERO SECTION -->
    <section class="hero-section" id="inicio">
       <div class="hero-bg-elements">
-        <video autoplay muted loop playsinline class="hero-video">
-          <source src="recursos/video_3.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline class="hero-video" :key="isMobile">
+          <source :src="isMobile ? 'recursos/videos/video_mobile.mp4' : 'recursos/videos/video_banner.mp4'" type="video/mp4">
         </video>
         <div class="hero-gradient-overlay"></div>
       </div>
 
       <div class="container-fluid px-xl-5 h-100 position-relative z-3 d-flex flex-column justify-content-center">
-        <div class="row w-100 mx-0">
+        <div class="row w-100 mx-0" style="padding-top: 500px;">
           
           <div class="col-12 mx-auto text-center">
             
-            <div class="reveal-up d-flex justify-content-center w-100">
-              <h1 class="std-title-hero fw-black text-white text-uppercase m-0">
-                Asociación Mexicana
-              </h1>
-            </div>
-            <div class="reveal-up delay-1 d-flex justify-content-center w-100">
-              <h1 class="std-title-hero fw-black amf-green-text text-uppercase m-0">
-                de Futbolistas Profesionales
-              </h1>
-            </div>
-
-            <div class="row justify-content-center reveal-up delay-2 mt-4">
+            <div class="row justify-content-center reveal-up delay-2 mt-5">
               <div class="col-lg-8">
                 <p class="std-text text-white mb-5 text-center px-lg-4" style="border-left: 3px solid #3E9452; border-right: 3px solid #3E9452;">
                   Los verdaderos profesionales no pagan por jugar. Ningún club te debe pedir dinero por tu registro, uniformes, transporte, hidratación, ni por nada, esto es ilegal.
@@ -35,11 +23,17 @@
             </div>
 
             <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 reveal-up delay-3">
-              <button class="btn btn-premium-green px-5 py-3 fw-bold text-uppercase tracking-wider" @click="openModal">
-                Explorar Manual
+              <button class="btn btn-premium-green px-5 py-3 fw-bold text-uppercase tracking-wider magnetic-btn" 
+                      @mousemove="handleMagneticMove" 
+                      @mouseleave="resetMagneticMove"
+                      @click="openModal">
+                <span class="magnetic-content">Explorar Manual</span>
               </button>
-              <button class="btn btn-premium-outline px-5 py-3 fw-bold text-uppercase tracking-wider" @click="scrollToSection('contacto')">
-                Contacto
+              <button class="btn btn-premium-outline px-5 py-3 fw-bold text-uppercase tracking-wider magnetic-btn" 
+                      @mousemove="handleMagneticMove" 
+                      @mouseleave="resetMagneticMove"
+                      @click="scrollToSection('contacto')">
+                <span class="magnetic-content">Contacto</span>
               </button>
             </div>
 
@@ -48,7 +42,6 @@
       </div>
     </section>
 
-    <!-- 2. INSTITUCIONES Y LIGAS -->
     <section class="bg-white py-5 shadow-sm position-relative z-3 border-bottom border-light overflow-hidden">
       <div class="container-fluid px-4 px-xl-5">
         <div class="row text-center g-4 align-items-center justify-content-center">
@@ -82,11 +75,9 @@
       </div>
     </section>
 
-    <!-- 3. SECCIÓN NOSOTROS -->
     <section id="nosotros" class="bg-light py-6 relative-container">
       <div class="container py-5">
         
-        <!-- BLOQUE 1: NOSOTROS -->
         <div class="row mb-6">
           <div class="col-lg-4 d-none d-lg-block">
             <div class="sticky-title-wrapper reveal-up">
@@ -126,7 +117,6 @@
           </div>
         </div>
 
-        <!-- BLOQUE 2: OBJETIVO -->
         <div class="row mb-6">
           <div class="col-lg-4 d-none d-lg-block">
             <div class="sticky-title-wrapper reveal-up">
@@ -154,7 +144,6 @@
           </div>
         </div>
 
-        <!-- BLOQUE 3: CREENCIAS Y VALORES -->
         <div class="row">
           <div class="col-lg-4 d-none d-lg-block">
             <div class="sticky-title-wrapper reveal-up">
@@ -170,7 +159,6 @@
             </div>
 
             <div class="row g-4">
-              <!-- Misión -->
               <div class="col-md-6 reveal-up">
                 <div class="premium-credo-card p-4 rounded-4 bg-white shadow-sm h-100 border border-light">
                   <img src="recursos/nosotros-folder.png" alt="Representar" class="credo-icon mb-4">
@@ -178,7 +166,6 @@
                   <p class="std-text text-secondary text-justify mb-0">Representar y proteger los intereses de los Futbolistas profesionales en México, a través de la materialización de diversas acciones coordinadas en aras del respeto a su dignidad, honorabilidad, integridad, salud, seguridad y libertad, al promover, fomentar y estimular su profesionalización.</p>
                 </div>
               </div>
-              <!-- Visión -->
               <div class="col-md-6 reveal-up delay-1">
                 <div class="premium-credo-card p-4 rounded-4 bg-white shadow-sm h-100 border border-light">
                   <img src="recursos/nosotros-flecha.png" alt="Reconocimiento" class="credo-icon mb-4">
@@ -187,7 +174,6 @@
                 </div>
               </div>
 
-              <!-- Valores -->
               <div class="col-12 mt-5">
                 <div class="d-flex align-items-center mb-4 reveal-up delay-2">
                   <h6 class="std-subtitle text-muted mb-0">Nuestros Valores</h6>
@@ -241,7 +227,6 @@
       </div>
     </section>
 
-    <!-- 4. ASESOR DEPORTIVO -->
     <section id="asesor-deportivo" class="bg-amf-dark py-6 position-relative overflow-hidden" style="background: #3E9452;">
       <div class="container py-5 position-relative z-2">
         <div class="row align-items-center">
@@ -304,7 +289,6 @@
       </div>
     </section>
 
-    <!-- 5. CONVENIOS -->
     <section id="convenios" class="bg-light py-6">
       <div class="container py-5">
         
@@ -319,7 +303,6 @@
 
         <div class="stacking-cards-container">
           
-          <!-- TARJETA 1: CRUYFF -->
           <div class="stack-card reveal-up" id="card-1">
             <div class="row g-0 h-100 bg-white rounded-4 shadow-lg overflow-hidden border border-light premium-convenio-card">
               <div class="col-lg-8 p-4 p-md-5 d-flex flex-column justify-content-center">
@@ -361,7 +344,6 @@
             </div>
           </div>
 
-          <!-- TARJETA 3: UVN -->
           <div class="stack-card reveal-up" id="card-3">
             <div class="row g-0 h-100 bg-white rounded-4 shadow-lg overflow-hidden border border-light premium-convenio-card">
               <div class="col-lg-8 p-4 p-md-5 d-flex flex-column justify-content-center">
@@ -410,12 +392,10 @@
             </div>
           </div>
 
-          <!-- TARJETA 2: CONAMAT -->
           <div class="stack-card reveal-up" id="card-2">
             <div class="row g-0 h-100 bg-white rounded-4 shadow-lg overflow-hidden border border-light premium-convenio-card">
               <div class="col-lg-8 p-4 p-md-5 d-flex flex-column justify-content-center">
                 <img src="recursos/logo-conamat.png" alt="CONAMAT" class="mb-4 convenio-logo" style="max-height: 60px; width: auto; align-self: flex-start;">
-                <!-- <h3 class="std-title-card fw-black text-dark mb-4">Cursar la preparatoria en 4 meses con el <br><span class="text-muted fw-normal">“Curso de preparación para certificación en un sólo examen”</span></h3> -->
                  <h3 class="std-title-card fw-black text-dark mb-4">Cursar la preparatoria en 4 meses con el “Curso de preparación para certificación en un sólo examen”</h3>
                 <p class="std-text text-secondary text-justify mb-0">Inscríbete al curso 100% en línea y obtén tu certificado con validez oficial de la SEP a través de una plataforma disponible las 24 horas al día y con pagos accesibles.</p>
               </div>
@@ -436,15 +416,16 @@
       </div>
     </section>
 
-    <!-- LIGHTBOX NOSOTROS -->
-    <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
+    <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal" 
+         @touchstart="handleTouchStart" @touchend="handleTouchEnd">
         <div class="modal-content2">
             <button class="modal-close-btn" @click="closeModal">&times;</button>
             <iframe src="https://www.amfpro.mx/manual-AMFPro" class="modal-iframe"></iframe>
         </div>
     </div>
 
-    <div v-if="galeriaNosotrosAbierta" class="lightbox-overlay" @click.self="cerrarGaleriaNosotros">
+    <div v-if="galeriaNosotrosAbierta" class="lightbox-overlay" @click.self="cerrarGaleriaNosotros"
+         @touchstart="handleTouchStart" @touchend="handleTouchEndGaleria">
       <button class="btn-close-lightbox" @click="cerrarGaleriaNosotros">&times;</button>
       
       <div class="lightbox-content">
@@ -469,6 +450,7 @@ export default {
     props: ['scrollPosition'],
     data() {
         return {
+            isMobile: false,
             isModalOpen: false,
             observer: null,
             galeriaNosotrosAbierta: false,
@@ -480,10 +462,16 @@ export default {
               'recursos/Item.png',
               'recursos/Item-2.png',
               'recursos/Item-3.png'
-            ]
+            ],
+            // Variables para el swipe
+            touchStartY: 0,
+            touchEndY: 0
         }
     },
   mounted() {
+    this.checkMobile();
+    window.addEventListener('resize', this.checkMobile);
+
     const swiperNosotros = new Swiper('.swiper-nosotros', {
       slidesPerView: 1.2,
       spaceBetween: 20,
@@ -522,9 +510,52 @@ export default {
     });
   },
   beforeDestroy() {
+    window.removeEventListener('resize', this.checkMobile);
     if (this.observer) this.observer.disconnect();
   },
   methods: {
+    checkMobile() {
+      this.isMobile = window.innerWidth < 768;
+    },
+    // BOTONES MAGNÉTICOS
+    handleMagneticMove(e) {
+      const btn = e.currentTarget;
+      const content = btn.querySelector('.magnetic-content');
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      // Mueve el botón
+      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      // Mueve el texto un poco más para crear paralaje
+      content.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+    },
+    resetMagneticMove(e) {
+      const btn = e.currentTarget;
+      const content = btn.querySelector('.magnetic-content');
+      btn.style.transform = 'translate(0px, 0px)';
+      content.style.transform = 'translate(0px, 0px)';
+    },
+
+    // SWIPE PARA CERRAR MODALES
+    handleTouchStart(e) {
+      this.touchStartY = e.changedTouches[0].screenY;
+    },
+    handleTouchEnd(e) {
+      this.touchEndY = e.changedTouches[0].screenY;
+      this.checkSwipeClose(this.closeModal);
+    },
+    handleTouchEndGaleria(e) {
+      this.touchEndY = e.changedTouches[0].screenY;
+      this.checkSwipeClose(this.cerrarGaleriaNosotros);
+    },
+    checkSwipeClose(closeFunction) {
+      // Si desliza hacia abajo más de 50px, cierra
+      if (this.touchEndY - this.touchStartY > 50) {
+        closeFunction();
+      }
+    },
+
     scrollToSection(id) {
       const el = document.getElementById(id);
       if (el) {
@@ -567,6 +598,23 @@ export default {
 @use "sass:color";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* =========================================================
+   SCROLLBAR PERSONALIZADO (Estilo de Marca)
+   ========================================================= */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #112a18; /* Fondo oscuro */
+}
+::-webkit-scrollbar-thumb {
+  background: #50c026; /* Verde AMFPro */
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3E9452; /* Verde más oscuro al pasar el ratón */
+}
 
 /* =========================================================
    SISTEMA DE TIPOGRAFÍA ESTANDARIZADA (ROBOTO 100%)
@@ -648,15 +696,30 @@ $amf-red: #cf152d;
 
 .bg-amf-gradient { background: linear-gradient(135deg, #112a18 0%, #3E9452 100%); }
 
+/* BOTONES MAGNÉTICOS ESTILOS */
+.magnetic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  will-change: transform;
+  
+  .magnetic-content {
+    display: inline-block;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+    pointer-events: none; /* Asegura que el evento de mouse lo capture el botón padre */
+  }
+}
+
 .btn-premium-green {
   background-color: $amf-green; color: white; border: none; border-radius: 50px;
-  box-shadow: 0 10px 20px rgba(62, 148, 82, 0.3); transition: all 0.3s ease;
-  &:hover { background-color: white; color: $amf-dark; box-shadow: 0 15px 25px rgba(255, 255, 255, 0.2); transform: translateY(-3px); }
+  box-shadow: 0 10px 20px rgba(62, 148, 82, 0.3);
+  &:hover { background-color: white; color: $amf-dark; box-shadow: 0 15px 25px rgba(255, 255, 255, 0.2); }
 }
 .btn-premium-outline {
   background-color: transparent; color: white; border: 2px solid white; border-radius: 50px;
-  transition: all 0.3s ease;
-  &:hover { background-color: white; color: $amf-dark; transform: translateY(-3px); }
+  &:hover { background-color: white; color: $amf-dark; }
 }
 
 /* =========================================================
@@ -682,7 +745,20 @@ $amf-red: #cf152d;
 
 @keyframes slowZoom {
   from { transform: translate(-50%, -50%) scale(1); }
-  to { transform: translate(-50%, -50%) scale(1.15); }
+  to { transform: translate(-50%, -50%) scale(1.1); } /* Reducido para que no se corte tanto */
+}
+
+/* Ajuste específico para móvil: Minimiza el zoom animado y mantiene el centro */
+@media (max-width: 768px) {
+  .hero-bg-elements .hero-video {
+    animation: slowZoomMobile 25s alternate infinite ease-in-out;
+    object-position: center center;
+  }
+}
+
+@keyframes slowZoomMobile {
+  from { transform: translate(-50%, -50%) scale(1); }
+  to { transform: translate(-50%, -50%) scale(1.02); } /* Casi sin zoom extra en móviles */
 }
 
 /* =========================================================
@@ -843,10 +919,29 @@ $amf-red: #cf152d;
 /* =========================================================
    SISTEMA DE ANIMACIONES (REVEAL) 
    ========================================================= */
+.reveal-mask-wrapper { overflow: hidden; padding-bottom: 10px; }
+.reveal-mask {
+  transform: translateY(100%);
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.is-visible .reveal-mask, .is-visible.reveal-mask { transform: translateY(0); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+
 .reveal-up { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
 .is-visible .reveal-up, .is-visible.reveal-up { opacity: 1; transform: translateY(0); }
-.reveal-scale-zoom { opacity: 0; transform: scale(0.5) translateY(20px); transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
-.is-visible .reveal-scale-zoom, .is-visible.reveal-scale-zoom { opacity: 1; transform: scale(1) translateY(0); }
+
+.reveal-scale-x { transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+.is-visible .reveal-scale-x, .is-visible.reveal-scale-x { transform: scaleX(1); }
+.reveal-scale-zoom { 
+  opacity: 0; 
+  transform: scale(0.5) translateY(20px); 
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.is-visible .reveal-scale-zoom, .is-visible.reveal-scale-zoom { 
+  opacity: 1; 
+  transform: scale(1) translateY(0); 
+}
+
 .delay-1 { transition-delay: 0.15s; }
 .delay-2 { transition-delay: 0.3s; }
 .delay-3 { transition-delay: 0.45s; }
@@ -863,9 +958,12 @@ $amf-red: #cf152d;
 .modal-close-btn:hover { transform: scale(1.1); background-color: white; color: $amf-dark; }
 .modal-iframe { width: 100%; height: 100%; border: none; display: block; margin-top: 0; border-radius: 15px; }
 
+/* Responsive adjustments */
 @media (max-width: 991px) {
   .hero-section { min-height: 100vh; }
+  
   .stack-card { position: relative; top: 0 !important; margin-bottom: 2rem; }
   .sticky-title-wrapper { position: relative; top: 0; margin-bottom: 2rem; text-align: center; }
 }
+
 </style>

@@ -30,7 +30,7 @@
                       @click="irAlDetalle(noticia)">
                     
                     <div class="news-img-wrapper position-relative overflow-hidden">
-                      <img :src="obtenerRutaImagen(noticia.imagen)" class="w-100 news-img">
+                      <img :src="obtenerRutaImagen(noticia.imagen)" class="w-100 news-img" loading="lazy">
                       
                       <!-- Sombra interior en hover para dar profundidad 3D -->
                       <div class="img-overlay position-absolute top-0 start-0 w-100 h-100"></div>
@@ -132,13 +132,13 @@
                   <!-- Instagram -->
                   <div v-if="redes.instagram && redes.instagram.length > 0">
                     <p class="std-subtitle text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase">
-                      <img src="recursos/instagram.png" style="width:16px; margin-right:8px; filter: grayscale(100%);"> Instagram
+                      <img src="recursos/instagram.png" style="width:16px; margin-right:8px; filter: grayscale(100%);" loading="lazy"> Instagram
                     </p>
                     
                     <div v-for="(igPost, index) in redes.instagram" :key="'ig-'+index" class="social-embed-container mb-4">
                       <a :href="igPost.permalink" target="_blank" class="text-decoration-none text-dark">
                         <div class="position-relative overflow-hidden rounded-3 shadow-sm mb-2 social-img-wrapper">
-                          <img :src="igPost.media_url" class="w-100" style="height: 200px; object-fit: cover;">
+                          <img :src="igPost.media_url" class="w-100" style="height: 200px; object-fit: cover;" loading="lazy">
                           <div class="social-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
                             <i class="material-icons text-white fs-1">open_in_new</i>
                           </div>
@@ -151,13 +151,13 @@
                   <!-- Facebook -->
                   <div v-if="redes.facebook && redes.facebook.length > 0" class="mt-5">
                     <p class="std-subtitle text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase">
-                      <img src="recursos/facebook.png" style="width:16px; margin-right:8px; filter: grayscale(100%);"> Facebook
+                      <img src="recursos/facebook.png" style="width:16px; margin-right:8px; filter: grayscale(100%);" loading="lazy"> Facebook
                     </p>
                     
                     <div v-for="(fbPost, index) in redes.facebook" :key="'fb-'+index" class="social-embed-container mb-4">
                       <a :href="fbPost.permalink_url" target="_blank" class="text-decoration-none text-dark">
                         <div class="position-relative overflow-hidden rounded-3 shadow-sm mb-2 social-img-wrapper" v-if="fbPost.full_picture">
-                          <img :src="fbPost.full_picture" class="w-100" style="height: 200px; object-fit: cover;">
+                          <img :src="fbPost.full_picture" class="w-100" style="height: 200px; object-fit: cover;" loading="lazy">
                           <div class="social-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
                             <i class="material-icons text-white fs-1">open_in_new</i>
                           </div>

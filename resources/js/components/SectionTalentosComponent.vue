@@ -19,7 +19,7 @@
             </div>
             
             <div class="goal-split-container reveal-item delay-3">
-            <img src="recursos/areaporteria.png" class="goal-img-split" alt="Portería Divisora">
+            <img src="recursos/areaporteria.png" class="goal-img-split" alt="Portería Divisora" loading="lazy">
             </div>
 
         </div>
@@ -30,7 +30,7 @@
             <div class="shields-carousel-container">
             <div class="shields-track">
                 <div v-for="(copa, index) in listaCopas" :key="index" class="shields-item">
-                <img :src="copa.img" class="shield-icon" :alt="copa.nombre">
+                <img :src="copa.img" class="shield-icon" :alt="copa.nombre" loading="lazy">
                 <span class="shield-text">{{ copa.nombre }}</span>
                 </div>
             </div>
@@ -135,7 +135,7 @@
                     <!-- Nueva Tarjeta Galeria Ultra Pro -->
                     <div class="ultra-gallery-card shadow-sm border border-light position-relative" @click="abrirGaleria(torneo)">
                       <div class="img-zoom-wrapper position-absolute top-0 start-0 w-100 h-100">
-                        <img :src="obtenerRutaImagen(torneo.hidder)" class="w-100 h-100 gallery-img" style="object-fit: cover;" :alt="torneo.copa">
+                        <img :src="obtenerRutaImagen(torneo.hidder)" class="w-100 h-100 gallery-img" style="object-fit: cover;" :alt="torneo.copa" loading="lazy">
                       </div>
 
                       <!-- Panel Inferior Glassmorphism -->
