@@ -739,7 +739,7 @@ $amf-red: #cf152d;
   }
   .hero-gradient-overlay { 
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-    background: radial-gradient(circle at center, rgba(13, 33, 19, 0.4) 0%, #0d2113 90%); 
+    background: radial-gradient(circle at center, rgba(13, 33, 19, 0.1) 0%, #0d2113 90%); 
   }
 }
 
