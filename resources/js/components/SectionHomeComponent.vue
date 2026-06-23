@@ -10,7 +10,7 @@
       </div>
 
       <div class="container-fluid px-xl-5 h-100 position-relative z-3 d-flex flex-column justify-content-center">
-        <div class="row w-100 mx-0" style="padding-top: 460px;">
+        <div class="row w-100 mx-0" style="padding-top: 425px;">
           
           <div class="col-12 mx-auto text-center">
             
