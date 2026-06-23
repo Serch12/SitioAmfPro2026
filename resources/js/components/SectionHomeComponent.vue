@@ -3,17 +3,28 @@
     
    <section class="hero-section" id="inicio">
       <div class="hero-bg-elements">
-        <video autoplay muted loop playsinline class="hero-video" :key="isMobile">
-          <source :src="isMobile ? 'recursos/videos/video_mobile.mp4' : 'recursos/videos/video_banner.mp4'" type="video/mp4">
+        <video autoplay muted loop playsinline class="hero-video">
+          <source src="recursos/videos/video_banner.mp4" type="video/mp4">
         </video>
         <div class="hero-gradient-overlay"></div>
       </div>
 
       <div class="container-fluid px-xl-5 h-100 position-relative z-3 d-flex flex-column justify-content-center">
-        <div class="row w-100 mx-0" style="padding-top: 425px;">
+        <div class="row w-100 mx-0" style="padding-top: 465px;">
           
           <div class="col-12 mx-auto text-center">
             
+            <!-- <div class="reveal-up d-flex justify-content-center w-100">
+              <h1 class="std-title-hero fw-black text-white text-uppercase m-0">
+                Asociación Mexicana
+              </h1>
+            </div>
+            <div class="reveal-up delay-1 d-flex justify-content-center w-100">
+              <h1 class="std-title-hero fw-black amf-green-text text-uppercase m-0">
+                de Futbolistas Profesionales
+              </h1>
+            </div> -->
+       
             <div class="row justify-content-center reveal-up delay-2 mt-5">
               <div class="col-lg-8">
                 <p class="std-text text-white mb-5 text-center px-lg-4" style="border-left: 3px solid #3E9452; border-right: 3px solid #3E9452;">
@@ -450,7 +461,6 @@ export default {
     props: ['scrollPosition'],
     data() {
         return {
-            isMobile: false,
             isModalOpen: false,
             observer: null,
             galeriaNosotrosAbierta: false,
@@ -469,9 +479,6 @@ export default {
         }
     },
   mounted() {
-    this.checkMobile();
-    window.addEventListener('resize', this.checkMobile);
-
     const swiperNosotros = new Swiper('.swiper-nosotros', {
       slidesPerView: 1.2,
       spaceBetween: 20,
@@ -510,13 +517,9 @@ export default {
     });
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.checkMobile);
     if (this.observer) this.observer.disconnect();
   },
   methods: {
-    checkMobile() {
-      this.isMobile = window.innerWidth < 768;
-    },
     // BOTONES MAGNÉTICOS
     handleMagneticMove(e) {
       const btn = e.currentTarget;
@@ -739,7 +742,7 @@ $amf-red: #cf152d;
   }
   .hero-gradient-overlay { 
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-    background: radial-gradient(circle at center, rgba(13, 33, 19, 0.1) 0%, #0d2113 90%); 
+    background: radial-gradient(circle at center, rgba(13, 33, 19, 0.4) 0%, #0d2113 90%); 
   }
 }
 
