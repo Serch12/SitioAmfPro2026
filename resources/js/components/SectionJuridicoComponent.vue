@@ -204,7 +204,7 @@ export default {
                 { title: 'Reglamento de la comisión de controversias', icon: 'recursos/documento.png', icon_grey: 'recursos/documento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/441.pdf'},
                 { title: 'Reglamento de transferencias', icon: 'recursos/dobledocumento.png', icon_grey: 'recursos/dobledocumento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/472.pdf' },
                 { title: 'Código de Ética', icon: 'recursos/ball.png', icon_grey: 'recursos/ball-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/475.pdf' },
-                { title: 'Derechos de la mujer futbolista', icon: 'recursos/pesa.png', icon_grey: 'recursos/pesa-verde.png', url_link: '#' }
+                // { title: 'Derechos de la mujer futbolista', icon: 'recursos/pesa.png', icon_grey: 'recursos/pesa-verde.png', url_link: '#' }
             ]
         }
     },

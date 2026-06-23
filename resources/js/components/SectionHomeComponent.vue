@@ -144,11 +144,11 @@
 
             <div class="premium-objective-card p-4 p-md-5 rounded-4 bg-white shadow-sm border border-light position-relative overflow-hidden reveal-up">
               <div class="position-relative z-2">
-                <p class="std-text text-secondary text-justify mb-4">Representar y proteger los intereses de las y los Futbolistas profesionales afiliados a la Federación Mexicana de Futbol (FMF) de la Liga MX, Liga MX Femenil, Liga Expansión MX, Liga Premier y Liga TDP, así como Sub 17 y Sub 20, ante los órganos de dirección, de administración, de auditoría, de evaluación de resultados y de justicia deportiva y/o demás órganos competentes y/o comisiones de dicha Asociación Deportiva Nacional, y someterles todos los asuntos relacionados con la actividad de las y los Jugadores profesionales. Asimismo, representar y proteger dichos intereses ante afiliados directos y derivados de la FMF y ante las entidades, autoridades y organismos nacionales e internacionales relacionados con el desarrollo y consolidación del futbol profesional.</p>
-                
-                <div class="p-4 bg-light rounded-4 border-start border-4" style="border-color: #3E9452 !important;">
-                  <p class="std-text amf-green-text fw-bold text-justify mb-0">A través de las acciones presentadas, la AMFpro busca fortalecer su dignidad, honorabilidad, integridad, salud, seguridad y libertad, al promover, fomentar y estimular su profesionalización y desarrollo integral.</p>
-                </div>
+                <p class="std-text text-secondary text-justify mb-4">Representar y proteger los intereses de las y los Futbolistas Profesionales afiliados a la Federación Mexicana de Fútbol Asociación, Asociación Civil <b style="color:#50C026;">(FMF)</b> y, en su caso, el de los Futbolistas no profesionales <b style="color:#50C026;">(amateurs)</b> que se encuentran en proceso de formación como profesionales y que estén afiliados a la <b>FMF</b>.</p>
+                <p class="std-text text-secondary text-justify mb-4">Esta representación no se limita a aspectos jurídicos, sino también a <b style="color:#50C026;">temas deportivos, médicos, educativos y sociales</b>, pudiendo asesorar y orientar a sus asociados y asociadas, así como desarrollar y consolidar los programas que resulten necesarios y oportunos para ello.</p>
+                <!-- <div class="p-4 bg-light rounded-4 border-start border-4" style="border-color: #3E9452 !important;">
+                  <p class="std-text amf-green-text fw-bold text-justify mb-0">A través de las acciones presentadas, la AMFpro busca fortalecer su dignidad, honorabilidad, integridad, salud, seguridad y libertad, al promover, fomentar y estimular su profesionalización y desarrollo integral.</p> 
+                </div> -->
               </div>
             </div>
             
