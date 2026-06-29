@@ -9,12 +9,16 @@
           
           <div class="header-side left-side">
             <div class="hash-tag-wrapper">
-              <span class="hash-tag-gradient">#UnidosSomosMásFuertes</span>
+              <span class="hash-tag-gradient">#UnidosSomosMaximizarFuertes</span>
             </div>
           </div>
           
           <div class="header-center" @click="scrollToPosition(0)">
-            <img src="recursos/logo.png" alt="Logo AMFPRO" class="logo-header">
+            <img 
+              :src="scrollPosition > 20 ? 'recursos/logo.png' : 'recursos/logo2.png'" 
+              alt="Logo AMFPRO" 
+              class="logo-header"
+            >
           </div>
           
           <div class="header-side right-side d-flex align-items-center gap-3">
@@ -206,7 +210,7 @@ $amf-main: #50c026;
 
     .logo-header { 
       height: 60px; 
-      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); /* Ajustado a 0.3s para un cambio de imagen limpio */
     } 
     
     &:hover .logo-header { 
