@@ -189,12 +189,51 @@
                 </div>
 
                 <div :class="muestra_categoria ? 'col-12 col-md-4' : 'col-12 col-md-6'">
-                  <div class="form-floating compact-floating">
-                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.club == '' && afiliadoError.club }" v-model="afiliado.club" :disabled="selectDisabled" id="club">
-                      <option value="" class="dark-option">Seleccionar</option>
-                      <option v-for="(le, index) in lista_equipos" :key="index" :value="le.nombre" class="dark-option">{{le.nombre}}</option>
-                    </select>
-                    <label for="club">Club *</label>
+                  <div class="premium-dropdown-wrapper" v-outside-click="cerrarDropdownClub">
+                    
+                    <div 
+                      class="premium-dropdown-trigger" 
+                      :class="{ 'disabled-trigger': selectDisabled, 'input-error': afiliado.club == '' && afiliadoError.club }"
+                      @click="toggleDropdownClub"
+                    >
+                      <div class="trigger-info">
+                        <span class="trigger-label">Club *</span>
+                        <span class="trigger-value">{{ afiliado.club || 'Seleccionar Club' }}</span>
+                      </div>
+                      <i class="material-icons arrow-icon">{{ dropdownClubAbierto ? 'expand_less' : 'expand_more' }}</i>
+                    </div>
+
+                    <div class="premium-dropdown-menu-box" v-if="dropdownClubAbierto">
+                      <div class="menu-search-wrapper">
+                        <i class="material-icons search-icon">search</i>
+                        <input 
+                          type="text" 
+                          class="menu-search-control" 
+                          v-model="busquedaClub" 
+                          placeholder="Buscar club por nombre..."
+                          ref="searchClubInput"
+                          @click.stop
+                        >
+                        <i class="material-icons clear-icon" v-if="busquedaClub" @click.stop="busquedaClub = ''">close</i>
+                      </div>
+
+                      <ul class="menu-options-list">
+                        <li 
+                          v-for="(le, index) in clubesFiltrados" 
+                          :key="index" 
+                          class="menu-option-item"
+                          :class="{ 'selected-item': afiliado.club === le.nombre }"
+                          @click="seleccionarClub(le.nombre)"
+                        >
+                          {{ le.nombre }}
+                          <i class="material-icons check-icon" v-if="afiliado.club === le.nombre">check</i>
+                        </li>
+                        <li class="menu-no-results" v-if="clubesFiltrados.length === 0">
+                          No se encontraron clubes
+                        </li>
+                      </ul>
+                    </div>
+
                   </div>
                 </div>
 
@@ -245,10 +284,8 @@
 
             <div class="row g-3 mb-3">
               <div class="col-md-7">
-                <div class="form-section glass-box h-100 mb-0 p-3">
-                  <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h6 class="mb-0 fw-bold fs-6 text-white"><i class="material-icons align-middle text-warning me-1">contact_page</i> Identificación (INE/Pasaporte)</h6>
-                  </div>
+                <div class="form-section glass-box shadow-sm mb-3">
+                  <h6 class="section-title text-white"><i class="material-icons text-success">gavel</i> Documentación de Identidad</h6>
                   <p class="x-small text-slate-300 mb-2 line-height-1">Menores: credencial escolar o permiso. JPEG, JPG o PNG.</p>
                   <div class="d-flex gap-2">
                     <div class="custom-file-upload flex-fill">
@@ -270,7 +307,7 @@
               </div>
               
               <div class="col-md-5">
-                <div class="form-section glass-box h-100 mb-0 p-3">
+                <div class="form-section glass-box shadow-sm mb-3 p-3">
                   <div class="d-flex justify-content-between align-items-center mb-2">
                     <h6 class="mb-0 fw-bold fs-6 text-white"><i class="material-icons align-middle text-info me-1">account_box</i> Fotografía Reciente</h6>
                   </div>
@@ -291,7 +328,7 @@
                 <div class="form-check custom-check mb-1">
                   <input class="form-check-input" :class="{ 'input-error': !afiliado.terminos && afiliadoError.terminos }" type="checkbox" v-model="afiliado.terminos" id="check1">
                   <label class="form-check-label x-small text-slate-300" for="check1">
-                    Solicito mi afiliación como Asociado Jugador de la AMF PRO, A.C., aceptando cumplir sus disposiciones legales y estatutarias.
+                    Por medio de la presente, solicito mi afiliación como Asociado Jugador de la AM FUT PRO, A.C., de acuerdo con las disposiciones legales, reglamentarias y estatutarias que resulten aplicables. Asimismo, me comprometo a cumplir y respetar las disposiciones emanadas de la Asociación, una vez afiliado con el carácter que corresponda atendiendo la presente solicitud.
                   </label>
                 </div>
                 <div class="form-check custom-check">
@@ -342,7 +379,7 @@
                 <h3 class="fw-black text-dark display-6 mb-2">AM FUT PRO, A.C.</h3>
                 <h5 class="text-muted fw-bold">Aviso de Privacidad del Registro de Afiliados</h5>
               </div>
-              <p>Texto omitido para simplificar vista. La funcionalidad sigue intacta.</p>
+              <p>Texto de privacidad general.</p>
             </div>
           </div>
           
@@ -362,6 +399,24 @@ import axios from 'axios';
 
 export default {
   name: 'PaginaRegistro',
+  
+  // DIRECTIVA PERSONALIZADA LOCAL COMPATIBLE CON MIX V6
+  directives: {
+    outsideClick: {
+      bind(el, binding, vnode) {
+        el.clickOutsideEvent = function (event) {
+          if (!(el == event.target || el.contains(event.target))) {
+            vnode.context[binding.expression](event);
+          }
+        };
+        document.body.addEventListener('click', el.clickOutsideEvent);
+      },
+      unbind(el) {
+        document.body.removeEventListener('click', el.clickOutsideEvent);
+      }
+    }
+  },
+
   mounted() {
     toastr.options = {
       "closeButton": true,
@@ -375,6 +430,8 @@ export default {
       muestra_categoria: false,
       muestra_tipo: false,
       verloading: false,
+      busquedaClub: "",
+      dropdownClubAbierto: false, 
       afiliado: {
         nombre: "", apellido_pat: "", apellido_mat: "", sexo: "",
         nacionalidad: "", escolaridad: "", mail: "", curp: "",
@@ -403,21 +460,58 @@ export default {
       nombre_archivo_permiso: 'Examinar...'
     }
   },
+  computed: {
+    clubesFiltrados() {
+      if (!this.lista_equipos) return [];
+      
+      let filtrados = this.lista_equipos.filter(equipo => {
+        return equipo.nombre.toLowerCase().includes(this.busquedaClub.toLowerCase());
+      });
+
+      return filtrados.sort((a, b) => {
+        return a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' });
+      });
+    }
+  },
   methods: {
+    toggleDropdownClub() {
+      if (this.selectDisabled) return;
+      this.dropdownClubAbierto = !this.dropdownClubAbierto;
+      if (this.dropdownClubAbierto) {
+        this.busquedaClub = "";
+        this.$nextTick(() => {
+          if (this.$refs.searchClubInput) this.$refs.searchClubInput.focus();
+        });
+      }
+    },
+    cerrarDropdownClub() {
+      this.dropdownClubAbierto = false;
+    },
+    seleccionarClub(clubNombre) {
+      this.afiliado.club = clubNombre;
+      this.cerrarDropdownClub();
+    },
+
     listaEquipos(division) {
       this.afiliado.club = "";
       this.afiliado.categoria = "";
+      this.busquedaClub = "";
+      this.cerrarDropdownClub();
+      
       if (division == "") {
         this.selectDisabled = true;
         this.selectDisabled2 = true;
         this.muestra_categoria = false;
+        this.lista_equipos = [];
       } else {
         let nuevaDiv = division;
         if (['Sub 13', 'Sub 14', 'Sub 15', 'Sub 16', 'Sub 17', 'Sub 18', 'Sub 19', 'Sub 20', 'Sub 23'].includes(division)) {
           nuevaDiv = 'Liga MX';
         }
         axios.post('registro/devuelve-equipos', { nuevaDiv: nuevaDiv })
-          .then(res => { this.lista_equipos = res.data; })
+          .then(res => { 
+            this.lista_equipos = res.data; 
+          })
           .catch(error => { console.error("Error al obtener los equipos:", error); });
         
         this.selectDisabled = false;
@@ -434,6 +528,7 @@ export default {
           this.selectDisabled2 = true;
           this.afiliado.club = 'Otro';
           this.muestra_categoria = false;
+          this.lista_equipos = [{ nombre: 'Otro' }];
         }
       }
     },
@@ -658,9 +753,8 @@ export default {
 @use "sass:color";
 
 /* ==================================================
-   ESTILOS DARK MODE / GLASSMORPHISM
+   ESTILOS ORIGINALES RESTAURADOS AL 100%
    ================================================== */
-   
 .registro-page-wrapper {
   background-image: var(--bg-desktop);
   background-repeat: no-repeat;
@@ -690,7 +784,7 @@ export default {
   }
 }
 
-/* HEADER GLASSMORPHISM */
+/* HEADER GLASSMORPHISM ORIGINAL */
 .glass-header {
   background: rgba(15, 23, 42, 0.7) !important;
   backdrop-filter: blur(10px);
@@ -703,7 +797,7 @@ export default {
   object-fit: contain;
 }
 
-/* BOTON VOLVER AL INICIO */
+/* BOTON VOLVER AL INICIO ORIGINAL */
 .btn-back-home {
   color: white;
   background: rgba(255, 255, 255, 0.1);
@@ -718,7 +812,7 @@ export default {
   }
 }
 
-/* TARJETA PRINCIPAL Y SECCIONES GLASS */
+/* TARJETA PRINCIPAL Y SECCIONES GLASS ORIGINAL */
 .registration-card {
   width: 100%;
   background: rgba(15, 23, 42, 0.75);
@@ -780,7 +874,7 @@ export default {
   }
 }
 
-/* --- INPUTS ESTILO DARK MODE --- */
+/* --- INPUTS FLOATING ORIGINALES RESTAURADOS AL 100% --- */
 .compact-floating {
   .custom-input {
     height: calc(3rem + 2px); 
@@ -831,6 +925,183 @@ export default {
 .form-floating > .form-control:not(:placeholder-shown) ~ label::after,
 .form-floating > .form-select ~ label::after {
   background-color: transparent !important;
+}
+
+/* =========================================================
+   ESTILOS PREMIUM DROPDOWN ORIGINALES CON ACABADO COHERENTE
+   ========================================================= */
+.premium-dropdown-wrapper {
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+.premium-dropdown-trigger {
+  height: calc(3rem + 2px);
+  padding: 0.4rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  .trigger-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    .trigger-label {
+      font-size: 0.72rem;
+      color: #50c026;
+      font-weight: 500;
+      transform: scale(0.85) translateY(-0.1rem) translateX(-0.35rem);
+    }
+
+    .trigger-value {
+      font-size: 0.9rem;
+      color: white;
+      font-weight: 400;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 200px;
+    }
+  }
+
+  .arrow-icon {
+    color: #94a3b8;
+    font-size: 1.3rem;
+  }
+
+  &:focus, &:hover:not(.disabled-trigger) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #50c026;
+  }
+
+  &.input-error {
+    border-color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.1) !important;
+  }
+}
+
+.disabled-trigger {
+  opacity: 0.4;
+  cursor: not-allowed !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  .trigger-info .trigger-value { color: #64748b !important; }
+}
+
+.premium-dropdown-menu-box {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  max-height: 280px;
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: dropFade 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  .menu-search-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 12px;
+    position: relative;
+
+    .search-icon {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      margin-right: 8px;
+    }
+
+    .clear-icon {
+      color: #64748b;
+      font-size: 1.1rem;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      &:hover { color: white; }
+    }
+
+    .menu-search-control {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: white !important;
+      font-size: 0.82rem;
+      height: 32px;
+      border-radius: 6px;
+      padding-left: 10px;
+      width: 100%;
+
+      &:focus {
+        border-color: #50c026 !important;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+    }
+  }
+
+  .menu-options-list {
+    list-style: none;
+    margin: 0;
+    padding: 5px 0;
+    overflow-y: auto;
+    flex-grow: 1;
+
+    &::-webkit-scrollbar { width: 6px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+
+    .menu-option-item {
+      padding: 10px 15px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .check-icon {
+        color: #50c026;
+        font-size: 1rem;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+      }
+
+      &.selected-item {
+        background: rgba(80, 192, 38, 0.12);
+        color: #50c026;
+        font-weight: 600;
+      }
+    }
+
+    .menu-no-results {
+      padding: 20px 15px;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.82rem;
+      font-style: italic;
+    }
+  }
+}
+
+@keyframes dropFade {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- CUSTOM FILE UPLOAD (GLASS) --- */
@@ -996,6 +1267,6 @@ $primary-color: green;
 .swal-premium-text { font-size: 0.95rem !important; color: #64748b !important; line-height: 1.5 !important; }
 .btn-swal-premium-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(239, 68, 68, 0.3) !important; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; cursor: pointer !important; display: flex !important; justify-content: center !important; align-items: center !important; }
 .btn-swal-premium-danger:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(239, 68, 68, 0.4) !important; filter: brightness(1.1) !important; }
-.btn-swal-premium-success { background: linear-gradient(135deg, #50c026 0%, #3e9452 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(80, 192, 38, 0.3) !important; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; cursor: pointer !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+.btn-swal-premium-success { background: linear-gradient(135deg, #50c026 0%, #3e9452 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(80, 192, 38, 0.4) !important; filter: brightness(1.1) !important; }
 .btn-swal-premium-success:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(80, 192, 38, 0.4) !important; filter: brightness(1.1) !important; }
 </style>

@@ -10,8 +10,8 @@
           
           <div class="row justify-content-center mb-6 reveal-up">
             <div class="col-lg-8 text-center">
-              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3">Conoce tus</h6>
-              <h2 class="display-3 fw-black amf-green-text mb-4 text-uppercase">Derechos</h2>
+              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3">Asesoría y</h6>
+              <h2 class="display-3 fw-black amf-green-text mb-4 text-uppercase">Seguimiento Jurídico</h2>
               <div class="accent-line mx-auto mb-4"></div>
               <p class="text-secondary fs-5 px-md-5 lh-lg">
                 La AMFpro, a través de su coordinación jurídica brinda asesoría y seguimiento de las acciones legales interpuestas por sus afiliados y afiliadas. Contáctanos si necesitas apoyo en los siguientes casos:
@@ -259,7 +259,7 @@ export default {
                 },
                 {
                 title: 'Gestión de documentos', icon: 'folder_shared',
-                points: [ { id: 1, text: 'Información para registros', detalle: 'Infórmate de todo lo que necesitas para no tener problemas al momento de firmar tu contrato y registrarte.', show: false }, { id: 2, text: 'Solicitud de historial deportivo / estatus', detalle: 'Documentos que expide la FMF y que pueden servirte como currículum deportivo.', show: false }, { id: 3, text: 'Retención de documentos y expedientes', detalle: 'Si al terminar tu contrato el club no te entrega tu finiquito o te pide dinero por darte tus documentos.', show: false }, { id: 4, text: 'Derechos por embarazo y maternidad', detalle: 'Si eres Jugadora de la Liga MX Femenil y quieres recibir información sobre estos derechos contemplados en el Reglamento de Transferencias y Contrataciones de la FMF.', show: false }, { id: 5, text: 'Pase internacional (CTI)', detalle: 'Para poder jugar en otro país es indispensable contar con el finiquito y el TPO (que ningún tercero ajeno al fútbol tiene derechos económicos sobre ti), del último club en que jugaste; esto, para que el nuevo club pueda pedir tu pase internacional a través del TMS.', show: false }, { id: 6, text: 'Solicitud de copia de contrato', detalle: 'Pídele a tu club y si no te la entregan, nosotros podemos apoyarte a solicitarla a la FMF.', show: false } ]
+                points: [ { id: 1, text: 'Información para registros', detalle: 'Infórmate de todo lo que necesitas para no tener problemas al momento de firmar tu contrato y registrarte.', show: false }, { id: 2, text: 'Solicitud de historial deportivo / estatus', detalle: 'Documentos que expide la FMF y que pueden servirte como currículum deportivo.', show: false }, { id: 3, text: 'Retención de documentos y expedientes', detalle: 'Si al terminar tu contrato el club no te entrega tu finiquito o te pide dinero por darte tus documentos.', show: false }, { id: 4, text: 'Asesoría sobre los derechos por embarazo y maternidad', detalle: 'Si eres Jugadora de la Liga MX Femenil y quieres recibir información sobre estos derechos contemplados en el Reglamento de Transferencias y Contrataciones de la FMF.', show: false }, { id: 5, text: 'Pase internacional (CTI)', detalle: 'Para poder jugar en otro país es indispensable contar con el finiquito y el TPO (que ningún tercero ajeno al fútbol tiene derechos económicos sobre ti), del último club en que jugaste; esto, para que el nuevo club pueda pedir tu pase internacional a través del TMS (Sistema de Transferencias Internacional) de la FIFA.', show: false }, { id: 6, text: 'Solicitud de copia de contrato', detalle: 'Pídele a tu club y si no te la entregan, nosotros podemos apoyarte a solicitarla a la FMF.', show: false } ]
                 },
                 {
                 title: 'Incidencias de integridad del jugador', icon: 'health_and_safety',

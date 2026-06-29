@@ -87,7 +87,7 @@
       <div class="container-fluid px-4 px-xl-5">
         <div class="row text-center g-4 align-items-center justify-content-center">
           <div class="col-xl-auto col-lg-4 col-md-6 border-end-xl px-xl-4 reveal-up">
-            <p class="std-subtitle text-muted mb-4">MIEMBROS</p>
+            <p class="std-subtitle text-muted mb-4">MIEMBROS INTERNACIONALES</p>
             <img src="recursos/logo_aif.png" alt="AIF" class="circle-logo mx-auto reveal-scale-zoom delay-1">
           </div>
           <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4 reveal-up delay-1">
@@ -117,18 +117,18 @@
         <div class="row mb-6">
           <div class="col-lg-4 d-none d-lg-block">
             <div class="sticky-title-wrapper reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">NOSOTROS</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0">CREACIÓN</h2>
               <div class="accent-line mt-4"></div>
             </div>
           </div>
           <div class="col-lg-8">
             <div class="d-block d-lg-none mb-5 text-center reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">NOSOTROS</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0">CREACIÓN</h2>
               <div class="accent-line mx-auto mt-3"></div>
             </div>
              <div class="premium-clean-card p-4 p-md-5 rounded-4 bg-white position-relative overflow-hidden reveal-up mb-5">
                 <p class="std-text text-secondary text-justify mb-4">
-                  En febrero del 2017 comenzó a gestarse la <strong class="amf-green-text fw-bold">Asociación Mexicana de Futbolistas</strong> (AMFpro), cuando por iniciativa de Jugadores emblema a nivel nacional en activo, así como ex Futbolistas, se llevó a cabo la primera mesa de trabajo que sentaría las bases para la conformación de la AMFpro como organismo independiente Rafael Márquez, Óscar Pérez, Oribe Peralta, Carlos Salcido, Christian Giménez, Paulo Da Silva, Javier Hernández, Andrés Guardado, Guillermo Ochoa y Yasser Corona, junto con los ex Jugadores Álvaro Ortiz y Edson Zwaricz delinearon la primera etapa en la que entre las principales acciones son la primera reunión formal con los capitanes y representantes de los clubes de la Liga MX and Ascenso MX.
+                  En busca de mejores condiciones laborales para las y los Futbolistas, <strong class="amf-green-text fw-bold">en el año 2017</strong>, se creó la AMFPRO, como <b class="fw-bold">ORGANISMO AUTÓNOMO E INDEPENDIENTE</b>. Jugadores como: <strong class="amf-green-text fw-bold">Rafael Márquez, Oribe Peralta, Oscar Pérez, Carlos Salcido, Christian Giménez, Paulo Da Silva</strong>, junto con los ex Futbolistas <strong class="amf-green-text fw-bold">Álvaro Ortiz y Edson Zwaricz</strong>, delinearon el inicio del proyecto y, llevaron a cabo la primera reunión formal con capitanes y representantes de los clubes que en ese momento pertenecian a las Ligas de <strong class="amf-green-text fw-bold">Liga MX, Liga MX Femenil y Ascenso MX.</strong>
                 </p>
             </div>
             <div class="d-inline-flex align-items-center mb-4 text-dark reveal-up delay-1 bg-white px-4 py-3 rounded-pill shadow-sm border border-light">
@@ -150,13 +150,13 @@
         <div class="row mb-6 mt-6">
           <div class="col-lg-4 d-none d-lg-block">
             <div class="sticky-title-wrapper reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">NUESTRO OBJETIVO</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0">OBJETIVO Y FINALIDAD</h2>
               <div class="accent-line mt-4"></div>
             </div>
           </div>
           <div class="col-lg-8">
             <div class="d-block d-lg-none mb-5 text-center reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">NUESTRO OBJETIVO</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0">OBJETIVO Y FINALIDAD</h2>
               <div class="accent-line mx-auto mt-3"></div>
             </div>
             <div class="premium-clean-card p-4 p-md-5 rounded-4 bg-white position-relative overflow-hidden reveal-up">
@@ -183,14 +183,14 @@
                 <div class="premium-clean-card p-4 p-md-5 rounded-4 bg-white h-100">
                   <div class="icon-clean-wrapper mb-4"><i class="material-icons">flag</i></div>
                   <h4 class="std-title-card fw-bold mb-3" style="color:#50c026 !important;">Misión</h4>
-                  <p class="std-text text-secondary mb-0 text-justify">Representar y proteger los intereses de los Futbolistas profesionales en México, a través de acciones coordinadas para el respeto a su dignidad, honorabilidad, integridad y libertad.</p>
+                  <p class="std-text text-secondary mb-0 text-justify">Representar y proteger los intereses de las y los Futbolistas Profesionales y, en su caso, el de los Futbolistas no profesionales que se encuentran en proceso de formación y que estén afiliados a la FMF, a través del desarrollo y consolidación de acciones en materia.</p>
                 </div>
               </div>
               <div class="col-md-6 reveal-up delay-1">
                 <div class="premium-clean-card p-4 p-md-5 rounded-4 bg-white h-100">
                   <div class="icon-clean-wrapper mb-4"><i class="material-icons">visibility</i></div>
                   <h4 class="std-title-card fw-bold mb-3" style="color:#50c026 !important;">Visión</h4>
-                  <p class="std-text text-secondary mb-0 text-justify">Ser reconocidos como una Asociación confiable y sólida, fomentando el óptimo desarrollo de los derechos e intereses de los futbolistas, convirtiéndose en un referente internacional.</p>
+                  <p class="std-text text-secondary mb-0 text-justify">Ser reconocida y consolidarse como la única Asociación que representa los derechos e intereses de las y los Futbolistas en México y porteriormente posicionarse como referente a nivel internacional.</p>
                 </div>
               </div>
 
@@ -200,7 +200,7 @@
                   <div class="flex-grow-1 border-top ms-3 opacity-25"></div>
                 </div>
                 <div class="row g-3 g-md-4">
-                  <div class="col-6 col-md-4 reveal-up" v-for="(val, vIdx) in ['Respeto','Compromiso','Responsabilidad','Liderazgo','Legalidad','Ética & Juego Limpio']" :key="vIdx" :class="'delay-'+((vIdx%6)+1)">
+                  <div class="col-6 col-md-4 reveal-up" v-for="(val, vIdx) in ['Transparencia','Respeto','Compromiso','Responsabilidad','Liderazgo','Legalidad','Ética','Juego Limpio']" :key="vIdx" :class="'delay-'+((vIdx%6)+1)">
                     <div class="premium-clean-card text-center p-4 h-100 bg-white rounded-4 border border-light d-flex flex-column align-items-center justify-content-center">
                       <div class="icon-clean-wrapper-small mb-3"><i class="material-icons">verified</i></div>
                       <h6 class="std-text fw-bold text-dark mb-0">{{val}}</h6>
