@@ -28,7 +28,7 @@
             </div>
             
             <div class="reveal-up delay-3">
-              <button class="btn btn-premium-green px-4 py-3 fw-bold tracking-wider magnetic-btn shadow-lg" 
+              <button class="btn btn-premium-green px-4 fw-bold tracking-wider magnetic-btn shadow-lg" 
                       @mousemove="handleMagneticMove" 
                       @mouseleave="resetMagneticMove" 
                       @click="openModal">
