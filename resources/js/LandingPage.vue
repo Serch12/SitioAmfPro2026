@@ -9,7 +9,7 @@
           
           <div class="header-side left-side">
             <div class="hash-tag-wrapper">
-              <span class="hash-tag-gradient">#UnidosSomosMaximizarFuertes</span>
+              <span class="hash-tag-gradient">#UnidosSomosMasFuertes</span>
             </div>
           </div>
           
