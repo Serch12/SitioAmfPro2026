@@ -222,13 +222,13 @@
                   </p>
               </div>
             </div>
-            <h2 class="section-main-title fw-bold mt-5 reveal-up delay-2" style="color: #50c026;">ASESORÍA Y</h2>
-            <h2 class="section-main-title fw-bold mb-5 reveal-up delay-3 espacio-extra-movil">SEGUIMIENTO JURÍDICO</h2>
+            <!-- <h2 class="section-main-title fw-bold mt-5 reveal-up delay-2" style="color: #50c026;">ASESORÍA Y</h2>
+            <h2 class="section-main-title fw-bold mb-5 reveal-up delay-3 espacio-extra-movil">SEGUIMIENTO JURÍDICO</h2> -->
           </div>
           <br><br><br><br><br>
           <!-- El mazo se queda sin animación para que no se descentre NUNCA (Intacto) -->
           <div class="split-icon-container">
-              <img src="recursos/mazo-icon.png">
+              <img src="recursos/documento-reloj.png">
           </div>
         </section>
    </div>
@@ -504,7 +504,7 @@ $amf-accent: #50c026;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  bottom: -92px;
+  bottom: -160px;
 }
 
 .amf-green-text {

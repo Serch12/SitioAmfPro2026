@@ -1,5 +1,5 @@
 <template>
-    <section class="py-6 bg-light text-center mt-5 section-noticias relative-container">       
+    <section id="noticias" class="py-6 bg-light text-center mt-5 section-noticias relative-container">       
       <div class="container px-md-5">
         
         <!-- Título Principal Premium (Estandarizado) -->
