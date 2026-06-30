@@ -61,6 +61,7 @@
     <div v-if="!noticiaEnDetalle">
       <SectionHome :scrollPosition="scrollPosition" />
       <SectionJuridico />
+      <SectionRehab />
       <SectionTalentos :scrollPosition="scrollPosition" />
       <SectionNoticias @noticia-seleccionada="mostrarDetalle" />
     </div>
@@ -73,6 +74,7 @@
 <script>
 import FloatingMenu from './components/FloatingMenuComponent.vue';
 import SectionHome from './components/SectionHomeComponent.vue';
+import SectionRehab from './components/SectionRehabComponent.vue';
 import SectionTalentos from './components/SectionTalentosComponent.vue';
 import SectionJuridico from './components/SectionJuridicoComponent.vue';
 import SectionNoticias from './components/SectionNoticiasComponent.vue';
@@ -82,7 +84,7 @@ import axios from 'axios';
 
 export default {
   components: {
-    FloatingMenu, SectionHome, SectionTalentos, SectionJuridico, SectionNoticias, SectionFooter, DetalleNoticia
+    FloatingMenu, SectionHome, SectionRehab, SectionTalentos, SectionJuridico, SectionNoticias, SectionFooter, DetalleNoticia
   },
   data() {
     return {

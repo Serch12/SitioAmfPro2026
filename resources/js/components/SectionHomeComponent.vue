@@ -117,13 +117,13 @@
         <div class="row mb-6">
           <div class="col-lg-4 d-none d-lg-block">
             <div class="sticky-title-wrapper reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">CREACIÓN</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">CREACIÓN</h2>
               <div class="accent-line mt-4"></div>
             </div>
           </div>
           <div class="col-lg-8">
             <div class="d-block d-lg-none mb-5 text-center reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">CREACIÓN</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">CREACIÓN</h2>
               <div class="accent-line mx-auto mt-3"></div>
             </div>
              <div class="premium-clean-card p-4 p-md-5 rounded-4 bg-white position-relative overflow-hidden reveal-up mb-5">
@@ -150,13 +150,13 @@
         <div class="row mb-6 mt-6">
           <div class="col-lg-4 d-none d-lg-block">
             <div class="sticky-title-wrapper reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">OBJETIVO Y FINALIDAD</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">OBJETIVO Y FINALIDAD</h2>
               <div class="accent-line mt-4"></div>
             </div>
           </div>
           <div class="col-lg-8">
             <div class="d-block d-lg-none mb-5 text-center reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">OBJETIVO Y FINALIDAD</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">OBJETIVO Y FINALIDAD</h2>
               <div class="accent-line mx-auto mt-3"></div>
             </div>
             <div class="premium-clean-card p-4 p-md-5 rounded-4 bg-white position-relative overflow-hidden reveal-up">
@@ -169,13 +169,13 @@
         <div class="row mt-6">
           <div class="col-lg-4 d-none d-lg-block">
             <div class="sticky-title-wrapper reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">¿EN QUÉ CREEMOS?</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">¿EN QUÉ CREEMOS?</h2>
               <div class="accent-line mt-4"></div>
             </div>
           </div>
           <div class="col-lg-8">
             <div class="d-block d-lg-none mb-5 text-center reveal-up">
-              <h2 class="std-title-section fw-black amf-green-text mb-0">¿EN QUÉ CREEMOS?</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-0" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">¿EN QUÉ CREEMOS?</h2>
               <div class="accent-line mx-auto mt-3"></div>
             </div>
             <div class="row g-4">

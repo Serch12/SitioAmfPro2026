@@ -7,7 +7,7 @@
             
             <div class="text-center reveal-up z-index-title">
               <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-2">Estamos para ayudarte</h6>
-              <h2 class="display-3 fw-black amf-green-text m-0 text-uppercase">CONTACTO</h2>
+              <h2 class="display-3 fw-black amf-green-text m-0 text-uppercase" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">CONTACTO</h2>
             </div>
             
             <div class="goal-wrapper reveal-up delay-1">

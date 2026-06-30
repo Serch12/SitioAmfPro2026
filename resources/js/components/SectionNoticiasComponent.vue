@@ -6,7 +6,7 @@
         <div class="row justify-content-center mb-5 reveal-up">
             <div class="col-lg-8 text-center">
               <h6 class="std-subtitle text-muted mb-3">Mantente informado</h6>
-              <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase">NOTICIAS</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">NOTICIAS</h2>
               <div class="accent-line mx-auto mb-4"></div>
             </div>
         </div>

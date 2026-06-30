@@ -10,8 +10,8 @@
           
           <div class="row justify-content-center mb-6 reveal-up">
             <div class="col-lg-8 text-center">
-              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3">Asesoría y</h6>
-              <h2 class="display-3 fw-black amf-green-text mb-4 text-uppercase">Seguimiento Jurídico</h2>
+              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3" >Asesoría y</h6>
+              <h2 class="display-3 fw-black amf-green-text mb-4 text-uppercase" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">Seguimiento Jurídico</h2>
               <div class="accent-line mx-auto mb-4"></div>
               <p class="text-secondary fs-5 px-md-5 lh-lg">
                 La AMFpro, a través de su coordinación jurídica brinda asesoría y seguimiento de las acciones legales interpuestas por sus afiliados y afiliadas. Contáctanos si necesitas apoyo en los siguientes casos:
@@ -131,7 +131,7 @@
           <div class="row justify-content-center mb-6 reveal-up">
             <div class="col-lg-8 text-center">
               <h6 class="std-subtitle text-muted mb-3">PREPÁRATE FUERA DEL CAMPO</h6>
-              <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase">Convenios Educativos</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">Convenios Educativos</h2>
               <p class="std-text text-secondary mb-5 px-md-5">Ofrecemos opciones para finalizar tu preparatoria, estudios universitarios, maestrías o cursos. Pide informes directamente a nuestra área encargada.</p>
               <a href="mailto:desarrolloeducativo@amfpro.mx" class="btn btn-premium-green btn-lg rounded-pill px-5 py-3 fw-bold shadow-sm d-inline-flex align-items-center">
                 <i class="material-icons me-2">email</i> desarrolloeducativo@amfpro.mx
