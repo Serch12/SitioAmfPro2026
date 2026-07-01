@@ -70,15 +70,12 @@
                 <div class="premium-player-card text-white text-center w-100 position-relative"> 
                   
                   <div class="photo-wrapper d-flex justify-content-center align-items-end position-relative z-2" style="height: 180px; margin-bottom: -40px;">
-                      <!-- Efecto Aura Verde que aparece en Hover -->
                       <div class="player-glow position-absolute top-50 start-50 translate-middle"></div>
                       <img :src="player.img" class="player-photo position-relative z-2" alt="Jugador AMFPRO">
                   </div>
                   
-                  <!-- AQUÍ SE MANTIENE EL FONDO VERDE (bg-amf-green) -->
                   <div class="card-green-body bg-amf-green p-4 position-relative z-1 d-flex flex-column transition-all shadow-sm" style="padding-top: 3.5rem !important;">
                       <div class="year-label fw-bold mt-2">TORNEOS</div>
-                      <!-- Botón de año con color de acento -->
                       <div class="year-pill px-3 py-1 mb-3 transition-all d-inline-block mx-auto rounded-pill" style="background-color: #50c026;">{{ player.year }}</div>
                       
                       <div class="player-stats text-start small w-100 mt-auto">
@@ -132,13 +129,11 @@
                 <div v-else class="galeria-scroll-container pb-3 px-2 mt-2">
                   <div class="galeria-item" v-for="torneo in torneosDelAno" :key="torneo.id_talento">
                     
-                    <!-- Nueva Tarjeta Galeria Ultra Pro -->
                     <div class="ultra-gallery-card shadow-sm border border-light position-relative" @click="abrirGaleria(torneo)">
                       <div class="img-zoom-wrapper position-absolute top-0 start-0 w-100 h-100">
                         <img :src="obtenerRutaImagen(torneo.hidder)" class="w-100 h-100 gallery-img" style="object-fit: cover;" :alt="torneo.copa" loading="lazy">
                       </div>
 
-                      <!-- Panel Inferior Glassmorphism -->
                       <div class="gallery-glass-overlay position-absolute bottom-0 start-0 w-100 d-flex flex-column align-items-center justify-content-end p-3">
                         <div class="gallery-icon-wrapper mb-2 rounded-circle d-flex align-items-center justify-content-center">
                           <i class="material-icons text-white">zoom_in</i>
@@ -187,22 +182,28 @@
           </div>
         </div>
 
-        <!-- 6. CASOS DE ÉXITO (EFECTO SHINE) MANTENIENDO TU HTML Y TAMAÑOS AL FINAL -->
-        <section class="section-success py-5 text-white text-center position-relative">
+        <section class="section-success py-6 text-white text-center position-relative">
           <div class="container px-md-5">
-            <div class="row g-4 justify-content-center mb-5 reveal-up">
+            
+            <div class="row justify-content-center mb-5 reveal-up">
+              <div class="col-12 col-md-8 text-center">
+                <p class="text-uppercase tracking-widest text-white-50 fw-bold mb-2 small"></p>
+                <h2 class="display-4 fw-black text-white mb-3">CASOS DE ÉXITO</h2>
+                <p class="text-white-50 fs-6 mx-auto" style="max-width: 600px;">
+                  Conoce a los jóvenes talentos que, gracias a su esfuerzo en nuestro programa, lograron dar el salto al fútbol profesional.
+                </p>
+              </div>
+            </div>
+
+            <div class="row g-4 justify-content-center mb-5 reveal-up delay-1">
               <div v-for="(caso, index) in casosExito" :key="caso.id" class="col-6 col-md-4 col-lg-2" :class="'delay-' + (index % 6 + 1)">
                   
-                  <!-- Contenedor Ultra Pro de Casos de Éxito -->
                   <div class="ultra-success-wrapper position-relative overflow-hidden shadow-lg rounded-4">
-                      <!-- Rayo de luz -->
                       <div class="shine-effect"></div>
                       
-                      <!-- Imágenes superpuestas -->
                       <img :src="`recursos/casoexito-${caso.id}-color.png`" class="img-fluid success-img-color position-absolute top-0 start-0 w-100 h-100" :alt="`Éxito ${caso.nombre} Color`">
                       <img :src="`recursos/casoexito-${caso.id}.png`" class="img-fluid success-img-bw position-absolute top-0 start-0 w-100 h-100" :alt="`Éxito ${caso.nombre} B&N`">
                       
-                      <!-- Overlay de texto -->
                       <div class="success-info-panel position-absolute bottom-0 start-0 w-100 p-2 d-flex flex-column justify-content-end text-center">
                           <div class="player-name-overlay fw-bold text-white shadow-text mb-0">{{ caso.nombre }}</div>
                           <div class="player-club-overlay text-white-50 lh-1 mt-1" style="font-size: 0.65rem;">
@@ -214,19 +215,15 @@
               </div>
             </div>
             
-            <!-- Textos intactos tal como los tenías -->
-            <div class="row justify-content-center mt-5 reveal-up delay-1">
+            <div class="row justify-content-center mt-5 reveal-up delay-2" style="padding-bottom: 4rem;">
               <div class="col-11 col-md-10 col-lg-8">
-                  <p class="text-center">
+                  <p class="text-center text-white-50">
                   Para unirte a este gran proyecto, mantente atento a nuestras redes sociales, donde publicamos las convocatorias para los próximos escauteos y la selección de nuevos integrantes de Talentos AMFPRO.
                   </p>
               </div>
             </div>
-            <!-- <h2 class="section-main-title fw-bold mt-5 reveal-up delay-2" style="color: #50c026;">ASESORÍA Y</h2>
-            <h2 class="section-main-title fw-bold mb-5 reveal-up delay-3 espacio-extra-movil">SEGUIMIENTO JURÍDICO</h2> -->
           </div>
           <br><br><br><br><br>
-          <!-- El mazo se queda sin animación para que no se descentre NUNCA (Intacto) -->
           <div class="split-icon-container">
               <img src="recursos/documento-reloj.png">
           </div>
@@ -860,4 +857,5 @@ $amf-accent: #50c026;
     }
   }
 }
+.tracking-widest { letter-spacing: 4px; }
 </style>

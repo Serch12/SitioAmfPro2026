@@ -87,11 +87,13 @@
       <div class="container-fluid px-4 px-xl-5">
         <div class="row text-center g-4 align-items-center justify-content-center">
           <div class="col-xl-auto col-lg-4 col-md-6 border-end-xl px-xl-4 reveal-up">
-            <p class="std-subtitle text-muted mb-4">MIEMBROS INTERNACIONALES</p>
+            <p class="std-subtitle text-muted" style="line-height: 10px;">MIEMBROS</p>
+            <p class="std-subtitle text-muted">INTERNACIONALES</p>
             <img src="recursos/logo_aif.png" alt="AIF" class="circle-logo mx-auto reveal-scale-zoom delay-1">
           </div>
           <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4 reveal-up delay-1">
             <p class="std-subtitle text-muted mb-4">INSTITUCIONES</p>
+            <p class="std-subtitle text-muted mb-5"></p>
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
               <img src="recursos/logo_fifa.png" alt="FIFA" class="circle-logo reveal-scale-zoom delay-2">
               <img src="recursos/logo_seleccion.png" alt="FMF" class="circle-logo reveal-scale-zoom delay-3">
@@ -100,6 +102,7 @@
           </div>
           <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4 reveal-up delay-2">
             <p class="std-subtitle text-muted mb-4">LIGAS</p>
+            <p class="std-subtitle text-muted mb-5"></p>
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
               <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo reveal-scale-zoom delay-3">
               <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo reveal-scale-zoom delay-4">

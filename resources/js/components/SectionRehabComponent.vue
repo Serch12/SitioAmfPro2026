@@ -20,10 +20,10 @@
         </div>
 
         <div class="row align-items-center mb-6 reveal-up delay-1 intro-rehab-container g-0 rounded-4 shadow-sm border border-light">
-          <div class="col-12 col-lg-5 p-5 d-flex align-items-center justify-content-center bg-white rounded-start-4 id-divider-right position-relative">
+          <div class="col-12 col-lg-5 d-flex align-items-center justify-content-center bg-white rounded-start-4 id-divider-right position-relative">
             <div class="rehab-logo-hero-card text-center">
-              <img src="recursos/logo-rehab.png" alt="Rehab Evolution Logo" class="img-fluid rehab-main-logo mb-2">
-              <span class="d-block text-muted small fw-bold tracking-widest mt-3 text-uppercase">Clínica Oficial</span>
+              <img src="recursos/rehab_banner.png" alt="Rehab Evolution Logo" class="img-fluid rehab-main-logo">
+              <!-- <span class="d-block text-muted small fw-bold tracking-widest mt-3 text-uppercase">Clínica Oficial</span> -->
             </div>
           </div>
           <div class="col-12 col-lg-7 p-4 p-md-5 bg-light-subtle rounded-end-4 text-start d-flex flex-column justify-content-center">
@@ -33,7 +33,7 @@
             </h4>
             
             <p class="std-text text-secondary mb-4 text-justify lh-lg fw-normal">
-              Somos una clínica creada con un objetivo claro: brindar un servicio integral de salud a los futbolistas. Como proyecto respaldado por la <strong class="text-dark fw-bold">Asociación Mexicana de Futbolistas</strong>, nuestro compromiso es y siempre será el bienestar de cada jugador.
+              Somos una clínica creada con un objetivo claro: brindar un servicio integral de salud a las y los futbolistas. Como proyecto avalado por la <strong class="text-dark fw-bold">Asociación Mexicana de Futbolistas</strong>, nuestro compromiso es y siempre será el bienestar de cada Jugador.
             </p>
             
             <div class="p-4 rounded-4 shadow-sm mt-2 rehab-gradient-bg">
@@ -77,7 +77,7 @@
                 <div class="col-lg-4 mb-5 mb-lg-0 text-center text-lg-start border-end-lg border-light pe-lg-5">
                   <h3 class="fw-black text-dark mb-2 lh-sm title-pro">Servicios para <br class="d-none d-lg-block"> el Jugador</h3>
                   <div class="rehab-pill-active mt-3 d-inline-block shadow-sm">100% SIN COSTO</div>
-                  <p class="text-secondary small mt-3 mb-0 fw-medium">Exclusivo para afiliados AMFpro con registro vigente.</p>
+                  <p class="text-secondary small mt-3 mb-0 fw-medium">Exclusivo para afiliados a la AMFPRO con registro vigente.</p>
                 </div>
                 
                 <div class="col-lg-8 ps-lg-5">
@@ -110,9 +110,9 @@ export default {
       ],
       services: [
         'Ultrasonido', 'Electroterapia', 'Terapia instrumentalizada', 'Punción seca', 'Kinesiotape', 
-        'Presoterapia', 'Magnetoterapia', 'MEP', 'Ozonoterapia', 'Ondas de choque', 
+        'Presoterapia', 'Magnetoterapia', 'MEP con ultrasonido guiado', 'Ozonoterapia', 'Ondas de choque', 
         'Ácido hialurónico', 'Plasma rico en plaquetas', 'Pruebas de esfuerzo', 'Isocinecia', 
-        'EPI', 'Electrocardiograma', 'Terapia de calor y frío', 'Antropometría', 'Masajes de descarga'
+        'EPI', 'Electrocardiograma', 'Terapia de calor y frío', 'Antropometría', 'Masajes de descarga','Ultrasonido de Diagnóstico'
       ]
     }
   },
@@ -187,9 +187,9 @@ $rehab-light-blue: rgba(0, 174, 239, 0.08);
 
 .rehab-logo-hero-card {
   width: 100%;
-  max-width: 320px;
+//   max-width: 320px;
   .rehab-main-logo {
-    max-height: 100px;
+    // max-height: 100px;
     filter: drop-shadow(0 10px 20px rgba(0, 174, 239, 0.15));
     transition: transform 0.4s ease;
   }
