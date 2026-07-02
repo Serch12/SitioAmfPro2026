@@ -1,5 +1,5 @@
 <template>
-    <section id="noticias" class="py-6 bg-light text-center mt-5 section-noticias relative-container font-roboto">       
+    <section id="noticias" class="py-6 text-center mt-5 section-noticias relative-container font-roboto">       
       <div class="container px-md-5">
         
         <div class="row justify-content-center mb-5 reveal-up">
