@@ -1,12 +1,11 @@
 <template>
-    <section id="noticias" class="py-6 bg-light text-center mt-5 section-noticias relative-container">       
+    <section id="noticias" class="py-6 bg-light text-center mt-5 section-noticias relative-container font-roboto">       
       <div class="container px-md-5">
         
-        <!-- Título Principal Premium (Estandarizado) -->
         <div class="row justify-content-center mb-5 reveal-up">
             <div class="col-lg-8 text-center">
               <h6 class="std-subtitle text-muted mb-3">Mantente informado</h6>
-              <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">NOTICIAS</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase">NOTICIAS</h2>
               <div class="accent-line mx-auto mb-4"></div>
             </div>
         </div>
@@ -25,17 +24,14 @@
                     class="news-col-transition reveal-up"
                     :class="getColClass(noticia.id)">
                   
-                  <!-- Tarjeta de Noticia Ultra-Premium -->
                   <div class="premium-news-card bg-white rounded-4 overflow-hidden h-100 shadow-sm border border-light d-flex flex-column"
                       @click="irAlDetalle(noticia)">
                     
                     <div class="news-img-wrapper position-relative overflow-hidden">
                       <img :src="obtenerRutaImagen(noticia.imagen)" class="w-100 news-img" loading="lazy">
                       
-                      <!-- Sombra interior en hover para dar profundidad 3D -->
                       <div class="img-overlay position-absolute top-0 start-0 w-100 h-100"></div>
                       
-                      <!-- Badge Categoría flotante -->
                       <span v-if="noticia.categoria" class="std-subtitle badge-category position-absolute top-0 start-0 m-3 px-3 py-2 fw-bold text-uppercase shadow-sm">
                         {{ noticia.categoria }}
                       </span>
@@ -49,7 +45,6 @@
                         </span>
                       </div>
                       
-                      <!-- Título con Truncado (3 puntos) y Tooltip Nativo (Estandarizado) -->
                       <h4 class="std-title-card fw-bold text-dark mb-3 news-title truncate-text-title" 
                           :title="noticia.titulo">
                         {{ noticia.titulo }}
@@ -67,7 +62,6 @@
                 </div>
               </div>
 
-              <!-- Paginación Premium -->
               <div class="d-flex justify-content-center mt-6 reveal-up" v-if="totalPages > 1">
                 <nav>
                   <ul class="pagination custom-pagination shadow-sm rounded-pill overflow-hidden">
@@ -90,7 +84,6 @@
             </div>
           </div>
 
-          <!-- Sidebar Premium -->
           <div class="col-lg-4 order-1 order-lg-2 mb-5 mb-lg-0 reveal-up delay-2">
             <div class="sidebar-news sticky-top" style="top: 100px;">
               <button class="btn btn-premium-green w-100 fw-bold text-uppercase std-subtitle mb-4 rounded-pill py-3 shadow-sm" @click="resetFiltros">
@@ -129,7 +122,6 @@
                 </div>
 
                 <div v-else>
-                  <!-- Instagram -->
                   <div v-if="redes.instagram && redes.instagram.length > 0">
                     <p class="std-subtitle text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase">
                       <img src="recursos/instagram.png" style="width:16px; margin-right:8px; filter: grayscale(100%);" loading="lazy"> Instagram
@@ -148,7 +140,6 @@
                     </div>
                   </div>
 
-                  <!-- Facebook -->
                   <div v-if="redes.facebook && redes.facebook.length > 0" class="mt-5">
                     <p class="std-subtitle text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase">
                       <img src="recursos/facebook.png" style="width:16px; margin-right:8px; filter: grayscale(100%);" loading="lazy"> Facebook
@@ -421,17 +412,15 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-/* =========================================================
-   SISTEMA DE TIPOGRAFÍA ESTANDARIZADA (ROBOTO 100%)
-   ========================================================= */
+/* FORZAR LA TIPOGRAFÍA ROBOTO PARA TODO EL COMPONENTE */
+.font-roboto {
+  font-family: 'Roboto', sans-serif !important;
+  
+  h1, h2, h3, h4, h5, h6, p, span, div, a, button, li, strong {
+    font-family: 'Roboto', sans-serif !important;
+  }
+}
 
-/* Obligamos a usar Roboto, pero respetamos estrictamente los íconos */
-h1, h2, h3, h4, h5, h6, p, a, button, li, ul, strong, input, select, span { 
-  font-family: 'Roboto', sans-serif !important; 
-}
-div:not(.material-icons), span:not(.material-icons) {
-  font-family: 'Roboto', sans-serif;
-}
 .material-icons {
   font-family: 'Material Icons' !important;
 }
@@ -441,45 +430,13 @@ div:not(.material-icons), span:not(.material-icons) {
 .fw-bold { font-weight: 700 !important; }
 .fw-light { font-weight: 300 !important; }
 
-/* 1. Títulos Principales (Hero / Números gigantes) */
-.std-title-hero {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  line-height: 1.1;
-}
-
-/* 2. Títulos de Sección (NOSOTROS, CONVENIOS, OBJETIVO) */
-.std-title-section {
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.2;
-  letter-spacing: -1px;
-}
-
-/* 3. Títulos de Tarjetas (Misión, Visión, Nombres) */
-.std-title-card {
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
-  line-height: 1.3;
-}
-
-/* 4. Subtítulos (Etiquetas superiores, "PREPÁRATE FUERA DEL CAMPO") */
-.std-subtitle {
-  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-/* 5. Textos Generales (Párrafos) */
-.std-text {
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
-  line-height: 1.8;
-}
-
-/* 6. Textos Pequeños (Listas, detalles en tarjetas) */
-.std-text-small {
-  font-size: clamp(0.85rem, 1vw, 0.95rem);
-  line-height: 1.6;
-}
-
+/* Títulos Estandarizados */
+.std-title-hero { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; }
+.std-title-section { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; letter-spacing: -1px; }
+.std-title-card { font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.3; }
+.std-subtitle { font-size: clamp(0.75rem, 1.5vw, 0.9rem); letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
+.std-text { font-size: clamp(1rem, 1.5vw, 1.1rem); line-height: 1.8; }
+.std-text-small { font-size: clamp(0.85rem, 1vw, 0.95rem); line-height: 1.6; }
 
 /* =========================================================
    VARIABLES GLOBALES
