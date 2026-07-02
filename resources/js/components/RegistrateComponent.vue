@@ -3,38 +3,24 @@
     
     <header class="header-main border-bottom fixed-top glass-header">
       <div class="container-fluid py-2 px-3 px-lg-5">
-        <div class="row align-items-center flex-nowrap m-0">
-          
-          <div class="col-4 text-start px-0 d-flex align-items-center gap-3">
-            <a href="/" class="btn-back-home text-decoration-none d-inline-flex align-items-center px-3 py-2 rounded-pill transition-all shadow-sm">
-              <i class="material-icons">arrow_back</i>
-              <span class="d-none d-sm-inline fw-bold ms-1">Inicio</span>
-            </a>
-            <div class="hash-tag fw-bold text-truncate d-none d-lg-block" style="color: #cbd5e1;">#UnidosSomosMásFuertes</div>
-          </div>
-          
-          <div class="col-4 text-center px-0">
+        <div class="row align-items-center justify-content-center m-0">
+          <div class="col-12 text-center px-0">
             <a href="/">
-              <img src="recursos/logo.png" alt="Logo AMFPRO" class="logo-header rounded px-2"> 
+              <img src="recursos/logo.png" alt="Logo AMFPRO" class="logo-header rounded px-2" style="max-height: 45px;"> 
             </a>
           </div>
-          
-          <div class="col-4 text-end d-flex justify-content-end gap-2 px-0">
-            <img src="recursos/x.png" alt="X" class="social-nav " style="max-width: 50px;">
-            <img src="recursos/facebook.png" alt="FB" class="social-nav ">
-            <img src="recursos/instagram.png" alt="IG" class="social-nav ">
-          </div>
-
         </div>
       </div>
     </header>
 
-    <div class="container py-5 mt-5 pt-4">
-      <div class="registration-card shadow-lg mx-auto">
+    <div class="container py-5 mt-5 pt-4 position-relative z-2">
+      
+      <div class="registration-card shadow-lg mx-auto mt-4">
         
-        <div class="registration-header border-bottom-glass">
+        <div class="registration-header border-bottom-glass d-flex justify-content-between align-items-center flex-wrap gap-3">
+          
           <div class="d-flex align-items-center gap-3">
-            <div class="icon-brand-box shadow-sm">
+            <div class="icon-brand-box shadow-sm flex-shrink-0">
               <i class="material-icons">how_to_reg</i>
             </div>
             <div>
@@ -42,6 +28,12 @@
               <span class="text-slate-300" style="font-size: 0.8rem;">Únete a la red de futbolistas profesionales de México</span>
             </div>
           </div>
+
+          <a href="/" class="btn-back-home text-decoration-none d-inline-flex align-items-center px-4 py-2 rounded-pill shadow-sm flex-shrink-0">
+            <i class="material-icons">arrow_back</i>
+            <span class="fw-bold ms-2 small text-uppercase tracking-wider">Regresar</span>
+          </a>
+
         </div>
 
         <div class="registration-body">
@@ -363,28 +355,138 @@
 
     <div class="modal fade" id="avisoprivacidad" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 10000;">
       <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
-        <div class="modal-content border-0 rounded-4 shadow-lg">
+        <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
           
-          <div class="modal-header border-0 px-4 py-3" style="background-color: #50C026;">
-            <h5 class="modal-title text-white fw-bold">Aviso de Privacidad</h5>
-            <button type="button" class="close bg-transparent border-0" data-dismiss="modal" aria-label="Close" style="font-size: 1.8rem; line-height: 1;">
+          <div class="modal-header border-0 px-4 py-4" style="background: linear-gradient(135deg, #50c026 0%, #3e9452 100%);">
+            <div class="d-flex align-items-center w-100">
+              <i class="material-icons text-white me-2 fs-2">verified_user</i>
+              <h4 class="modal-title text-white fw-bold mb-0">Aviso de Privacidad</h4>
+            </div>
+            <button type="button" class="close bg-transparent border-0" data-dismiss="modal" aria-label="Close" style="font-size: 2rem; line-height: 1;">
               <span aria-hidden="true" style="color: white; font-weight: 300;">&times;</span>
             </button>
           </div>
           
-          <div class="modal-body px-4 px-lg-5 py-4" style="text-align: justify; line-height: 1.7; color: #444; font-size: 0.95rem;">
-            <div class="container-fluid">
-              <div align="center" class="pb-4 mb-4 border-bottom">
-                <img src="recursos/logo.png" width="180px" alt="Logo AMFpro" class="mb-3">
-                <h3 class="fw-black text-dark display-6 mb-2">AM FUT PRO, A.C.</h3>
-                <h5 class="text-muted fw-bold">Aviso de Privacidad del Registro de Afiliados</h5>
+          <div class="modal-body px-4 px-lg-5 py-5" style="background-color: #f8f9fa;">
+            <div class="container-fluid max-w-800 mx-auto">
+              
+              <div class="text-center pb-4 mb-4 border-bottom border-light">
+                <img src="recursos/logo.png" width="160px" alt="Logo AMFpro" class="mb-3">
+                <h3 class="fw-black text-dark display-6 mb-2" style="letter-spacing: -1px;">AM FUT PRO, A.C.</h3>
+                <h6 class="text-muted fw-bold text-uppercase tracking-wider">Aviso de Privacidad del Registro de Afiliados</h6>
               </div>
-              <p>Texto de privacidad general.</p>
+              
+              <div class="privacy-content-wrapper text-secondary text-justify lh-lg" style="font-size: 0.95rem;">
+                
+                <div class="privacy-section mb-5">
+                  <h5 class="fw-bold text-dark mb-3 d-flex align-items-center">
+                    <i class="material-icons text-success me-2">corporate_fare</i> 
+                    ¿Quién es el Responsable de recabar los datos personales?
+                  </h5>
+                  <p>
+                    <strong class="text-dark">AM FUT PRO, A.C.,</strong> (en lo sucesivo “AMFpro”) con domicilio ubicado en Avenida Industria Automotriz, número 33, Interior 203, Colonia Corredor Industrial, Toluca Lerma, C.P. 52004, Estado de México, es responsable del tratamiento de sus datos personales en términos de lo establecido por los artículos 3, fracción XIV de la Ley Federal de Protección de Datos Personales en Posesión de Particulares (LFPDPPP), 47 de su Reglamento (RLFPDPPP), así como por las disposiciones contenidas en los artículos 1, 3 y 5 del Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo (RGPD).
+                  </p>
+                </div>
+
+                <div class="privacy-section mb-5">
+                  <h5 class="fw-bold text-dark mb-3 d-flex align-items-center">
+                    <i class="material-icons text-success me-2">fact_check</i> 
+                    ¿Cuáles son las finalidades de tratamiento de datos personales?
+                  </h5>
+                  
+                  <div class="premium-clean-card bg-white p-4 rounded-4 mb-4">
+                    <h6 class="fw-bold text-dark mb-3 border-bottom pb-2">Finalidades Primarias:</h6>
+                    <p class="small text-muted mb-2">1.1. AMFpro tratará los datos de identificación y deportivos del Titular para las siguientes finalidades:</p>
+                    <ul class="custom-bullet-list">
+                      <li>Dar de alta a los jugadores asociados en los sistemas y bases de datos de la AMFpro.</li>
+                      <li>Realizar los trámites de afiliación y registro como asociado de la AMFpro.</li>
+                      <li>Identificar y contactar a los jugadores asociados.</li>
+                      <li>Generar las credenciales de los jugadores afiliados de la AMFpro.</li>
+                      <li>Confirmar, actualizar y corregir los datos personales de contacto registrados por la AMFpro.</li>
+                      <li>Brindar asesoría jurídica a los asociados.</li>
+                      <li>Mantener a los asociados informados sobre el estatus de sus procesos legales.</li>
+                      <li>Enviar a los asociados información sobre eventos y actividades que realice la AMFpro.</li>
+                      <li>Registrar y confirmar la asistencia de los asociados a las diferentes actividades realizadas por la asociación.</li>
+                      <li>Envío de noticias de última hora (flashes informativos), de interés para los futbolistas asociados.</li>
+                      <li>Contactar a los asociados, ya sea por correo electrónico o telefónicamente para compartirles información a la que tengan derecho como miembros de la AMFpro.</li>
+                      <li>Atender sus dudas y comentarios de los asociados recibidos a través del correo electrónico, redes sociales, telefónicamente o por videoconferencias.</li>
+                      <li>Elaboración y gestión del historial deportivo de los asociados, así como para dar seguimiento a su estatus como jugador profesional.</li>
+                      <li>Integrar los expedientes físicos y electrónicos de los asociados para la resolución de controversias.</li>
+                      <li>Representar al jugador asociado ante la Comisión de Conciliación y Resolución de Controversias.</li>
+                      <li>Llevar a cabo el patrocinio de los asociados (únicamente de aquelos jugadores sin contrato).</li>
+                      <li>Realizar el registro de los asociados en los diplomados, cursos, eventos y actividades “en línea” organizados por la AMFpro.</li>
+                      <li>Cumplir con las disposiciones legales aplicables a la prestación de los servicios que brinda la AMFpro.</li>
+                    </ul>
+
+                    <p class="small text-muted mb-2 mt-4">1.2. AMFpro tratará los datos patrimoniales del Titular para las siguientes finalidades:</p>
+                    <ul class="custom-bullet-list">
+                      <li>Gestionar el pago de sus beneficios económicos debido al trabajo de intermediación que lleva a cabo ésta.</li>
+                      <li>Dar cumplimiento a la Ley Federal para la Prevención e Identificación de Operaciones con Recursos de Procedencia Ilícita.</li>
+                    </ul>
+                  </div>
+
+                  <div class="premium-clean-card bg-white p-4 rounded-4">
+                    <h6 class="fw-bold text-dark mb-3 border-bottom pb-2">Finalidades Secundarias:</h6>
+                    <p class="small text-muted mb-2">AMFpro tratará los datos de identificación del Titular para las siguientes finalidades no esenciales:</p>
+                    <ul class="custom-bullet-list">
+                      <li>Ofrecerle promociones, descuentos de instituciones educativas nacionales e internacionales con las que la asociación tiene convenios.</li>
+                      <li>Fines estadísticos.</li>
+                      <li>Publicidad, prospección comercial y mercadotecnia.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="privacy-section mb-5">
+                  <h5 class="fw-bold text-dark mb-3 d-flex align-items-center">
+                    <i class="material-icons text-success me-2">manage_accounts</i> 
+                    ¿Cómo ejercer los derechos de acceso, rectificación, cancelación u oposición?
+                  </h5>
+                  <p>
+                    El Titular podrá en todo momento ejercer sus derechos ARCO (acceso, rectificación, cancelación u oposición) respecto de sus datos personales presentando una solicitud en el formato que usted considere pertinente, misma que debe contener la información y documentación siguiente:
+                  </p>
+                  <ol class="custom-number-list mb-4">
+                    <li>Nombre del Titular, domicilio y otro medio (correo electrónico, teléfono celular, etc.), para comunicarle la respuesta a su solicitud.</li>
+                    <li>Los documentos vigentes que acrediten su identidad (copia simple en formato impreso o electrónico de su credencial de elector, pasaporte o Visa Fm2 o Fm3) o, en su caso, la representación legal del Titular (copia simple en formato impreso o electrónico de la carta poder simple con firma autógrafa del Titular, el mandatario y sus correspondientes identificaciones oficiales vigentes: credencial de elector, pasaporte o Visa Fm2 o Fm3).</li>
+                    <li>La descripción clara y precisa de los datos respecto de los que busca ejercer alguno de los Derechos ARCO, y cualquier otro elemento o documento que facilite la localización de los datos personales del Titular.</li>
+                  </ol>
+                  <p>
+                    En el caso de las solicitudes de rectificación de datos personales, el Titular deberá también indicar las modificaciones a realizarse y aportar la documentación que sustente su petición.<br><br>
+                    Para dar cumplimiento a la obligación de acceso a sus datos personales, se hará previa acreditación de la identidad del Titular o personalidad del representante; poniendo la información a disposición en sitio en el domicilio del Responsable. Se podrá acordar otro medio entre el Titular y el Responsable siempre que la información solicitada así lo permita.<br><br>
+                    Para ejercer sus derechos ARCO, la revocación de su consentimiento y los demás derechos previstos en la LFPDPPP ponemos a su disposición los siguientes medios:
+                  </p>
+                  
+                  <div class="contact-info-box p-3 bg-white rounded-3 shadow-sm border border-light mb-4 text-center">
+                    <p class="mb-2"><strong class="text-dark">Correo electrónico:</strong> <a href="mailto:arco@amfpro.mx" class="text-success text-decoration-none">arco@amfpro.mx</a></p>
+                    <p class="mb-0"><strong class="text-dark">Presencialmente:</strong> Avenida Industria Automotriz, número 33, Interior 203, Colonia Corredor Industrial, Toluca Lerma, C.P. 52004, Estado de México.</p>
+                  </div>
+                  
+                  <p>
+                    AMFpro responderá al Titular en un plazo máximo de veinte días hábiles, contados desde la fecha hábil en que se recibió la solicitud a efecto de que, si resulta procedente, haga efectiva la misma dentro de los quince días hábiles siguientes a que se comunique la respuesta. En todos los casos, la respuesta se dará por la misma vía por la que haya presentado su solicitud o en su caso por cualquier otro medio acordado con el Titular. Los plazos antes referidos podrán ser ampliados en términos de la LFPDPPP.
+                  </p>
+                </div>
+
+                <div class="privacy-section mb-5">
+                  <h5 class="fw-bold text-dark mb-3 d-flex align-items-center">
+                    <i class="material-icons text-success me-2">share</i> 
+                    ¿Con quiénes se transfieren los datos personales?
+                  </h5>
+                  <p>
+                    Los datos personales recabados por la AMFpro, podrán compartirse con la Federación Mexicana de Fútbol Asociación, A.C., y sus integrantes, a efecto de gestionar actividades de intermediación de pago de salarios que requieran nuestros asociados. Esta transferencia es necesaria para dar cumplimiento a los trabajos establecidos en beneficio de los asociados, por lo que será necesario contar con el consentimiento expreso del titular de los datos, el cual será recabado a través de un formato especifico.<br><br>
+                    También le comunicamos que sus datos personales podrán compartirse con los proveedores de bienes y servicios que nos auxilian, para proveer de estos a los requeridos por nuestros asociados, los cuáles son necesarios para dar cumplimiento a nuestra función de intermediación, por lo que para esta transferencia no será necesario contar con el consentimiento expreso del titular de los datos, de conformidad con lo señalado por el artículo 37, fracción VII de la LFPDPPP, así como por lo dispuesto por el artículo 44 del RGPD. Los receptores de los datos personales, están obligados por virtud del contrato correspondiente, a mantener la confidencialidad de los datos personales suministrados y a observar el presente Aviso de Privacidad.<br><br>
+                    Salvo los casos señalados con anterioridad y a menos que se actualice alguno de los supuestos contenidos en el artículo 37 de la LFPDPPP y 49 del RGPD, los datos proporcionados por nuestros Asociados y visitantes no serán transmitidos en ninguna otra circunstancia.
+                  </p>
+                </div>
+
+                <div class="text-center mt-5 pt-4 border-top border-light">
+                  <p class="small text-muted fw-bold mb-0">Fecha de última actualización: 26 de Febrero de 2024.</p>
+                </div>
+
+              </div>
             </div>
           </div>
           
-          <div class="modal-footer border-0 px-4 py-3 bg-light rounded-bottom-4">
-            <button type="button" class="btn btn-secondary rounded-pill px-4" data-dismiss="modal">Cerrar</button>
+          <div class="modal-footer border-0 px-4 py-3 bg-white border-top border-light">
+            <button type="button" class="btn btn-outline-secondary rounded-pill px-4 fw-bold shadow-sm" data-dismiss="modal">Cerrar documento</button>
           </div>
 
         </div>
@@ -784,7 +886,7 @@ export default {
   }
 }
 
-/* HEADER GLASSMORPHISM ORIGINAL */
+/* HEADER GLASSMORPHISM (ULTRA CLEAN) */
 .glass-header {
   background: rgba(15, 23, 42, 0.7) !important;
   backdrop-filter: blur(10px);
@@ -792,25 +894,33 @@ export default {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+/* El logo centrado sin redes sociales alrededor */
 .logo-header {
-  height: 32px; 
   object-fit: contain;
+  transition: transform 0.3s ease;
+  &:hover { transform: scale(1.05); }
 }
 
-/* BOTON VOLVER AL INICIO ORIGINAL */
+/* NUEVO BOTON VOLVER (Dentro del header de la tarjeta) */
 .btn-back-home {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  i { font-size: 1.1rem; transition: transform 0.3s ease; }
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  i { font-size: 1.2rem; transition: transform 0.3s ease; }
+  
   &:hover {
     background: #50c026;
     border-color: #50c026;
     color: white;
+    box-shadow: 0 5px 15px rgba(80, 192, 38, 0.3) !important;
     i { transform: translateX(-4px); }
   }
 }
+
+.tracking-wider { letter-spacing: 1px; }
 
 /* TARJETA PRINCIPAL Y SECCIONES GLASS ORIGINAL */
 .registration-card {
@@ -835,9 +945,6 @@ export default {
 .registration-header {
   padding: 30px;
   background: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .border-bottom-glass { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .text-slate-300 { color: #cbd5e1 !important; }
@@ -1269,4 +1376,13 @@ $primary-color: green;
 .btn-swal-premium-danger:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(239, 68, 68, 0.4) !important; filter: brightness(1.1) !important; }
 .btn-swal-premium-success { background: linear-gradient(135deg, #50c026 0%, #3e9452 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(80, 192, 38, 0.4) !important; filter: brightness(1.1) !important; }
 .btn-swal-premium-success:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(80, 192, 38, 0.4) !important; filter: brightness(1.1) !important; }
+
+/* NUEVOS ESTILOS DEL MODAL DE PRIVACIDAD */
+.max-w-800 { max-width: 800px; }
+.privacy-content-wrapper p { text-align: justify; margin-bottom: 1.2rem; }
+.custom-bullet-list { list-style: none; padding-left: 0; }
+.custom-bullet-list li { position: relative; padding-left: 1.8rem; margin-bottom: 0.8rem; }
+.custom-bullet-list li::before { content: "check_circle"; font-family: "Material Icons"; position: absolute; left: 0; top: 2px; font-size: 1.2rem; color: #50c026; }
+.custom-number-list { padding-left: 1.2rem; }
+.custom-number-list li { margin-bottom: 0.8rem; padding-left: 0.5rem; }
 </style>

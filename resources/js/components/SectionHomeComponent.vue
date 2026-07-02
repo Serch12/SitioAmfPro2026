@@ -193,7 +193,7 @@
                 <div class="premium-clean-card p-4 p-md-5 rounded-4 bg-white h-100">
                   <div class="icon-clean-wrapper mb-4"><i class="material-icons">visibility</i></div>
                   <h4 class="std-title-card fw-bold mb-3" style="color:#50c026 !important;">Visión</h4>
-                  <p class="std-text text-secondary mb-0 text-justify">Ser reconocida y consolidarse como la única Asociación que representa los derechos e intereses de las y los Futbolistas en México y porteriormente posicionarse como referente a nivel internacional.</p>
+                  <p class="std-text text-secondary mb-0 text-justify">Ser reconocida y consolidarse como la única Asociación que representa los derechos e intereses de las y los Futbolistas en México y posteriormente posicionarse como referente a nivel internacional.</p>
                 </div>
               </div>
 

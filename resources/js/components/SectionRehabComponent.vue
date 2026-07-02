@@ -27,11 +27,9 @@
             </div>
           </div>
           <div class="col-12 col-lg-7 p-4 p-md-5 bg-light-subtle rounded-end-4 text-start d-flex flex-column justify-content-center">
-            
             <h4 class="fw-black text-dark mb-4 lh-sm title-pro">
               Proyecto hecho por y para <span class="rehab-blue-text">EL JUGADOR.</span>
             </h4>
-            
             <p class="std-text text-secondary mb-4 text-justify lh-lg fw-normal">
               Somos una clínica creada con un objetivo claro: brindar un servicio integral de salud a las y los futbolistas. Como proyecto avalado por la <strong class="text-dark fw-bold">Asociación Mexicana de Futbolistas</strong>, nuestro compromiso es y siempre será el bienestar de cada Jugador.
             </p>
