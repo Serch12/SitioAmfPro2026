@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div class="font-roboto">
+      
+      <!-- 1. SECCIÓN JURÍDICO -->
       <section class="py-6 bg-light text-center section-derechos relative-container" id="juridico">
         
          <div class="split-icon-container-2">
@@ -10,10 +12,10 @@
           
           <div class="row justify-content-center mb-6 reveal-up">
             <div class="col-lg-8 text-center">
-              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3" >Asesoría y</h6>
-              <h2 class="display-3 fw-black amf-green-text mb-4 text-uppercase" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">Seguimiento Jurídico</h2>
+              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3 std-subtitle">Asesoría y</h6>
+              <h2 class="display-3 fw-black amf-green-text mb-4 text-uppercase std-title-section">Seguimiento Jurídico</h2>
               <div class="accent-line mx-auto mb-4"></div>
-              <p class="text-secondary fs-5 px-md-5 lh-lg">
+              <p class="text-secondary fs-5 px-md-5 lh-lg std-text">
                 La AMFpro, a través de su coordinación jurídica brinda asesoría y seguimiento de las acciones legales interpuestas por sus afiliados y afiliadas. Contáctanos si necesitas apoyo en los siguientes casos:
               </p>
             </div>
@@ -24,7 +26,7 @@
               <div class="category-icon-wrapper shadow-sm rounded-circle d-flex align-items-center justify-content-center bg-white me-3" style="width: 50px; height: 50px;">
                 <i class="material-icons amf-green-text fs-4">{{ category.icon }}</i>
               </div>
-              <h4 class="fw-bold amf-green-text mb-0">{{ category.title }}</h4>
+              <h4 class="fw-bold amf-green-text mb-0 std-title-card">{{ category.title }}</h4>
             </div>
 
             <div class="row g-4 text-start">
@@ -49,16 +51,19 @@
             </div>
           </div>
 
+          <!-- SECCIÓN DE DESCARGAS Y DOCUMENTOS -->
           <div class="row justify-content-center mt-6 mb-5 reveal-up">
             <div class="col-12 text-center">
-              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3">Descargas</h6>
-              <h3 class="display-6 fw-black amf-green-text mb-4">Documentos de Conocimiento</h3>
+              <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3 std-subtitle">Descargas e Información</h6>
+              <h3 class="display-6 fw-black amf-green-text mb-4 std-title-section">Documentos de Conocimiento</h3>
             </div>
           </div>
 
           <div class="row g-4 justify-content-center reveal-up delay-2">
             <div v-for="doc in docsData" :key="doc.title" class="col-12 col-sm-6 col-lg-3 text-start">
-              <a :href="doc.url_link" target="_blank" class="text-decoration-none">
+              
+              <!-- Tarjeta Estándar (Descarga PDF) -->
+              <a v-if="!doc.isModal" :href="doc.url_link" target="_blank" class="text-decoration-none">
                 <div class="premium-doc-card bg-white p-4 rounded-4 shadow-sm border border-light h-100 d-flex flex-column position-relative overflow-hidden">
                   <div class="icon-container mb-4 position-relative z-2">
                     <div class="icon-box rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 55px; height: 55px; background-color: rgba(62, 148, 82, 0.1);">
@@ -76,21 +81,42 @@
                   </div>
                 </div>
               </a>
+
+              <!-- Tarjeta Modal (Fútbol Femenil - Integrada con colores AMFpro) -->
+              <div v-else @click="openModalFemenil" class="cursor-pointer h-100">
+                <div class="premium-doc-card card-femenil p-4 rounded-4 shadow-sm border border-light h-100 d-flex flex-column position-relative overflow-hidden">
+                  <div class="card-femenil-bg"></div>
+                  <div class="icon-container mb-4 position-relative z-2">
+                    <div class="icon-box-femenil rounded-circle d-flex align-items-center justify-content-center shadow-sm">
+                       <i class="material-icons text-white fs-3">sports_score</i>
+                    </div>
+                  </div>
+                  <div class="content-container mt-auto position-relative z-2">
+                    <h6 class="fw-bold text-white mb-4 lh-base doc-title" style="min-height: 45px; font-size: 0.95rem;">
+                      {{ doc.title }}
+                    </h6>
+                    <div class="download-link-femenil d-inline-flex align-items-center fw-bold text-uppercase tracking-wider small text-white">
+                      <span class="link-text">Ver Información</span>
+                      <i class="material-icons ms-2 transition-icon fs-5">visibility</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </section>
 
-       <section class="section-contacto py-6 text-white position-relative" style="background-color: #3e9452;">
-       
-        
+      <!-- 2. SECCIÓN CONTACTO -->
+      <section class="section-contacto py-6 text-white position-relative" style="background-color: #3e9452;">
         <div class="position-absolute top-0 start-0 w-100 h-100 opacity-50" style="background: radial-gradient(circle at center, rgba(62,148,82,0.4) 0%, transparent 70%);"></div>
 
         <div class="container position-relative z-2" style="margin-bottom: 120px; margin-top: 50px;">
           <div class="row text-center mb-5 reveal-up">
             <div class="col-md-12 mb-5">
-              <h2 class="display-5 fw-black text-white mb-3">Contáctanos para más información</h2>
-              <p class="fs-6 text-white-50 mx-auto" style="max-width: 600px;">
+              <h2 class="display-5 fw-black text-white mb-3 std-title-section">Contáctanos para más información</h2>
+              <p class="fs-6 text-white-50 mx-auto std-text" style="max-width: 600px;">
                 Envía tu nombre completo, NUI, tu duda y un teléfono para comunicarnos contigo de manera personalizada.
               </p>
             </div>
@@ -100,7 +126,7 @@
             <div class="col-md-4 reveal-up delay-1">
               <div class="contact-glass-card h-100 p-4 rounded-4">
                 <i class="material-icons mb-3" style="font-size: 2.5rem; color: #50c026;">email</i>
-                <h6 class="fw-bold text-uppercase mb-3 tracking-wider">Correo</h6>
+                <h6 class="fw-bold text-uppercase mb-3 tracking-wider std-subtitle">Correo</h6>
                 <p class="small mb-1 text-white-50"><a href="mailto:contacto@amfpro.mx" class="text-white text-decoration-none hover-green">contacto@amfpro.mx</a></p>
                 <p class="small text-white-50"><a href="mailto:juridico@amfpro.mx" class="text-white text-decoration-none hover-green">juridico@amfpro.mx</a></p>
               </div>
@@ -109,7 +135,7 @@
             <div class="col-md-4 reveal-up delay-2">
               <div class="contact-glass-card h-100 p-4 rounded-4" style="border-bottom: 3px solid #50c026;">
                 <i class="material-icons mb-3" style="font-size: 2.5rem; color: #50c026;">schedule</i>
-                <h6 class="fw-bold text-uppercase mb-3 tracking-wider">Atención</h6>
+                <h6 class="fw-bold text-uppercase mb-3 tracking-wider std-subtitle">Atención</h6>
                 <p class="small mb-1 text-white-50"><strong class="text-white">Lunes a Jueves</strong><br>10:00 AM - 17:00 PM</p>
                 <p class="small text-white-50"><strong class="text-white">Viernes</strong><br>10:00 AM - 15:00 PM</p>
               </div>
@@ -118,7 +144,7 @@
             <div class="col-md-4 reveal-up delay-3">
               <div class="contact-glass-card h-100 p-4 rounded-4">
                 <i class="material-icons mb-3" style="font-size: 2.5rem; color: #50c026;">phone_in_talk</i>
-                <h6 class="fw-bold text-uppercase mb-3 tracking-wider">Llámanos</h6>
+                <h6 class="fw-bold text-uppercase mb-3 tracking-wider std-subtitle">Llámanos</h6>
                 <p class="small text-white-50"><a href="tel:7286906040" class="text-white text-decoration-none hover-green fs-5">(728) 690 6040</a><br><span class="opacity-75 mt-2 d-block">Ext: 105 y 107</span></p>
               </div>
             </div>
@@ -126,12 +152,13 @@
         </div>
       </section>
 
+      <!-- 3. SECCIÓN CONVENIOS EDUCATIVOS -->
       <section id="convenios" class="bg-offwhite py-6 border-top border-light">
         <div class="container py-5">
           <div class="row justify-content-center mb-6 reveal-up">
             <div class="col-lg-8 text-center">
               <h6 class="std-subtitle text-muted mb-3">PREPÁRATE FUERA DEL CAMPO</h6>
-              <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase" style="font-size: clamp(2.5rem, 4vw, 3.5rem) !important;">Convenios Educativos</h2>
+              <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase">Convenios Educativos</h2>
               <p class="std-text text-secondary mb-5 px-md-5">Ofrecemos opciones para finalizar tu preparatoria, estudios universitarios, maestrías o cursos. Pide informes directamente a nuestra área encargada.</p>
               <a href="mailto:desarrolloeducativo@amfpro.mx" class="btn btn-premium-green btn-lg rounded-pill px-5 py-3 fw-bold shadow-sm d-inline-flex align-items-center">
                 <i class="material-icons me-2">email</i> desarrolloeducativo@amfpro.mx
@@ -244,6 +271,102 @@
         </div>
       </section>
 
+      <!-- MODAL MEGA PRO: FÚTBOL FEMENIL (COLORES INSTITUCIONALES AMFPRO) -->
+      <div v-if="isModalFemenilOpen" class="modal-overlay-femenil" @click.self="closeModalFemenil">
+        <div class="modal-content-femenil shadow-2xl rounded-4 overflow-hidden position-relative" role="dialog">
+          
+          <!-- Header del Modal -->
+          <div class="modal-femenil-header px-4 py-4 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+              <div class="icon-header-femenil me-3 shadow-sm rounded-circle d-flex align-items-center justify-content-center">
+                <i class="material-icons text-white">diversity_1</i>
+              </div>
+              <div>
+                <h6 class="text-white-50 fw-bold tracking-widest text-uppercase small mb-1">Estatutos y Derechos</h6>
+                <h3 class="fw-black text-white mb-0">FÚTBOL FEMENIL</h3>
+              </div>
+            </div>
+            <button class="btn-close-femenil shadow-sm" @click="closeModalFemenil">
+              <i class="material-icons">close</i>
+            </button>
+          </div>
+
+          <!-- Cuerpo del Modal -->
+          <div class="modal-femenil-body p-4 p-md-5 bg-light overflow-auto" style="max-height: 75vh;">
+            
+            <div class="row g-4">
+              <!-- Columna Izquierda: Comisión -->
+              <div class="col-12 col-lg-5">
+                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="material-icons fs-4 me-2 amf-green-text">gavel</i>
+                    <h5 class="fw-bold text-dark mb-0">La Comisión Femenil</h5>
+                  </div>
+                  <p class="std-text-small text-secondary text-justify mb-4">
+                    La <b style="color:#50C026;">Comisión Femenil</b> tiene como objetivo obtener información sobre posibles problemáticas que presentan las Futbolistas, con el fin de emitir recomendaciones tendientes a <b style="color:#50C026;">mejorar la calidad y las condiciones laborales</b>, asimismo tiene la atribución de participar en la <b style="color:#50C026;">Asamblea General</b>.
+                  </p>
+                  
+                  <h6 class="fw-bold text-dark mb-3 border-bottom pb-2">La Comisión está conformada por:</h6>
+                  
+                  <div class="d-flex flex-column gap-4">
+                    <!-- Iteración con fallback de imagen a avatar con inicial -->
+                    <div v-for="miembro in comisionMembers" :key="miembro.nombre" class="d-flex align-items-center p-3 rounded-3 hover-bg-light transition-all border border-light shadow-sm">
+                      <div class="member-avatar rounded-circle d-flex align-items-center justify-content-center me-4 text-white fw-bold shadow-sm overflow-hidden position-relative flex-shrink-0" style="width: 70px; height: 70px; background: linear-gradient(135deg, #50c026 0%, #3E9452 100%); font-size: 1.5rem;">
+                        <img v-if="miembro.img && !miembro.imgError" :src="miembro.img" @error="miembro.imgError = true" :alt="miembro.nombre" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span v-else>{{ miembro.nombre.charAt(0) }}</span>
+                      </div>
+                      <div>
+                        <h6 class="fw-bold text-dark mb-1" style="font-size: 1.1rem;">{{ miembro.nombre }}</h6>
+                        <span class="d-block text-secondary small mb-1" style="font-size: 0.85rem;">{{ miembro.club }}</span>
+                        <span class="badge bg-light text-dark border" style="font-size: 0.75rem;">{{ miembro.puesto }}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Columna Derecha: Derechos de Maternidad y Salud -->
+              <div class="col-12 col-lg-7">
+                
+                <!-- Tarjeta Maternidad -->
+                <div class="bg-white p-4 rounded-4 shadow-sm border border-light mb-4 position-relative overflow-hidden">
+                  <div class="card-accent-femenil"></div>
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="icon-wrapper-soft me-3"><i class="material-icons">pregnant_woman</i></div>
+                    <h5 class="fw-bold text-dark mb-0">Maternidad y Lactancia</h5>
+                  </div>
+                  <ul class="custom-femenil-list text-secondary std-text-small text-justify mb-0">
+                    <li>Como Futbolista Profesional, tienes derecho a solicitar tu baja por maternidad, ejercer un permiso por adopción o permiso parental.</li>
+                    <li>En estos supuestos, debes recibir el cien por ciento del salario que estipule tu contrato, durante el periodo de vigencia.</li>
+                    <li>La continuidad o renovación de tu contrato <strong>no estará condicionada</strong> a que te realices una prueba de embarazo.</li>
+                    <li>En el caso de la lactancia, el club garantizará un lugar adecuado donde puedas amamantar a tu bebé o realizar la extracción de leche materna.</li>
+                  </ul>
+                </div>
+
+                <!-- Tarjeta Salud Menstrual -->
+                <div class="bg-white p-4 rounded-4 shadow-sm border border-light position-relative overflow-hidden">
+                  <div class="card-accent-femenil"></div>
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="icon-wrapper-soft me-3"><i class="material-icons">water_drop</i></div>
+                    <h5 class="fw-bold text-dark mb-0">Salud Menstrual</h5>
+                  </div>
+                  <p class="std-text-small text-secondary fw-bold mb-3">
+                    Los Clubes deben respetar en todo momento las necesidades de las Jugadoras en relación con su ciclo y salud menstrual.
+                  </p>
+                  <ul class="custom-femenil-list text-secondary std-text-small text-justify mb-0">
+                    <li>Una Futbolista tiene derecho a ausentarse de entrenamientos o partidos por motivos de salud menstrual, previa presentación de un certificado médico válido, expedido por un doctor especialista.</li>
+                    <li>La Jugadora tendrá derecho a recibir su <strong>salario íntegro</strong> cuando disfrute de estos derechos.</li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </div>
 </template>
 
@@ -252,6 +375,13 @@ export default {
     data() {
         return {
             observer: null,
+            isModalFemenilOpen: false,
+            comisionMembers: [
+              { nombre: 'Dirce Delgado', club: 'Atlas-2025', puesto: 'Presidente', img: 'recursos/dirce.png', imgError: false },
+              { nombre: 'Ana Gabriela Paz', club: 'Rayados de Monterrey-2025', puesto: 'Secretario', img: 'recursos/ana.png', imgError: false },
+              { nombre: 'Mónica Ocampo', club: 'Pachuca-2025', puesto: 'Vocal', img: 'recursos/monica.png', imgError: false },
+              { nombre: 'Daniela Gómez', club: 'Ex-Futbolista', puesto: 'Enlace del Fútbol Femenil', img: 'recursos/daniela.png', imgError: false }
+            ],
             categories: [
                 {
                 title: 'Carácter económico', icon: 'account_balance_wallet',
@@ -267,9 +397,10 @@ export default {
                 }
             ],
             docsData: [
-                { title: 'Reglamento de la comisión de conciliación y resolución de controversias', icon: 'recursos/documento.png', icon_grey: 'recursos/documento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/441.pdf'},
-                { title: 'Reglamento de transferencias y contrataciones', icon: 'recursos/dobledocumento.png', icon_grey: 'recursos/dobledocumento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/472.pdf' },
-                { title: 'Código de Ética', icon: 'recursos/ball.png', icon_grey: 'recursos/ball-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/475.pdf' }
+                { title: 'Reglamento de la comisión de conciliación y resolución de controversias', icon_grey: 'recursos/documento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/441.pdf', isModal: false },
+                { title: 'Reglamento de transferencias y contrataciones', icon_grey: 'recursos/dobledocumento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/472.pdf', isModal: false },
+                { title: 'Código de Ética', icon_grey: 'recursos/ball-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/475.pdf', isModal: false },
+                { title: 'Derechos y Regulaciones del Fútbol Femenil', isModal: true }
             ]
         }
     },
@@ -281,17 +412,53 @@ export default {
 
       this.$nextTick(() => { document.querySelectorAll('.reveal-up').forEach(el => { this.observer.observe(el); }); });
     },
-    beforeDestroy() { if (this.observer) this.observer.disconnect(); }
+    beforeDestroy() { if (this.observer) this.observer.disconnect(); },
+    methods: {
+      openModalFemenil() {
+        this.isModalFemenilOpen = true;
+        document.body.style.overflow = 'hidden'; 
+      },
+      closeModalFemenil() {
+        this.isModalFemenilOpen = false;
+        document.body.style.overflow = '';
+      }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@700;900&display=swap');
+/* FORZAR LA TIPOGRAFÍA ROBOTO PARA TODO EL COMPONENTE */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-$amf-dark: #112a18; $amf-main: #3E9452; $amf-accent: #50c026;
-h1, h2, h3, h4, h5, h6, .fw-black { font-family: 'Montserrat', sans-serif !important; font-weight: 900; }
-p, span, div, a { font-family: 'Roboto', sans-serif !important; }
+.font-roboto {
+  font-family: 'Roboto', sans-serif !important;
+  
+  h1, h2, h3, h4, h5, h6, p, span, div, a, button, li, strong {
+    font-family: 'Roboto', sans-serif !important;
+  }
+}
+
+.material-icons {
+  font-family: 'Material Icons' !important;
+}
+
+$amf-dark: #112a18; 
+$amf-main: #3E9452; 
+$amf-accent: #50c026;
+$amf-gradient: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
+
+.fw-black { font-weight: 900 !important; }
+.fw-bold { font-weight: 700 !important; }
+.fw-light { font-weight: 300 !important; }
+
+/* Títulos Estandarizados */
+.std-title-section { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; letter-spacing: -1px; }
+.std-title-card { font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.3; }
+.std-subtitle { font-size: clamp(0.75rem, 1.5vw, 0.9rem); letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
+.std-text { font-size: clamp(1rem, 1.5vw, 1.1rem); line-height: 1.8; }
+.std-text-small { font-size: clamp(0.85rem, 1vw, 0.95rem); line-height: 1.6; }
+
 .amf-green-text { color: $amf-accent !important; }
 .tracking-widest { letter-spacing: 4px; }
 .tracking-wider { letter-spacing: 2px; }
@@ -300,44 +467,22 @@ p, span, div, a { font-family: 'Roboto', sans-serif !important; }
 .mt-6 { margin-top: 5rem; }
 .mb-6 { margin-bottom: 5rem; }
 .hover-green:hover { color: $amf-accent !important; transition: 0.3s ease; }
+.cursor-pointer { cursor: pointer; }
+.transition-all { transition: all 0.3s ease; }
+.hover-bg-light:hover { background-color: #f8f9fa; transform: translateX(5px); }
 
-.relative-container {
-  position: relative;
-  z-index: 10;
-}
+.relative-container { position: relative; z-index: 10; }
 
-/* =======================================
-   MAZO FLOTANTE (ENTRE SECCIONES)
-   ======================================= */
-.split-icon-top {
-  position: absolute;
-  top: -40px; /* Sube la mitad de la altura de la caja (80px) */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 50;
-  
-  .icon-circle-wrapper {
-    width: 80px;
-    height: 80px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #eaeaea; /* Borde súper sutil */
-    
-    img {
-      width: 45px;
-      height: auto;
-      object-fit: contain;
-    }
-  }
+.split-icon-container-2 {
+  position: absolute; left: 50%; transform: translateX(-50%); z-index: 10; top: -195px; 
 }
+.section-contacto .split-icon-container-2 { bottom: -160px; top: auto; }
 
 .reveal-up { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
 .is-visible.reveal-up, .is-visible .reveal-up { opacity: 1; transform: translateY(0); }
 .delay-1 { transition-delay: 0.15s; } .delay-2 { transition-delay: 0.3s; } .delay-3 { transition-delay: 0.45s; }
 
+/* Tarjetas Criterios Legales */
 .premium-legal-card {
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: pointer;
   .card-top-line { position: absolute; top: 0; left: 0; height: 4px; width: 0; background-color: $amf-main; transition: width 0.4s ease; }
@@ -347,6 +492,7 @@ p, span, div, a { font-family: 'Roboto', sans-serif !important; }
   &:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(62, 148, 82, 0.15) !important; border-color: rgba(62, 148, 82, 0.3) !important; .card-top-line { width: 100%; } }
 }
 
+/* Tarjetas Descargas Base */
 .premium-doc-card {
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   .icon-box { transition: all 0.4s ease; .main-icon { transition: all 0.4s ease; } }
@@ -355,11 +501,23 @@ p, span, div, a { font-family: 'Roboto', sans-serif !important; }
   &:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(62, 148, 82, 0.15) !important; border-color: rgba(62, 148, 82, 0.3) !important; .icon-box { background-color: $amf-main !important; transform: scale(1.1); .main-icon { filter: brightness(0) invert(1); } } .doc-title { color: $amf-accent !important; } .download-link { color: $amf-dark; .transition-icon { transform: translateX(8px); } } }
 }
 
-.section-contacto {
-  .split-icon-container-2{ position: absolute; left: 50%; transform: translateX(-50%); z-index: 10; bottom: -160px; }
-  .contact-glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.4s ease, background 0.4s ease; &:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.1); border-color: rgba(80, 192, 38, 0.4); } }
+/* Tarjeta Femenil Especial (Ajustada a verde) */
+.card-femenil {
+  border-color: rgba(80, 192, 38, 0.2) !important;
+  .card-femenil-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: $amf-gradient; opacity: 0.9; z-index: 1; transition: opacity 0.3s ease; }
+  .icon-box-femenil { width: 55px; height: 55px; background-color: rgba(255,255,255,0.2); backdrop-filter: blur(5px); transition: transform 0.4s ease; }
+  .download-link-femenil .transition-icon { transition: transform 0.4s ease; }
+  
+  &:hover {
+    transform: translateY(-8px); box-shadow: 0 20px 40px rgba(80, 192, 38, 0.25) !important;
+    .card-femenil-bg { opacity: 1; }
+    .icon-box-femenil { transform: scale(1.1); background-color: rgba(255,255,255,0.3); }
+    .download-link-femenil .transition-icon { transform: translateX(8px); }
+  }
 }
-.split-icon-container-2{ position: absolute; left: 50%; transform: translateX(-50%); z-index: 10; top: -195px; }
+
+/* Tarjetas Contacto */
+.contact-glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.4s ease, background 0.4s ease; &:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.1); border-color: rgba(80, 192, 38, 0.4); } }
 
 /* ESTILOS DE CONVENIOS */
 .bg-offwhite { background-color: #F8F9FA; }
@@ -373,6 +531,64 @@ p, span, div, a { font-family: 'Roboto', sans-serif !important; }
 .premium-clean-card:hover .convenio-logo { transform: scale(1.05); }
 .std-title-hero { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; }
 .btn-premium-green { background: $amf-accent; color: white; border: none; box-shadow: 0 10px 20px rgba(80, 192, 38, 0.2); &:hover { background: #111; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); transform: translateY(-3px); color: white; } }
-.std-title-section { font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -1.5px; }
-.std-subtitle { font-size: 0.8rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
+
+/* =========================================================
+   MODAL ULTRA-PREMIUM (FÚTBOL FEMENIL) EN VERDE INSTITUCIONAL
+   ========================================================= */
+.modal-overlay-femenil {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px);
+  z-index: 10000; display: flex; justify-content: center; align-items: center;
+  padding: 20px;
+}
+
+.modal-content-femenil {
+  width: 100%; max-width: 1100px;
+  background: white;
+  animation: modalScaleIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.modal-femenil-header {
+  background: $amf-gradient;
+  .icon-header-femenil { width: 50px; height: 50px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); }
+}
+
+.btn-close-femenil {
+  background: rgba(255,255,255,0.2); border: none; color: white;
+  width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease; cursor: pointer;
+  &:hover { background: white; color: #50c026; transform: rotate(90deg); }
+}
+
+/* Body del Modal Femenil */
+.modal-femenil-body {
+  &::-webkit-scrollbar { width: 8px; }
+  &::-webkit-scrollbar-track { background: #f1f1f1; }
+  &::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+  &::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+}
+
+.card-accent-femenil {
+  position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+  background: $amf-gradient;
+}
+
+.icon-wrapper-soft {
+  width: 45px; height: 45px; border-radius: 12px;
+  background: rgba(80, 192, 38, 0.1); display: flex; align-items: center; justify-content: center;
+  i { color: #3E9452; font-size: 1.6rem; }
+}
+
+.custom-femenil-list {
+  list-style: none; padding-left: 0;
+  li {
+    position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;
+    &::before { content: "check_circle"; font-family: "Material Icons"; position: absolute; left: 0; top: 2px; font-size: 1.1rem; color: #50c026; }
+  }
+}
+
+@keyframes modalScaleIn {
+  from { opacity: 0; transform: scale(0.95) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
 </style>

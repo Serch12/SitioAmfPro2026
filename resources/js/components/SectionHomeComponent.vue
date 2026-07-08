@@ -14,16 +14,17 @@
           
           <div class="col-12 col-lg-7 text-center text-lg-start px-md-4">
             <div class="reveal-up">
-              <h1 class="hero-title-pro text-white m-0 text-shadow-pro">EL JUEGO CAMBIÓ,</h1>
+              <h1 class="hero-title-pro text-white m-0 text-shadow-pro">ESTAMOS CONTIGO, DENTRO</h1>
             </div>
             <div class="reveal-up delay-1 mb-4">
-              <h1 class="hero-title-pro amf-green-text m-0 text-shadow-pro text-glow">TUS DERECHOS TAMBIÉN.</h1>
+              <h1 class="hero-title-pro amf-green-text m-0 text-shadow-pro text-glow"> Y FUERA DE LA CANCHA.</h1>
             </div>
             
             <div class="reveal-up delay-2 mb-5 pe-lg-5 d-flex justify-content-center justify-content-lg-start">
               <p class="hero-text-pro text-white-50 fw-light">
-                Defendemos tu integridad y tu esfuerzo. <br class="d-none d-md-block">
-                <strong class="text-white mt-1 d-inline-block">Porque los verdaderos profesionales no pagan por jugar.</strong>
+                Representamos, protegemos e impulsamos a las y los futbolistas profesionales de México con servicios, asesoría, beneficios y acompañamiento en cada etapa de su carrera.
+                 <!-- <br class="d-none d-md-block"> -->
+                <!-- <strong class="text-white mt-1 d-inline-block">Porque los verdaderos profesionales no pagan por jugar.</strong> -->
               </p>
             </div>
             
