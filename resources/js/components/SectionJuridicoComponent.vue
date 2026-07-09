@@ -176,14 +176,14 @@
                   <p class="std-text text-secondary text-justify mb-4 fw-bold text-dark">Modelo de aprendizaje basado en:</p>
                   <div class="row g-3">
                       <div class="col-sm-6">
-                          <ul class="premium-list std-text-small m-0 p-0 text-secondary">
+                          <ul class="premium-list std-text-small m-0 p-0 text-secondary text-justify">
                               <li>100% orientado al deporte</li>
                               <li>Centrado en el alumno</li>
                               <li>‘Learning by doing’ (Aprender haciendo)</li>
                           </ul>
                       </div>
                       <div class="col-sm-6">
-                          <ul class="premium-list std-text-small m-0 p-0 text-secondary">
+                          <ul class="premium-list std-text-small m-0 p-0 text-secondary text-justify">
                               <li>Motivacional y participativo</li>
                               <li>Adaptado a la carga de trabajo y disponibilidad</li>
                           </ul>
@@ -213,7 +213,7 @@
                   <div class="row g-4">
                       <div class="col-sm-6">
                           <h6 class="std-text fw-bold mb-3 border-bottom pb-2 text-dark">Carreras Profesionales (3 años)</h6>
-                          <ul class="premium-list std-text-small m-0 p-0 text-secondary">
+                          <ul class="premium-list std-text-small m-0 p-0 text-secondary text-justify">
                               <li>Administración de Empresas</li>
                               <li>Mercadotecnia & Finanzas</li>
                               <li>Ingeniería Industrial y de Sistemas</li>
@@ -221,7 +221,7 @@
                       </div>
                       <div class="col-sm-6">
                           <h6 class="std-text fw-bold mb-3 border-bottom pb-2 text-dark">Maestrías (18 meses)</h6>
-                          <ul class="premium-list std-text-small m-0 p-0 text-secondary">
+                          <ul class="premium-list std-text-small m-0 p-0 text-secondary text-justify">
                               <li>Administración y Alta Dirección</li>
                               <li>Dirección Comercial y Mercadotecnia</li>
                           </ul>
@@ -351,7 +351,7 @@
                     <div class="icon-wrapper-soft me-3"><i class="material-icons">water_drop</i></div>
                     <h5 class="fw-bold text-dark mb-0">Salud Menstrual</h5>
                   </div>
-                  <p class="std-text-small text-secondary fw-bold mb-3">
+                  <p class="std-text-small text-secondary fw-bold mb-3 text-justify">
                     Los Clubes deben respetar en todo momento las necesidades de las Jugadoras en relación con su ciclo y salud menstrual.
                   </p>
                   <ul class="custom-femenil-list text-secondary std-text-small text-justify mb-0">
@@ -458,6 +458,8 @@ $amf-gradient: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
 .std-subtitle { font-size: clamp(0.75rem, 1.5vw, 0.9rem); letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
 .std-text { font-size: clamp(1rem, 1.5vw, 1.1rem); line-height: 1.8; }
 .std-text-small { font-size: clamp(0.85rem, 1vw, 0.95rem); line-height: 1.6; }
+
+.text-justify { text-align: justify !important; }
 
 .amf-green-text { color: $amf-accent !important; }
 .tracking-widest { letter-spacing: 4px; }

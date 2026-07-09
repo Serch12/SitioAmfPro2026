@@ -19,7 +19,7 @@
             </div>
             
             <div class="goal-split-container reveal-item delay-3">
-            <img src="recursos/areaporteria.png" class="goal-img-split" alt="Portería Divisora" loading="lazy">
+            <img src="recursos/areaporteria3.png" class="goal-img-split" alt="Portería Divisora" loading="lazy" style="width: 190%;">
             </div>
 
         </div>
@@ -601,7 +601,7 @@ $amf-accent: #50c026;
 
   &.hero-visible {
     .reveal-item { opacity: 1; transform: translateY(0); }
-    .goal-split-container.reveal-item { transform: translateX(-50%) translateY(0) scale(1); }
+    .goal-split-container.reveal-item { transform: translateX(-94%) translateY(0) scale(1); }
   }
 }
 
