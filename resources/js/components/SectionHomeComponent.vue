@@ -22,7 +22,7 @@
             
             <div class="reveal-up delay-2 mb-5 pe-lg-5 d-flex justify-content-center justify-content-lg-start">
               <p class="hero-text-pro text-white-50 fw-light">
-                Representamos, protegemos e impulsamos a las y los futbolistas profesionales de México con servicios, asesoría, beneficios y acompañamiento en cada etapa de su carrera.
+                Representamos, protegemos e impulsamos a las y los futbolistas profesionales de México con servicios, asesoría, beneficios y acompañamiento en cada etapa de tu carrera activa.
                  <!-- <br class="d-none d-md-block"> -->
                 <!-- <strong class="text-white mt-1 d-inline-block">Porque los verdaderos profesionales no pagan por jugar.</strong> -->
               </p>
