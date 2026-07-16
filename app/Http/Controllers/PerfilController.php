@@ -93,7 +93,8 @@ class PerfilController extends Controller
         // ENVÍO DE CORREO A JURÍDICO
         // ===============================================
         try {
-            Mail::to('emmanuel@amfpro.mx')->send(new NotificacionPerfilEditado($afiliado));
+            Mail::to('registro@amfpro.mx')->send(new NotificacionPerfilEditado($afiliado));
+            // Mail::to('emmanuel@amfpro.mx')->send(new NotificacionPerfilEditado($afiliado));
         } catch (\Exception $e) {
             // Si el correo falla, lo anotamos en storage/logs/laravel.log pero no le rompemos la vista al usuario
             Log::error('No se pudo enviar el correo a juridico@amfpro.mx al actualizar datos del afiliado NUI: ' . $afiliado->nui . '. Error: ' . $e->getMessage());
