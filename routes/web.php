@@ -28,7 +28,9 @@ Route::get('/afiliacion', function () {
     return view('Afiliacion');
 })->name('afiliacion');
 
-
+Route::get('/manual-AMFPro', function () {
+    return view('Folleto')->with('evento','');
+})->name('folleto');
 // ==========================================
 // 2. RUTAS PÚBLICAS DE LA API (Datos para Vue)
 // (Nombres estandarizados con puntos en lugar de barras)
