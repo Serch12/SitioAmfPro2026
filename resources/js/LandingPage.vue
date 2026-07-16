@@ -118,7 +118,7 @@ export default {
       const isLocalhost = host === 'localhost' || host === '127.0.0.1';
       let baseUrl = !existeCarpetaFalsa 
         ? (isLocalhost ? 'http://localhost/IntranetAMF/public/ArchivosSistema/Afiliados/' : 'https://test-intranet.amfpro.mx/ArchivosSistema/Afiliados/')
-        : (isLocalhost ? 'http://localhost/amfpro-web-2026/public/ArchivosSistema/Afiliados/' : 'https://deployment.amfpro.mx/ArchivosSistema/Afiliados/');
+        : (isLocalhost ? 'http://localhost/amfpro-web-2026/public/ArchivosSistema/Afiliados/' : 'https://amfpro.mx/ArchivosSistema/Afiliados/');
       return `${baseUrl}${this.afiliado.nui}/${nombreArchivo}`;
     },
     goToLogin() {
