@@ -32,8 +32,8 @@
             <div class="vertical-divider d-none d-sm-block"></div>
 
             <button v-if="!isLoggedIn" @click="goToLogin" class="btn-login-header shadow-sm">
-              <i class="material-icons">login</i>
-              <span class="d-none d-md-inline ms-2 fw-bold">Iniciar sesión</span>
+              <i class="material-icons">account_circle</i>
+              <span class="d-none d-md-inline ms-2 fw-bold">Ingresar / Afiliarse</span>
             </button>
 
             <button v-else @click="goToProfile" class="btn-profile-header shadow-sm">

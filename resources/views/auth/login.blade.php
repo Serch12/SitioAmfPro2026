@@ -224,8 +224,21 @@
 
         @if(!session('nui_verificado'))
           <div class="text-center mb-4">
-            <h4 class="text-white fw-bold mb-1">Bienvenido de nuevo</h4>
-            <p class="text-muted" style="color: #94a3b8 !important;">Por favor, identifícate para continuar</p>
+            <h4 class="text-white fw-bold mb-1">Portal del Asociado</h4>
+            <p class="text-muted" style="color: #94a3b8 !important;">Inicia sesión o tramita tu afiliación AMFPRO.</p>
+          </div>
+
+          <!-- MINI-WIZARD INFORMATIVO PARA NUEVOS USUARIOS -->
+          <div style="background: rgba(80, 192, 38, 0.1); border-left: 4px solid #50c026; border-radius: 8px; padding: 12px 16px; margin-bottom: 24px;">
+            <div class="d-flex align-items-start gap-2">
+              <i class="ri-information-fill" style="color: #50c026; font-size: 1.2rem; margin-top: -2px;"></i>
+              <div>
+                <h6 class="text-white fw-bold mb-1" style="font-size: 0.9rem;">¿Es tu primera vez aquí?</h6>
+                <p class="mb-0" style="color: #cbd5e1; font-size: 0.8rem; line-height: 1.4;">
+                  Ingresa tu <strong>NUI</strong> a continuación. Si aún no estás registrado, el sistema lo detectará automáticamente y te guiaremos paso a paso para completar tu afiliación.
+                </p>
+              </div>
+            </div>
           </div>
 
           <form id="formAuthentication" method="POST" action="{{ route('consultarnui') }}">
@@ -246,9 +259,9 @@
               </div>
             </div>
 
-            <div class="mt-5">
+            <div class="mt-4">
               <button class="btn-premium" type="submit" onclick="showLoader('loader-nui', 'nui')">
-                Verificar Identidad <i class="ri-arrow-right-line"></i>
+                Continuar <i class="ri-arrow-right-line"></i>
               </button>
             </div>
 
