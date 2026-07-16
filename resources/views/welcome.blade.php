@@ -10,31 +10,33 @@
     <link rel="icon" href="{{ asset('recursos/logo_verde.png') }}" type="image/png">
 
     @if (isset($evento) && $evento == 'Si')
-        <meta property="og:url" content="{{ url()->current() }}" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="{{$info->titulo}}">
-        <meta property="og:description" content="{{ strip_tags($info->subtitulo) }}">
-        <meta property="og:image" content="https://amfpro.mx/intranet/public/ArchivosSistema/Post/{{ rawurlencode($info->imagen_p) }}"> 
-        <meta property="og:image:secure_url" content="https://amfpro.mx/intranet/public/ArchivosSistema/Post/{{ rawurlencode($info->imagen_p) }}"> 
-        
-        <meta name="twitter:title" content="{{$info->titulo}}" />
-        <meta name="twitter:image" content="https://amfpro.mx/intranet/public/ArchivosSistema/Post/{{ rawurlencode($info->imagen_p) }}" />
+            <meta property="og:url" content="{{ url()->current() }}" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="{{$info->titulo}}">
+            <meta property="og:description" content="{{ strip_tags($info->subtitulo) }}">
+            <meta property="og:image" content="https://amfpro.mx/intranet/public/ArchivosSistema/Post/{{ rawurlencode($info->imagen_p) }}"> 
+            <meta property="og:image:secure_url" content="https://amfpro.mx/intranet/public/ArchivosSistema/Post/{{ rawurlencode($info->imagen_p) }}"> 
+            
+            <meta name="twitter:title" content="{{$info->titulo}}" />
+            <meta name="twitter:image" content="https://amfpro.mx/intranet/public/ArchivosSistema/Post/{{ rawurlencode($info->imagen_p) }}" />
     @else
-        <meta property="og:url" content="{{ url()->current() }}" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Asociación Mexicana de Futbolistas">
-        <meta property="og:description" content="La AMFpro busca representar y proteger los intereses de las y los Futbolistas profesionales en México.">
-        
-        <!-- ETIQUETAS ROBUSTAS PARA EL LOGO POR DEFECTO -->
-        <meta property="og:image" content="{{ asset('recursos/logo.png') }}">
-        <meta property="og:image:secure_url" content="{{ asset('recursos/logo.png') }}">
-        <meta property="og:image:type" content="image/png">
-        <meta property="og:image:alt" content="Logo AMFpro">
-        
-        <meta name="twitter:title" content="Asociación Mexicana de Futbolistas" />
-        <meta name="twitter:image" content="{{ asset('recursos/logo.png') }}" />
-        <meta name="twitter:image:alt" content="Logo AMFpro" />
-    @endif
+            <meta property="og:url" content="{{ url()->current() }}" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="Asociación Mexicana de Futbolistas">
+            <meta property="og:description" content="La AMFpro busca representar y proteger los intereses de las y los Futbolistas profesionales en México.">
+            
+            <!-- ETIQUETAS A PRUEBA DE WHATSAPP -->
+            <meta property="og:image" itemprop="image" content="https://amfpro.mx/recursos/logo.png">
+            <meta property="og:image:secure_url" itemprop="image" content="https://amfpro.mx/recursos/logo.png">
+            <meta property="og:image:type" content="image/png">
+            <meta property="og:image:alt" content="Logo AMFpro">
+            <meta property="og:image:width" content="512">
+            <meta property="og:image:height" content="512">
+            
+            <meta name="twitter:title" content="Asociación Mexicana de Futbolistas" />
+            <meta name="twitter:image" content="https://amfpro.mx/recursos/logo.png" />
+            <meta name="twitter:image:alt" content="Logo AMFpro" />
+        @endif
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@amfpromx" />
