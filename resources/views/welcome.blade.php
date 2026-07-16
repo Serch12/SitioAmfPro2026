@@ -26,15 +26,15 @@
             <meta property="og:description" content="La AMFpro busca representar y proteger los intereses de las y los Futbolistas profesionales en México.">
             
             <!-- ETIQUETAS A PRUEBA DE WHATSAPP -->
-            <meta property="og:image" itemprop="image" content="https://amfpro.mx/recursos/logo.png">
-            <meta property="og:image:secure_url" itemprop="image" content="https://amfpro.mx/recursos/logo.png">
+            <meta property="og:image" itemprop="image" content="{{ asset('recursos/logo.png') }}">
+            <meta property="og:image:secure_url" itemprop="image" content="{{ asset('recursos/logo.png') }}">
             <meta property="og:image:type" content="image/png">
             <meta property="og:image:alt" content="Logo AMFpro">
             <meta property="og:image:width" content="512">
             <meta property="og:image:height" content="512">
             
             <meta name="twitter:title" content="Asociación Mexicana de Futbolistas" />
-            <meta name="twitter:image" content="https://amfpro.mx/recursos/logo.png" />
+            <meta name="twitter:image" content="{{ asset('recursos/logo.png') }}" />
             <meta name="twitter:image:alt" content="Logo AMFpro" />
         @endif
 
