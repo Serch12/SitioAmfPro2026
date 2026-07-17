@@ -90,26 +90,26 @@
           <div class="col-xl-auto col-lg-4 col-md-6 border-end-xl px-xl-4 reveal-up">
             <p class="std-subtitle text-muted" style="line-height: 10px;">MIEMBROS</p>
             <p class="std-subtitle text-muted">INTERNACIONALES</p>
-            <img src="recursos/logo_aif.png" alt="AIF" class="circle-logo mx-auto reveal-scale-zoom delay-1">
+            <img src="recursos/logo_aif.png" alt="AIF" class="circle-logo mx-auto reveal-scale-zoom delay-1" loading="lazy">
           </div>
           <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4 reveal-up delay-1">
             <p class="std-subtitle text-muted mb-4">INSTITUCIONES</p>
             <p class="std-subtitle text-muted mb-5"></p>
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
-              <img src="recursos/logo_fifa.png" alt="FIFA" class="circle-logo reveal-scale-zoom delay-2">
-              <img src="recursos/logo_seleccion.png" alt="FMF" class="circle-logo reveal-scale-zoom delay-3">
-              <img src="recursos/logo_concacaf.png" alt="Concacaf" class="circle-logo reveal-scale-zoom delay-4">
+              <img src="recursos/logo_fifa.png" alt="FIFA" class="circle-logo reveal-scale-zoom delay-2" loading="lazy">
+              <img src="recursos/logo_seleccion.png" alt="FMF" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
+              <img src="recursos/logo_concacaf.png" alt="Concacaf" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
             </div>
           </div>
           <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4 reveal-up delay-2">
             <p class="std-subtitle text-muted mb-4">LIGAS</p>
             <p class="std-subtitle text-muted mb-5"></p>
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
-              <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo reveal-scale-zoom delay-3">
-              <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo reveal-scale-zoom delay-4">
-              <img src="recursos/logo_ligapremier.png" alt="Liga Premier" class="circle-logo reveal-scale-zoom delay-5">
-              <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo reveal-scale-zoom delay-6">
-              <img src="recursos/logo_ligamxfemenil.png" alt="Liga MX Femenil" class="circle-logo reveal-scale-zoom delay-6">
+              <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
+              <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
+              <img src="recursos/logo_ligapremier.png" alt="Liga Premier" class="circle-logo reveal-scale-zoom delay-5" loading="lazy">
+              <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
+              <img src="recursos/logo_ligamxfemenil.png" alt="Liga MX Femenil" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@
               <div class="swiper swiper-nosotros">
                   <div class="swiper-wrapper">
                       <div class="swiper-slide" v-for="(img, index) in imagenesNosotros" :key="index">
-                        <img :src="img" :alt="'Nosotros ' + (index + 1)" class="img-fluid rounded-4 swiper-img-clean" @click="abrirGaleriaNosotros(index)">
+                        <img :src="img" :alt="'Nosotros ' + (index + 1)" class="img-fluid rounded-4 swiper-img-clean" @click="abrirGaleriaNosotros(index)" loading="lazy">
                       </div>
                   </div>
               </div>
@@ -227,7 +227,7 @@
             <h2 class="std-title-section fw-light text-white mb-5">DEPORTIVO</h2>
             <div class="melvin-premium-wrapper mx-auto mx-lg-0 mb-4 position-relative">
               <div class="glow-circle position-absolute top-50 start-50 translate-middle"></div>
-              <img src="recursos/melvin-brown.png" alt="Melvin Brown Casados" class="img-fluid position-relative z-2">
+              <img src="recursos/melvin-brown.png" alt="Melvin Brown Casados" class="img-fluid position-relative z-2" loading="lazy">
             </div>
             <h3 class="std-title-card fw-bold text-white mb-0 mt-4">MELVIN BROWN</h3>
             <h4 class="std-title-card fw-light text-white-50">CASADOS</h4>
@@ -252,10 +252,10 @@
               </div>
               <p class="std-text text-white text-justify mb-4">Llevar el mensaje de la AMFpro en las visitas a los equipos de:</p>
               <div class="d-flex flex-wrap gap-2 gap-md-3 mb-4 mt-2">
-                <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;">
-                <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;">
-                <img src="recursos/logo_ligapremier.png" alt="Liga Premier" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;">
-                <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;">
+                <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
+                <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
+                <img src="recursos/logo_ligapremier.png" alt="Liga Premier" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
+                <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
               </div>
               <ul class="premium-list-white text-white text-justify m-0 p-0 std-text-small">
                 <li>Realizar convenios educativos para beneficio de las (os) futbolistas profesionales de México.</li>
@@ -282,7 +282,7 @@
       <button class="btn-close-lightbox" @click="cerrarGaleriaNosotros">&times;</button>
       <div class="lightbox-content">
         <button class="btn-nav left" @click="anteriorFotoNosotros"><i class="material-icons">chevron_left</i></button>
-        <div class="img-container"><img :src="imagenesNosotros[fotoNosotrosIndex]" :alt="'Foto ' + (fotoNosotrosIndex + 1)" class="lightbox-img"></div>
+        <div class="img-container"><img :src="imagenesNosotros[fotoNosotrosIndex]" :alt="'Foto ' + (fotoNosotrosIndex + 1)" class="lightbox-img" loading="lazy"></div>
         <button class="btn-nav right" @click="siguienteFotoNosotros"><i class="material-icons">chevron_right</i></button>
       </div>
     </div>
