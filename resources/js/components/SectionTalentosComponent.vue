@@ -101,6 +101,7 @@
             </div>
         </div>
       </section>
+
       <section class="py-5 bg-white text-center section-galeria">
           <div class="container px-md-5">
             <p class="section-sub text-dark mb-0 reveal-up">Nuestros torneos en</p>
@@ -153,8 +154,9 @@
             </div>
             <br>
           </div>
-        </section>
-        <div v-if="galeriaAbierta && torneoActivo" class="lightbox-overlay" @click.self="cerrarGaleria">
+      </section>
+
+      <div v-if="galeriaAbierta && torneoActivo" class="lightbox-overlay" @click.self="cerrarGaleria">
           <button class="btn-close-lightbox" @click="cerrarGaleria">&times;</button>
 
           <div v-if="cargandoImagenes" class="text-center text-white">
@@ -180,54 +182,56 @@
               <i class="material-icons">chevron_right</i>
             </button>
           </div>
-        </div>
+      </div>
 
-        <section class="section-success py-6 text-white text-center position-relative">
+      <!-- REDISEÑO COMPACTO: CASOS DE ÉXITO -->
+      <section class="section-success py-5 text-white text-center position-relative">
           <div class="container px-md-5">
             
-            <div class="row justify-content-center mb-5 reveal-up">
+            <div class="row justify-content-center mb-4 reveal-up">
               <div class="col-12 col-md-8 text-center">
-                <p class="text-uppercase tracking-widest text-white-50 fw-bold mb-2 small"></p>
+                <p class="text-uppercase tracking-widest text-white-50 fw-bold mb-2 small">NUESTRO ORGULLO</p>
                 <h2 class="display-4 fw-black text-white mb-3">CASOS DE ÉXITO</h2>
-                <p class="text-white-50 fs-6 mx-auto" style="max-width: 600px;">
-                  Conoce a los jóvenes talentos que, gracias a su esfuerzo en nuestro programa, lograron dar el salto al fútbol profesional.
+                <p class="text-white-50 fs-6 mx-auto mb-0" style="max-width: 600px;">
+                  Conoce a los jóvenes talentos que, gracias a su esfuerzo y disciplina en nuestro programa, lograron dar el salto oficial al fútbol profesional.
                 </p>
               </div>
             </div>
 
-            <div class="row g-4 justify-content-center mb-5 reveal-up delay-1">
-              <div v-for="(caso, index) in casosExito" :key="caso.id" class="col-6 col-md-4 col-lg-2" :class="'delay-' + (index % 6 + 1)">
+            <!-- Grid compacta horizontal -->
+            <div class="row g-3 justify-content-center mb-4 reveal-up delay-1">
+              <div v-for="(caso, index) in casosExito" :key="caso.id" class="col-12 col-md-6 col-lg-4" :class="'delay-' + (index % 3 + 1)">
                   
-                  <div class="ultra-success-wrapper position-relative overflow-hidden shadow-lg rounded-4">
-                      <div class="shine-effect"></div>
-                      
-                      <img :src="`recursos/casoexito-${caso.id}-color.png`" class="img-fluid success-img-color position-absolute top-0 start-0 w-100 h-100" :alt="`Éxito ${caso.nombre} Color`">
-                      <img :src="`recursos/casoexito-${caso.id}.png`" class="img-fluid success-img-bw position-absolute top-0 start-0 w-100 h-100" :alt="`Éxito ${caso.nombre} B&N`">
-                      
-                      <div class="success-info-panel position-absolute bottom-0 start-0 w-100 p-2 d-flex flex-column justify-content-end text-center">
-                          <div class="player-name-overlay fw-bold text-white shadow-text mb-0">{{ caso.nombre }}</div>
-                          <div class="player-club-overlay text-white-50 lh-1 mt-1" style="font-size: 0.65rem;">
-                            Reclutado por <br><span class="text-white fw-bold shadow-text">{{ caso.club }}</span>
-                          </div>
+                  <div class="premium-success-card-compact bg-white rounded-3 shadow-sm p-3 position-relative overflow-hidden h-100 d-flex align-items-center text-start">
+                      <i class="material-icons position-absolute watermark-icon z-0">workspace_premium</i>
+
+                      <div class="icon-success-wrapper-compact me-3 rounded-circle d-flex align-items-center justify-content-center position-relative z-1 flex-shrink-0">
+                          <i class="material-icons text-white">star</i>
+                      </div>
+
+                      <div class="position-relative z-1">
+                          <h6 class="fw-black text-dark mb-0" style="letter-spacing: -0.5px; font-size: 1.05rem;">{{ caso.nombre }}</h6>
+                          <span class="text-secondary small d-block lh-1 mt-1" style="font-size: 0.75rem;">Reclutado por</span>
+                          <span class="amf-green-text fw-bold" style="font-size: 0.85rem;">{{ caso.club }}</span>
                       </div>
                   </div>
 
               </div>
             </div>
             
-            <div class="row justify-content-center mt-5 reveal-up delay-2" style="padding-bottom: 4rem;">
+            <div class="row justify-content-center mt-4 reveal-up delay-2" style="padding-bottom: 3rem;">
               <div class="col-11 col-md-10 col-lg-8">
-                  <p class="text-center text-white-50">
+                  <p class="text-center text-white-50 lh-lg mb-0">
                   Para unirte a este gran proyecto, mantente atento a nuestras redes sociales, donde publicamos las convocatorias para los próximos escauteos y la selección de nuevos integrantes de Talentos AMFPRO.
                   </p>
               </div>
             </div>
           </div>
-          <br><br><br><br><br>
+          
           <div class="split-icon-container">
-              <img src="recursos/documento-reloj.png">
+              <img src="recursos/documento-reloj.png" alt="Documento y Reloj" style="width: 280px;">
           </div>
-        </section>
+      </section>
    </div>
 </template>
 
@@ -239,7 +243,7 @@ export default {
     data() {
         return {
             observer: null,
-            numerosAnimados: false, // Control para saber si ya contamos
+            numerosAnimados: false,
             listaCopas: [
                 { nombre: 'COPA BAJÍO', img: 'recursos/copa-1.png' },
                 { nombre: 'COPA CHIVAS', img: 'recursos/copa-2.png' },
@@ -268,7 +272,6 @@ export default {
             imagenesTorneoActual: [], 
             cargandoImagenes: false,
             
-            // Agregamos 'current' para que empiece a contar desde cero visualmente
             stats: [
                 { val: 0, current: 0, label: 'Torneos Oficiales' }, 
                 { val: 0, current: 0, label: 'Talentos' },
@@ -299,19 +302,16 @@ export default {
       this.datosAgrupados();
       this.datosTalentos();
 
-      // Observador bidireccional
       const options = { root: null, rootMargin: '0px', threshold: 0.15 };
       this.observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
             
-            // Si el Hero es visible
             if(entry.target.classList.contains('section-hero')) {
               entry.target.classList.add('hero-visible');
             }
 
-            // Si los números son visibles y no se han animado aún
             if(entry.target.classList.contains('section-trayectoria') && !this.numerosAnimados) {
               this.animarContadores();
               this.numerosAnimados = true;
@@ -328,7 +328,6 @@ export default {
       if (this.observer) this.observer.disconnect();
     },
     methods: {
-      // Contador Javascript: Incrementa los números desde 0 a su valor real
       animarContadores() {
         this.stats.forEach(stat => {
           let start = 0;
@@ -337,7 +336,7 @@ export default {
             stat.current = 0;
             return;
           }
-          const duration = 2000; // La cuenta durará 2 segundos
+          const duration = 2000; 
           const increment = target / (duration / 16);
 
           const timer = setInterval(() => {
@@ -353,7 +352,6 @@ export default {
       },
       refrescarAnimaciones() {
         this.$nextTick(() => {
-          // Observamos ahora también la section-trayectoria y los flips
           document.querySelectorAll('.reveal-up, .reveal-item, .section-hero, .section-trayectoria, .reveal-flip').forEach(el => {
             if (this.observer) this.observer.observe(el);
           });
@@ -382,7 +380,6 @@ export default {
           this.stats[1].val = response.data.total_jugadores;
           this.stats[2].val = response.data.total_experiencia;
           
-          // Por si la conexión a BD tardó y el usuario ya estaba viendo esta sección
           if (this.numerosAnimados) {
             this.animarContadores();
           }
@@ -459,13 +456,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* Solo importamos Roboto, removimos Montserrat */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-/* =========================================================
-   ESTILOS ORIGINALES INTACTOS (AHORA SOLO ROBOTO)
-   ========================================================= */
 .amf-landing-page {
   font-family: 'Roboto', sans-serif !important;
 }
@@ -498,7 +491,7 @@ $amf-accent: #50c026;
 
 .split-icon-container{
   position: absolute;
-  left: 50%;
+  left: 51%;
   transform: translateX(-50%);
   z-index: 10;
   bottom: -160px;
@@ -587,8 +580,6 @@ $amf-accent: #50c026;
       .hero-description { margin-top: 36px; font-size: 0.6rem; font-weight: 400; color: rgba(255, 255, 255, 0.9); text-align: justify; }
   }
 
-  
-
   .reveal-item {
     opacity: 0;
     transform: translateY(50px);
@@ -668,12 +659,11 @@ $amf-accent: #50c026;
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 @media (max-width: 768px) { .lightbox-content .btn-nav { &.left { left: 10px; } &.right { right: 10px; } } }
 
-
 /* =========================================================
-   ESTILOS ULTRA PRO - APLICADOS SOLO EN LA MITAD INFERIOR
+   ESTILOS ULTRA PRO
    ========================================================= */
 
-/* 4. TORNEOS: TARJETAS DE JUGADORES (AURA Y NEÓN) */
+/* 4. TORNEOS: TARJETAS DE JUGADORES */
 .premium-player-card {
   max-width: 320px;
   margin: 0 auto;
@@ -705,7 +695,6 @@ $amf-accent: #50c026;
     
     .card-green-body {
       box-shadow: 0 25px 50px rgba(80, 192, 38, 0.3) !important;
-      /* Efecto de borde de luz / neón sutil */
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3), 0 25px 50px rgba(80, 192, 38, 0.2) !important;
     }
     
@@ -739,7 +728,7 @@ $amf-accent: #50c026;
   }
 }
 
-/* 5. GALERÍA: CINEMÁTICA Y GLASSMORPHISM */
+/* 5. GALERÍA */
 .ultra-gallery-card {
   cursor: pointer;
   border-radius: 25px;
@@ -797,65 +786,50 @@ $amf-accent: #50c026;
   }
 }
 
-/* 6. CASOS DE ÉXITO: EFECTO RELÁMPAGO / SHINE */
+/* 6. REDISEÑO COMPACTO DE TARJETAS "CASOS DE ÉXITO" */
 .section-success {
   background-color: $amf-main;
 }
 
-.ultra-success-wrapper {
-  aspect-ratio: 4/5;
+.premium-success-card-compact {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-left: 4px solid transparent; 
   cursor: default;
-  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
-  
-  .success-img-color, .success-img-bw {
-    object-fit: cover;
-    transition: opacity 0.6s ease, transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
-  }
-  
-  .success-img-bw { z-index: 2; filter: grayscale(100%) contrast(110%); }
-  /* La foto a color inicia un poco grande para que al hacer hover se "aleje/respire" (Breathing Effect) */
-  .success-img-color { z-index: 1; transform: scale(1.1); } 
 
-  .success-info-panel {
-    background: linear-gradient(to top, rgba(17, 42, 24, 0.8) 0%, transparent 100%);
-    z-index: 3;
-    opacity: 0.9;
-    transition: all 0.5s ease;
-    padding-bottom: 10px !important;
+  .watermark-icon {
+    font-size: 5rem;
+    color: rgba(0,0,0,0.02);
+    top: -10px;
+    right: -10px;
+    transform: rotate(-15deg);
+    transition: all 0.4s ease;
   }
-  
-  .shadow-text { text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
 
-  /* Efecto Relámpago (Shine) que atraviesa la tarjeta */
-  .shine-effect {
-    position: absolute;
-    top: 0; left: -100%;
-    width: 50%; height: 100%;
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-    transform: skewX(-25deg);
-    z-index: 5;
-    pointer-events: none;
-    transition: none; 
+  .icon-success-wrapper-compact {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #50c026 0%, #3E9452 100%);
+    box-shadow: 0 5px 10px rgba(80, 192, 38, 0.2);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    i { font-size: 1.2rem; }
   }
 
   &:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3) !important;
-    
-    .success-img-bw { opacity: 0; }
-    .success-img-color { transform: scale(1); } /* Breathing effect: vuelve a tamaño normal */
-    
-    .success-info-panel {
-      background: linear-gradient(to top, rgba(62, 148, 82, 0.95) 0%, rgba(62, 148, 82, 0.4) 60%, transparent 100%);
-      opacity: 1;
-      padding-bottom: 20px !important; /* Desliza el texto hacia arriba */
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+    border-left: 4px solid #50c026;
+
+    .watermark-icon {
+      color: rgba(80, 192, 38, 0.05);
+      transform: rotate(0deg) scale(1.1);
     }
 
-    .shine-effect {
-      left: 200%; /* Mueve la luz hasta la derecha */
-      transition: left 0.8s ease-in-out; /* La luz tarda 0.8s en cruzar */
+    .icon-success-wrapper-compact {
+      transform: scale(1.1);
     }
   }
 }
+
 .tracking-widest { letter-spacing: 4px; }
 </style>
