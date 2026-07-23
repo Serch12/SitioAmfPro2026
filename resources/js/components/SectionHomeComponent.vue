@@ -87,31 +87,62 @@
     <section id="instituciones" class="bg-white py-5 shadow-sm position-relative z-3 border-bottom border-light overflow-hidden">
       <div class="container-fluid px-4 px-xl-5">
         <div class="row text-center g-4 align-items-center justify-content-center">
+          
           <div class="col-xl-auto col-lg-4 col-md-6 border-end-xl px-xl-4 reveal-up">
             <p class="std-subtitle text-muted" style="line-height: 10px;">MIEMBROS</p>
             <p class="std-subtitle text-muted">INTERNACIONALES</p>
-            <img src="recursos/logo_aif.png" alt="AIF" class="circle-logo mx-auto reveal-scale-zoom delay-1" loading="lazy">
+            <!-- Enlace AIF -->
+            <a href="https://aif-futbol.com/" target="_blank" rel="noopener noreferrer">
+              <img src="recursos/logo_aif.png" alt="AIF" class="circle-logo mx-auto reveal-scale-zoom delay-1" loading="lazy">
+            </a>
           </div>
+          
           <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4 reveal-up delay-1">
             <p class="std-subtitle text-muted mb-4">INSTITUCIONES</p>
             <p class="std-subtitle text-muted mb-5"></p>
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
-              <img src="recursos/logo_fifa.png" alt="FIFA" class="circle-logo reveal-scale-zoom delay-2" loading="lazy">
-              <img src="recursos/logo_seleccion.png" alt="FMF" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
-              <img src="recursos/logo_concacaf.png" alt="Concacaf" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
+              <!-- Enlace FIFA -->
+              <a href="https://www.fifa.com/es" target="_blank" rel="noopener noreferrer">
+                <img src="recursos/logo_fifa.png" alt="FIFA" class="circle-logo reveal-scale-zoom delay-2" loading="lazy">
+              </a>
+              <!-- Enlace FMF -->
+              <a href="https://fmf.mx/" target="_blank" rel="noopener noreferrer">
+                <img src="recursos/logo_seleccion.png" alt="FMF" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
+              </a>
+              <!-- Enlace Concacaf -->
+              <a href="https://www.concacaf.com/es/" target="_blank" rel="noopener noreferrer">
+                <img src="recursos/logo_concacaf.png" alt="Concacaf" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
+              </a>
             </div>
           </div>
+          
           <div class="col-xl-auto col-lg-8 col-md-12 border-end-xl px-xl-4 reveal-up delay-2">
             <p class="std-subtitle text-muted mb-4">LIGAS</p>
             <p class="std-subtitle text-muted mb-5"></p>
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
-              <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
-              <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
-              <img src="recursos/logo_ligapremier.png" alt="Liga Premier" class="circle-logo reveal-scale-zoom delay-5" loading="lazy">
-              <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
-              <img src="recursos/logo_ligamxfemenil.png" alt="Liga MX Femenil" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
+              <!-- Enlace Liga MX -->
+              <a href="https://ligamx.net/" target="_blank" rel="noopener noreferrer">
+                <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
+              </a>
+              <!-- Enlace Liga Expansión -->
+              <a href="https://www.ligaexpansion.mx/" target="_blank" rel="noopener noreferrer">
+                <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
+              </a>
+              <!-- Enlace Liga Premier -->
+              <a href="https://ligapremier.mx/home" target="_blank" rel="noopener noreferrer">
+                <img src="recursos/logo_ligapremier.png" alt="Liga Premier" class="circle-logo reveal-scale-zoom delay-5" loading="lazy">
+              </a>
+              <!-- Enlace Liga TDP -->
+              <a href="https://ligatdp.mx/" target="_blank" rel="noopener noreferrer">
+                <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
+              </a>
+              <!-- Enlace Liga MX Femenil -->
+              <a href="https://www.ligafemenil.mx/" target="_blank" rel="noopener noreferrer">
+                <img src="recursos/logo_ligamxfemenil.png" alt="Liga MX Femenil" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
+              </a>
             </div>
           </div>
+          
         </div>
       </div>
     </section>
