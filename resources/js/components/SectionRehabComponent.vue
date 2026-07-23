@@ -3,7 +3,7 @@
     <section id="clinica-rehab" class="rehab-section-master py-6 position-relative overflow-hidden">
       <div class="rehab-bg-pattern"></div>
       
-      <div class="container position-relative z-3">
+      <div class="container position-relative z-3 mb-5">
         
         <div class="row mb-5 justify-content-center text-center reveal-up">
           <div class="col-lg-10">
@@ -46,10 +46,18 @@
               </p>
             </div>
 
+            <!-- ==========================================
+                 NUEVO BOTÓN SÚPER PRO (IR AL SITIO OFICIAL)
+                 ========================================== -->
+            <a href="https://www.rehabevolution.com/" target="_blank" rel="noopener noreferrer" class="btn-rehab-pro mt-4 align-self-start text-decoration-none">
+              <span class="text-uppercase tracking-wide" style="font-size: 0.85rem;">Visitar Sitio Oficial</span>
+              <i class="material-icons ms-2">launch</i>
+            </a>
+
           </div>
         </div>
 
-        <div class="row g-4 mb-6 mt-2" style="margin-bottom: 1rem;">
+        <!-- <div class="row g-4 mb-6 mt-2" style="margin-bottom: 1rem;">
           <div class="col-12 mb-3 text-center text-lg-start reveal-up">
             <h5 class="fw-black text-dark tracking-widest text-uppercase" style="font-size: 0.95rem; letter-spacing: 3px;">Áreas de Especialidad</h5>
           </div>
@@ -89,7 +97,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </section>
@@ -202,6 +210,36 @@ $rehab-light-blue: rgba(0, 174, 239, 0.08);
   background: rgba(255, 255, 255, 0.2);
   color: white;
   i { font-size: 1.2rem; }
+}
+
+/* ==========================================
+   BOTÓN REHAB EVOLUTION SÚPER PRO
+   ========================================== */
+.btn-rehab-pro {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, $rehab-blue 0%, #008CBE 100%);
+  color: white;
+  font-weight: 700;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(0, 174, 239, 0.25);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 174, 239, 0.4);
+    color: white;
+  }
+  
+  i {
+    font-size: 1.2rem;
+    transition: transform 0.4s ease;
+  }
+  
+  &:hover i {
+    transform: translateX(4px) translateY(-4px);
+  }
 }
 
 /* Tarjetas Pro (Especialidades) */

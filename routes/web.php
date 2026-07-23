@@ -96,3 +96,5 @@ Route::get('/noticias/{ruta}', function ($ruta) {
 Route::get('/{any}', function () {
     return view('welcome', ['evento' => '']);
 })->where('any', '.*');
+
+Route::post('registro/escanear-ine', [App\Http\Controllers\RegistrateController::class, 'escanearIne']);

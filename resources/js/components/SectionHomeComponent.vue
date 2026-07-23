@@ -22,13 +22,13 @@
             
             <div class="reveal-up delay-2 mb-5 pe-lg-5 d-flex justify-content-center justify-content-lg-start">
               <p class="hero-text-pro text-white-50 fw-light">
-                Representamos, protegemos e impulsamos a las y los futbolistas profesionales de México con servicios, asesoría, beneficios y acompañamiento en cada etapa de tu carrera activa.
+                Representamos, protegemos e impulsamos a las y los Futbolistas profesionales de México con servicios, asesoría, beneficios y acompañamiento en cada etapa de su carrera activa.
                  <!-- <br class="d-none d-md-block"> -->
                 <!-- <strong class="text-white mt-1 d-inline-block">Porque los verdaderos profesionales no pagan por jugar.</strong> -->
               </p>
             </div>
             
-            <div class="reveal-up delay-3">
+            <!-- <div class="reveal-up delay-3">
               <button class="btn btn-premium-green px-4 fw-bold tracking-wider magnetic-btn shadow-lg" 
                       @mousemove="handleMagneticMove" 
                       @mouseleave="resetMagneticMove" 
@@ -37,7 +37,7 @@
                   <i class="material-icons me-2">menu_book</i> Explorar Manual
                 </span>
               </button>
-            </div>
+            </div> -->
           </div>
 
           <div class="col-12 col-lg-5 mt-5 mt-lg-0 d-none d-lg-flex justify-content-lg-end justify-content-center">
@@ -77,7 +77,7 @@
       </div>
 
       <div class="scroll-indicator-wrapper" @click="scrollToSectionLocal('instituciones')">
-        <span class="scroll-text">SCROLL</span>
+        <span class="scroll-text">VER MÁS</span>
         <div class="mouse-indicator">
           <div class="wheel"></div>
         </div>
@@ -132,12 +132,12 @@
             </div>
              <div class="premium-clean-card p-4 p-md-5 rounded-4 bg-white position-relative overflow-hidden reveal-up mb-5">
                 <p class="std-text text-secondary text-justify mb-4">
-                  En busca de mejores condiciones laborales para las y los Futbolistas, <strong class="amf-green-text fw-bold">en el año 2017</strong>, se creó la AMFPRO, como <b class="fw-bold">ORGANISMO AUTÓNOMO E INDEPENDIENTE</b>. Jugadores como: <strong class="amf-green-text fw-bold">Rafael Márquez, Oribe Peralta, Oscar Pérez, Carlos Salcido, Christian Giménez, Paulo Da Silva</strong>, junto con los ex Futbolistas <strong class="amf-green-text fw-bold">Álvaro Ortiz y Edson Zwaricz</strong>, delinearon el inicio del proyecto y, llevaron a cabo la primera reunión formal con capitanes y representantes de los clubes que en ese momento pertenecian a las Ligas de <strong class="amf-green-text fw-bold">Liga MX, Liga MX Femenil y Ascenso MX.</strong>
+                  En busca de mejores condiciones laborales para las y los Futbolistas, <strong class="amf-green-text fw-bold">en el año 2017</strong>, se creó la AMFpro, como <b class="fw-bold">ORGANISMO AUTÓNOMO E INDEPENDIENTE</b>. Jugadores como: <strong class="amf-green-text fw-bold">Rafael Márquez, Oribe Peralta, Oscar Pérez, Carlos Salcido, Christian Giménez, Paulo Da Silva</strong>, junto con los ex Futbolistas <strong class="amf-green-text fw-bold">Álvaro Ortiz y Edson Zwaricz</strong>, delinearon el inicio del proyecto y, llevaron a cabo la primera reunión formal con capitanes y representantes de los clubes que en ese momento pertenecian a las Ligas de <strong class="amf-green-text fw-bold">Liga MX, Liga MX Femenil y Ascenso MX.</strong>
                 </p>
             </div>
             <div class="d-inline-flex align-items-center mb-4 text-dark reveal-up delay-1 bg-white px-4 py-3 rounded-pill shadow-sm border border-light">
                 <i class="material-icons amf-green-text me-2 fs-4">campaign</i>
-                <span class="std-subtitle mb-0">Presentación de la AMFPRO ante prensa</span>
+                <span class="std-subtitle mb-0">Presentación de la AMFpro ante prensa</span>
             </div>
             <div class="reveal-up delay-2">
               <div class="swiper swiper-nosotros">
@@ -218,7 +218,10 @@
       </div>
     </section>
 
-    <section id="asesor-deportivo" class="bg-amf-dark py-6 position-relative overflow-hidden" style="background: #3E9452;">
+    <!-- FONDO VERDE ACTUALIZADO CON TEXTURA DIAGONAL -->
+    <section id="asesor-deportivo" class="bg-amf-dark py-6 position-relative overflow-hidden" style="background: linear-gradient(135deg, #3e9452 0%, #2b6b39 100%);">
+      <div class="success-bg-shape position-absolute top-0 start-0 w-100 h-100 opacity-25 z-0"></div>
+      
       <div class="container py-5 position-relative z-2">
         <div class="row align-items-center">
           <div class="col-lg-5 text-center text-lg-start mb-5 mb-lg-0 reveal-up">
@@ -237,15 +240,9 @@
             </div>
           </div>
           <div class="col-lg-6 offset-lg-1">
+            
+            <!-- FUNCIONES (AHORA PRIMERO) -->
             <div class="premium-glass-card p-4 p-md-5 mb-4 rounded-4 reveal-up delay-1">
-              <div class="d-flex align-items-center mb-4 border-bottom border-light border-opacity-25 pb-3">
-                <i class="material-icons text-white bg-success p-2 rounded-3 me-3 fs-3">history</i>
-                <h4 class="std-title-card fw-bold text-white mb-0">ANTECEDENTES</h4>
-              </div>
-              <p class="std-text text-white text-justify mb-3">Fue Jugador en los Clubes: Cruz Azul Hidalgo, Cruz Azul, Jaguares de Chiapas, Puebla FC, UAG, Irapuato FC, Mundialista por México en Corea/Japón 2002.</p>
-              <p class="std-text text-white text-justify mb-0">En su faceta de Director Técnico formó parte de: Comisión del jugador (actual Asociación Mexicana de Futbolistas), Tecnológico de Monterrey campus Guadalajara, Dorados de Sinaloa (Segunda talentos), Melgar FBC (reserva profesional) en Perú, Equipos de la AMFpro y Cafetaleros de Chiapas (Segunda Premier).</p>
-            </div>
-            <div class="premium-glass-card p-4 p-md-5 rounded-4 reveal-up delay-2">
               <div class="d-flex align-items-center mb-4 border-bottom border-light border-opacity-25 pb-3">
                 <i class="material-icons text-white bg-success p-2 rounded-3 me-3 fs-3">work</i>
                 <h4 class="std-title-card fw-bold text-white mb-0">FUNCIONES</h4>
@@ -258,15 +255,26 @@
                 <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
               </div>
               <ul class="premium-list-white text-white text-justify m-0 p-0 std-text-small">
-                <li>Realizar convenios educativos para beneficio de las (os) futbolistas profesionales de México.</li>
+                <!-- <li>Realizar convenios educativos para beneficio de las (os) futbolistas profesionales de México.</li> -->
                 <li>Presentar proyectos para beneficio de las(os) futbolistas profesionales de México.</li>
                 <li>Ser el vínculo entre jugador(as) con la AMFpro para canalizarlos a las áreas correspondientes.</li>
                 <li>Apoyar los equipos de la AMFpro abriendo puertas para los jugadores de los equipos.</li>
-                <li>Difundir a los jugadores profesionales de todas las categorías el mensaje de la AMFpro.</li>
+                <!-- <li>Difundir a los jugadores profesionales de todas las categorías el mensaje de la AMFpro.</li> -->
                 <li>Proponer con base a experiencia y recepción de mensajes beneficios para los y las futbolistas profesionales de México (nueva mentalidad del futbolista).</li>
                 <li>Atender y canalizar a las y los futbolistas profesionales con las diferentes áreas de apoyo de la AMFpro.</li>
               </ul>
             </div>
+
+            <!-- ANTECEDENTES (AHORA SEGUNDO) -->
+            <div class="premium-glass-card p-4 p-md-5 rounded-4 reveal-up delay-2">
+              <div class="d-flex align-items-center mb-4 border-bottom border-light border-opacity-25 pb-3">
+                <i class="material-icons text-white bg-success p-2 rounded-3 me-3 fs-3">history</i>
+                <h4 class="std-title-card fw-bold text-white mb-0">ANTECEDENTES</h4>
+              </div>
+              <p class="std-text text-white text-justify mb-3">Fue Jugador en los Clubes: Cruz Azul Hidalgo, Cruz Azul, Jaguares de Chiapas, Puebla FC, UAG, Irapuato FC, Mundialista por México en Corea/Japón 2002.</p>
+              <p class="std-text text-white text-justify mb-0">En su faceta de Director Técnico formó parte de: Comisión del jugador (actual Asociación Mexicana de Futbolistas), Tecnológico de Monterrey campus Guadalajara, Dorados de Sinaloa (Segunda talentos), Melgar FBC (reserva profesional) en Perú, Equipos de la AMFpro y Cafetaleros de Chiapas (Segunda Premier).</p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -296,7 +304,7 @@ export default {
     return {
       isMobile: false, isModalOpen: false, observer: null,
       galeriaNosotrosAbierta: false, fotoNosotrosIndex: 0, touchStartY: 0, touchEndY: 0,
-      imagenesNosotros: ['recursos/Item.png', 'recursos/Item-2.png', 'recursos/Item-3.png', 'recursos/Item.png']
+      imagenesNosotros: ['recursos/Item.png', 'recursos/Item-2.png', 'recursos/Item-3.png']
     }
   },
   mounted() {
@@ -530,6 +538,10 @@ h1, h2, h3, h4, h5, h6, p, span, li, button { font-family: 'Inter', sans-serif !
 
 .premium-list-white { list-style: none !important; padding-left: 0; }
 .premium-list-white li { position: relative; padding-left: 1.8rem; margin-bottom: 1rem; color: white; &::before { content: 'verified'; font-family: 'Material Icons' !important; position: absolute; left: 0; top: 0; color: white; font-size: 1.2rem; } }
+
+.success-bg-shape {
+  background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+}
 
 .melvin-premium-wrapper { width: 100%; max-width: 400px; .glow-circle { width: 300px; height: 300px; background: radial-gradient(circle, rgba(62, 148, 82, 0.4) 0%, transparent 70%); border-radius: 50%; z-index: 1; } img { filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6)); } }
 .premium-glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: transform 0.3s; &:hover { transform: translateY(-5px); } }

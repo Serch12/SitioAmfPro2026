@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>AMFPro</title>
+    <title>AMFpro</title>
     <link rel="icon" href="{{ asset('recursos/logo_verde.png') }}" type="image/png">
 
     @if (isset($evento) && $evento == 'Si')

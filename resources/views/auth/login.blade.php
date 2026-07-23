@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>AMFPRO - Iniciar Sesión</title>
+    <title>AMFpro - Iniciar Sesión</title>
 
     <meta name="description" content="Plataforma exclusiva para asociados AMFPRO" />
 
@@ -225,7 +225,7 @@
         @if(!session('nui_verificado'))
           <div class="text-center mb-4">
             <h4 class="text-white fw-bold mb-1">Portal del Asociado</h4>
-            <p class="text-muted" style="color: #94a3b8 !important;">Inicia sesión o tramita tu afiliación AMFPRO.</p>
+            <p class="text-muted" style="color: #94a3b8 !important;">Inicia sesión o tramita tu afiliación AMFpro.</p>
           </div>
 
           <!-- MINI-WIZARD INFORMATIVO PARA NUEVOS USUARIOS -->

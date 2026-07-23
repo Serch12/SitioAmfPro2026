@@ -18,7 +18,6 @@
       <div class="registration-card shadow-lg mx-auto mt-4">
         
         <div class="registration-header border-bottom-glass d-flex justify-content-between align-items-center flex-wrap gap-3">
-          
           <div class="d-flex align-items-center gap-3">
             <div class="icon-brand-box shadow-sm flex-shrink-0">
               <i class="material-icons">how_to_reg</i>
@@ -28,75 +27,276 @@
               <span class="text-slate-300" style="font-size: 0.8rem;">Únete a la red de futbolistas profesionales de México</span>
             </div>
           </div>
-
           <a href="/" class="btn-back-home text-decoration-none d-inline-flex align-items-center px-4 py-2 rounded-pill shadow-sm flex-shrink-0">
             <i class="material-icons">arrow_back</i>
             <span class="fw-bold ms-2 small text-uppercase tracking-wider">Regresar</span>
           </a>
-
         </div>
 
         <div class="registration-body">
           <form @submit.prevent="createAfiliado" enctype="multipart/form-data" novalidate>
             
             <div class="form-section glass-box shadow-sm mb-3">
-              <h6 class="section-title text-white"><i class="material-icons text-success">badge</i> Información Personal</h6>
+              <h6 class="section-title text-white">
+                <i class="material-icons text-success">badge</i> Información Personal
+              </h6>
               
               <div class="row g-2">
+                <!-- NOMBRES Y APELLIDOS -->
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.nombre == '' && afiliadoError.nombre }" v-model="afiliado.nombre" id="nombres" placeholder="Nombre(s)" autocomplete="off">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliadoError.nombre }" v-model="afiliado.nombre" id="nombres" placeholder="Nombre(s)" autocomplete="off">
                     <label for="nombres">Nombre(s) *</label>
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.apellido_pat == '' && afiliadoError.apellido_pat }" v-model="afiliado.apellido_pat" id="paterno" placeholder="Apellido paterno" autocomplete="off">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliadoError.apellido_pat }" v-model="afiliado.apellido_pat" id="paterno" placeholder="Apellido paterno" autocomplete="off">
                     <label for="paterno">Apellido paterno *</label>
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.apellido_mat == '' && afiliadoError.apellido_mat }" v-model="afiliado.apellido_mat" id="materno" placeholder="Apellido materno" autocomplete="off">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliadoError.apellido_mat }" v-model="afiliado.apellido_mat" id="materno" placeholder="Apellido materno" autocomplete="off">
                     <label for="materno">Apellido materno *</label>
                   </div>
                 </div>
-                <div class="col-6 col-md-3">
+
+                <!-- PAÍS (Habilita el genérico extranjero o pide CURP MX) -->
+                <div class="col-6 col-md-4">
                   <div class="form-floating compact-floating">
-                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.sexo == '' && afiliadoError.sexo }" v-model="afiliado.sexo" id="sexo">
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.nacionalidad == '' && afiliadoError.nacionalidad }" v-model="afiliado.nacionalidad" @change="esMexicano(afiliado.nacionalidad)" id="pais">
+                      <option value="" class="dark-option">Seleccionar</option>
+                      <option value="Afganistán"> Afganistán</option>
+                      <option value="Albania"> Albania</option>
+                      <option value="Alemania"> Alemania</option>
+                      <option value="Andorra"> Andorra</option>
+                      <option value="Angola"> Angola</option>
+                      <option value="Antigua y Barbuda"> Antigua y Barbuda</option>
+                      <option value="Arabia Saudita"> Arabia Saudita</option>
+                      <option value="Argelia"> Argelia</option>
+                      <option value="Argentina"> Argentina</option>
+                      <option value="Armenia"> Armenia</option>
+                      <option value="Australia"> Australia</option>
+                      <option value="Austria"> Austria</option>
+                      <option value="Azerbaiyán"> Azerbaiyán</option>
+                      <option value="Bahamas"> Bahamas</option>
+                      <option value="Bangladés"> Bangladés</option>
+                      <option value="Barbados"> Barbados</option>
+                      <option value="Baréin"> Baréin</option>
+                      <option value="Bélgica"> Bélgica</option>
+                      <option value="Belice"> Belice</option>
+                      <option value="Benín"> Benín</option>
+                      <option value="Bielorrusia"> Bielorrusia</option>
+                      <option value="Birmania"> Birmania</option>
+                      <option value="Bolivia"> Bolivia</option>
+                      <option value="Bosnia y Herzegovina"> Bosnia y Herzegovina</option>
+                      <option value="Botsuana"> Botsuana</option>
+                      <option value="Brasil"> Brasil</option>
+                      <option value="Brunéi"> Brunéi</option>
+                      <option value="Bulgaria"> Bulgaria</option>
+                      <option value="Burkina Faso"> Burkina Faso</option>
+                      <option value="Burundi"> Burundi</option>
+                      <option value="Bután"> Bután</option>
+                      <option value="Cabo Verde"> Cabo Verde</option>
+                      <option value="Camboya"> Camboya</option>
+                      <option value="Camerún"> Camerún</option>
+                      <option value="Canadá"> Canadá</option>
+                      <option value="Catar"> Catar</option>
+                      <option value="Chad"> Chad</option>
+                      <option value="Chile"> Chile</option>
+                      <option value="China"> China</option>
+                      <option value="Chipre"> Chipre</option>
+                      <option value="Ciudad del Vaticano"> Ciudad del Vaticano</option>
+                      <option value="Colombia"> Colombia</option>
+                      <option value="Comoras"> Comoras</option>
+                      <option value="Corea del Norte"> Corea del Norte</option>
+                      <option value="Corea del Sur"> Corea del Sur</option>
+                      <option value="Costa de Marfil"> Costa de Marfil</option>
+                      <option value="Costa Rica"> Costa Rica</option>
+                      <option value="Croacia"> Croacia</option>
+                      <option value="Cuba"> Cuba</option>
+                      <option value="Dinamarca"> Dinamarca</option>
+                      <option value="Dominica"> Dominica</option>
+                      <option value="Ecuador"> Ecuador</option>
+                      <option value="Egipto"> Egipto</option>
+                      <option value="El Salvador"> El Salvador</option>
+                      <option value="Emiratos Árabes Unidos"> Emiratos Árabes Unidos</option>
+                      <option value="Eritrea"> Eritrea</option>
+                      <option value="Eslovaquia"> Eslovaquia</option>
+                      <option value="Eslovenia"> Eslovenia</option>
+                      <option value="España"> España</option>
+                      <option value="Estados Unidos"> Estados Unidos</option>
+                      <option value="Estonia"> Estonia</option>
+                      <option value="Etiopía"> Etiopía</option>
+                      <option value="Filipinas"> Filipinas</option>
+                      <option value="Finlandia"> Finlandia</option>
+                      <option value="Fiyi"> Fiyi</option>
+                      <option value="Francia"> Francia</option>
+                      <option value="Gabón"> Gabón</option>
+                      <option value="Gambia"> Gambia</option>
+                      <option value="Georgia"> Georgia</option>
+                      <option value="Ghana"> Ghana</option>
+                      <option value="Granada"> Granada</option>
+                      <option value="Grecia"> Grecia</option>
+                      <option value="Guatemala"> Guatemala</option>
+                      <option value="Guyana"> Guyana</option>
+                      <option value="Guinea"> Guinea</option>
+                      <option value="Guinea ecuatorial"> Guinea ecuatorial</option>
+                      <option value="Guinea-Bisáu"> Guinea-Bisáu</option>
+                      <option value="Haití"> Haití</option>
+                      <option value="Honduras"> Honduras</option>
+                      <option value="Hungría"> Hungría</option>
+                      <option value="India"> India</option>
+                      <option value="Indonesia"> Indonesia</option>
+                      <option value="Irak"> Irak</option>
+                      <option value="Irán"> Irán</option>
+                      <option value="Irlanda"> Irlanda</option>
+                      <option value="Islandia"> Islandia</option>
+                      <option value="Islas Marshall"> Islas Marshall</option>
+                      <option value="Islas Salomón"> Islas Salomón</option>
+                      <option value="Israel"> Israel</option>
+                      <option value="Italia"> Italia</option>
+                      <option value="Jamaica"> Jamaica</option>
+                      <option value="Japón"> Japón</option>
+                      <option value="Jordania"> Jordania</option>
+                      <option value="Kazajistán"> Kazajistán</option>
+                      <option value="Kenia"> Kenia</option>
+                      <option value="Kirguistán"> Kirguistán</option>
+                      <option value="Kiribati"> Kiribati</option>
+                      <option value="Kuwait"> Kuwait</option>
+                      <option value="Laos"> Laos</option>
+                      <option value="Lesoto"> Lesoto</option>
+                      <option value="Letonia"> Letonia</option>
+                      <option value="Líbano"> Líbano</option>
+                      <option value="Liberia"> Liberia</option>
+                      <option value="Libia"> Libia</option>
+                      <option value="Liechtenstein"> Liechtenstein</option>
+                      <option value="Lituania"> Lituania</option>
+                      <option value="Luxemburgo"> Luxemburgo</option>
+                      <option value="Macedonia del Norte"> Macedonia del Norte</option>
+                      <option value="Madagascar"> Madagascar</option>
+                      <option value="Malasia"> Malasia</option>
+                      <option value="Malaui"> Malaui</option>
+                      <option value="Maldivas"> Maldivas</option>
+                      <option value="Malí"> Malí</option>
+                      <option value="Malta"> Malta</option>
+                      <option value="Marruecos"> Marruecos</option>
+                      <option value="Mauricio"> Mauricio</option>
+                      <option value="Mauritania"> Mauritania</option>
+                      <option value="México"> México</option>
+                      <option value="Micronesia"> Micronesia</option>
+                      <option value="Moldavia"> Moldavia</option>
+                      <option value="Mónaco"> Mónaco</option>
+                      <option value="Mongolia"> Mongolia</option>
+                      <option value="Montenegro"> Montenegro</option>
+                      <option value="Mozambique"> Mozambique</option>
+                      <option value="Namibia"> Namibia</option>
+                      <option value="Nauru"> Nauru</option>
+                      <option value="Nepal"> Nepal</option>
+                      <option value="Nicaragua"> Nicaragua</option>
+                      <option value="Níger"> Níger</option>
+                      <option value="Nigeria"> Nigeria</option>
+                      <option value="Noruega"> Noruega</option>
+                      <option value="Nueva Zelanda"> Nueva Zelanda</option>
+                      <option value="Omán"> Omán</option>
+                      <option value="Países Bajos"> Países Bajos</option>
+                      <option value="Pakistán"> Pakistán</option>
+                      <option value="Palaos"> Palaos</option>
+                      <option value="Panamá"> Panamá</option>
+                      <option value="Papúa Nueva Guinea"> Papúa Nueva Guinea</option>
+                      <option value="Paraguay"> Paraguay</option>
+                      <option value="Perú"> Perú</option>
+                      <option value="Polonia"> Polonia</option>
+                      <option value="Portugal"> Portugal</option>
+                      <option value="Reino Unido"> Reino Unido</option>
+                      <option value="República Centroafricana"> República Centroafricana</option>
+                      <option value="República Checa"> República Checa</option>
+                      <option value="República del Congo"> República del Congo</option>
+                      <option value="República Democrática del Congo"> República Democrática del Congo</option>
+                      <option value="República Dominicana"> República Dominicana</option>
+                      <option value="Ruanda"> Ruanda</option>
+                      <option value="Rumanía"> Rumanía</option>
+                      <option value="Rusia"> Rusia</option>
+                      <option value="Samoa"> Samoa</option>
+                      <option value="San Cristóbal y Nieves"> San Cristóbal y Nieves</option>
+                      <option value="San Marino"> San Marino</option>
+                      <option value="San Vicente y las Granadinas"> San Vicente y las Granadinas</option>
+                      <option value="Santa Lucía"> Santa Lucía</option>
+                      <option value="Santo Tomé y Príncipe"> Santo Tomé y Príncipe</option>
+                      <option value="Senegal"> Senegal</option>
+                      <option value="Serbia"> Serbia</option>
+                      <option value="Seychelles"> Seychelles</option>
+                      <option value="Sierra Leona"> Sierra Leona</option>
+                      <option value="Singapur"> Singapur</option>
+                      <option value="Siria"> Siria</option>
+                      <option value="Somalia"> Somalia</option>
+                      <option value="Sri Lanka"> Sri Lanka</option>
+                      <option value="Suazilandia"> Suazilandia</option>
+                      <option value="Sudáfrica"> Sudáfrica</option>
+                      <option value="Sudán"> Sudán</option>
+                      <option value="Sudán del Sur"> Sudán del Sur</option>
+                      <option value="Suecia"> Suecia</option>
+                      <option value="Suiza"> Suiza</option>
+                      <option value="Surinam"> Surinam</option>
+                      <option value="Tailandia"> Tailandia</option>
+                      <option value="Tanzania"> Tanzania</option>
+                      <option value="Tayikistán"> Tayikistán</option>
+                      <option value="Timor Oriental"> Timor Oriental</option>
+                      <option value="Togo"> Togo</option>
+                      <option value="Tonga"> Tonga</option>
+                      <option value="Trinidad y Tobago"> Trinidad y Tobago</option>
+                      <option value="Túnez"> Túnez</option>
+                      <option value="Turkmenistán"> Turkmenistán</option>
+                      <option value="Turquía"> Turquía</option>
+                      <option value="Tuvalu"> Tuvalu</option>
+                      <option value="Ucrania"> Ucrania</option>
+                      <option value="Uganda"> Uganda</option>
+                      <option value="Uruguay"> Uruguay</option>
+                      <option value="Uzbekistán"> Uzbekistán</option>
+                      <option value="Vanuatu"> Vanuatu</option>
+                      <option value="Venezuela"> Venezuela</option>
+                      <option value="Vietnam"> Vietnam</option>
+                      <option value="Yemen"> Yemen</option>
+                      <option value="Yibuti"> Yibuti</option>
+                      <option value="Zambia"> Zambia</option>
+                      <option value="Zimbabue"> Zimbabue</option>
+                    </select>
+                    <label for="pais">País *</label>
+                  </div>
+                </div>
+
+                <!-- CURP -->
+                <div class="col-12 col-md-8">
+                  <div class="form-floating compact-floating position-relative">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliadoError.curp }" v-model="afiliado.curp" id="curp" placeholder="CURP" autocomplete="off" maxlength="18" :disabled="mexicano" @input="procesarCURP">
+                    <label for="curp">CURP (Autocompleta Fecha y Sexo) *</label>
+                    <a v-if="!mexicano" href="https://www.gob.mx/curp/" target="_blank" class="position-absolute end-0 top-50 translate-middle-y me-3 x-small text-decoration-none text-success fw-bold">¿Buscar?</a>
+                  </div>
+                </div>
+                
+                <!-- SEXO & NACIMIENTO -->
+                <div class="col-6 col-md-4">
+                  <div class="form-floating compact-floating position-relative">
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.sexo == '' && afiliadoError.sexo, 'autocompleted-field': sexoAutocompletado }" v-model="afiliado.sexo" id="sexo">
                       <option value="" class="dark-option">Seleccionar</option>
                       <option value="Femenino" class="dark-option">Femenino</option>
                       <option value="Masculino" class="dark-option">Masculino</option>
                     </select>
                     <label for="sexo">Sexo *</label>
+                    <i v-if="sexoAutocompletado" class="material-icons position-absolute end-0 top-50 translate-middle-y me-4 text-success" style="font-size: 1.2rem;">auto_awesome</i>
                   </div>
                 </div>
-                <div class="col-6 col-md-3">
-                  <div class="form-floating compact-floating">
-                    <input type="date" class="form-control custom-input" :class="{ 'input-error': afiliado.nacimiento == '' && afiliadoError.nacimiento }" v-model="afiliado.nacimiento" id="nacimiento" autocomplete="off">
+                <div class="col-6 col-md-4">
+                  <div class="form-floating compact-floating position-relative">
+                    <input type="date" class="form-control custom-input" :class="{ 'input-error': afiliado.nacimiento == '' && afiliadoError.nacimiento, 'autocompleted-field': nacimientoAutocompletado }" v-model="afiliado.nacimiento" id="nacimiento" autocomplete="off">
                     <label for="nacimiento">Nacimiento *</label>
+                    <i v-if="nacimientoAutocompletado" class="material-icons position-absolute end-0 top-50 translate-middle-y me-4 text-success" style="font-size: 1.2rem;">auto_awesome</i>
                   </div>
                 </div>
-                <div class="col-6 col-md-3">
-                  <div class="form-floating compact-floating">
-                    <select class="form-select custom-input" :class="{ 'input-error': afiliado.nacionalidad == '' && afiliadoError.nacionalidad }" v-model="afiliado.nacionalidad" @change="esMexicano(afiliado.nacionalidad)" id="pais">
-                      <option value="" class="dark-option">Seleccionar</option>
-                      <option value=" Afganistán" class="dark-option"> Afganistán</option>
-                      <option value=" Alemania" class="dark-option"> Alemania</option>
-                      <option value=" Argentina" class="dark-option"> Argentina</option>
-                      <option value=" Brasil" class="dark-option"> Brasil</option>
-                      <option value=" Canadá" class="dark-option"> Canadá</option>
-                      <option value=" Chile" class="dark-option"> Chile</option>
-                      <option value=" Colombia" class="dark-option"> Colombia</option>
-                      <option value=" España" class="dark-option"> España</option>
-                      <option value=" Estados Unidos" class="dark-option"> Estados Unidos</option>
-                      <option value=" México" class="dark-option"> México</option>
-                      <option value=" Otro" class="dark-option"> Otro</option>
-                    </select>
-                    <label for="pais">País *</label>
-                  </div>
-                </div>
-                <div class="col-6 col-md-3">
+
+                <!-- ESCOLARIDAD -->
+                <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
                     <select class="form-select custom-input" :class="{ 'input-error': afiliado.escolaridad == '' && afiliadoError.escolaridad }" v-model="afiliado.escolaridad" ref="escolaridadRef" id="escolaridad">
                       <option value="" class="dark-option">Seleccionar</option>
@@ -108,53 +308,101 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-md-12">
-                  <div class="form-floating compact-floating">
-                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.calle == '' && afiliadoError.calle }" v-model="afiliado.calle" id="domicilio" placeholder="Domicilio" autocomplete="off">
-                    <label for="domicilio">Domicilio (Calle, número, municipo, estado y C.P) *</label>
+                <!-- ==========================================
+                     UBICACIÓN POR C.P. (CORREGIDO MUNICIPIO)
+                     ========================================== -->
+                <div class="col-12 mt-3 mb-1">
+                  <h6 class="text-white-50 small mb-0"><i class="material-icons align-middle me-1" style="font-size:1.1rem;">location_on</i> Ubicación (Autocompletado parcial por C.P.)</h6>
+                </div>
+
+                <div class="col-12 col-md-3">
+                  <div class="form-floating compact-floating position-relative">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliadoError.calle }" v-model="direccion.cp" @input="buscarCP" id="codigo_postal" placeholder="C.P." autocomplete="off" maxlength="5">
+                    <label for="codigo_postal">C.P. *</label>
+                    <div v-if="buscandoCP" class="spinner-border spinner-border-sm text-success position-absolute end-0 top-50 translate-middle-y me-3" role="status"></div>
                   </div>
                 </div>
 
-                <div class="col-12 col-md-6">
-                  <div class="form-floating compact-floating position-relative">
-                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.curp == '' && afiliadoError.curp }" v-model="afiliado.curp" id="curp" placeholder="CURP" autocomplete="off" maxlength="18" :disabled="mexicano" @input="convertirAMayusculas">
-                    <label for="curp">CURP *</label>
-                    <a href="https://www.gob.mx/curp/" target="_blank" class="position-absolute end-0 top-50 translate-middle-y me-3 x-small text-decoration-none text-success fw-bold">¿Buscar?</a>
+                <div class="col-12 col-md-5">
+                  <div class="form-floating compact-floating">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliadoError.calle }" v-model="direccion.estado" id="estado" placeholder="Estado" readonly>
+                    <label for="estado">Estado *</label>
                   </div>
                 </div>
-                
-                <div class="col-12 col-md-6">
+
+                <div class="col-12 col-md-4">
                   <div class="form-floating compact-floating">
-                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.celular == '' && afiliadoError.celular }" v-model="afiliado.celular" id="celular" placeholder="Celular" autocomplete="off" maxlength="11">
+                    <!-- MUNICIPIO AHORA ES EDITABLE Y OBLIGATORIO -->
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliadoError.calle }" v-model="direccion.municipio" id="municipio" placeholder="Municipio" autocomplete="off">
+                    <label for="municipio">Municipio / Alcaldía *</label>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                  <div class="form-floating compact-floating">
+                    <select class="form-select custom-input" :class="{ 'input-error': afiliadoError.calle }" v-model="direccion.colonia" id="colonia" :disabled="listaColonias.length === 0">
+                      <option value="" class="dark-option">Selecciona tu colonia</option>
+                      <option v-for="col in listaColonias" :key="col" :value="col" class="dark-option">{{ col }}</option>
+                    </select>
+                    <label for="colonia">Colonia *</label>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-8">
+                  <div class="form-floating compact-floating">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliadoError.calle }" v-model="direccion.calleNum" id="calle_num" placeholder="Calle y Número" autocomplete="off">
+                    <label for="calle_num">Calle, Número Exterior e Interior *</label>
+                  </div>
+                </div>
+                <!-- ========================================== -->
+
+                <!-- MÁSCARA DE CELULAR -->
+                <div class="col-12 col-md-4 mt-3">
+                  <div class="form-floating compact-floating">
+                    <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliadoError.celular }" v-model="afiliado.celular" @input="formatPhone" id="celular" placeholder="Celular" autocomplete="off" maxlength="17">
                     <label for="celular">Teléfono Celular *</label>
                   </div>
                 </div>
 
-                <div class="col-12 col-md-4">
+                <!-- CORREO -->
+                <div class="col-12 col-md-8 mt-3">
                   <div class="form-floating compact-floating">
-                    <input type="email" class="form-control custom-input" :class="{ 'input-error': afiliado.mail == '' && afiliadoError.mail }" v-model="afiliado.mail" id="email" placeholder="Email" autocomplete="off">
+                    <input type="email" class="form-control custom-input" :class="{ 'input-error': afiliadoError.mail }" v-model="afiliado.mail" id="email" placeholder="Email" autocomplete="off">
                     <label for="email">Correo Electrónico *</label>
                   </div>
                 </div>
-                <div class="col-12 col-md-4">
-                  <div class="form-floating compact-floating">
-                    <input type="password" class="form-control custom-input" :class="{ 'input-error': afiliado.password == '' && afiliadoError.password }" v-model="afiliado.password" id="pass" placeholder="Contraseña" autocomplete="new-password">
+                
+                <!-- PASSWORD CON MEDIDOR DE FUERZA -->
+                <div class="col-12 col-md-6">
+                  <div class="form-floating compact-floating mb-1">
+                    <input type="password" class="form-control custom-input" :class="{ 'input-error': afiliadoError.password }" v-model="afiliado.password" id="pass" placeholder="Contraseña" autocomplete="new-password">
                     <label for="pass">Contraseña (Mín. 8) *</label>
                   </div>
+                  
+                  <!-- Progress Bar de Fuerza -->
+                  <div class="password-meter px-2" v-if="afiliado.password.length > 0">
+                    <div class="progress" style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                      <div class="progress-bar transition-all" :class="passwordStrengthClass" role="progressbar" :style="{ width: passwordStrength + '%' }"></div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-1">
+                      <small class="x-small fw-bold" :class="passwordStrengthColor">{{ passwordStrengthText }}</small>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-12 col-md-4">
+
+                <div class="col-12 col-md-6">
                   <div class="form-floating compact-floating">
-                    <input type="password" class="form-control custom-input" :class="{ 'input-error': (afiliado.password_confirmation == '' || afiliado.password !== afiliado.password_confirmation) && afiliadoError.password_confirmation }" v-model="afiliado.password_confirmation" id="pass2" placeholder="Confirmar" autocomplete="new-password">
+                    <input type="password" class="form-control custom-input" :class="{ 'input-error': afiliadoError.password_confirmation }" v-model="afiliado.password_confirmation" id="pass2" placeholder="Confirmar" autocomplete="new-password">
                     <label for="pass2">Confirmar Contraseña *</label>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- PERFIL DEPORTIVO -->
             <div class="form-section glass-box shadow-sm mb-3">
               <h6 class="section-title text-white"><i class="material-icons text-primary">sports_soccer</i> Perfil Deportivo</h6>
               <div class="row g-2">
-                
                 <div class="col-12 col-md-12">
                   <div class="form-floating compact-floating">
                     <input type="text" class="form-control custom-input" :class="{ 'input-error': afiliado.nui == '' && afiliadoError.nui }" v-model="afiliado.nui" @change="ExisteNUI(afiliado.nui)" id="nui" placeholder="NUI" autocomplete="off" maxlength="7">
@@ -164,7 +412,6 @@
                     Consulta tu NUI: <a href="http://ligamx.net/cancha/bsqdavnzd" target="_blank" class="text-success text-decoration-none">Varonil</a> | <a href="http://www.ligafemenil.mx/cancha/bsqdavnzd" target="_blank" class="text-success text-decoration-none">Femenil</a>
                   </small>
                 </div>
-
                 <div :class="muestra_categoria ? 'col-12 col-md-4' : 'col-12 col-md-6'">
                   <div class="form-floating compact-floating">
                     <select class="form-select custom-input" :class="{ 'input-error': afiliado.division == '' && afiliadoError.division }" v-model="afiliado.division" @change="listaEquipos(afiliado.division)" id="division">
@@ -179,56 +426,31 @@
                     <label for="division">División *</label>
                   </div>
                 </div>
-
                 <div :class="muestra_categoria ? 'col-12 col-md-4' : 'col-12 col-md-6'">
                   <div class="premium-dropdown-wrapper" v-outside-click="cerrarDropdownClub">
-                    
-                    <div 
-                      class="premium-dropdown-trigger" 
-                      :class="{ 'disabled-trigger': selectDisabled, 'input-error': afiliado.club == '' && afiliadoError.club }"
-                      @click="toggleDropdownClub"
-                    >
+                    <div class="premium-dropdown-trigger" :class="{ 'disabled-trigger': selectDisabled, 'input-error': afiliado.club == '' && afiliadoError.club }" @click="toggleDropdownClub">
                       <div class="trigger-info">
                         <span class="trigger-label">Club *</span>
                         <span class="trigger-value">{{ afiliado.club || 'Seleccionar Club' }}</span>
                       </div>
                       <i class="material-icons arrow-icon">{{ dropdownClubAbierto ? 'expand_less' : 'expand_more' }}</i>
                     </div>
-
                     <div class="premium-dropdown-menu-box" v-if="dropdownClubAbierto">
                       <div class="menu-search-wrapper">
                         <i class="material-icons search-icon">search</i>
-                        <input 
-                          type="text" 
-                          class="menu-search-control" 
-                          v-model="busquedaClub" 
-                          placeholder="Buscar club por nombre..."
-                          ref="searchClubInput"
-                          @click.stop
-                        >
+                        <input type="text" class="menu-search-control" v-model="busquedaClub" placeholder="Buscar club por nombre..." ref="searchClubInput" @click.stop>
                         <i class="material-icons clear-icon" v-if="busquedaClub" @click.stop="busquedaClub = ''">close</i>
                       </div>
-
                       <ul class="menu-options-list">
-                        <li 
-                          v-for="(le, index) in clubesFiltrados" 
-                          :key="index" 
-                          class="menu-option-item"
-                          :class="{ 'selected-item': afiliado.club === le.nombre }"
-                          @click="seleccionarClub(le.nombre)"
-                        >
+                        <li v-for="(le, index) in clubesFiltrados" :key="index" class="menu-option-item" :class="{ 'selected-item': afiliado.club === le.nombre }" @click="seleccionarClub(le.nombre)">
                           {{ le.nombre }}
                           <i class="material-icons check-icon" v-if="afiliado.club === le.nombre">check</i>
                         </li>
-                        <li class="menu-no-results" v-if="clubesFiltrados.length === 0">
-                          No se encontraron clubes
-                        </li>
+                        <li class="menu-no-results" v-if="clubesFiltrados.length === 0">No se encontraron clubes</li>
                       </ul>
                     </div>
-
                   </div>
                 </div>
-
                 <div class="col-12 col-md-4" v-show="muestra_categoria">
                   <div class="form-floating compact-floating">
                     <select class="form-select custom-input" :class="{ 'input-error': afiliado.categoria == '' && afiliadoError.categoria }" v-model="afiliado.categoria" :disabled="selectDisabled2" id="categoria">
@@ -248,7 +470,6 @@
                     <label for="categoria">Categoría *</label>
                   </div>
                 </div>
-
                 <div :class="muestra_tipo ? 'col-12 col-md-6' : 'col-12 col-md-12'">
                   <div class="form-floating compact-floating">
                     <select class="form-select custom-input" :class="{ 'input-error': afiliado.seleccion == '' && afiliadoError.seleccion }" v-model="afiliado.seleccion" @change="muestraSelectTIpo(afiliado.seleccion)" id="seleccion">
@@ -259,7 +480,6 @@
                     <label for="seleccion">Selección Nacional *</label>
                   </div>
                 </div>
-
                 <div class="col-12 col-md-6" v-show="muestra_tipo">
                   <div class="form-floating compact-floating">
                     <select class="form-select custom-input" :class="{ 'input-error': afiliado.tipo_seleccion == '' && afiliadoError.tipo_seleccion }" v-model="afiliado.tipo_seleccion" id="tipo_seleccion">
@@ -270,10 +490,10 @@
                     <label for="tipo_seleccion">Tipo de Selección *</label>
                   </div>
                 </div>
-
               </div>
             </div>
 
+            <!-- DOCUMENTACIÓN -->
             <div class="row g-3 mb-3">
               <div class="col-md-7">
                 <div class="form-section glass-box shadow-sm mb-3">
@@ -297,7 +517,6 @@
                   </div>
                 </div>
               </div>
-              
               <div class="col-md-5">
                 <div class="form-section glass-box shadow-sm mb-3 p-3">
                   <div class="d-flex justify-content-between align-items-center mb-2">
@@ -315,6 +534,7 @@
               </div>
             </div>
 
+            <!-- BOTÓN Y LEGAL -->
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center glass-bottom-bar p-3 rounded-4 shadow-sm border-light-glass mt-4">
               <div class="legal-compact me-md-3 mb-3 mb-md-0">
                 <div class="form-check custom-check mb-1">
@@ -330,7 +550,6 @@
                   </label>
                 </div>
               </div>
-              
               <div class="text-end flex-shrink-0">
                 <button type="submit" class="btn btn-premium w-100 shadow-lg">
                   <i class="material-icons align-middle me-1">check_circle</i> COMPLETAR
@@ -353,6 +572,7 @@
       </div>
     </div>
 
+    <!-- MODAL DE PRIVACIDAD COMPLETO -->
     <div class="modal fade" id="avisoprivacidad" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 10000;">
       <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
         <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
@@ -502,7 +722,6 @@ import axios from 'axios';
 export default {
   name: 'PaginaRegistro',
   
-  // DIRECTIVA PERSONALIZADA LOCAL COMPATIBLE CON MIX V6
   directives: {
     outsideClick: {
       bind(el, binding, vnode) {
@@ -520,12 +739,7 @@ export default {
   },
 
   mounted() {
-    toastr.options = {
-      "closeButton": true,
-      "progressBar": true,
-      "positionClass": "toast-top-right",
-      "timeOut": "4000",
-    };
+    toastr.options = { "closeButton": true, "progressBar": true, "positionClass": "toast-top-right", "timeOut": "4000" };
   },
   data() {
     return {
@@ -534,6 +748,13 @@ export default {
       verloading: false,
       busquedaClub: "",
       dropdownClubAbierto: false, 
+      
+      buscandoCP: false,
+      listaColonias: [],
+      direccion: { cp: "", estado: "", municipio: "", colonia: "", calleNum: "" },
+      sexoAutocompletado: false,
+      nacimientoAutocompletado: false,
+
       afiliado: {
         nombre: "", apellido_pat: "", apellido_mat: "", sexo: "",
         nacionalidad: "", escolaridad: "", mail: "", curp: "",
@@ -547,6 +768,7 @@ export default {
       selectDisabled: true,
       selectDisabled2: true,
       mexicano: true,
+      
       afiliadoError: {
         nombre: false, apellido_pat: false, apellido_mat: false, sexo: false,
         nacionalidad: false, escolaridad: false, mail: false, curp: false,
@@ -555,119 +777,165 @@ export default {
         tipo_seleccion: false, terminos: false, aviso: false, pdf: false,
         pdf2: false, foto: false, password: false, password_confirmation: false
       },
+      
       exisNui: [],
       nombre_archivo_frente: 'Examinar...',
       nombre_archivo_atras: 'Examinar...',
-      nombre_archivo_foto: 'Examinar...',
-      nombre_archivo_permiso: 'Examinar...'
+      nombre_archivo_foto: 'Examinar...'
     }
   },
   computed: {
     clubesFiltrados() {
       if (!this.lista_equipos) return [];
-      
-      let filtrados = this.lista_equipos.filter(equipo => {
-        return equipo.nombre.toLowerCase().includes(this.busquedaClub.toLowerCase());
-      });
-
-      return filtrados.sort((a, b) => {
-        return a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' });
-      });
+      let filtrados = this.lista_equipos.filter(equipo => equipo.nombre.toLowerCase().includes(this.busquedaClub.toLowerCase()));
+      return filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }));
+    },
+    // MAGIA: MEDIDOR DE CONTRASEÑA LÓGICA
+    passwordStrength() {
+      let score = 0;
+      if (!this.afiliado.password) return 0;
+      if (this.afiliado.password.length >= 8) score += 25;
+      if (/[A-Z]/.test(this.afiliado.password)) score += 25; 
+      if (/[0-9]/.test(this.afiliado.password)) score += 25; 
+      if (/[^A-Za-z0-9]/.test(this.afiliado.password)) score += 25; 
+      return score;
+    },
+    passwordStrengthClass() {
+      if (this.passwordStrength <= 25) return 'bg-danger';
+      if (this.passwordStrength <= 50) return 'bg-warning';
+      if (this.passwordStrength <= 75) return 'bg-info';
+      return 'bg-success';
+    },
+    passwordStrengthText() {
+      if (this.passwordStrength === 0) return '';
+      if (this.passwordStrength <= 25) return 'Débil';
+      if (this.passwordStrength <= 50) return 'Regular';
+      if (this.passwordStrength <= 75) return 'Buena';
+      return 'Fuerte';
+    },
+    passwordStrengthColor() {
+      if (this.passwordStrength <= 25) return 'text-danger';
+      if (this.passwordStrength <= 50) return 'text-warning';
+      if (this.passwordStrength <= 75) return 'text-info';
+      return 'text-success';
     }
   },
   methods: {
+    // MAGIA: MÁSCARA DE CELULAR (55) 1234 - 5678
+    formatPhone(e) {
+      let input = e.target.value.replace(/\D/g, ''); 
+      if (input.length > 10) input = input.substring(0, 10); 
+      
+      let formatted = input;
+      if (input.length > 2 && input.length <= 6) {
+        formatted = `(${input.substring(0,2)}) ${input.substring(2)}`;
+      } else if (input.length > 6) {
+        formatted = `(${input.substring(0,2)}) ${input.substring(2,6)} - ${input.substring(6)}`;
+      }
+      this.afiliado.celular = formatted;
+    },
+
+    procesarCURP() {
+      this.afiliado.curp = this.afiliado.curp.toUpperCase();
+      const curpVal = this.afiliado.curp;
+      
+      if (curpVal.length === 18) {
+        const sexoChar = curpVal.charAt(10);
+        if (sexoChar === 'H') { this.afiliado.sexo = 'Masculino'; this.sexoAutocompletado = true; } 
+        else if (sexoChar === 'M') { this.afiliado.sexo = 'Femenino'; this.sexoAutocompletado = true; }
+
+        let yy = curpVal.substring(4, 6); let mm = curpVal.substring(6, 8); let dd = curpVal.substring(8, 10);
+        const homoclave1 = curpVal.charAt(16);
+        const siglo = isNaN(homoclave1) ? '20' : '19';
+        
+        this.afiliado.nacimiento = `${siglo}${yy}-${mm}-${dd}`;
+        this.nacimientoAutocompletado = true;
+
+        toastr.success('Fecha de nacimiento y sexo extraídos correctamente.', '¡CURP Autocompletada!');
+        setTimeout(() => { this.sexoAutocompletado = false; this.nacimientoAutocompletado = false; }, 3000);
+      }
+    },
+
+    async buscarCP() {
+      if (this.direccion.cp.length === 5) {
+        this.buscandoCP = true;
+        try {
+          const response = await fetch(`https://api.zippopotam.us/MX/${this.direccion.cp}`);
+          if (!response.ok) throw new Error("CP no encontrado");
+          
+          const data = await response.json();
+          this.direccion.estado = data.places[0]['state'];
+          // Vaciamos municipio porque la API no lo trae, el usuario lo tecleará
+          this.direccion.municipio = '';
+          this.listaColonias = data.places.map(p => p['place name']);
+          
+          if (this.listaColonias.length === 1) { this.direccion.colonia = this.listaColonias[0]; } 
+          else { this.direccion.colonia = ""; }
+          
+          toastr.success('Estado y colonias encontradas. Por favor, ingresa tu Municipio.', '¡CP Válido!');
+        } catch (error) {
+          toastr.warning('Código Postal no encontrado. Por favor, verifica el número.');
+          this.direccion.estado = ''; this.direccion.municipio = ''; this.listaColonias = [];
+        } finally { this.buscandoCP = false; }
+      } else {
+        this.direccion.estado = ''; this.direccion.municipio = ''; this.listaColonias = [];
+      }
+    },
+
     toggleDropdownClub() {
       if (this.selectDisabled) return;
       this.dropdownClubAbierto = !this.dropdownClubAbierto;
       if (this.dropdownClubAbierto) {
         this.busquedaClub = "";
-        this.$nextTick(() => {
-          if (this.$refs.searchClubInput) this.$refs.searchClubInput.focus();
-        });
+        this.$nextTick(() => { if (this.$refs.searchClubInput) this.$refs.searchClubInput.focus(); });
       }
     },
-    cerrarDropdownClub() {
-      this.dropdownClubAbierto = false;
-    },
-    seleccionarClub(clubNombre) {
-      this.afiliado.club = clubNombre;
-      this.cerrarDropdownClub();
-    },
+    cerrarDropdownClub() { this.dropdownClubAbierto = false; },
+    seleccionarClub(clubNombre) { this.afiliado.club = clubNombre; this.cerrarDropdownClub(); },
 
     listaEquipos(division) {
-      this.afiliado.club = "";
-      this.afiliado.categoria = "";
-      this.busquedaClub = "";
-      this.cerrarDropdownClub();
-      
+      this.afiliado.club = ""; this.afiliado.categoria = ""; this.busquedaClub = ""; this.cerrarDropdownClub();
       if (division == "") {
-        this.selectDisabled = true;
-        this.selectDisabled2 = true;
-        this.muestra_categoria = false;
-        this.lista_equipos = [];
+        this.selectDisabled = true; this.selectDisabled2 = true; this.muestra_categoria = false; this.lista_equipos = [];
       } else {
         let nuevaDiv = division;
-        if (['Sub 13', 'Sub 14', 'Sub 15', 'Sub 16', 'Sub 17', 'Sub 18', 'Sub 19', 'Sub 20', 'Sub 23'].includes(division)) {
-          nuevaDiv = 'Liga MX';
-        }
-        axios.post('registro/devuelve-equipos', { nuevaDiv: nuevaDiv })
-          .then(res => { 
-            this.lista_equipos = res.data; 
-          })
-          .catch(error => { console.error("Error al obtener los equipos:", error); });
+        if (['Sub 13', 'Sub 14', 'Sub 15', 'Sub 16', 'Sub 17', 'Sub 18', 'Sub 19', 'Sub 20', 'Sub 23'].includes(division)) { nuevaDiv = 'Liga MX'; }
+        axios.post('registro/devuelve-equipos', { nuevaDiv: nuevaDiv }).then(res => { this.lista_equipos = res.data; }).catch(error => { console.error(error); });
         
         this.selectDisabled = false;
         if (division == "Liga Expansión MX" || division == "Liga Premier" || division == "Liga TDP") {
-          this.selectDisabled2 = true;
-          this.afiliado.categoria = '';
-          this.muestra_categoria = false;
+          this.selectDisabled2 = true; this.afiliado.categoria = ''; this.muestra_categoria = false;
         } else {
-          this.selectDisabled2 = false;
-          this.muestra_categoria = true;
+          this.selectDisabled2 = false; this.muestra_categoria = true;
         }
         if (division == "Otro") {
-          this.selectDisabled = true;
-          this.selectDisabled2 = true;
-          this.afiliado.club = 'Otro';
-          this.muestra_categoria = false;
-          this.lista_equipos = [{ nombre: 'Otro' }];
+          this.selectDisabled = true; this.selectDisabled2 = true; this.afiliado.club = 'Otro'; this.muestra_categoria = false; this.lista_equipos = [{ nombre: 'Otro' }];
         }
       }
     },
-    ineFrente() {
-      this.file = this.$refs.filefrente.files[0];
+    ineFrente() { this.manejarArchivo('filefrente', 'pdf', 'nombre_archivo_frente'); },
+    ineAtras() { this.manejarArchivo('fileatras', 'pdf2', 'nombre_archivo_atras'); },
+    ineFoto() { this.manejarArchivo('filefoto', 'foto', 'nombre_archivo_foto'); },
+    manejarArchivo(refName, propName, nameProp) {
+      this.file = this.$refs[refName].files[0];
       if(!this.file) return;
-      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-      if (!allowedTypes.includes(this.file.type)) {
+      if (!['image/jpeg', 'image/jpg', 'image/png'].includes(this.file.type)) {
         swal('Solo se permiten imágenes en formato JPEG, JPG o PNG', { position: 'center', icon: 'error', buttons: false, timer: 1600 });
-        this.$refs.filefrente.value = null; return;
+        this.$refs[refName].value = null; return;
       }
-      this.afiliado.pdf = this.file;
-      this.nombre_archivo_frente = this.file.name;
+      this.afiliado[propName] = this.file;
+      this[nameProp] = this.file.name;
     },
-    ineAtras() {
-      this.file = this.$refs.fileatras.files[0];
-      if(!this.file) return;
-      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-      if (!allowedTypes.includes(this.file.type)) {
-        swal('Solo se permiten imágenes en formato JPEG, JPG o PNG', { position: 'center', icon: 'error', buttons: false, timer: 1600 });
-        this.$refs.fileatras.value = null; return;
-      }
-      this.afiliado.pdf2 = this.file;
-      this.nombre_archivo_atras = this.file.name;
-    },
-    ineFoto() {
-      this.file = this.$refs.filefoto.files[0];
-      if(!this.file) return;
-      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-      if (!allowedTypes.includes(this.file.type)) {
-        swal('Solo se permiten imágenes en formato JPEG, JPG o PNG', { position: 'center', icon: 'error', buttons: false, timer: 1600 });
-        this.$refs.filefoto.value = null; return;
-      }
-      this.afiliado.foto = this.file;
-      this.nombre_archivo_foto = this.file.name;
-    },
+
     createAfiliado() {
+      // 1. Unimos calle final para evaluarla
+      if(this.direccion.cp && this.direccion.calleNum && this.direccion.municipio && this.direccion.estado && this.direccion.colonia) {
+        this.afiliado.calle = `${this.direccion.calleNum}, Col. ${this.direccion.colonia}, ${this.direccion.municipio}, ${this.direccion.estado}, C.P. ${this.direccion.cp}`;
+      } else {
+        this.afiliado.calle = ""; 
+      }
+
+      // 2. RESTAURAMOS LA CASCADA DE TOASTR ORIGINAL
       if (
         this.afiliado.nombre == "" || this.afiliado.apellido_pat == "" || this.afiliado.apellido_mat == "" ||
         this.afiliado.sexo == "" || this.afiliado.nacionalidad == "" || this.afiliado.escolaridad == "" ||
@@ -703,7 +971,7 @@ export default {
         if (this.afiliado.password !== this.afiliado.password_confirmation) { toastr.error('Las contraseñas no coinciden'); this.afiliadoError.password_confirmation = true; }
         if (this.afiliado.curp == "") { toastr.error('Ingresar curp'); this.afiliadoError.curp = true; }
         if (this.afiliado.nacimiento == "") { toastr.error('Ingresar fecha de nacimiento'); this.afiliadoError.nacimiento = true; }
-        if (this.afiliado.calle == "") { toastr.error('Ingresar dirección'); this.afiliadoError.calle = true; }
+        if (this.afiliado.calle == "") { toastr.error('Faltan datos en la ubicación (C.P., Estado, Municipio, Colonia o Calle)'); this.afiliadoError.calle = true; }
         if (this.afiliado.celular == "") { toastr.error('Ingresar teléfono celular'); this.afiliadoError.celular = true; } 
         else if(!this.validarCaracteresEspecialesTelefono(this.afiliado.celular)) { toastr.error('Formato incorrecto en celular'); this.afiliadoError.celular = true; }
         if (this.afiliado.nui == "") { toastr.error('Ingresar NUI'); this.afiliadoError.nui = true; } 
@@ -722,39 +990,18 @@ export default {
       }
       
       this.verloading = true;
-      const fechaActual = new Date();
-      const anio = fechaActual.getFullYear();
-      const mes = String(fechaActual.getMonth() + 1).padStart(2, '0');
-      const dia = String(fechaActual.getDate()).padStart(2, '0');
-      
-      this.afiliado.fec_registro = `${anio}-${mes}-${dia}`;
+      const f = new Date();
+      this.afiliado.fec_registro = `${f.getFullYear()}-${String(f.getMonth() + 1).padStart(2, '0')}-${String(f.getDate()).padStart(2, '0')}`;
 
       let formData = new FormData();
-      formData.append('nombre', this.afiliado.nombre);
-      formData.append('apellido_pat', this.afiliado.apellido_pat);
-      formData.append('apellido_mat', this.afiliado.apellido_mat);
-      formData.append('sexo', this.afiliado.sexo);
-      formData.append('nacionalidad', this.afiliado.nacionalidad);
-      formData.append('escolaridad', this.afiliado.escolaridad);
-      formData.append('mail', this.afiliado.mail);
-      formData.append('password', this.afiliado.password);
-      formData.append('password_confirmation', this.afiliado.password_confirmation);
-      formData.append('curp', this.afiliado.curp);
-      formData.append('nacimiento', this.afiliado.nacimiento);
-      formData.append('calle', this.afiliado.calle);
-      formData.append('celular', this.afiliado.celular);
-      formData.append('nui', this.afiliado.nui);
-      formData.append('division', this.afiliado.division);
-      formData.append('club', this.afiliado.club);
-      formData.append('categoria', this.afiliado.categoria);
-      formData.append('seleccion', this.afiliado.seleccion);
-      formData.append('tipo_seleccion', this.afiliado.tipo_seleccion);
-      formData.append('terminos', this.afiliado.terminos);
-      formData.append('aviso', this.afiliado.aviso);
-      formData.append('pdf', this.afiliado.pdf);
-      formData.append('pdf2', this.afiliado.pdf2);
-      formData.append('foto', this.afiliado.foto);
-      formData.append('fec_registro', this.afiliado.fec_registro);
+      Object.keys(this.afiliado).forEach(key => {
+        // En el backend guardamos el celular SIN la máscara (puros números)
+        if(key === 'celular') {
+          formData.append(key, this.afiliado[key].replace(/\D/g, ''));
+        } else {
+          formData.append(key, this.afiliado[key]);
+        }
+      });
       
       axios.post('registro/create', formData).then(res => {
         this.verloading = false;
@@ -765,87 +1012,34 @@ export default {
           confirmButtonText: '<i class="material-icons align-middle me-1">person</i> ¡Ir a mi Perfil!',
           buttonsStyling: false,
           backdrop: 'rgba(15, 23, 42, 0.8)',
-          customClass: {
-            container: 'swal-super-top', 
-            popup: 'swal-premium-popup',
-            title: 'swal-premium-title',
-            htmlContainer: 'swal-premium-text',
-            confirmButton: 'btn-swal-premium-success'
-          },
+          customClass: { container: 'swal-super-top', popup: 'swal-premium-popup', title: 'swal-premium-title', htmlContainer: 'swal-premium-text', confirmButton: 'btn-swal-premium-success' },
           didClose: () => { window.location.href = `perfil`; }
         });
       }).catch(error => {
         this.verloading = false;
-        if (error.response) {
-          let mensajeError = error.response.data.error || 'Ocurrió un error en el servidor.';
-          toastr.error(mensajeError); 
-          if (error.response.status === 422) { this.afiliadoError.mail = true; }
-        } else {
-          toastr.error('Error de conexión. Por favor intenta más tarde.'); 
-        }
+        toastr.error(error.response?.data?.error || 'Error de conexión.');
       });
     },
     esMexicano(nacionalidad) {
-      if(nacionalidad == " México"){
-        this.mexicano = false;
-        this.afiliado.curp = "";
-      } else {
-        this.mexicano = true;
-        this.afiliado.curp = "XEXX010100HMXXXX10";
-      }
+      if(nacionalidad == "México"){ this.mexicano = false; this.afiliado.curp = ""; } 
+      else { this.mexicano = true; this.afiliado.curp = "XEXX010100HMXXXX10"; }
     },
     validarFormatoCorreo(correo) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo); },
     validarCaracteresEspeciales(texto) { return /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s\-_]+$/.test(texto); },
-    validarCaracteresEspecialesTelefono(texto) { return /^\d{10}$/.test(texto); },
+    // AHORA LA VALIDACIÓN DEL TELÉFONO EVALÚA LOS 10 DÍGITOS REALES SIN MÁSCARA
+    validarCaracteresEspecialesTelefono(texto) { return texto.replace(/\D/g, '').length === 10; },
     validarCaracteresEspecialesNUI(texto) { return /^[0-9]{1,6}$/.test(texto); },
     ExisteNUI(nui) {
       if(!nui) return;
       axios.get(`registro/existe_nui/${nui}`).then(res => {
-        this.exisNui = res.data;
-        if(this.exisNui.length != 0){
-            Swal.fire({
-                icon: 'error',
-                title: '¡NUI Registrado!',
-                text: 'El NUI que ingresaste ya existe en nuestra base de datos. Verifica el chat para más información.',
-                confirmButtonText: '<i class="material-icons align-middle me-1">check_circle</i> Entendido',
-                buttonsStyling: false,
-                backdrop: 'rgba(15, 23, 42, 0.8)',
-                customClass: {
-                    container: 'swal-super-top',
-                    popup: 'swal-premium-popup',
-                    title: 'swal-premium-title',
-                    htmlContainer: 'swal-premium-text',
-                    confirmButton: 'btn-swal-premium-danger'
-                }
-            }).then((result) => {
-                if (result.isConfirmed || result.isDismissed) {
-                    this.afiliado = {
-                        nombre: "", apellido_pat: "", apellido_mat: "", sexo: "",
-                        nacionalidad: "", escolaridad: "", mail: "", curp: "",
-                        nacimiento: "", calle: "", celular: "", nui: "",
-                        division: "", club: "", categoria: "", seleccion: "",
-                        tipo_seleccion: "", terminos: false, aviso: false,
-                        pdf: "", pdf2: "", foto: "", password: "",
-                        password_confirmation: "", fec_registro: this.hoy
-                    };
-                    this.lista_equipos = [];
-                    this.selectDisabled = true;
-                    this.selectDisabled2 = true;
-                    this.mexicano = true;
-                    this.muestra_tipo = false;
-                    this.muestra_categoria = false;
-                    this.nombre_archivo_frente = 'Examinar...';
-                    this.nombre_archivo_atras = 'Examinar...';
-                    this.nombre_archivo_foto = 'Examinar...';
-                }
-            });
+        if(res.data.length != 0){
+            Swal.fire({ icon: 'error', title: '¡NUI Registrado!', text: 'El NUI que ingresaste ya existe en nuestra base de datos.', confirmButtonText: 'Entendido' });
         }
       });
     },
-    convertirAMayusculas() { this.afiliado.curp = this.afiliado.curp.toUpperCase(); },
     muestraSelectTIpo(seleccion) {
-      if (seleccion == "Si") { this.muestra_tipo = true; } 
-      if (seleccion == "No" || seleccion == ""){ this.muestra_tipo = false; this.afiliado.tipo_seleccion = ""; }
+      this.muestra_tipo = seleccion == "Si";
+      if(!this.muestra_tipo) this.afiliado.tipo_seleccion = "";
     }
   }
 }
@@ -854,9 +1048,6 @@ export default {
 <style lang="scss" scoped>
 @use "sass:color";
 
-/* ==================================================
-   ESTILOS ORIGINALES RESTAURADOS AL 100%
-   ================================================== */
 .registro-page-wrapper {
   background-image: var(--bg-desktop);
   background-repeat: no-repeat;
@@ -886,7 +1077,6 @@ export default {
   }
 }
 
-/* HEADER GLASSMORPHISM (ULTRA CLEAN) */
 .glass-header {
   background: rgba(15, 23, 42, 0.7) !important;
   backdrop-filter: blur(10px);
@@ -894,14 +1084,12 @@ export default {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* El logo centrado sin redes sociales alrededor */
 .logo-header {
   object-fit: contain;
   transition: transform 0.3s ease;
   &:hover { transform: scale(1.05); }
 }
 
-/* NUEVO BOTON VOLVER (Dentro del header de la tarjeta) */
 .btn-back-home {
   color: rgba(255, 255, 255, 0.8);
   background: rgba(15, 23, 42, 0.6);
@@ -922,7 +1110,6 @@ export default {
 
 .tracking-wider { letter-spacing: 1px; }
 
-/* TARJETA PRINCIPAL Y SECCIONES GLASS ORIGINAL */
 .registration-card {
   width: 100%;
   background: rgba(15, 23, 42, 0.75);
@@ -942,442 +1129,97 @@ export default {
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-.registration-header {
-  padding: 30px;
-  background: transparent;
-}
+.registration-header { padding: 30px; background: transparent; }
 .border-bottom-glass { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .text-slate-300 { color: #cbd5e1 !important; }
 
 .icon-brand-box {
   background: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
-  width: 45px; height: 45px;
-  border-radius: 12px;
+  width: 45px; height: 45px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  color: white;
-  .material-icons { font-size: 1.6rem; }
+  color: white; .material-icons { font-size: 1.6rem; }
 }
 
-.registration-body {
-  padding: 30px;
-  background: transparent;
-}
+.registration-body { padding: 30px; background: transparent; }
 
 .glass-box {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.03); border-radius: 16px; padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  
-  .section-title {
-    font-size: 0.95rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    i { margin-right: 8px; font-size: 1.3rem; }
-  }
+  .section-title { font-size: 0.95rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; i { margin-right: 8px; font-size: 1.3rem; } }
 }
 
-/* --- INPUTS FLOATING ORIGINALES RESTAURADOS AL 100% --- */
+.autocompleted-field {
+  background: rgba(80, 192, 38, 0.1) !important;
+  border-color: #50c026 !important;
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
 .compact-floating {
   .custom-input {
-    height: calc(3rem + 2px); 
-    padding: 1rem 0.75rem 0.25rem 0.75rem;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: white;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+    height: calc(3rem + 2px); padding: 1rem 0.75rem 0.25rem 0.75rem; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 0.9rem; transition: all 0.3s ease;
     
-    &:focus {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #50c026;
-      box-shadow: 0 0 0 3px rgba(80, 192, 38, 0.15);
-      color: white;
-    }
+    &:focus { background: rgba(255, 255, 255, 0.1); border-color: #50c026; box-shadow: 0 0 0 3px rgba(80, 192, 38, 0.15); color: white; }
+    &.input-error { border-color: #ef4444 !important; background: rgba(239, 68, 68, 0.1) !important; }
     
-    &.input-error {
-      border-color: #ef4444 !important;
-      background: rgba(239, 68, 68, 0.1) !important;
+    &[readonly], &:disabled {
+      background: rgba(0, 0, 0, 0.25) !important;
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.05) !important;
+      cursor: not-allowed;
+      opacity: 1;
     }
   }
-
-  .dark-option {
-    background-color: #0f172a;
-    color: white;
-  }
-  
-  label { 
-    padding: 0.6rem 0.75rem; 
-    color: #94a3b8; 
-    font-size: 0.85rem; 
-  }
+  .dark-option { background-color: #0f172a; color: white; }
+  label { padding: 0.6rem 0.75rem; color: #94a3b8; font-size: 0.85rem; }
 }
 
 .form-floating > .form-control:focus ~ label,
 .form-floating > .form-control:not(:placeholder-shown) ~ label,
 .form-floating > .form-select ~ label {
-  color: #50c026;
-  background-color: #1e293b; 
-  border-radius: 4px;
-  height: auto;
-  padding: 0 5px;
-  transform: scale(.85) translateY(-.6rem) translateX(.5rem);
+  color: #50c026; background-color: #1e293b; border-radius: 4px; height: auto; padding: 0 5px; transform: scale(.85) translateY(-.6rem) translateX(.5rem);
 }
 .form-floating > .form-control:focus ~ label::after,
 .form-floating > .form-control:not(:placeholder-shown) ~ label::after,
-.form-floating > .form-select ~ label::after {
-  background-color: transparent !important;
-}
+.form-floating > .form-select ~ label::after { background-color: transparent !important; }
 
-/* =========================================================
-   ESTILOS PREMIUM DROPDOWN ORIGINALES CON ACABADO COHERENTE
-   ========================================================= */
-.premium-dropdown-wrapper {
-  position: relative;
-  width: 100%;
-  user-select: none;
-}
+/* DROPDOWN ORIGINALES */
+.premium-dropdown-wrapper { position: relative; width: 100%; user-select: none; }
+.premium-dropdown-trigger { height: calc(3rem + 2px); padding: 0.4rem 0.75rem; border-radius: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); color: white; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.3s ease; .trigger-info { display: flex; flex-direction: column; text-align: left; .trigger-label { font-size: 0.72rem; color: #50c026; font-weight: 500; transform: scale(0.85) translateY(-0.1rem) translateX(-0.35rem); } .trigger-value { font-size: 0.9rem; color: white; font-weight: 400; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; max-width: 200px; } } .arrow-icon { color: #94a3b8; font-size: 1.3rem; } &:focus, &:hover:not(.disabled-trigger) { background: rgba(255, 255, 255, 0.1); border-color: #50c026; } &.input-error { border-color: #ef4444 !important; background: rgba(239, 68, 68, 0.1) !important; } }
+.disabled-trigger { opacity: 0.4; cursor: not-allowed !important; background: rgba(255, 255, 255, 0.02) !important; .trigger-info .trigger-value { color: #64748b !important; } }
+.premium-dropdown-menu-box { position: absolute; top: calc(100% + 6px); left: 0; width: 100%; max-height: 280px; background: #1e293b; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); z-index: 999; display: flex; flex-direction: column; overflow: hidden; animation: dropFade 0.2s cubic-bezier(0.165, 0.84, 0.44, 1); .menu-search-wrapper { display: flex; align-items: center; background: rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 10px 12px; position: relative; .search-icon { color: #94a3b8; font-size: 1.1rem; margin-right: 8px; } .clear-icon { color: #64748b; font-size: 1.1rem; cursor: pointer; position: absolute; right: 20px; &:hover { color: white; } } .menu-search-control { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; font-size: 0.82rem; height: 32px; border-radius: 6px; padding-left: 10px; width: 100%; &:focus { border-color: #50c026 !important; box-shadow: none !important; outline: none !important; } } } .menu-options-list { list-style: none; margin: 0; padding: 5px 0; overflow-y: auto; flex-grow: 1; &::-webkit-scrollbar { width: 6px; } &::-webkit-scrollbar-track { background: transparent; } &::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; } .menu-option-item { padding: 10px 15px; font-size: 0.85rem; color: #cbd5e1; cursor: pointer; display: flex; align-items: center; justify-content: space-between; .check-icon { color: #50c026; font-size: 1rem; } &:hover { background: rgba(255, 255, 255, 0.05); color: white; } &.selected-item { background: rgba(80, 192, 38, 0.12); color: #50c026; font-weight: 600; } } .menu-no-results { padding: 20px 15px; text-align: center; color: #64748b; font-size: 0.82rem; font-style: italic; } } }
+@keyframes dropFade { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 
-.premium-dropdown-trigger {
-  height: calc(3rem + 2px);
-  padding: 0.4rem 0.75rem;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* FILE UPLOAD */
+.custom-file-upload { position: relative; .file-hidden { position: absolute; width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; z-index: -1; } .file-label { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 10px; background: rgba(255, 255, 255, 0.05); border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: 12px; cursor: pointer; transition: all 0.2s; color: #cbd5e1; font-size: 0.8rem; font-weight: 600; i { font-size: 1.6rem; color: #94a3b8; margin-bottom: 4px; transition: color 0.2s; } &:hover { background: rgba(80, 192, 38, 0.1); border-color: #50c026; color: white; i { color: #50c026; transform: translateY(-2px); } } &.input-error { border-color: #ef4444 !important; color: #fca5a5 !important; i { color: #fca5a5 !important; } } } }
 
-  .trigger-info {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+/* BOTÓN DE REGISTRO PREMIUM */
+.btn-premium { background: linear-gradient(135deg, #50c026 0%, #3e9452 100%); color: white; border: none; border-radius: 12px; padding: 12px 25px; font-size: 1rem; letter-spacing: 0.5px; font-weight: 700; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: center; &:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(80, 192, 38, 0.4) !important; color: white; } }
 
-    .trigger-label {
-      font-size: 0.72rem;
-      color: #50c026;
-      font-weight: 500;
-      transform: scale(0.85) translateY(-0.1rem) translateX(-0.35rem);
-    }
+/* CHECKBOX CUSTOM */
+.custom-check { .form-check-input { background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); &:checked { background-color: #50c026; border-color: #50c026; } &.input-error { border-color: #ef4444 !important; } } }
 
-    .trigger-value {
-      font-size: 0.9rem;
-      color: white;
-      font-weight: 400;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      max-width: 200px;
-    }
-  }
-
-  .arrow-icon {
-    color: #94a3b8;
-    font-size: 1.3rem;
-  }
-
-  &:focus, &:hover:not(.disabled-trigger) {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #50c026;
-  }
-
-  &.input-error {
-    border-color: #ef4444 !important;
-    background: rgba(239, 68, 68, 0.1) !important;
-  }
-}
-
-.disabled-trigger {
-  opacity: 0.4;
-  cursor: not-allowed !important;
-  background: rgba(255, 255, 255, 0.02) !important;
-  .trigger-info .trigger-value { color: #64748b !important; }
-}
-
-.premium-dropdown-menu-box {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  width: 100%;
-  max-height: 280px;
-  background: #1e293b;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  animation: dropFade 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-  .menu-search-wrapper {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 10px 12px;
-    position: relative;
-
-    .search-icon {
-      color: #94a3b8;
-      font-size: 1.1rem;
-      margin-right: 8px;
-    }
-
-    .clear-icon {
-      color: #64748b;
-      font-size: 1.1rem;
-      cursor: pointer;
-      position: absolute;
-      right: 20px;
-      &:hover { color: white; }
-    }
-
-    .menu-search-control {
-      background: rgba(255, 255, 255, 0.05) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      color: white !important;
-      font-size: 0.82rem;
-      height: 32px;
-      border-radius: 6px;
-      padding-left: 10px;
-      width: 100%;
-
-      &:focus {
-        border-color: #50c026 !important;
-        box-shadow: none !important;
-        outline: none !important;
-      }
-    }
-  }
-
-  .menu-options-list {
-    list-style: none;
-    margin: 0;
-    padding: 5px 0;
-    overflow-y: auto;
-    flex-grow: 1;
-
-    &::-webkit-scrollbar { width: 6px; }
-    &::-webkit-scrollbar-track { background: transparent; }
-    &::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
-
-    .menu-option-item {
-      padding: 10px 15px;
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .check-icon {
-        color: #50c026;
-        font-size: 1rem;
-      }
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.05);
-        color: white;
-      }
-
-      &.selected-item {
-        background: rgba(80, 192, 38, 0.12);
-        color: #50c026;
-        font-weight: 600;
-      }
-    }
-
-    .menu-no-results {
-      padding: 20px 15px;
-      text-align: center;
-      color: #64748b;
-      font-size: 0.82rem;
-      font-style: italic;
-    }
-  }
-}
-
-@keyframes dropFade {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- CUSTOM FILE UPLOAD (GLASS) --- */
-.custom-file-upload {
-  position: relative;
-  
-  .file-hidden {
-    position: absolute;
-    width: 0.1px; height: 0.1px;
-    opacity: 0; overflow: hidden; z-index: -1;
-  }
-  
-  .file-label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px dashed rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
-    color: #cbd5e1;
-    font-size: 0.8rem;
-    font-weight: 600;
-    
-    i { font-size: 1.6rem; color: #94a3b8; margin-bottom: 4px; transition: color 0.2s; }
-    
-    &:hover {
-      background: rgba(80, 192, 38, 0.1);
-      border-color: #50c026;
-      color: white;
-      i { color: #50c026; transform: translateY(-2px); }
-    }
-    
-    &.input-error {
-      border-color: #ef4444 !important;
-      color: #fca5a5 !important;
-      i { color: #fca5a5 !important; }
-    }
-  }
-}
-
-/* --- BARRA INFERIOR --- */
-.glass-bottom-bar {
-  background: rgba(255, 255, 255, 0.03);
-}
-.border-light-glass {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* --- BOTÓN DE REGISTRO PREMIUM --- */
-.btn-premium {
-  background: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 25px;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  font-weight: 700;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(80, 192, 38, 0.4) !important;
-    color: white;
-  }
-}
-
-/* --- CHECKBOX CUSTOM --- */
-.custom-check {
-  .form-check-input {
-    background-color: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.2);
-    &:checked { background-color: #50c026; border-color: #50c026; }
-    &.input-error { border-color: #ef4444 !important; }
-  }
-}
-
-/* --- UTILIDADES --- */
 .x-small { font-size: 0.75rem; }
 .line-height-1 { line-height: 1.2; }
+.transition-all { transition: all 0.4s ease; }
 
-/* ===================================================
-   SPINNER DE CARGA
-   =================================================== */
-$size: 50px;
-$primary-color: green;
+/* SPINNER */
+$size: 50px; $primary-color: green;
+.cube-folding { width: $size; height: $size; display: inline-block; background: white; transform: rotate(45deg); font-size: 0; span { position: relative; width: $size * 0.5; height: $size * 0.5; transform: scale(1.1); display: inline-block; &::before { content: ""; background-color: $primary-color; position: absolute; left: 0; top: 0; display: block; width: $size * 0.5; height: $size * 0.5; transform-origin: 100% 100%; animation: folding 2.5s infinite linear both; } } .leaf2 { transform: rotateZ(90deg) scale(1.1); &::before { animation-delay: 0.3s; background-color: color.adjust($primary-color, $lightness: -5%); } } .leaf3 { transform: rotateZ(270deg) scale(1.1); &::before { animation-delay: 0.9s; background-color: color.adjust($primary-color, $lightness: -5%); } } .leaf4 { transform: rotateZ(180deg) scale(1.1); &::before { animation-delay: 0.6s; background-color: color.adjust($primary-color, $lightness: -10%); } } }
+@keyframes folding { 0%, 10% { transform: perspective(140px) rotateX(-180deg); opacity: 0; } 25%, 75% { transform: perspective(140px) rotateX(0deg); opacity: 1; } 90%, 100% { transform: perspective(140px) rotateY(180deg); opacity: 0; } }
+.cube-wrapper { position: fixed; left: 50%; top: 50%; margin-top: -$size; margin-left: -$size; width: $size * 2; height: $size * 2; text-align: center; &:after { content: ""; position: absolute; left: 0; right: 0; bottom: -20px; margin: auto; width: $size * 1.8; height: 6px; z-index: 1; filter: blur(2px); border-radius: 100%; animation: shadow 0.5s ease infinite alternate; } .loadingtexto { font-size: 15px; letter-spacing: 0.1em; display: block; color: white; position: relative; top: $size * 0.5; z-index: 2; animation: text 0.5s ease infinite alternate; } }
+@keyframes text { 100% { top: ($size * 0.5) + 10; } } @keyframes shadow { 100% { bottom: -18px; width: $size * 2; } }
+.loadingprincipal { position: fixed; z-index: 10005; height: 2em; overflow: visible; margin: auto; top: 0; left: 0; bottom: 0; right: 0; &:before { content: ''; display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); } }
 
-.cube-folding {
-  width: $size;
-  height: $size;
-  display: inline-block;
-  background: white;
-  transform: rotate(45deg);
-  font-size: 0;
-  span {
-    position: relative;
-    width: $size * 0.5;
-    height: $size * 0.5;
-    transform: scale(1.1);
-    display: inline-block;
-    &::before {
-      content: "";
-      background-color: $primary-color;
-      position: absolute;
-      left: 0; top: 0;
-      display: block;
-      width: $size * 0.5; height: $size * 0.5;
-      transform-origin: 100% 100%;
-      animation: folding 2.5s infinite linear both;
-    }
-  }
-  .leaf2 { transform: rotateZ(90deg) scale(1.1); &::before { animation-delay: 0.3s; background-color: color.adjust($primary-color, $lightness: -5%); } }
-  .leaf3 { transform: rotateZ(270deg) scale(1.1); &::before { animation-delay: 0.9s; background-color: color.adjust($primary-color, $lightness: -5%); } }
-  .leaf4 { transform: rotateZ(180deg) scale(1.1); &::before { animation-delay: 0.6s; background-color: color.adjust($primary-color, $lightness: -10%); } }
-}
-
-@keyframes folding {
-  0%, 10% { transform: perspective(140px) rotateX(-180deg); opacity: 0; }
-  25%, 75% { transform: perspective(140px) rotateX(0deg); opacity: 1; }
-  90%, 100% { transform: perspective(140px) rotateY(180deg); opacity: 0; }
-}
-
-.cube-wrapper {
-  position: fixed; left: 50%; top: 50%;
-  margin-top: -$size; margin-left: -$size;
-  width: $size * 2; height: $size * 2;
-  text-align: center;
-  &:after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: -20px;
-    margin: auto; width: $size * 1.8; height: 6px; z-index: 1;
-    filter: blur(2px); border-radius: 100%;
-    animation: shadow 0.5s ease infinite alternate;
-  }
-  .loadingtexto {
-    font-size: 15px; letter-spacing: 0.1em; display: block; color: white;
-    position: relative; top: $size * 0.5; z-index: 2;
-    animation: text 0.5s ease infinite alternate;
-  }
-}
-@keyframes text { 100% { top: ($size * 0.5) + 10; } }
-@keyframes shadow { 100% { bottom: -18px; width: $size * 2; } }
-
-.loadingprincipal {
-  position: fixed; z-index: 10005; height: 2em; overflow: visible;
-  margin: auto; top: 0; left: 0; bottom: 0; right: 0;
-}
-.loadingprincipal:before {
-  content: ''; display: block; position: fixed; top: 0; left: 0;
-  width: 100%; height: 100%; background-color: rgba(0,0,0,0.6);
-}
-
-/* SWAL PREMIUM */
+/* SWAL PREMIUM Y MODAL DE PRIVACIDAD */
 .swal-super-top { z-index: 10050 !important; }
 .swal-premium-popup { border-radius: 24px !important; padding: 2.5rem 2rem 2rem 2rem !important; box-shadow: 0 25px 50px rgba(0,0,0,0.3) !important; background: #ffffff !important; }
 .swal-premium-title { font-size: 1.5rem !important; font-weight: 800 !important; color: #1e293b !important; letter-spacing: -0.5px; margin-bottom: 0.5rem !important; }
 .swal-premium-text { font-size: 0.95rem !important; color: #64748b !important; line-height: 1.5 !important; }
-.btn-swal-premium-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(239, 68, 68, 0.3) !important; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; cursor: pointer !important; display: flex !important; justify-content: center !important; align-items: center !important; }
-.btn-swal-premium-danger:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(239, 68, 68, 0.4) !important; filter: brightness(1.1) !important; }
-.btn-swal-premium-success { background: linear-gradient(135deg, #50c026 0%, #3e9452 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(80, 192, 38, 0.4) !important; filter: brightness(1.1) !important; }
-.btn-swal-premium-success:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(80, 192, 38, 0.4) !important; filter: brightness(1.1) !important; }
+.btn-swal-premium-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(239, 68, 68, 0.3) !important; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; cursor: pointer !important; display: flex !important; justify-content: center !important; align-items: center !important; &:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(239, 68, 68, 0.4) !important; filter: brightness(1.1) !important; } }
+.btn-swal-premium-success { background: linear-gradient(135deg, #50c026 0%, #3e9452 100%) !important; color: white !important; border: none !important; border-radius: 12px !important; padding: 12px 30px !important; font-size: 1rem !important; font-weight: bold !important; letter-spacing: 0.5px !important; width: 100% !important; margin-top: 1.5rem !important; box-shadow: 0 8px 15px rgba(80, 192, 38, 0.4) !important; filter: brightness(1.1) !important; &:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 20px rgba(80, 192, 38, 0.4) !important; filter: brightness(1.1) !important; } }
 
-/* NUEVOS ESTILOS DEL MODAL DE PRIVACIDAD */
+/* ESTILOS DEL MODAL DE PRIVACIDAD */
 .max-w-800 { max-width: 800px; }
 .privacy-content-wrapper p { text-align: justify; margin-bottom: 1.2rem; }
 .custom-bullet-list { list-style: none; padding-left: 0; }

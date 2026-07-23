@@ -134,4 +134,84 @@ class RegistrateController extends Controller
         $existe = Afiliados::where('nui',$nui)->first();
         return $existe;
     }
+
+    /**
+     * Función que extrae los datos del ine cargado
+     */
+    public function escanearIne(Request $request)
+    {
+        if (!$request->hasFile('imagen')) {
+            return response()->json(['error' => 'No se cargó ninguna imagen'], 400);
+        }
+
+        $file = $request->file('imagen');
+
+        try {
+            $apiKey = env('VERIFICAMEX_API_KEY');
+
+            // 1. Obtenemos el path real, el tipo de imagen y armamos el Base64 con el prefijo exacto que pide la API
+            $mimeType = $file->getMimeType(); // Ejemplo: image/jpeg o image/png
+            $base64Raw = base64_encode(file_get_contents($file->getRealPath()));
+            $base64ConPrefijo = 'data:' . $mimeType . ';base64,' . $base64Raw;
+
+            // 2. Construimos el JSON manualmente
+            $jsonData = json_encode([
+                'ine_front' => $base64ConPrefijo
+            ]);
+
+            // =========================================================
+            // SOLUCIÓN: Usar cURL puro para evitar el límite de Guzzle
+            // y su dependencia a la carpeta temporal bloqueada de XAMPP.
+            // =========================================================
+            $ch = curl_init('https://api.verificamex.com/identity/v1/ocr/obverse');
+            
+            // Configuramos cURL
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $apiKey,
+                'Content-Type: application/json',
+                'Accept: application/json'
+            ]);
+            
+            // Esto evita errores de certificado SSL en XAMPP local
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+            // Ejecutamos la petición
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $curlError = curl_error($ch);
+            
+            curl_close($ch);
+
+            // 3. Verificamos si cURL falló a nivel de red
+            if ($response === false) {
+                return response()->json([
+                    'error' => 'Error de red al conectar con Verificamex', 
+                    'message' => $curlError
+                ], 500);
+            }
+
+            // 4. Decodificamos la respuesta de la API
+            $responseData = json_decode($response, true);
+
+            // 5. Evaluamos el código HTTP que devolvió la API
+            if ($httpCode !== 200) {
+                return response()->json([
+                    'error' => 'Error en el servicio de Verificamex',
+                    'details' => $responseData
+                ], $httpCode);
+            }
+            
+            // 6. Éxito: Retornamos la data limpia al frontend
+            return response()->json($responseData);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Fallo en el proceso del servidor', 
+                'message' => $e->getMessage()
+            ], 500);
+        }
+    }
 }
