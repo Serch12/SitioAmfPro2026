@@ -107,8 +107,8 @@ class RegistrateController extends Controller
         $afiliado->save();
         
         // Envío de correos
-        // Mail::to('registro@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
-        Mail::to('emmanuel@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
+        Mail::to('registro@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
+        // Mail::to('emmanuel@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
         Mail::to($request->mail)->send(new AfiliadoRegistradoUsuario($afiliado));
 
         return $afiliado;
