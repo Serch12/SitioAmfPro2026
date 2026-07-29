@@ -33,7 +33,7 @@
 
             <button v-if="!isLoggedIn" @click="goToLogin" class="btn-login-header shadow-sm">
               <i class="material-icons">account_circle</i>
-              <span class="d-none d-md-inline ms-2 fw-bold">Ingresar / Afiliarse</span>
+              <span class="d-none d-md-inline ms-2 fw-bold">Registrate</span>
             </button>
 
             <button v-else @click="goToProfile" class="btn-profile-header shadow-sm">
@@ -123,7 +123,7 @@ export default {
     },
     goToLogin() {
       const baseUrl = document.querySelector('base') ? document.querySelector('base').href : '/';
-      window.location.href = baseUrl + 'login';
+      window.location.href = baseUrl + 'afiliacion';
     },
     goToProfile() {
       const baseUrl = document.querySelector('base') ? document.querySelector('base').href : '/';

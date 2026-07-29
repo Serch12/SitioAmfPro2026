@@ -38,6 +38,16 @@
                 </span>
               </button>
             </div> -->
+            <!-- <div class="reveal-up delay-3">
+              <button class="btn btn-premium-green px-4 fw-bold tracking-wider magnetic-btn shadow-lg" 
+                      @mousemove="handleMagneticMove" 
+                      @mouseleave="resetMagneticMove" 
+                      @click="scrollToSectionLocal('juridico')">
+                <span class="magnetic-content d-flex align-items-center">
+                  <i class="material-icons me-2">gavel</i> Ir a Jurídico
+                </span>
+              </button>
+            </div> -->
           </div>
 
           <div class="col-12 col-lg-5 mt-5 mt-lg-0 d-none d-lg-flex justify-content-lg-end justify-content-center">
@@ -68,6 +78,11 @@
                       <div class="widget-icon"><i class="material-icons">article</i></div>
                       <span class="widget-label">Noticias</span>
                     </div>
+
+                    <!-- <a href="femenil" class="bento-widget text-decoration-none">
+                      <div class="widget-icon"><i class="material-icons">woman</i></div>
+                      <span class="widget-label">Enlace Femenil</span>
+                    </a> -->
                   </div>
                 </div>
             </div>

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+// use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Mail\AfiliacionEmail;
 use App\Mail\AfiliadoRegistradoUsuario;
@@ -11,18 +11,18 @@ use App\Models\Afiliados;
 use App\Models\Equipos;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
-use MattDaneshvar\Survey\Models\Entry;
-use MattDaneshvar\Survey\Models\Survey;
-use Kreait\Firebase\Auth as FirebaseAuth;
+// use MattDaneshvar\Survey\Models\Entry;
+// use MattDaneshvar\Survey\Models\Survey;
+// use Kreait\Firebase\Auth as FirebaseAuth;
 
 class RegistrateController extends Controller
 {
-    protected $auth;
+    // protected $auth;
 
-    public function __construct(FirebaseAuth $auth)
-    {
-        $this->auth = $auth;
-    }
+    // public function __construct(FirebaseAuth $auth)
+    // {
+    //     $this->auth = $auth;
+    // }
     /**
      * funcion que retorna el listado conforme a la division seleccionada
      */
@@ -44,27 +44,12 @@ class RegistrateController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'error' => 'Este correo electrónico ya se encuentra registrado en nuestro sistema.'
-            ], 422); // 422 Unprocessable Entity (ideal para validaciones)
+            ], 422);
         }
+        
         $fecha_nacimiento  = $request->nacimiento;
         $edad = Carbon::parse($fecha_nacimiento)->age;
         
-        try {
-            $userProperties = [
-                'email' => $request->mail,
-                'emailVerified' => false,
-                'password' => $request->password, 
-                'displayName' => $request->nombre . ' ' . $request->apellido_pat,
-                'disabled' => false,
-            ];
-
-            $firebaseUser = $this->auth->createUser($userProperties);
-            
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => 'No se pudo crear el usuario en Firebase: ' . $e->getMessage()
-            ], 500);
-        }
         $afiliado = new Afiliados();
         $afiliado->nombre = $request->nombre;
         $afiliado->apellido_pat = $request->apellido_pat;
@@ -88,7 +73,7 @@ class RegistrateController extends Controller
             $afiliado->tipo_seleccion = $request->tipo_seleccion;
         }
         
-        // Carga archivo PDF (Asumiendo que este es obligatorio)
+        // Carga archivo PDF
         if ($request->hasFile('pdf')) {
             $file = $request->file('pdf');             
             $nombreLimpio = str_replace(' ', '_', $file->getClientOriginalName());
@@ -97,7 +82,7 @@ class RegistrateController extends Controller
             $afiliado->pdf = $nombreLimpio;
         }
 
-        // Carga archivo pdf2 (Puede ser opcional)
+        // Carga archivo pdf2
         if ($request->hasFile('pdf2')) {
             $file2 = $request->file('pdf2');             
             $nombreLimpio2 = str_replace(' ', '_', $file2->getClientOriginalName()); 
@@ -114,18 +99,20 @@ class RegistrateController extends Controller
             \Storage::disk('afiliados')->put($urlfoto,  \File::get($filefoto)); 
             $afiliado->foto = $nombreLimpio3;
         }
+        
         $afiliado->estatus_app = 0;
         $afiliado->fec_registro = $request->fec_registro;
-        $afiliado->password = bcrypt($request->password);
+        
+        // Guardamos el afiliado sin contraseña
         $afiliado->save();
         
-        Auth::login($afiliado);
-        Mail::to('registro@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
-        // Mail::to('emmanuel@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
+        // Envío de correos
+        // Mail::to('registro@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
+        Mail::to('emmanuel@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
         Mail::to($request->mail)->send(new AfiliadoRegistradoUsuario($afiliado));
 
         return $afiliado;
-    }
+    }       
 
     /**
      * funcion que verifica si ya existe el nui ingresa

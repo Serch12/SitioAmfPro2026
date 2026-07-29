@@ -28,6 +28,10 @@ Route::get('/afiliacion', function () {
     return view('Afiliacion');
 })->name('afiliacion');
 
+Route::get('/femenil', function () {
+    return view('EnlaceFemenil');
+})->name('femenil');
+
 Route::get('/manual-AMFPro', function () {
     return view('Folleto')->with('evento','');
 })->name('folleto');
@@ -88,9 +92,14 @@ Route::get('/noticias/{ruta}', function ($ruta) {
     return view('home', ['evento' => '']);
 });
 
+// ==========================================
+// 5. NUEVA RUTA PARA EL REPORTE JURÍDICO
+// ==========================================
+Route::post('/juridico/enviar-reporte', [PerfilController::class, 'enviarReporte'])->name('juridico.reporte');
+// ===========================================
 
 // ==========================================
-// 5. RUTA COMODÍN (Catch-all) para Vue
+// 6. RUTA COMODÍN (Catch-all) para Vue
 // (¡ESTRICTAMENTE AL FINAL DEL ARCHIVO!)
 // ==========================================
 Route::get('/{any}', function () {
@@ -98,3 +107,4 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 
 Route::post('registro/escanear-ine', [App\Http\Controllers\RegistrateController::class, 'escanearIne']);
+
