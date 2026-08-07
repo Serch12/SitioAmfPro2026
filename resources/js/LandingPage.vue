@@ -15,7 +15,7 @@
           
           <div class="header-center" @click="scrollToPosition(0)">
             <img 
-              :src="scrollPosition > 20 ? 'recursos/logo.png' : 'recursos/logo2.png'" 
+              src="recursos/logo.png" 
               alt="Logo AMFPRO" 
               class="logo-header"
             >
@@ -137,20 +137,28 @@ export default {
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       this.scrollPercentage = height > 0 ? (winScroll / height) * 100 : 0;
     },
+    
+    // --- MAGIA APLICADA AQUÍ (Soporte para XAMPP) ---
     mostrarDetalle(noticia) {
       this.noticiaEnDetalle = noticia;
       const slug = noticia.ruta || noticia.id;
-      window.history.pushState(null, '', '/noticias/' + slug);
+      // Obtenemos la base dinámica (si no hay, usamos / por defecto)
+      const baseUrl = document.querySelector('base') ? document.querySelector('base').href : '/';
+      // Construimos la URL completa para evitar que nos saque a la raíz
+      window.history.pushState(null, '', baseUrl + 'noticias/' + slug);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     cerrarDetalle() {
       this.noticiaEnDetalle = null;
-      window.history.pushState(null, '', '/');
+      const baseUrl = document.querySelector('base') ? document.querySelector('base').href : '/';
+      // Nos regresa limpiamente a la URL base de tu XAMPP o de Producción
+      window.history.pushState(null, '', baseUrl);
       this.$nextTick(() => {
           const section = document.querySelector('.section-noticias'); 
           if (section) section.scrollIntoView({ behavior: 'smooth' });
       });
     },
+    
     scrollToPosition(pos) {
       window.scrollTo({ top: pos, behavior: 'smooth' });
     },
@@ -186,8 +194,7 @@ $amf-main: #50c026;
   
   /* =======================================
      ESTADO INICIAL (TOP DE LA PÁGINA)
-     Ocultamos SÓLO redes sociales y su divisor vertical. 
-     El hashtag izquierdo (.left-side) y el logo quedan visibles desde el inicio.
+     Ocultamos redes sociales, divisor vertical y el LOGO
      ======================================= */
   .social-group, .vertical-divider { 
     opacity: 0; 
@@ -196,23 +203,25 @@ $amf-main: #50c026;
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
   }
 
-  /* El hashtag tiene su propia transición fluida de color al scrollear */
   .left-side {
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
-  /* El contenedor del centro maneja su transición de tamaño */
   .header-center {
     display: flex; 
     justify-content: center; 
     align-items: center;
     cursor: pointer; 
     position: relative; 
+    /* Ocultamos el logo en el estado inicial */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 
     .logo-header { 
       height: 60px; 
-      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); /* Ajustado a 0.3s para un cambio de imagen limpio */
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
     } 
     
     &:hover .logo-header { 
@@ -250,8 +259,8 @@ $amf-main: #50c026;
     box-shadow: 0 4px 30px rgba(0,0,0,0.03); 
     border-bottom: 1px solid rgba(0,0,0,0.05);
     
-    /* Encendemos las opacidades y visibilidad de las redes y divisor */
-    .social-group, .vertical-divider { 
+    /* Encendemos las opacidades y visibilidad de las redes, divisor y LOGO */
+    .social-group, .vertical-divider, .header-center { 
       opacity: 1; 
       visibility: visible; 
       transform: translateY(0); 

@@ -11,7 +11,7 @@
           <i class="material-icons">groups</i>
           <span class="tooltip-text">Nosotros</span>  
         </button>
-        <button @click="handleNav('asesor-deportivo')" style="--i:3">
+        <button @click="handleNav('asesores-equipo')" style="--i:3">
           <i class="material-icons">person</i>
           <span class="tooltip-text">Asesor Deportivo</span>
         </button>

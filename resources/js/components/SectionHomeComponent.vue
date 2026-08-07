@@ -4,7 +4,7 @@
    <section class="hero-section-innovative" id="inicio">
       <div class="hero-bg-elements">
         <video autoplay muted loop playsinline class="hero-video" :key="isMobile">
-          <source :src="isMobile ? 'recursos/hero-video.mp4' : 'recursos/hero-video.mp4'" type="video/mp4">
+          <source :src="isMobile ? 'recursos/videos/video.mp4' : 'recursos/videos/video.mp4'" type="video/mp4">
         </video>
         <div class="hero-gradient-overlay-async"></div>
       </div>
@@ -264,68 +264,107 @@
       </div>
     </section>
 
-    <!-- FONDO VERDE ACTUALIZADO CON TEXTURA DIAGONAL -->
-    <section id="asesor-deportivo" class="bg-amf-dark py-6 position-relative overflow-hidden" style="background: linear-gradient(135deg, #3e9452 0%, #2b6b39 100%);">
+    <section id="asesores-equipo" class="bg-amf-dark py-6 position-relative overflow-hidden" style="background: linear-gradient(135deg, #3e9452 0%, #2b6b39 100%);">
       <div class="success-bg-shape position-absolute top-0 start-0 w-100 h-100 opacity-25 z-0"></div>
       
-      <div class="container py-5 position-relative z-2">
-        <div class="row align-items-center">
-          <div class="col-lg-5 text-center text-lg-start mb-5 mb-lg-0 reveal-up">
-            <h6 class="std-subtitle text-white-50 mb-3">CONOCE A NUESTRO</h6>
-            <h2 class="std-title-section fw-black text-white mb-0">ASESOR</h2>
-            <h2 class="std-title-section fw-light text-white mb-5">DEPORTIVO</h2>
-            <div class="melvin-premium-wrapper mx-auto mx-lg-0 mb-4 position-relative">
-              <div class="glow-circle position-absolute top-50 start-50 translate-middle"></div>
-              <img src="recursos/melvin-brown.png" alt="Melvin Brown Casados" class="img-fluid position-relative z-2" loading="lazy">
-            </div>
-            <h3 class="std-title-card fw-bold text-white mb-0 mt-4">MELVIN BROWN</h3>
-            <h4 class="std-title-card fw-light text-white-50">CASADOS</h4>
-            <div class="mt-5 reveal-up delay-3 text-center text-lg-start">
-               <a href="mailto:contacto@amfpro.mx" class="btn btn-outline-light rounded-pill px-4 py-2 me-3 mb-3 mb-sm-0 fw-bold"><i class="material-icons align-middle me-2 fs-5">email</i>contacto@amfpro.mx</a>
-               <a href="tel:7286906040" class="btn btn-premium-green rounded-pill px-4 py-2 fw-bold"><i class="material-icons align-middle me-2 fs-5">phone</i>(728) 690 6040</a>
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-1">
-            
-            <!-- FUNCIONES (AHORA PRIMERO) -->
-            <div class="premium-glass-card p-4 p-md-5 mb-4 rounded-4 reveal-up delay-1">
-              <div class="d-flex align-items-center mb-4 border-bottom border-light border-opacity-25 pb-3">
-                <i class="material-icons text-white bg-success p-2 rounded-3 me-3 fs-3">work</i>
-                <h4 class="std-title-card fw-bold text-white mb-0">FUNCIONES</h4>
-              </div>
-              <p class="std-text text-white text-justify mb-4">Llevar el mensaje de la AMFpro en las visitas a los equipos de:</p>
-              <div class="d-flex flex-wrap gap-2 gap-md-3 mb-4 mt-2">
-                <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
-                <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
-                <img src="recursos/logo_ligapremier.png" alt="Liga Premier" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
-                <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
-              </div>
-              <ul class="premium-list-white text-white text-justify m-0 p-0 std-text-small">
-                <!-- <li>Realizar convenios educativos para beneficio de las (os) futbolistas profesionales de México.</li> -->
-                <li>Presentar proyectos para beneficio de las(os) futbolistas profesionales de México.</li>
-                <li>Ser el vínculo entre jugador(as) con la AMFpro para canalizarlos a las áreas correspondientes.</li>
-                <li>Apoyar los equipos de la AMFpro abriendo puertas para los jugadores de los equipos.</li>
-                <!-- <li>Difundir a los jugadores profesionales de todas las categorías el mensaje de la AMFpro.</li> -->
-                <li>Proponer con base a experiencia y recepción de mensajes beneficios para los y las futbolistas profesionales de México (nueva mentalidad del futbolista).</li>
-                <li>Atender y canalizar a las y los futbolistas profesionales con las diferentes áreas de apoyo de la AMFpro.</li>
-              </ul>
-            </div>
-
-            <!-- ANTECEDENTES (AHORA SEGUNDO) -->
-            <div class="premium-glass-card p-4 p-md-5 rounded-4 reveal-up delay-2">
-              <div class="d-flex align-items-center mb-4 border-bottom border-light border-opacity-25 pb-3">
-                <i class="material-icons text-white bg-success p-2 rounded-3 me-3 fs-3">history</i>
-                <h4 class="std-title-card fw-bold text-white mb-0">ANTECEDENTES</h4>
-              </div>
-              <p class="std-text text-white text-justify mb-3">Fue Jugador en los Clubes: Cruz Azul Hidalgo, Cruz Azul, Jaguares de Chiapas, Puebla FC, UAG, Irapuato FC, Mundialista por México en Corea/Japón 2002.</p>
-              <p class="std-text text-white text-justify mb-0">En su faceta de Director Técnico formó parte de: Comisión del jugador (actual Asociación Mexicana de Futbolistas), Tecnológico de Monterrey campus Guadalajara, Dorados de Sinaloa (Segunda talentos), Melgar FBC (reserva profesional) en Perú, Equipos de la AMFpro y Cafetaleros de Chiapas (Segunda Premier).</p>
-            </div>
-
+      <div class="container pb-5 position-relative z-2 reveal-up">
+        
+        <!-- CONTROLES DE PESTAÑAS -->
+        <div class="d-flex justify-content-center mb-5">
+          <div class="premium-tabs-wrapper bg-black bg-opacity-25 rounded-pill p-1 d-inline-flex shadow-sm">
+            <button 
+              v-for="(asesor, index) in asesoresEquipo" 
+              :key="'tab-' + index"
+              @click="activeAsesorIndex = index"
+              class="btn rounded-pill px-4 py-2 fw-bold transition-all text-uppercase tracking-wider"
+              :class="activeAsesorIndex === index ? 'btn-premium-green shadow-sm' : 'text-white-50 hover-text-white border-0'"
+              style="font-size: 0.85rem;"
+            >
+              {{ asesor.rol_1 }} {{ asesor.rol_2 }}
+            </button>
           </div>
         </div>
+
+        <!-- CONTENIDO DE LA PESTAÑA ACTIVA -->
+        <transition name="fade-tab" mode="out-in">
+          <div :key="'content-' + activeAsesorIndex">
+            <!-- NOTA: Cambiamos a align-items-start para alinear las fotos a la misma altura superior -->
+            <div class="row align-items-start mt-4">
+              
+              <!-- Columna Izquierda: Perfil -->
+              <div class="col-lg-5 text-center text-lg-start mb-5 mb-lg-0">
+                
+                <!-- NOMBRE GIGANTE COMO PROTAGONISTA -->
+                <h2 class="std-title-section fw-black text-white mb-0" style="line-height: 1;">{{ asesoresEquipo[activeAsesorIndex].nombre_1 }}</h2>
+                <h2 class="std-title-section fw-light text-white mb-4">{{ asesoresEquipo[activeAsesorIndex].nombre_2 }}</h2>
+                
+                <!-- FOTO -->
+                <div class="melvin-premium-wrapper mx-auto mx-lg-0 mb-4 position-relative">
+                  <div class="glow-circle position-absolute top-50 start-50 translate-middle"></div>
+                  <img :src="asesoresEquipo[activeAsesorIndex].foto" :alt="asesoresEquipo[activeAsesorIndex].nombre_1 + ' ' + asesoresEquipo[activeAsesorIndex].nombre_2" class="img-fluid position-relative z-2" loading="lazy">
+                </div>
+                
+                <!-- BADGE ELEGANTE SUTIL PARA EL ROL -->
+                <div class="d-inline-flex align-items-center mb-0 mt-2 bg-success bg-opacity-25 px-4 py-2 rounded-pill border border-success border-opacity-50">
+                   <i class="material-icons text-white me-2 fs-5">verified_user</i>
+                   <span class="text-white fw-bold tracking-wider" style="font-size: 0.8rem;">
+                     {{ asesoresEquipo[activeAsesorIndex].rol_1 }} {{ asesoresEquipo[activeAsesorIndex].rol_2 }}
+                   </span>
+                </div>
+                
+                <!-- BOTONES DE CONTACTO -->
+                <div class="mt-5 text-center text-lg-start">
+                   <a :href="'mailto:' + asesoresEquipo[activeAsesorIndex].correo" class="btn btn-outline-light rounded-pill px-4 py-2 me-3 mb-3 mb-sm-0 fw-bold shadow-sm">
+                     <i class="material-icons align-middle me-2 fs-5">email</i>{{ asesoresEquipo[activeAsesorIndex].correo }}
+                   </a>
+                   <a :href="asesoresEquipo[activeAsesorIndex].telefono_link" class="btn btn-premium-green rounded-pill px-4 py-2 me-3 mb-3 mb-sm-0 fw-bold shadow-sm">
+                     <i class="material-icons align-middle me-2 fs-5">phone</i>{{ asesoresEquipo[activeAsesorIndex].telefono_text }}
+                   </a>
+                </div>
+              </div>
+
+              <!-- Columna Derecha: Información -->
+              <div class="col-lg-6 offset-lg-1 text-start">
+                
+                <!-- FUNCIONES -->
+                <div class="premium-glass-card p-4 p-md-5 mb-4 rounded-4">
+                  <div class="d-flex align-items-center mb-4 border-bottom border-light border-opacity-25 pb-3">
+                    <i class="material-icons text-white bg-success p-2 rounded-3 me-3 fs-3">work</i>
+                    <h4 class="std-title-card fw-bold text-white mb-0">FUNCIONES</h4>
+                  </div>
+                  <p class="std-text text-white text-justify mb-4">{{ asesoresEquipo[activeAsesorIndex].funciones_intro }}</p>
+                  
+                  <!-- Logos dinámicos por asesor -->
+                  <div class="d-flex flex-wrap gap-2 gap-md-3 mb-4 mt-2" v-if="asesoresEquipo[activeAsesorIndex].logos && asesoresEquipo[activeAsesorIndex].logos.length > 0">
+                    <img v-for="(logo, lIdx) in asesoresEquipo[activeAsesorIndex].logos" :key="'logo-' + lIdx" 
+                         :src="logo.ruta" :alt="logo.nombre" 
+                         class="circle-logo" style="width: 70px; height: 70px; padding: 10px; border-width: 1px;" loading="lazy">
+                  </div>
+
+                  <!-- Lista de funciones iteradas -->
+                  <ul class="premium-list-white text-white text-justify m-0 p-0 std-text-small">
+                    <li v-for="(func, fIdx) in asesoresEquipo[activeAsesorIndex].funciones" :key="'func-' + fIdx">{{ func }}</li>
+                  </ul>
+                </div>
+
+                <!-- ANTECEDENTES (Aparece solo si el arreglo no es null) -->
+                <div class="premium-glass-card p-4 p-md-5 rounded-4" v-if="asesoresEquipo[activeAsesorIndex].antecedentes">
+                  <div class="d-flex align-items-center mb-4 border-bottom border-light border-opacity-25 pb-3">
+                    <i class="material-icons text-white bg-success p-2 rounded-3 me-3 fs-3">history</i>
+                    <h4 class="std-title-card fw-bold text-white mb-0">ANTECEDENTES</h4>
+                  </div>
+                  <p class="std-text text-white text-justify mb-3" v-for="(ant, aIdx) in asesoresEquipo[activeAsesorIndex].antecedentes" :key="'ant-' + aIdx" :class="{'mb-0': aIdx === asesoresEquipo[activeAsesorIndex].antecedentes.length - 1}">
+                    {{ ant }}
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </transition>
+
       </div>
     </section>
-
     <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal" @touchstart="handleTouchStart" @touchend="handleTouchEnd">
         <div class="modal-content2">
             <button class="modal-close-btn" @click="closeModal">&times;</button>
@@ -350,12 +389,70 @@ export default {
     return {
       isMobile: false, isModalOpen: false, observer: null,
       galeriaNosotrosAbierta: false, fotoNosotrosIndex: 0, touchStartY: 0, touchEndY: 0,
-      imagenesNosotros: ['recursos/Item.png', 'recursos/Item-2.png', 'recursos/Item-3.png']
+      imagenesNosotros: ['recursos/Item.png', 'recursos/Item-2.png', 'recursos/Item-3.png'],
+      activeAsesorIndex: 0,
+      // NUEVO ARREGLO PARA EL CARRUSEL
+      asesoresEquipo: [
+        {
+          rol_1: 'ASESOR',
+          rol_2: 'DEPORTIVO',
+          nombre_1: 'MELVIN BROWN',
+          nombre_2: 'CASADOS',
+          foto: 'recursos/melvin-brown.png',
+          correo: 'contacto@amfpro.mx',
+          telefono_link: 'tel:7286906040',
+          telefono_text: '(728) 690 6040',
+          funciones_intro: 'Llevar el mensaje de la AMFpro en las visitas a los equipos de:',
+          logos: [
+            { ruta: 'recursos/logo_ligamx.png', nombre: 'Liga MX' },
+            { ruta: 'recursos/logo_ligaexpansion.png', nombre: 'Liga Expansión' },
+            { ruta: 'recursos/logo_ligapremier.png', nombre: 'Liga Premier' },
+            { ruta: 'recursos/logo_ligatdp.png', nombre: 'Liga TDP' }
+          ],
+          funciones: [
+            'Presentar proyectos para beneficio de las y los Futbolistas profesionales de México.',
+            'Ser el vínculo entre las y los Futbolistas con la AMFpro para canalizarlos a las áreas correspondientes.',
+            'Apoyar los equipos de la AMFpro abriendo puertas para los jugadores de los equipos.',
+            'Proponer con base a experiencia y recepción de mensajes beneficios para los y las Futbolistas profesionales de México (nueva mentalidad del futbolista).',
+            'Atender y canalizar a las y los Futbolistas profesionales con las diferentes áreas de apoyo de la AMFpro.'
+          ],
+          antecedentes: [
+            'Fue Jugador en los Clubes: Cruz Azul Hidalgo, Cruz Azul, Jaguares de Chiapas, Puebla FC, UAG, Irapuato FC, Mundialista por México en Corea/Japón 2002.',
+            'En su faceta de Director Técnico formó parte de: Comisión del jugador (actual Asociación Mexicana de Futbolistas), Tecnológico de Monterrey campus Guadalajara, Dorados de Sinaloa (Segunda talentos), Melgar FBC (reserva profesional) en Perú, Equipos de la AMFpro y Cafetaleros de Chiapas (Segunda Premier).'
+          ]
+        },
+        {
+          rol_1: 'ENLACE COMISIÓN',
+          rol_2: 'FEMENIL',
+          nombre_1: 'DANIELA GÓMEZ', // TODO: Rellenar nombre
+          nombre_2: 'GONZÁLEZ', // TODO: Rellenar apellido
+          foto: 'recursos/Daniela_amfpro_2.png', // TODO: Ruta de la foto
+          correo: 'dgomez@amfpro.mx', // TODO: Rellenar correo
+          telefono_link: 'tel:5554557348', // TODO: Link real (sin espacios)
+          telefono_text: '(55) 5455 7348', // TODO: Texto visible del teléfono
+          funciones_intro: 'Llevar el mensaje de la AMFpro en las visitas a los equipos de:',
+          logos: [
+            { ruta: 'recursos/logo_ligamxfemenil.png', nombre: 'Liga MX Femenil' }
+          ],
+          funciones: [
+            'Atención y acompañamiento integral a las Futbolistas afiliadas.',
+            'Gestión y seguimiento de casos individuales y colectivos.',
+            'Vinculación con clubes, autoridades y organismos del fútbol.',
+            'Defensa y promoción de los derechos de las jugadoras.',
+            'Desarrollo de proyectos para el fortalecimiento del fútbol femenil.',
+            'Coordinación de visitas institucionales a clubes.',
+            'Organización de actividades, reuniones y programas para las afiliadas.',
+            'Impulso de iniciativas de bienestar, igualdad y desarrollo profesional.'
+          ],
+          antecedentes: ['Licenciada en Mercadotecnia y exfutbolista profesional. Formó parte de la generación pionera de la Liga Femenil BBVA, defendiendo los colores del Club Toluca de 2017 a 2021.']
+        }
+      ]
     }
   },
   mounted() {
     this.checkMobile(); window.addEventListener('resize', this.checkMobile);
     new Swiper('.swiper-nosotros', { slidesPerView: 1.2, spaceBetween: 20, loop: true, autoplay: { delay: 2500, disableOnInteraction: false }, breakpoints: { 768: { slidesPerView: 2.2, spaceBetween: 30 } } });
+   
     const options = { root: null, rootMargin: '0px', threshold: 0.15 };
     this.observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); }); }, options);
     this.$nextTick(() => { document.querySelectorAll('.reveal-up, .reveal-scale-zoom').forEach(el => { this.observer.observe(el); }); });
@@ -609,4 +706,25 @@ h1, h2, h3, h4, h5, h6, p, span, li, button { font-family: 'Inter', sans-serif !
 .lightbox-content { position: relative; width: 90vw; max-width: 1000px; height: 80vh; display: flex; align-items: center; justify-content: center; .btn-nav { position: absolute; top: 50%; transform: translateY(-50%); background: white; color: #50c026; border: none; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; z-index: 10; i { font-size: 30px; } &:hover { background: #50c026; color: white; transform: translateY(-50%) scale(1.1); } &.left { left: -25px; } &.right { right: -25px; } } .img-container { position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; .lightbox-img { max-width: 100%; max-height: 90%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; animation: fadeIn 0.4s ease; } } }
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 @media (max-width: 768px) { .lightbox-content .btn-nav { &.left { left: 10px; } &.right { right: 10px; } } }
+/* =========================================================
+   ESTILOS DE PESTAÑAS (TABS) Y TRANSICIÓN
+   ========================================================= */
+.premium-tabs-wrapper {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.hover-text-white:hover {
+  color: white !important;
+}
+.transition-all {
+  transition: all 0.3s ease;
+}
+.fade-tab-enter-active, .fade-tab-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.fade-tab-enter, .fade-tab-leave-to {
+  opacity: 0;
+  transform: translateY(15px);
+}
 </style>

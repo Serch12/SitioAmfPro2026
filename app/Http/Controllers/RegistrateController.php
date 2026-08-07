@@ -56,7 +56,7 @@ class RegistrateController extends Controller
         $afiliado->apellido_mat = $request->apellido_mat;
         $afiliado->sexo = $request->sexo;
         $afiliado->nacionalidad = $request->nacionalidad;
-        $afiliado->escolaridad = $request->escolaridad;
+        // $afiliado->escolaridad = $request->escolaridad;
         $afiliado->mail = $request->mail;
         $afiliado->edad = $edad;
         $afiliado->curp = $request->curp;
@@ -107,8 +107,8 @@ class RegistrateController extends Controller
         $afiliado->save();
         
         // Envío de correos
-        Mail::to('registro@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
-        // Mail::to('emmanuel@amfpro.mx')->send(new AfiliacionEmail($request,$afiliado));
+        Mail::to('registro@amfpro.mx')->bcc(['sergio@amfpro.mx'])->send(new AfiliacionEmail($request,$afiliado));
+        // Mail::to('emmanuel@amfpro.mx')->bcc(['sergio@amfpro.mx'])->send(new AfiliacionEmail($request,$afiliado));
         Mail::to($request->mail)->send(new AfiliadoRegistradoUsuario($afiliado));
 
         return $afiliado;

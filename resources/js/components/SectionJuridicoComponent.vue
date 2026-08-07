@@ -1,89 +1,63 @@
 <template>
     <div class="font-roboto">
       
-      <!-- 1. SECCIÓN JURÍDICO (INCLUYE TABS Y BANNER DE CONTACTO) -->
+      <!-- 1. SECCIÓN JURÍDICO -->
       <section class="py-6 bg-light text-center section-derechos relative-container" id="juridico">
-        
          <div class="split-icon-container-2">
             <img src="recursos/mazo-icon.png" alt="Contacto Icon">
         </div>
-
         <div class="container px-md-5 mt-4">
-          
           <div class="row justify-content-center mb-5 reveal-up">
             <div class="col-lg-8 text-center">
               <h6 class="text-uppercase tracking-widest text-muted fw-bold mb-3 std-subtitle">Asesoría y</h6>
               <h2 class="display-3 fw-black amf-green-text mb-4 text-uppercase std-title-section">Seguimiento Jurídico</h2>
               <div class="accent-line mx-auto mb-4"></div>
-              <p class="text-secondary fs-5 px-md-5 lh-lg std-text mb-0">
-                La AMFpro, a través de su coordinación jurídica brinda asesoría y seguimiento de las acciones legales interpuestas por sus afiliados y afiliadas. Explora nuestras áreas de apoyo:
-              </p>
+              <p class="text-secondary fs-5 px-md-5 lh-lg std-text mb-0">Selecciona el rubro de tu situación para que nuestros abogados puedan orientarte o representarte.</p>
             </div>
           </div>
 
-          <!-- ==========================================
-               TABS CONGRUENTES (ESTILO PÍLDORA BOOTSTRAP)
-               ========================================== -->
-          <div class="row justify-content-center mb-5 reveal-up delay-1">
-            <div class="col-12 col-xl-10">
-              <div class="bg-white p-2 rounded-4 rounded-lg-pill shadow-sm border border-light d-flex flex-column flex-lg-row align-items-center gap-2">
+          <!-- =========================================================
+               GRID DE SITUACIONES (APILADAS Y TODO EN VERDE)
+               ========================================================= -->
+          <div v-for="(categoria, catIdx) in categoriasJuridico" :key="'cat-' + catIdx" class="mb-6 reveal-up" :class="'delay-' + (catIdx + 1)">
+            
+            <!-- Cinta de Título de la Categoría -->
+            <div class="d-flex justify-content-start mb-4">
+              <div class="bg-success text-white px-4 py-2 rounded-end-pill fw-black text-uppercase tracking-wider shadow-sm d-flex align-items-center" style="font-size: 1.05rem; border-left: 6px solid #112a18;">
+                <i class="material-icons me-2">{{ categoria.iconHeader }}</i> {{ categoria.titulo }}
+              </div>
+            </div>
+
+            <!-- Grid de Tarjetas -->
+            <div class="row justify-content-center g-4">
+              <div v-for="(sit, index) in categoria.items" :key="'sit-' + catIdx + '-' + index" class="col-12 col-md-6 col-lg-4">
                 
-                <button 
-                  v-for="(category, index) in categories" 
-                  :key="'tab-' + index"
-                  @click="activeCategoryIndex = index"
-                  class="btn border-0 rounded-pill flex-fill py-3 px-4 d-flex align-items-center justify-content-center transition-all w-100 w-lg-auto"
-                  :class="activeCategoryIndex === index ? 'amf-tab-active shadow-sm' : 'amf-tab-inactive'"
-                >
-                  <i class="material-icons me-2 fs-5">{{ category.icon }}</i>
-                  <span class="fw-bold" style="font-size: 0.95rem;">{{ category.title }}</span>
-                </button>
+                <div @click="abrirModalSituacion(sit)" class="premium-situation-card bg-white p-4 p-xl-5 rounded-4 shadow-sm border border-light h-100 d-flex flex-column align-items-center text-center position-relative cursor-pointer z-1 card-green">
+                  
+                  <div class="card-top-accent"></div>
+
+                  <div class="icon-circle mb-4 d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 transition-all z-2">
+                    <i class="material-icons fs-1 amf-green-text">{{ sit.icon }}</i>
+                  </div>
+                  
+                  <h5 class="fw-black text-dark mb-3 card-title-sit z-2 text-uppercase" style="letter-spacing: -0.5px; font-size: 1.05rem;">{{ sit.title }}</h5>
+                  <!-- <p class="text-secondary small mb-0 lh-lg z-2">{{ sit.desc }}</p> -->
+                  
+                  <div class="action-hint mt-auto pt-4 fw-bold text-uppercase tracking-wider small d-flex align-items-center justify-content-center w-100 z-2 amf-green-text">
+                    <span style="font-size: 0.75rem;">Iniciar Solicitud</span>
+                    <i class="material-icons ms-1 transition-icon" style="font-size: 1.1rem;">arrow_forward</i>
+                  </div>
+
+                </div>
 
               </div>
             </div>
           </div>
 
-          <!-- ==========================================
-               CONTENIDO DE LOS TABS 
-               ========================================== -->
-          <div class="row justify-content-center mb-6 reveal-up delay-2">
-            <div class="col-12 tab-content-container">
-              <transition name="fade-slide" mode="out-in">
-                <div :key="activeCategoryIndex" class="w-100">
-                  <div class="row g-4 text-start align-items-start">
-                    
-                    <div v-for="point in categories[activeCategoryIndex].points" :key="point.id" class="col-12 col-md-6 col-lg-4">
-                      <div class="premium-legal-card bg-white p-4 rounded-4 shadow-sm border border-light w-100 position-relative overflow-hidden"
-                           @mouseenter="point.show = true" @mouseleave="point.show = false">
-                        <div class="card-top-line"></div>
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                          <h6 class="fw-bold text-dark mb-0 transition-color pe-3 mt-2" :class="{'amf-green-text': point.show}" style="line-height: 1.4;">
-                            {{ point.text }}
-                          </h6>
-                          <span class="legal-number amf-green-text fw-black transition-number flex-shrink-0" :class="point.show ? 'opacity-100' : 'opacity-25'" style="font-size: 3rem; line-height: 1;">
-                            0{{ point.id }}
-                          </span>
-                        </div>
-                        <div class="legal-detail-wrapper" :class="{'is-expanded': point.show}">
-                          <div class="border-top pt-3 mt-2 opacity-25"></div>
-                          <p class="text-secondary small mb-0 lh-lg">{{ point.detalle }}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </transition>
-            </div>
-          </div>
-
-          <!-- ==========================================
-               BANNER INFORMATIVO DE CONTACTO
-               ========================================== -->
-          <div class="row justify-content-center reveal-up delay-3">
+          <!-- BANNER DE CONTACTO -->
+          <div class="row justify-content-center reveal-up delay-3 mt-4">
             <div class="col-12">
               <div class="premium-info-banner bg-white rounded-4 shadow-sm border border-light p-4 d-flex flex-column flex-xl-row align-items-center justify-content-between gap-4">
-                
                 <div class="d-flex align-items-start align-items-md-center flex-column flex-md-row gap-3 text-start text-md-start" style="max-width: 500px;">
                   <div class="icon-box-soft flex-shrink-0 d-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(80, 192, 38, 0.1);">
                       <i class="material-icons amf-green-text fs-2">support_agent</i>
@@ -93,7 +67,6 @@
                     <p class="text-secondary small mb-0 lh-sm">Envía tu nombre completo, NUI, tu duda y un teléfono para comunicarnos contigo. O contáctanos directamente:</p>
                   </div>
                 </div>
-                
                 <div class="d-flex flex-wrap flex-md-nowrap gap-3 gap-md-4 align-items-center text-start">
                   <div class="info-item">
                     <span class="d-block text-muted x-small fw-bold tracking-wider text-uppercase mb-1">Correo</span>
@@ -113,33 +86,25 @@
                     <span class="text-dark fw-bold d-block small mt-1">V: 10:00 a 15:00</span>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
-      <!-- 2. SECCIÓN DESCARGAS (CON FONDO VERDE INSTITUCIONAL Y DIAGONALES) -->
+      <!-- 2. SECCIÓN DESCARGAS -->
       <section class="section-descargas py-6 text-white position-relative" style="background: linear-gradient(135deg, #3e9452 0%, #2b6b39 100%);" id="descargas">
         <div class="position-absolute top-0 start-0 w-100 h-100 opacity-50 z-1" style="background: radial-gradient(circle at center, rgba(62,148,82,0.4) 0%, transparent 70%);"></div>
-        <!-- Fondo decorativo diagonal -->
         <div class="success-bg-shape position-absolute top-0 start-0 w-100 h-100 opacity-25 z-1"></div>
-
         <div class="container position-relative z-2">
-          
           <div class="row justify-content-center mb-5 reveal-up">
             <div class="col-12 text-center">
               <h6 class="text-uppercase tracking-widest text-white-50 fw-bold mb-3 std-subtitle">Descargas e Información</h6>
               <h3 class="display-6 fw-black text-white mb-4 std-title-section">Normativas</h3>
             </div>
           </div>
-
           <div class="row g-4 justify-content-center reveal-up delay-2">
             <div v-for="doc in docsData" :key="doc.title" class="col-12 col-sm-6 col-lg-4 text-start">
-              
-              <!-- Tarjeta Estándar Glassmorphism (Descarga PDF) -->
               <a v-if="!doc.isModal" :href="doc.url_link" target="_blank" class="text-decoration-none">
                 <div class="glass-doc-card p-4 rounded-4 shadow-sm h-100 d-flex flex-column position-relative overflow-hidden">
                   <div class="icon-container mb-4 position-relative z-2">
@@ -148,9 +113,7 @@
                     </div>
                   </div>
                   <div class="content-container mt-auto position-relative z-2">
-                    <h6 class="fw-bold text-white mb-4 lh-base doc-title" style="min-height: 45px; font-size: 0.95rem;">
-                      {{ doc.title }}
-                    </h6>
+                    <h6 class="fw-bold text-white mb-4 lh-base doc-title" style="min-height: 45px; font-size: 0.95rem;">{{ doc.title }}</h6>
                     <div class="download-link d-inline-flex align-items-center fw-bold text-uppercase tracking-wider small text-white">
                       <span class="link-text opacity-75">Descargar PDF</span>
                       <i class="material-icons ms-2 transition-icon fs-5 opacity-75">arrow_forward</i>
@@ -158,30 +121,8 @@
                   </div>
                 </div>
               </a>
-
-              <!-- Tarjeta Modal Glassmorphism (Fútbol Femenil) -->
-              <!-- <div v-else @click="openModalFemenil" class="cursor-pointer h-100">
-                <div class="glass-doc-card p-4 rounded-4 shadow-sm h-100 d-flex flex-column position-relative overflow-hidden">
-                  <div class="icon-container mb-4 position-relative z-2">
-                    <div class="icon-box rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 55px; height: 55px; background-color: rgba(255, 255, 255, 0.1);">
-                       <i class="material-icons text-white fs-3 main-icon">sports_score</i>
-                    </div>
-                  </div>
-                  <div class="content-container mt-auto position-relative z-2">
-                    <h6 class="fw-bold text-white mb-4 lh-base doc-title" style="min-height: 45px; font-size: 0.95rem;">
-                      {{ doc.title }}
-                    </h6>
-                    <div class="download-link d-inline-flex align-items-center fw-bold text-uppercase tracking-wider small text-white">
-                      <span class="link-text opacity-75">Ver Información</span>
-                      <i class="material-icons ms-2 transition-icon fs-5 opacity-75">visibility</i>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
             </div>
           </div>
-
         </div>
       </section>
 
@@ -193,9 +134,9 @@
               <h6 class="std-subtitle text-muted mb-3">PREPÁRATE FUERA DEL CAMPO</h6>
               <h2 class="std-title-section fw-black amf-green-text mb-4 text-uppercase">Convenios Educativos</h2>
               <p class="std-text text-secondary mb-5 px-md-5">Ofrecemos opciones para finalizar tu preparatoria, estudios universitarios, maestrías o cursos. Pide informes directamente a nuestra área encargada.</p>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=desarrolloeducativo@amfpro.mx" target="_blank" class="btn btn-premium-green btn-lg rounded-pill px-5 py-3 fw-bold shadow-sm d-inline-flex align-items-center">
-                <i class="material-icons me-2">email</i> desarrolloeducativo@amfpro.mx
-              </a>
+              <button @click="abrirModalConvenios" class="btn btn-premium-green btn-lg rounded-pill px-5 py-3 fw-bold shadow-sm d-inline-flex align-items-center">
+                <i class="material-icons me-2">school</i> SOLICITAR INFORMACIÓN
+              </button>
             </div>
           </div>
 
@@ -263,9 +204,7 @@
                 </div>
                 <div class="col-lg-4 text-white p-4 p-md-5 d-flex flex-column justify-content-center" style="background-color: #A8192E;">
                   <h6 class="std-subtitle text-white fw-bold opacity-75 mb-3 text-center">PROGRAMA DE BECAS</h6>
-                  <p class="std-text-small text-center mb-4 px-2 text-white" style="opacity: 0.9;">
-                    Todos los asociados tienen derecho a becas especiales.
-                  </p>
+                  <p class="std-text-small text-center mb-4 px-2 text-white" style="opacity: 0.9;">Todos los asociados tienen derecho a becas especiales.</p>
                   <div class="d-flex justify-content-between align-items-center border-bottom border-light border-opacity-25 pb-3 mb-3">
                       <span class="std-subtitle text-white fw-bold mb-0">Preparatoria</span>
                       <h3 class="std-title-card fw-black mb-0 text-white">30% <small class="fw-normal opacity-75" style="font-size: 0.8rem;">(4 meses)</small></h3>
@@ -304,153 +243,615 @@
         </div>
       </section>
 
-      <!-- MODAL MEGA PRO: FÚTBOL FEMENIL -->
-      <!-- <div v-if="isModalFemenilOpen" class="modal-overlay-femenil" @click.self="closeModalFemenil">
-        <div class="modal-content-femenil shadow-2xl rounded-4 overflow-hidden position-relative" role="dialog">
-          
-          <div class="modal-femenil-header px-4 py-4 d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-              <div class="icon-header-femenil me-3 shadow-sm rounded-circle d-flex align-items-center justify-content-center">
-                <i class="material-icons text-white">diversity_1</i>
+      <!-- =========================================================
+           MODAL DINÁMICO DE SITUACIONES JURÍDICAS
+           ========================================================= -->
+      <transition name="fade-scale">
+        <div v-if="isModalSituacionOpen" class="modal-overlay-premium">
+          <!-- SE AÑADIÓ MAX-HEIGHT PARA EVITAR CORTES -->
+          <div class="modal-content-premium shadow-2xl rounded-4 overflow-hidden position-relative d-flex flex-column" role="dialog">
+            
+            <!-- Cabecera del Modal (Siempre Verde) -->
+            <div class="modal-header-premium flex-shrink-0 px-4 py-4 d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+              <div class="d-flex align-items-center">
+                <div class="icon-header-premium me-3 shadow-sm rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="material-icons amf-green-text">{{ activeSituacion.icon }}</i>
+                </div>
+                <div>
+                  <h6 class="text-white-50 fw-bold tracking-widest text-uppercase small" :class="afiliadoVerificado ? 'mb-0' : 'mb-1'">Asesoría Jurídica</h6>
+                  <!-- Desaparece cuando la afiliación es verificada -->
+                  <transition name="fade">
+                    <h5 v-if="!afiliadoVerificado" class="fw-black text-white mb-0 text-uppercase mt-1" style="letter-spacing: -0.5px; line-height: 1.2;">{{ activeSituacion.title }}</h5>
+                  </transition>
+                </div>
               </div>
-              <div>
-                <h6 class="text-white-50 fw-bold tracking-widest text-uppercase small mb-1">Estatutos y Derechos</h6>
-                <h3 class="fw-black text-white mb-0">FÚTBOL FEMENIL</h3>
-              </div>
+              <button class="btn-close-premium shadow-sm flex-shrink-0 ms-3" @click="cerrarModalSituacion">
+                <i class="material-icons">close</i>
+              </button>
             </div>
-            <button class="btn-close-femenil shadow-sm" @click="closeModalFemenil">
-              <i class="material-icons">close</i>
-            </button>
-          </div>
 
-          <div class="modal-femenil-body p-4 p-md-5 bg-light overflow-auto" style="max-height: 75vh;">
-            <div class="row g-4">
-              <div class="col-12 col-lg-5">
-                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
-                  <div class="d-flex align-items-center mb-3">
-                    <i class="material-icons fs-4 me-2 amf-green-text">gavel</i>
-                    <h5 class="fw-bold text-dark mb-0">La Comisión Femenil</h5>
+            <!-- Cuerpo del Modal (AHORA ES SCROLLABLE) -->
+            <div class="modal-body-premium p-4 p-md-5 bg-light flex-grow-1">
+              
+              <!-- ESTADO 1: VERIFICACIÓN DE NUI -->
+              <transition name="fade" mode="out-in">
+                <div v-if="!afiliadoVerificado" key="verificacion">
+                  <div class="bg-white p-4 rounded-4 shadow-sm border border-light text-center mb-4">
+                    <div class="icon-circle mx-auto mb-3" style="width: 50px; height: 50px; background: rgba(80,192,38,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="material-icons text-success fs-3">verified_user</i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Verifica tu Afiliación</h5>
+                    <p class="std-text-small text-secondary mb-0">
+                      Para brindarte asistencia personalizada, por favor ingresa tu NUI (Registro FMF) para comprobar tu estatus como miembro AMFpro.
+                    </p>
                   </div>
-                  <p class="std-text-small text-secondary text-justify mb-4">
-                    La <b style="color:#50C026;">Comisión Femenil</b> tiene como objetivo obtener información sobre posibles problemáticas que presentan las Futbolistas, con el fin de emitir recomendaciones tendientes a <b style="color:#50C026;">mejorar la calidad y las condiciones laborales</b>, asimismo tiene la atribución de participar en la <b style="color:#50C026;">Asamblea General</b>.
-                  </p>
-                  
-                  <h6 class="fw-bold text-dark mb-3 border-bottom pb-2">La Comisión está conformada por:</h6>
-                  
-                  <div class="d-flex flex-column gap-4">
-                    <div v-for="miembro in comisionMembers" :key="miembro.nombre" class="d-flex align-items-center p-3 rounded-3 hover-bg-light transition-all border border-light shadow-sm">
-                      <div class="member-avatar rounded-circle d-flex align-items-center justify-content-center me-4 text-white fw-bold shadow-sm overflow-hidden position-relative flex-shrink-0" style="width: 70px; height: 70px; background: linear-gradient(135deg, #50c026 0%, #3E9452 100%); font-size: 1.5rem;">
-                        <img v-if="miembro.img && !miembro.imgError" :src="miembro.img" @error="miembro.imgError = true" :alt="miembro.nombre" style="width: 100%; height: 100%; object-fit: cover;">
-                        <span v-else>{{ miembro.nombre.charAt(0) }}</span>
-                      </div>
-                      <div>
-                        <h6 class="fw-bold text-dark mb-1" style="font-size: 1.1rem;">{{ miembro.nombre }}</h6>
-                        <span class="d-block text-secondary small mb-1" style="font-size: 0.85rem;">{{ miembro.club }}</span>
-                        <span class="badge bg-light text-dark border" style="font-size: 0.75rem;">{{ miembro.puesto }}</span>
+
+                  <div class="form-floating premium-floating mb-4">
+                    <input type="text" class="form-control" id="nuiInputVerif" v-model="nuiInput" @input="limpiarNUI" placeholder="NUI" maxlength="7" @keyup.enter="verificarNUI">
+                    <label for="nuiInputVerif">Ingresa tu NUI *</label>
+                  </div>
+
+                  <button @click="verificarNUI" class="btn btn-premium-green w-100 rounded-pill py-3 fw-bold shadow-sm d-flex align-items-center justify-content-center" :disabled="verificandoNUI || !nuiInput">
+                    <span v-if="verificandoNUI" class="spinner-border spinner-border-sm me-2"></span>
+                    <i v-else class="material-icons me-2">search</i> 
+                    {{ verificandoNUI ? 'Verificando...' : 'VERIFICAR AFILIACIÓN' }}
+                  </button>
+                </div>
+
+                <!-- ESTADO 2: FORMULARIO DE REPORTE -->
+                <div v-else key="formulario">
+
+                  <!-- Alerta de Verificación (Siempre Verde) -->
+                  <div class="alert-premium-green p-3 rounded-3 mb-4 shadow-sm border border-success border-opacity-25 d-flex align-items-center" style="background: rgba(80, 192, 38, 0.05);">
+                     <i class="material-icons text-success me-3 fs-3">check_circle</i>
+                     <div>
+                       <h6 class="fw-bold text-dark mb-1" style="font-size: 0.95rem;">¡Afiliación Verificada!</h6>
+                       <p class="x-small text-secondary mb-0 line-height-1">Hola, <strong>{{ datosAfiliado.nombre }}</strong>. Completa la solicitud a continuación.</p>
+                     </div>
+                  </div>
+
+                  <div class="row g-3 mb-4">
+                    
+                    <!-- TEMA -->
+                    <div class="col-12">
+                      <label class="x-small fw-bold text-muted text-uppercase tracking-wider ps-2 mb-1">Tema</label>
+                      <div class="p-3 bg-white rounded-3 border border-light text-dark fw-bold std-text-small shadow-sm">{{ activeSituacion.title }}</div>
+                    </div>
+                    
+                    <div class="col-12 col-md-6">
+                      <label for="correoContacto" class="x-small fw-bold text-muted text-uppercase tracking-wider ps-2 mb-1">Correo (Editable) *</label>
+                      <input type="email" id="correoContacto" class="form-control premium-input rounded-3 shadow-sm p-3" v-model="datosAfiliado.correo" placeholder="tucorreo@ejemplo.com">
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                      <label for="telContacto" class="x-small fw-bold text-muted text-uppercase tracking-wider ps-2 mb-1">Teléfono (Editable) *</label>
+                      <input type="text" id="telContacto" class="form-control premium-input rounded-3 shadow-sm p-3" v-model="datosAfiliado.telefono" @input="formatearTelefono" placeholder="(55) 5455 - 6687" maxlength="17">
+                    </div>
+
+                    <div class="col-12 position-relative mt-3">
+                      <label for="descProblema" class="x-small fw-bold text-muted text-uppercase tracking-wider ps-2 mb-1">Describe tu situación (Obligatorio)</label>
+                      <textarea id="descProblema" class="form-control premium-input rounded-3 shadow-sm p-3" rows="4" v-model="descripcionProblema" maxlength="250" placeholder="Escribe aquí los detalles precisos de tu caso para que nuestro equipo jurídico pueda analizarlo..."></textarea>
+                      <div class="text-end mt-2">
+                         <span class="badge rounded-pill bg-light text-secondary border">
+                           {{ descripcionProblema.length }} / 250 caracteres
+                         </span>
                       </div>
                     </div>
                   </div>
 
+                  <!-- Botón Siempre Verde -->
+                  <button @click="enviarReporte" class="btn btn-premium-green w-100 rounded-pill py-3 fw-bold shadow-sm d-flex align-items-center justify-content-center" :disabled="enviandoReporte || descripcionProblema.trim().length < 10 || !datosAfiliado.telefono || !datosAfiliado.correo">
+                    <span v-if="enviandoReporte" class="spinner-border spinner-border-sm me-2"></span>
+                    <i v-else class="material-icons me-2">send</i> 
+                    {{ enviandoReporte ? 'Enviando Solicitud...' : 'ENVIAR SOLICITUD AL ÁREA JURÍDICA' }}
+                  </button>
                 </div>
-              </div>
-              <div class="col-12 col-lg-7">
-                <div class="bg-white p-4 rounded-4 shadow-sm border border-light mb-4 position-relative overflow-hidden">
-                  <div class="card-accent-femenil"></div>
-                  <div class="d-flex align-items-center mb-3">
-                    <div class="icon-wrapper-soft me-3"><i class="material-icons">pregnant_woman</i></div>
-                    <h5 class="fw-bold text-dark mb-0">Maternidad y Lactancia</h5>
-                  </div>
-                  <ul class="custom-femenil-list text-secondary std-text-small text-justify mb-0">
-                    <li>Como Futbolista Profesional, tienes derecho a solicitar tu baja por maternidad, ejercer un permiso por adopción o permiso parental.</li>
-                    <li>En estos supuestos, debes recibir el cien por ciento del salario que estipule tu contrato, durante el periodo de vigencia.</li>
-                    <li>La continuidad o renovación de tu contrato <strong>no estará condicionada</strong> a que te realices una prueba de embarazo.</li>
-                    <li>En el caso de la lactancia, el club garantizará un lugar adecuado donde puedas amamantar a tu bebé o realizar la extracción de leche materna.</li>
-                  </ul>
-                </div>
-                <div class="bg-white p-4 rounded-4 shadow-sm border border-light position-relative overflow-hidden">
-                  <div class="card-accent-femenil"></div>
-                  <div class="d-flex align-items-center mb-3">
-                    <div class="icon-wrapper-soft me-3"><i class="material-icons">water_drop</i></div>
-                    <h5 class="fw-bold text-dark mb-0">Salud Menstrual</h5>
-                  </div>
-                  <p class="std-text-small text-secondary fw-bold mb-3 text-justify">
-                    Los Clubes deben respetar en todo momento las necesidades de las Jugadoras en relación con su ciclo y salud menstrual.
-                  </p>
-                  <ul class="custom-femenil-list text-secondary std-text-small text-justify mb-0">
-                    <li>Una Futbolista tiene derecho a ausentarse de entrenamientos o partidos por motivos de salud menstrual, previa presentación de un certificado médico válido, expedido por un doctor especialista.</li>
-                    <li>La Jugadora tendrá derecho a recibir su <strong>salario íntegro</strong> cuando disfrute de estos derechos.</li>
-                  </ul>
-                </div>
+              </transition>
 
-              </div>
             </div>
-
           </div>
         </div>
-      </div> -->
+      </transition>
+
+      <!-- =========================================================
+           MODAL DINÁMICO DE CONVENIOS EDUCATIVOS
+           ========================================================= -->
+      <transition name="fade-scale">
+        <div v-if="isModalConveniosOpen" class="modal-overlay-premium">
+          <div class="modal-content-premium shadow-2xl rounded-4 overflow-hidden position-relative d-flex flex-column" role="dialog">
+            
+            <div class="modal-header-premium flex-shrink-0 px-4 py-4 d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+              <div class="d-flex align-items-center">
+                <div class="icon-header-premium me-3 shadow-sm rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="material-icons text-success">school</i>
+                </div>
+                <div>
+                  <h6 class="text-white-50 fw-bold tracking-widest text-uppercase small mb-1">Desarrollo Educativo</h6>
+                  <h4 class="fw-black text-white mb-0" style="letter-spacing: -0.5px;">Informes y Becas</h4>
+                </div>
+              </div>
+              <button class="btn-close-premium shadow-sm flex-shrink-0" @click="cerrarModalConvenios">
+                <i class="material-icons">close</i>
+              </button>
+            </div>
+
+            <div class="modal-body-premium p-4 p-md-5 bg-light flex-grow-1">
+              
+              <transition name="fade" mode="out-in">
+                <div v-if="!afiliadoVerificadoConvenio" key="verificacion-convenio">
+                  <div class="bg-white p-4 rounded-4 shadow-sm border border-light text-center mb-4">
+                    <div class="icon-circle mx-auto mb-3" style="width: 50px; height: 50px; background: rgba(80,192,38,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="material-icons text-success fs-3">verified_user</i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Verifica tu Afiliación</h5>
+                    <p class="std-text-small text-secondary mb-0">
+                      Nuestras becas son exclusivas para miembros AMFpro. Ingresa tu NUI para validarlo.
+                    </p>
+                  </div>
+
+                  <div class="form-floating premium-floating mb-4">
+                    <input type="text" class="form-control" id="nuiInputConvenio" v-model="nuiInputConvenio" @input="limpiarNUIConvenio" placeholder="NUI" maxlength="7" @keyup.enter="verificarNUIConvenio">
+                    <label for="nuiInputConvenio">Ingresa tu NUI *</label>
+                  </div>
+
+                  <button @click="verificarNUIConvenio" class="btn btn-premium-green w-100 rounded-pill py-3 fw-bold shadow-sm d-flex align-items-center justify-content-center" :disabled="verificandoNUIConvenio || !nuiInputConvenio">
+                    <span v-if="verificandoNUIConvenio" class="spinner-border spinner-border-sm me-2"></span>
+                    <i v-else class="material-icons me-2">search</i> 
+                    {{ verificandoNUIConvenio ? 'Verificando...' : 'VERIFICAR AFILIACIÓN' }}
+                  </button>
+                </div>
+
+                <div v-else key="formulario-convenio">
+                  <div class="alert-premium-green p-3 rounded-3 mb-4 shadow-sm border border-success border-opacity-25 d-flex align-items-center" style="background: rgba(80, 192, 38, 0.05);">
+                     <i class="material-icons text-success me-3 fs-3">check_circle</i>
+                     <div>
+                       <h6 class="fw-bold text-dark mb-1" style="font-size: 0.95rem;">¡Afiliación Verificada!</h6>
+                       <p class="x-small text-secondary mb-0 line-height-1">Hola, <strong>{{ datosAfiliadoConvenio.nombre }}</strong>. ¿En qué institución estás interesado?</p>
+                     </div>
+                  </div>
+
+                  <div class="row g-3 mb-4">
+                    <div class="col-12">
+                      <label for="institucion" class="x-small fw-bold text-muted text-uppercase tracking-wider ps-2 mb-1">Institución de interés *</label>
+                      <select id="institucion" class="form-select premium-input rounded-3 shadow-sm p-3" v-model="formularioConvenio.institucion">
+                        <option value="" disabled>Selecciona una opción...</option>
+                        <option value="Johan Cruyff Institute">Johan Cruyff Institute (Posgrados/Cursos)</option>
+                        <option value="Universidad UVN">Universidad UVN (Prepa/Licenciatura/Maestría)</option>
+                        <option value="CONAMAT">CONAMAT (Preparatoria en 4 meses)</option>
+                      </select>
+                    </div>
+                    
+                    <div class="col-12 col-md-6">
+                      <label for="correoConvenio" class="x-small fw-bold text-muted text-uppercase tracking-wider ps-2 mb-1">Correo de contacto *</label>
+                      <input type="email" id="correoConvenio" class="form-control premium-input rounded-3 shadow-sm p-3" v-model="datosAfiliadoConvenio.correo" placeholder="tucorreo@ejemplo.com">
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                      <label for="telConvenio" class="x-small fw-bold text-muted text-uppercase tracking-wider ps-2 mb-1">Teléfono *</label>
+                      <input type="text" id="telConvenio" class="form-control premium-input rounded-3 shadow-sm p-3" v-model="datosAfiliadoConvenio.telefono" @input="formatearTelefonoConvenio" placeholder="Celular" maxlength="17">
+                    </div>
+
+                    <div class="col-12 position-relative mt-2">
+                      <label for="mensajeConvenio" class="x-small fw-bold text-muted text-uppercase tracking-wider ps-2 mb-1">Dudas o comentarios (Opcional)</label>
+                      <textarea id="mensajeConvenio" class="form-control premium-input rounded-3 shadow-sm p-3" rows="3" v-model="formularioConvenio.mensaje" maxlength="200" placeholder="¿Tienes alguna pregunta específica sobre los costos, horarios o planes de estudio?"></textarea>
+                    </div>
+                  </div>
+
+                  <button @click="enviarSolicitudConvenio" class="btn btn-premium-green w-100 rounded-pill py-3 fw-bold shadow-sm d-flex align-items-center justify-content-center" :disabled="enviandoConvenio || !datosAfiliadoConvenio.telefono || !datosAfiliadoConvenio.correo || !formularioConvenio.institucion">
+                    <span v-if="enviandoConvenio" class="spinner-border spinner-border-sm me-2"></span>
+                    <i v-else class="material-icons me-2">send</i> 
+                    {{ enviandoConvenio ? 'Enviando Solicitud...' : 'SOLICITAR INFORMES' }}
+                  </button>
+                </div>
+              </transition>
+
+            </div>
+          </div>
+        </div>
+      </transition>
 
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
             observer: null,
-            isModalFemenilOpen: false,
-            activeCategoryIndex: 0,
-            comisionMembers: [
-              { nombre: 'Dirce Delgado', club: 'Atlas-2025', puesto: 'Presidente', img: 'recursos/dirce.png', imgError: false },
-              { nombre: 'Ana Gabriela Paz', club: 'Rayados de Monterrey-2025', puesto: 'Secretario', img: 'recursos/ana.png', imgError: false },
-              { nombre: 'Mónica Ocampo', club: 'Pachuca-2025', puesto: 'Vocal', img: 'recursos/monica.png', imgError: false },
-              { nombre: 'Daniela Gómez', club: 'Ex-Futbolista', puesto: 'Enlace del Fútbol Femenil', img: 'recursos/daniela.png', imgError: false }
+            
+            // Variables para el Modal Dinámico y Verificación NUI
+            isModalSituacionOpen: false,
+            activeSituacion: {},
+            nuiInput: '',
+            verificandoNUI: false,
+            afiliadoVerificado: false,
+            enviandoReporte: false,
+            descripcionProblema: '',
+            datosAfiliado: {
+              nombre: '',
+              correo: '',
+              telefono: ''
+            },
+            
+            usuarioLogueado: false,
+            datosUsuarioGlobal: null,
+            
+            // ARREGLO CATEGORIZADO (TODOS EN VERDE COMO EN LA IMAGEN)
+            categoriasJuridico: [
+              {
+                titulo: 'Asesoría legal y solicitud de documentos',
+                iconHeader: 'admin_panel_settings',
+                items: [
+                  { icon: 'gavel', title: 'Asesoría legal sobre registro y/o situación contractual', desc: 'Resuelve dudas sobre tu estatus y contrato actual.', detalleLargo: 'Te brindamos orientación jurídica detallada sobre tu registro federativo, la vigencia y términos de tu contrato profesional, para que tomes las mejores decisiones en tu carrera.' },
+                  { icon: 'pregnant_woman', title: 'Asesoría derechos por embarazo y maternidad', desc: 'Conoce y protege tus derechos laborales.', detalleLargo: 'Las jugadoras tienen derechos específicos y protegidos ante situaciones de embarazo y maternidad. Te asesoramos para garantizar que tu club respete tus condiciones laborales y médicas.' },
+                  { icon: 'public', title: 'Asesoría sobre el Certificado de Transferencia Internacional (CTI)', desc: 'Apoyo en trámites de transferencias internacionales.', detalleLargo: 'Si vas a jugar al extranjero o vienes a México, te orientamos sobre el proceso del CTI ante la FIFA para evitar bloqueos o retrasos en tu registro.' },
+                  { icon: 'history', title: 'Solicitud de historial deportivo', desc: 'Obtén tu registro oficial de trayectoria.', detalleLargo: 'Te apoyamos a tramitar formalmente tu historial deportivo oficial ante la Federación Mexicana de Fútbol, un documento vital para futuras contrataciones.' },
+                  { icon: 'description', title: 'Solicitud copia de contrato y/o convenios', desc: 'Recupera tus documentos laborales oficiales.', detalleLargo: 'Pídele a tu club tu copia del contrato. Si se niegan a entregártela, nosotros podemos apoyarte a solicitarla de manera formal ante la FMF para proteger tu historial.' },
+                  { icon: 'assignment_turned_in', title: 'Solicitud de finiquito', desc: 'Asegura la liberación correcta de tu relación laboral.', detalleLargo: 'Si tu contrato finalizó y el club no te ha entregado tu documento de finiquito, te ayudamos a solicitarlo formalmente para liberar tu registro sin contratiempos.' }
+                ]
+              },
+              {
+                titulo: 'Representación legal',
+                iconHeader: 'balance',
+                items: [
+                  { icon: 'payments', title: 'Adeudo de salario', desc: 'Acciones legales ante la falta de pago.', detalleLargo: 'Si tu club te debe salario, ya sea durante o al término del torneo, es fundamental levantar el reporte inmediatamente para interponer la controversia antes de que venzan los plazos legales.' },
+                  { icon: 'block', title: 'Despido injustificado o rescisión de contrato', desc: 'Defensa ante terminaciones de contrato unilaterales.', detalleLargo: 'Si tu club te informa que no entras en planes o rescinde tu contrato sin causa justificada, tienes derecho a reclamar el pago de tu contrato y/o indemnización correspondiente. Te representamos legalmente.' },
+                  { icon: 'price_change', title: 'Pago de porcentaje de transferencia', desc: 'Reclama tu porcentaje legal por transferencia.', detalleLargo: 'Si fuiste transferido de un club a otro de forma definitiva, la normatividad te otorga el derecho a un porcentaje del monto de dicha transferencia. Te ayudamos a reclamarlo oficialmente.' },
+                  { icon: 'handshake', title: 'Incumplimiento convenio de pago', desc: 'Exige el cumplimiento de acuerdos previos.', detalleLargo: 'Si llegaste a un acuerdo de pago en parcialidades (convenio) con tu club y han dejado de pagarte, nosotros iniciamos las acciones legales correspondientes por el incumplimiento de las fechas pactadas.' },
+                  { icon: 'emoji_events', title: 'Pago de bonos o premios en contrato', desc: 'Reclama bonos por objetivos cumplidos.', detalleLargo: 'Los bonos por minutos, goles, convocatorias o campeonatos estipulados en tu contrato son exigibles legalmente. Si el club se niega a pagarlos, te representamos para hacer valer tu contrato.' },
+                  { icon: 'medical_services', title: 'Falta de atención médica por lesión', desc: 'Exige la cobertura médica que te corresponde.', detalleLargo: 'Si sufriste una lesión derivada de tu actividad profesional (partido o entrenamiento oficial), tu club está obligado a brindarte atención médica integral hasta tu total recuperación física y deportiva.' }
+                ]
+              }
             ],
-            categories: [
-                {
-                title: 'Carácter económico', icon: 'account_balance_wallet',
-                points: [ { id: 1, text: 'Adeudo de salario', detalle: 'Si tu club te debe salario ya sea durante o al término del torneo (individual o grupal).', show: false }, { id: 2, text: 'Despido injustificado', detalle: 'Si tu club te informa que no entras en planes y tienes contrato vigente.', show: false }, { id: 3, text: 'Falta de pago de bonos o premios', detalle: 'Si en tu contrato en el algún documento se reconoció el pago de bonos o premios que el club no te ha realizado.', show: false }, { id: 4, text: 'Incumplimiento de convenio de pago', detalle: 'Si firmaste con tu club un acuerdo de pagos registrado ante la FMF y no lo ha cumplido.', show: false }, { id: 5, text: 'Pago de porcentaje por transferencia', detalle: 'Derivado de los acuerdos entre la FMF y la AMFpro, cuando te transfieren de forma definitiva a un club, tienes derecho a recibir un 10% del total de la transferencia, al ser un derecho irrenunciable y no negociable.', show: false }, { id: 6, text: 'Cobro ilegal de cuotas por jugar', detalle: 'Si el club pretende cobrarte por el registro, cuotas mensuales, viajes, uniformes, alimentos y/o documentos por jugar los partidos.', show: false } ]
-                },
-                {
-                title: 'Gestión de documentos', icon: 'folder_shared',
-                points: [ { id: 1, text: 'Información para registros', detalle: 'Infórmate de todo lo que necesitas para no tener problemas al momento de firmar tu contrato y registrarte.', show: false }, { id: 2, text: 'Solicitud de historial deportivo / estatus', detalle: 'Documentos que expide la FMF y que pueden servirte como currículum deportivo.', show: false }, { id: 3, text: 'Retención de documentos y expedientes', detalle: 'Si al terminar tu contrato el club no te entrega tu finiquito o te pide dinero por darte tus documentos.', show: false }, { id: 4, text: 'Asesoría sobre los derechos por embarazo y maternidad', detalle: 'Si eres Jugadora de la Liga MX Femenil y quieres recibir información sobre estos derechos contemplados en el Reglamento de Transferencias y Contrataciones de la FMF.', show: false }, { id: 5, text: 'Pase internacional (CTI)', detalle: 'Para poder jugar en otro país es indispensable contar con el finiquito y el TPO (que ningún tercero ajeno al fútbol tiene derechos económicos sobre ti), del último club en que jugaste; esto, para que el nuevo club pueda pedir tu pase internacional a través del TMS (Sistema de Transferencias Internacional) de la FIFA.', show: false }, { id: 6, text: 'Solicitud de copia de contrato', detalle: 'Pídele a tu club y si no te la entregan, nosotros podemos apoyarte a solicitarla a la FMF.', show: false } ]
-                },
-                {
-                title: 'Incidencias de integridad', icon: 'health_and_safety',
-                points: [ { id: 1, text: 'Rescisión anticipada de contrato', detalle: 'En caso de incumplimiento o adeudo de las obligaciones señaladas en el contrato.', show: false }, { id: 2, text: 'Falta de atención médica / lesiones', detalle: 'Si sufriste una lesión en partido o entrenamiento, tienes derecho a que tu club te de la atención médica necesaria hasta tu total recuperación.', show: false }, { id: 3, text: 'Separación de los entrenamientos', detalle: 'Si te enviaron a entrenar solo o con una categoría inferior dentro del club, como medida de presión o castigo.', show: false } ]
-                }
-            ],
+
             docsData: [
-                { title: 'Reglamento de la Comisión de Conciliación y Resolución de Controversias', icon_grey: 'recursos/documento-verde-2.png', url_link: 'https://fmf.mx/docs/reglamentos/441.pdf', isModal: false },
-                { title: 'Reglamento de Transferencias y Contrataciones', icon_grey: 'recursos/dobledocumento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/521.pdf', isModal: false },
+                { title: 'Reglamento de la Comisión de Conciliación y Resolución de Controversias 2024', icon_grey: 'recursos/documento-verde-2.png', url_link: 'https://fmf.mx/docs/reglamentos/441.pdf', isModal: false },
+                { title: 'Reglamento de Transferencias y Contrataciones 2026-2027', icon_grey: 'recursos/dobledocumento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/521.pdf', isModal: false },
                 { title: 'Código de Ética', icon_grey: 'recursos/ball-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/475.pdf', isModal: false },
                 { title: 'Derechos y Regulaciones del Fútbol Femenil', isModal: true }
-            ]
+            ],
+            
+            isModalConveniosOpen: false,
+            nuiInputConvenio: '',
+            verificandoNUIConvenio: false,
+            afiliadoVerificadoConvenio: false,
+            enviandoConvenio: false,
+            datosAfiliadoConvenio: { nombre: '', correo: '', telefono: '' },
+            formularioConvenio: { institucion: '', mensaje: '' }
         }
     },
     mounted() {
       const options = { root: null, rootMargin: '0px', threshold: 0.15 };
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } else { entry.target.classList.remove('is-visible'); } });
+      this.observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) { 
+                entry.target.classList.add('is-visible'); 
+                observer.unobserve(entry.target);
+            } 
+        });
       }, options);
-
+      
       this.$nextTick(() => { document.querySelectorAll('.reveal-up').forEach(el => { this.observer.observe(el); }); });
+
+      axios.get('afiliado/datos')
+      .then(response => {
+          if (response.data && response.data.id_afi) {
+              this.usuarioLogueado = true;
+              this.datosUsuarioGlobal = response.data;
+          }
+      })
+      .catch(() => { this.usuarioLogueado = false; })
+      .finally(() => {
+          setTimeout(() => {
+              const pendienteJuridico = localStorage.getItem('pendiente_juridico');
+              
+              if (pendienteJuridico) {
+                  const datosGuardados = JSON.parse(pendienteJuridico);
+                  
+                  let situacionGuardada = null;
+                  
+                  for (let cat of this.categoriasJuridico) {
+                      const found = cat.items.find(s => s.title === datosGuardados.tema);
+                      if (found) {
+                          situacionGuardada = found;
+                          break;
+                      }
+                  }
+                  
+                  if (situacionGuardada && datosGuardados.nui) {
+                      this.abrirModalSituacion(situacionGuardada);
+                      
+                      this.$nextTick(() => {
+                          this.nuiInput = datosGuardados.nui;
+                          this.verificarNUI(); 
+                          localStorage.removeItem('pendiente_juridico');
+                      });
+                  }
+              }
+          }, 800);
+      });
     },
     beforeDestroy() { if (this.observer) this.observer.disconnect(); },
     methods: {
-      openModalFemenil() {
-        this.isModalFemenilOpen = true;
+      cargarDatosSesion() {
+          const jugador = this.datosUsuarioGlobal;
+          if(!jugador) return;
+          
+          this.nuiInput = jugador.nui || '';
+          const nombre = jugador.nombre || '';
+          const apPaterno = jugador.apellido_pat ? ` ${jugador.apellido_pat}` : '';
+          const apMaterno = jugador.apellido_mat ? ` ${jugador.apellido_mat}` : '';
+          
+          this.datosAfiliado.nombre = `${nombre}${apPaterno}${apMaterno}`.trim() || 'Afiliado AMFpro';
+          this.datosAfiliado.correo = jugador.mail || jugador.email || jugador.correo || '';
+          
+          const phoneDB = jugador.celular || jugador.telefono || '';
+          if(phoneDB) {
+             let input = phoneDB.replace(/\D/g, ''); 
+             if (input.length > 10) input = input.substring(0, 10); 
+             let formatted = input;
+             if (input.length > 2 && input.length <= 6) { formatted = `(${input.substring(0,2)}) ${input.substring(2)}`; } 
+             else if (input.length > 6) { formatted = `(${input.substring(0,2)}) ${input.substring(2,6)} - ${input.substring(6)}`; }
+             this.datosAfiliado.telefono = formatted;
+          } else {
+             this.datosAfiliado.telefono = '';
+          }
+          
+          this.afiliadoVerificado = true; 
+      },
+
+      abrirModalSituacion(sit) {
+        if (this.usuarioLogueado && this.datosUsuarioGlobal) {
+            this.cargarDatosSesion();
+        } else {
+            this.nuiInput = '';
+            this.afiliadoVerificado = false;
+            this.datosAfiliado = { nombre: '', correo: '', telefono: '' };
+        }
+        
+        this.descripcionProblema = '';
+        this.activeSituacion = sit;
+        this.isModalSituacionOpen = true;
         document.body.style.overflow = 'hidden'; 
       },
-      closeModalFemenil() {
-        this.isModalFemenilOpen = false;
+
+      cerrarModalSituacion() {
+        this.isModalSituacionOpen = false;
         document.body.style.overflow = '';
+        
+        setTimeout(() => {
+            if (!this.usuarioLogueado) {
+                this.nuiInput = '';
+                this.afiliadoVerificado = false;
+                this.datosAfiliado = { nombre: '', correo: '', telefono: '' };
+            }
+            this.descripcionProblema = '';
+        }, 300);
+      },
+
+      limpiarNUI() {
+        this.nuiInput = this.nuiInput.replace(/\D/g, '');
+      },
+      
+      formatearTelefono(e) {
+        let input = e.target.value.replace(/\D/g, ''); 
+        if (input.length > 10) input = input.substring(0, 10); 
+        let formatted = input;
+        if (input.length > 2 && input.length <= 6) { formatted = `(${input.substring(0,2)}) ${input.substring(2)}`; } 
+        else if (input.length > 6) { formatted = `(${input.substring(0,2)}) ${input.substring(2,6)} - ${input.substring(6)}`; }
+        this.datosAfiliado.telefono = formatted;
+      },
+
+      verificarNUI() {
+        if(!this.nuiInput) return;
+        this.verificandoNUI = true;
+        
+        axios.get(`registro/existe_nui/${this.nuiInput}`)
+        .then(res => {
+            let jugador = null;
+            if (Array.isArray(res.data) && res.data.length > 0) { jugador = res.data[0]; } 
+            else if (res.data && typeof res.data === 'object' && Object.keys(res.data).length > 0) { jugador = res.data; }
+
+            if (jugador && (jugador.nombre || jugador.nui || jugador.id_afi)) {
+                // Validado con éxito
+                const nombre = jugador.nombre || '';
+                const apPaterno = jugador.apellido_pat ? ` ${jugador.apellido_pat}` : '';
+                const apMaterno = jugador.apellido_mat ? ` ${jugador.apellido_mat}` : '';
+                
+                this.datosAfiliado.nombre = `${nombre}${apPaterno}${apMaterno}`.trim() || 'Afiliado AMFpro';
+                this.datosAfiliado.correo = jugador.mail || jugador.email || jugador.correo || '';
+                
+                const phoneDB = jugador.celular || jugador.telefono || '';
+                if(phoneDB) {
+                   let input = phoneDB.replace(/\D/g, ''); 
+                   if (input.length > 10) input = input.substring(0, 10); 
+                   let formatted = input;
+                   if (input.length > 2 && input.length <= 6) { formatted = `(${input.substring(0,2)}) ${input.substring(2)}`; } 
+                   else if (input.length > 6) { formatted = `(${input.substring(0,2)}) ${input.substring(2,6)} - ${input.substring(6)}`; }
+                   this.datosAfiliado.telefono = formatted;
+                } else {
+                   this.datosAfiliado.telefono = '';
+                }
+                
+                this.afiliadoVerificado = true;
+            } else {
+                window.Swal.fire({
+                    icon: 'warning',
+                    title: '¡No estás afiliado!',
+                    text: 'Para recibir protección y asesoría jurídica necesitas registrarte en la AMFpro.',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Ir a Registro',
+                    customClass: {
+                        confirmButton: 'btn btn-success rounded-pill px-4 py-2 me-2',
+                        cancelButton: 'btn btn-secondary rounded-pill px-4 py-2'
+                    },
+                    buttonsStyling: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.setItem('pendiente_juridico', JSON.stringify({
+                            nui: this.nuiInput,
+                            tema: this.activeSituacion.title
+                        }));
+                        window.location.href = 'afiliacion'; 
+                    }
+                });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            window.Swal.fire('Error', 'Hubo un problema al verificar tu NUI. Por favor, intenta de nuevo.', 'error');
+        })
+        .finally(() => { this.verificandoNUI = false; });
+      },
+
+      enviarReporte() {
+        if(this.descripcionProblema.trim().length < 10 || !this.datosAfiliado.telefono || !this.datosAfiliado.correo) return;
+        
+        this.enviandoReporte = true;
+        
+        let payload = {
+            nui: this.nuiInput,
+            nombre: this.datosAfiliado.nombre,
+            correo: this.datosAfiliado.correo,
+            telefono: this.datosAfiliado.telefono,
+            tema: this.activeSituacion.title,
+            descripcion: this.descripcionProblema.trim()
+        };
+
+        axios.post('juridico/enviar-reporte', payload)
+        .then(res => {
+            window.Swal.fire({
+                icon: 'success',
+                title: '¡Solicitud Enviada!',
+                text: 'Tu caso ha sido turnado directamente a nuestra Coordinación Jurídica.\n\nNuestros abogados analizarán la información y se comunicarán contigo a la brevedad a través de tu correo o teléfono para darte la asesoría necesaria.\n\n¡En la AMFpro estamos para respaldarte!',
+                confirmButtonText: 'Entendido, gracias',
+                customClass: { confirmButton: 'btn btn-success rounded-pill px-4 py-2' },
+                buttonsStyling: false
+            }).then(() => { this.cerrarModalSituacion(); });
+        })
+        .catch(err => {
+            console.error(err);
+            window.Swal.fire('Error', 'Hubo un problema al enviar tu reporte. Intenta contactarnos directamente a los correos institucionales.', 'error');
+        })
+        .finally(() => { this.enviandoReporte = false; });
+      },
+
+      abrirModalConvenios() {
+        if (this.usuarioLogueado && this.datosUsuarioGlobal) {
+            this.nuiInputConvenio = this.datosUsuarioGlobal.nui || '';
+            const nombre = this.datosUsuarioGlobal.nombre || '';
+            const apPaterno = this.datosUsuarioGlobal.apellido_pat ? ` ${this.datosUsuarioGlobal.apellido_pat}` : '';
+            this.datosAfiliadoConvenio.nombre = `${nombre}${apPaterno}`.trim() || 'Afiliado AMFpro';
+            this.datosAfiliadoConvenio.correo = this.datosUsuarioGlobal.mail || '';
+            
+            const phoneDB = this.datosUsuarioGlobal.celular || '';
+            this.datosAfiliadoConvenio.telefono = phoneDB.length === 10 ? `(${phoneDB.substring(0,2)}) ${phoneDB.substring(2,6)} - ${phoneDB.substring(6)}` : phoneDB;
+            
+            this.afiliadoVerificadoConvenio = true;
+        } else {
+            this.nuiInputConvenio = '';
+            this.afiliadoVerificadoConvenio = false;
+            this.datosAfiliadoConvenio = { nombre: '', correo: '', telefono: '' };
+        }
+        
+        this.formularioConvenio = { institucion: '', mensaje: '' };
+        this.isModalConveniosOpen = true;
+        document.body.style.overflow = 'hidden'; 
+      },
+
+      cerrarModalConvenios() {
+        this.isModalConveniosOpen = false;
+        document.body.style.overflow = '';
+      },
+
+      limpiarNUIConvenio() { this.nuiInputConvenio = this.nuiInputConvenio.replace(/\D/g, ''); },
+
+      formatearTelefonoConvenio(e) {
+        let input = e.target.value.replace(/\D/g, ''); 
+        if (input.length > 10) input = input.substring(0, 10); 
+        let formatted = input;
+        if (input.length > 2 && input.length <= 6) { formatted = `(${input.substring(0,2)}) ${input.substring(2)}`; } 
+        else if (input.length > 6) { formatted = `(${input.substring(0,2)}) ${input.substring(2,6)} - ${input.substring(6)}`; }
+        this.datosAfiliadoConvenio.telefono = formatted;
+      },
+
+      verificarNUIConvenio() {
+        if(!this.nuiInputConvenio) return;
+        this.verificandoNUIConvenio = true;
+        
+        axios.get(`registro/existe_nui/${this.nuiInputConvenio}`)
+        .then(res => {
+            let jugador = null;
+            if (Array.isArray(res.data) && res.data.length > 0) { jugador = res.data[0]; } 
+            else if (res.data && typeof res.data === 'object' && Object.keys(res.data).length > 0) { jugador = res.data; }
+
+            if (jugador && (jugador.nombre || jugador.nui || jugador.id_afi)) {
+                this.datosAfiliadoConvenio.nombre = `${jugador.nombre || ''} ${jugador.apellido_pat || ''}`.trim() || 'Afiliado AMFpro';
+                this.datosAfiliadoConvenio.correo = jugador.mail || '';
+                
+                const phoneDB = jugador.celular || '';
+                this.datosAfiliadoConvenio.telefono = phoneDB.length === 10 ? `(${phoneDB.substring(0,2)}) ${phoneDB.substring(2,6)} - ${phoneDB.substring(6)}` : phoneDB;
+                
+                this.afiliadoVerificadoConvenio = true;
+            } else {
+                window.Swal.fire({
+                    icon: 'warning',
+                    title: '¡No estás afiliado!',
+                    text: 'Las becas y convenios educativos son un beneficio exclusivo para los miembros de la AMFpro. ¡Regístrate para obtenerlos!',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cerrar',
+                    confirmButtonText: 'Ir a Registro',
+                    customClass: { confirmButton: 'btn btn-success rounded-pill px-4 py-2 me-2', cancelButton: 'btn btn-secondary rounded-pill px-4 py-2' },
+                    buttonsStyling: false
+                }).then((result) => {
+                    if (result.isConfirmed) window.location.href = 'afiliacion'; 
+                });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            window.Swal.fire('Error', 'Hubo un problema de conexión. Intenta de nuevo.', 'error');
+        })
+        .finally(() => { this.verificandoNUIConvenio = false; });
+      },
+
+      enviarSolicitudConvenio() {
+        this.enviandoConvenio = true;
+        
+        let payload = {
+            nui: this.nuiInputConvenio,
+            nombre: this.datosAfiliadoConvenio.nombre,
+            correo: this.datosAfiliadoConvenio.correo,
+            telefono: this.datosAfiliadoConvenio.telefono,
+            institucion: this.formularioConvenio.institucion,
+            mensaje: this.formularioConvenio.mensaje
+        };
+
+        axios.post('convenios/enviar-solicitud', payload)
+        .then(res => {
+            window.Swal.fire({
+                icon: 'success',
+                title: '¡Información Solicitada!',
+                text: 'Hemos recibido tus datos correctamente. El área de Desarrollo Educativo se pondrá en contacto contigo pronto para darte los detalles y tramitar tu beca.',
+                confirmButtonText: 'Excelente',
+                customClass: { confirmButton: 'btn btn-success rounded-pill px-4 py-2' },
+                buttonsStyling: false
+            }).then(() => { this.cerrarModalConvenios(); });
+        })
+        .catch(err => {
+            console.error(err);
+            window.Swal.fire('Error', 'Hubo un error al enviar tu solicitud. Puedes escribir directo a desarrolloeducativo@amfpro.mx', 'error');
+        })
+        .finally(() => { this.enviandoConvenio = false; });
       }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-/* FORZAR LA TIPOGRAFÍA ROBOTO PARA TODO EL COMPONENTE */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
@@ -468,7 +869,6 @@ $amf-gradient: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
 .fw-black { font-weight: 900 !important; }
 .fw-bold { font-weight: 700 !important; }
 
-/* Títulos Estandarizados */
 .std-title-section { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; letter-spacing: -1px; }
 .std-title-card { font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.3; }
 .std-subtitle { font-size: clamp(0.75rem, 1.5vw, 0.9rem); letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
@@ -493,132 +893,61 @@ $amf-gradient: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
 .relative-container { position: relative; z-index: 10; }
 .split-icon-container-2 { position: absolute; left: 50%; transform: translateX(-50%); z-index: 10; top: -195px; }
 
-.reveal-up { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+/* ANIMACIONES OPTIMIZADAS (Aceleración GPU) */
+.reveal-up { 
+  opacity: 0; 
+  transform: translateY(30px); 
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+  will-change: opacity, transform; 
+}
 .is-visible.reveal-up, .is-visible .reveal-up { opacity: 1; transform: translateY(0); }
-.delay-1 { transition-delay: 0.15s; } .delay-2 { transition-delay: 0.3s; } .delay-3 { transition-delay: 0.45s; }
-
-/* =========================================================
-   TABS CONGRUENTES (PÍLDORA CLÁSICA)
-   ========================================================= */
-.amf-tab-inactive {
-  background: transparent;
-  color: #6c757d; /* Gris estándar de Bootstrap (text-muted) */
-  &:hover {
-    background-color: #f8f9fa;
-    color: #3e9452; /* Verde AMFpro al pasar el mouse */
-  }
-}
-
-.amf-tab-active {
-  background: $amf-gradient;
-  color: white !important;
-  box-shadow: 0 4px 10px rgba(80, 192, 38, 0.3) !important;
-}
-
-/* =========================================================
-   CONTENEDOR INTELIGENTE PARA EVITAR SALTOS DE ALTURA (CLS)
-   ========================================================= */
-.tab-content-container {
-  min-height: 470px; 
-}
-
-@media (max-width: 991px) {
-  .tab-content-container {
-    min-height: 780px; 
-  }
-}
-
-@media (max-width: 767px) {
-  .tab-content-container {
-    min-height: auto; 
-  }
-}
-
-/* Transición fluida de contenido */
-.fade-slide-enter-active, .fade-slide-leave-active {
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.fade-slide-enter, .fade-slide-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-/* =========================================================
-   TARJETAS LEGALES
-   ========================================================= */
-.premium-legal-card {
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: pointer;
-  .card-top-line { position: absolute; top: 0; left: 0; height: 4px; width: 0; background-color: $amf-main; transition: width 0.4s ease; }
-  .transition-color { transition: color 0.3s ease; }
-  .transition-number { transition: opacity 0.4s ease; }
-  .legal-detail-wrapper { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); &.is-expanded { max-height: 250px; opacity: 1; } }
-  &:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(62, 148, 82, 0.15) !important; border-color: rgba(62, 148, 82, 0.3) !important; .card-top-line { width: 100%; } }
-}
-
-/* =========================================================
-   BANNER DE CONTACTO (Ultra Pro)
-   ========================================================= */
-.premium-info-banner {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05) !important;
-  }
-  .icon-box-soft {
-    transition: transform 0.4s ease;
-  }
-  &:hover .icon-box-soft {
-    transform: scale(1.1) rotate(5deg);
-  }
-}
+.delay-1 { transition-delay: 0.1s; } 
+.delay-2 { transition-delay: 0.2s; } 
+.delay-3 { transition-delay: 0.3s; }
 
 
 /* =========================================================
-   TARJETAS DESCARGAS (GLASSMORPHISM)
+   TARJETAS SITUACIÓN JURÍDICAS (DISEÑO ULTRA PRO - TODO VERDE)
    ========================================================= */
-.glass-doc-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.premium-situation-card {
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
   
+  .card-top-accent {
+    position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+  }
+
+  .action-hint { opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
+
   &:hover {
     transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
-    
-    .icon-box, .icon-box-femenil {
-      transform: scale(1.1);
-      background-color: rgba(255, 255, 255, 0.3) !important;
-    }
-    .transition-icon {
-      transform: translateX(8px);
-    }
-    .link-text, .transition-icon {
-      opacity: 1 !important;
-    }
+    .card-top-accent { transform: scaleX(1); }
+    .icon-circle { transform: scale(1.1) translateY(-5px); i { color: white !important; } }
+    .action-hint { opacity: 1; transform: translateY(0); }
+    .transition-icon { transform: translateX(5px); }
   }
 }
 
-.success-bg-shape {
-  background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
-}
-
-/* Tarjeta Femenil Especial (Ajustada a verde) */
-.card-femenil {
-  .card-femenil-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: $amf-gradient; opacity: 0; z-index: 1; transition: opacity 0.4s ease; }
-  .icon-box-femenil { width: 55px; height: 55px; background-color: rgba(255,255,255,0.1); backdrop-filter: blur(5px); transition: all 0.4s ease; }
-  .download-link-femenil .transition-icon { transition: transform 0.4s ease; }
-  
+/* Tarjetas Verdes (Todas) */
+.premium-situation-card.card-green {
+  .icon-circle { background-color: rgba(80, 192, 38, 0.05); border: 1px solid rgba(80, 192, 38, 0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.02); }
   &:hover {
-    .card-femenil-bg { opacity: 0.9; }
-    .icon-box-femenil { background-color: rgba(255,255,255,0.3) !important; }
+    border-color: rgba(80, 192, 38, 0.2) !important;
+    box-shadow: 0 25px 50px rgba(80, 192, 38, 0.08) !important;
+    .card-top-accent { background: linear-gradient(135deg, #50c026 0%, #3e9452 100%); }
+    .icon-circle { background: linear-gradient(135deg, #50c026 0%, #3e9452 100%); border-color: transparent; box-shadow: 0 15px 30px rgba(80, 192, 38, 0.3); }
   }
 }
 
-/* ESTILOS DE CONVENIOS */
+/* BANNER DE CONTACTO */
+.premium-info-banner { transition: transform 0.4s ease, box-shadow 0.4s ease; &:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05) !important; } .icon-box-soft { transition: transform 0.4s ease; } &:hover .icon-box-soft { transform: scale(1.1) rotate(5deg); } }
+
+/* TARJETAS DESCARGAS */
+.glass-doc-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); &:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important; .icon-box { transform: scale(1.1); background-color: rgba(255, 255, 255, 0.3) !important; } .transition-icon { transform: translateX(8px); opacity: 1 !important; } .link-text { opacity: 1 !important; } } }
+.success-bg-shape { background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px); }
+
+/* CONVENIOS */
 .bg-offwhite { background-color: #F8F9FA; }
 .premium-clean-card { box-shadow: 0 20px 50px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); transition: all 0.4s ease; &:hover { transform: translateY(-5px); box-shadow: 0 30px 60px rgba(0,0,0,0.06); } }
 .premium-list { list-style: none !important; padding-left: 0; }
@@ -629,64 +958,26 @@ $amf-gradient: linear-gradient(135deg, #50c026 0%, #3e9452 100%);
 .convenio-logo { transition: transform 0.4s ease; }
 .premium-clean-card:hover .convenio-logo { transform: scale(1.05); }
 .std-title-hero { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; }
+
 .btn-premium-green { background: $amf-accent; color: white; border: none; box-shadow: 0 10px 20px rgba(80, 192, 38, 0.2); &:hover { background: #111; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); transform: translateY(-3px); color: white; } }
 
-/* =========================================================
-   MODAL ULTRA-PREMIUM (FÚTBOL FEMENIL) 
-   ========================================================= */
-.modal-overlay-femenil {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background-color: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px);
-  z-index: 10000; display: flex; justify-content: center; align-items: center;
-  padding: 20px;
-}
+/* MODAL DINÁMICO */
+.fade-scale-enter-active, .fade-scale-leave-active { transition: opacity 0.3s ease, transform 0.3s ease; }
+.fade-scale-enter, .fade-scale-leave-to { opacity: 0; transform: scale(0.95); }
 
-.modal-content-femenil {
-  width: 100%; max-width: 1100px;
-  background: white;
-  animation: modalScaleIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
+.modal-overlay-premium { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 1050; display: flex; justify-content: center; align-items: center; padding: 20px; }
 
-.modal-femenil-header {
-  background: $amf-gradient;
-  .icon-header-femenil { width: 50px; height: 50px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); }
-}
+.modal-content-premium { width: 100%; max-width: 600px; background: white; max-height: 90vh; display: flex; flex-direction: column; }
+.modal-header-premium { flex-shrink: 0; .icon-header-premium { width: 50px; height: 50px; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); } }
+.modal-body-premium { overflow-y: auto; &::-webkit-scrollbar { width: 6px; } &::-webkit-scrollbar-track { background: #f8f9fa; } &::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; } &::-webkit-scrollbar-thumb:hover { background: #94a3b8; } }
+.btn-close-premium { background: rgba(255,255,255,0.1); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; cursor: pointer; &:hover { background: white; color: #dc2626; transform: rotate(90deg); } }
 
-.btn-close-femenil {
-  background: rgba(255,255,255,0.2); border: none; color: white;
-  width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s ease; cursor: pointer;
-  &:hover { background: white; color: #50c026; transform: rotate(90deg); }
-}
+.fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease, transform 0.3s ease; }
+.fade-enter, .fade-leave-to { opacity: 0; transform: translateY(-10px); }
 
-.modal-femenil-body {
-  &::-webkit-scrollbar { width: 8px; }
-  &::-webkit-scrollbar-track { background: #f1f1f1; }
-  &::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-  &::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-}
-
-.card-accent-femenil {
-  position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-  background: $amf-gradient;
-}
-
-.icon-wrapper-soft {
-  width: 45px; height: 45px; border-radius: 12px;
-  background: rgba(80, 192, 38, 0.1); display: flex; align-items: center; justify-content: center;
-  i { color: #3E9452; font-size: 1.6rem; }
-}
-
-.custom-femenil-list {
-  list-style: none; padding-left: 0;
-  li {
-    position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;
-    &::before { content: "check_circle"; font-family: "Material Icons"; position: absolute; left: 0; top: 2px; font-size: 1.1rem; color: #50c026; }
-  }
-}
-
-@keyframes modalScaleIn {
-  from { opacity: 0; transform: scale(0.95) translateY(20px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
+.premium-floating { .form-control { border-radius: 12px; border: 1px solid #e2e8f0; padding-top: 1.5rem; &:focus { border-color: #50c026; box-shadow: 0 0 0 4px rgba(80,192,38,0.1); } } label { color: #64748b; font-size: 0.9rem; } }
+.premium-input { border: 1px solid #e2e8f0; &:focus { border-color: #50c026; outline: none; box-shadow: 0 0 0 4px rgba(80,192,38,0.1); } }
+textarea.premium-input::placeholder,
+input.premium-input::placeholder { color: #94a3b8 !important; font-style: italic; font-weight: 400; opacity: 0.6 !important; }
+textarea.premium-input, input.premium-input { color: #1e293b; font-weight: 500; }
 </style>

@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('home')->with('evento','');
 })->name('inicio');
 
+Route::get('/inicio', function () {
+    return view('home')->with('evento','');
+})->name('inicio');
+
 Route::get('/afiliacion', function () {
     return view('Afiliacion');
 })->name('afiliacion');
@@ -97,6 +101,8 @@ Route::get('/noticias/{ruta}', function ($ruta) {
 // ==========================================
 Route::post('/juridico/enviar-reporte', [PerfilController::class, 'enviarReporte'])->name('juridico.reporte');
 // ===========================================
+// Ruta para recibir la solicitud del modal de convenios
+Route::post('convenios/enviar-solicitud', [PerfilController::class, 'enviarSolicitudConvenios']);
 
 // ==========================================
 // 6. RUTA COMODÍN (Catch-all) para Vue
