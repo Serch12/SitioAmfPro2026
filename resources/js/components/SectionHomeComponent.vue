@@ -317,8 +317,15 @@
                    <a :href="'mailto:' + asesoresEquipo[activeAsesorIndex].correo" class="btn btn-outline-light rounded-pill px-4 py-2 me-3 mb-3 mb-sm-0 fw-bold shadow-sm">
                      <i class="material-icons align-middle me-2 fs-5">email</i>{{ asesoresEquipo[activeAsesorIndex].correo }}
                    </a>
-                   <a :href="asesoresEquipo[activeAsesorIndex].telefono_link" class="btn btn-premium-green rounded-pill px-4 py-2 me-3 mb-3 mb-sm-0 fw-bold shadow-sm">
-                     <i class="material-icons align-middle me-2 fs-5">phone</i>{{ asesoresEquipo[activeAsesorIndex].telefono_text }}
+                   <!-- Botón de Teléfono / WhatsApp Dinámico -->
+                   <a :href="asesoresEquipo[activeAsesorIndex].telefono_link" 
+                      :target="asesoresEquipo[activeAsesorIndex].is_whatsapp ? '_blank' : '_self'"
+                      class="btn btn-premium-green rounded-pill px-4 py-2 me-3 mb-3 mb-sm-0 fw-bold shadow-sm">
+                     
+                     <i class="material-icons align-middle me-2 fs-5">
+                       {{ asesoresEquipo[activeAsesorIndex].is_whatsapp ? 'chat' : 'phone' }}
+                     </i>
+                     {{ asesoresEquipo[activeAsesorIndex].telefono_text }}
                    </a>
                 </div>
               </div>
@@ -391,8 +398,7 @@ export default {
       galeriaNosotrosAbierta: false, fotoNosotrosIndex: 0, touchStartY: 0, touchEndY: 0,
       imagenesNosotros: ['recursos/Item.png', 'recursos/Item-2.png', 'recursos/Item-3.png'],
       activeAsesorIndex: 0,
-      // NUEVO ARREGLO PARA EL CARRUSEL
-      asesoresEquipo: [
+     asesoresEquipo: [
         {
           rol_1: 'ASESOR',
           rol_2: 'DEPORTIVO',
@@ -402,6 +408,7 @@ export default {
           correo: 'contacto@amfpro.mx',
           telefono_link: 'tel:7286906040',
           telefono_text: '(728) 690 6040',
+          is_whatsapp: false, // Melvin mantiene llamada normal
           funciones_intro: 'Llevar el mensaje de la AMFpro en las visitas a los equipos de:',
           logos: [
             { ruta: 'recursos/logo_ligamx.png', nombre: 'Liga MX' },
@@ -424,12 +431,14 @@ export default {
         {
           rol_1: 'ENLACE COMISIÓN',
           rol_2: 'FEMENIL',
-          nombre_1: 'DANIELA GÓMEZ', // TODO: Rellenar nombre
-          nombre_2: 'GONZÁLEZ', // TODO: Rellenar apellido
-          foto: 'recursos/Daniela_amfpro_2.png', // TODO: Ruta de la foto
-          correo: 'dgomez@amfpro.mx', // TODO: Rellenar correo
-          telefono_link: 'tel:5554557348', // TODO: Link real (sin espacios)
-          telefono_text: '(55) 5455 7348', // TODO: Texto visible del teléfono
+          nombre_1: 'DANIELA GÓMEZ',
+          nombre_2: 'GONZÁLEZ',
+          foto: 'recursos/Daniela_amfpro_2.png',
+          correo: 'dgomez@amfpro.mx',
+          // Enlace de WhatsApp con lada 52 y texto predefinido
+          telefono_link: 'https://wa.me/525554557348?text=Hola%20Daniela,%20soy%20afiliada%20de%20la%20AMFpro%20y%20me%20gustar%C3%ADa%20recibir%20asistencia.',
+          telefono_text: '(55) 5455 7348',
+          is_whatsapp: true, // Esta bandera activa el ícono y el comportamiento del modal
           funciones_intro: 'Llevar el mensaje de la AMFpro en las visitas a los equipos de:',
           logos: [
             { ruta: 'recursos/logo_ligamxfemenil.png', nombre: 'Liga MX Femenil' }

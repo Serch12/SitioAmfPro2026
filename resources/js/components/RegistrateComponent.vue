@@ -598,15 +598,16 @@
                               <option value="" class="dark-option">Seleccionar</option>
                               <option value="Liga MX Femenil" class="dark-option" v-show="afiliado.division == 'Liga MX Femenil'">Liga MX Femenil</option>
                               <option value="Liga MX" class="dark-option" v-show="afiliado.division == 'Liga MX'">Liga MX</option>
-                              <option value="Sub 23" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 23</option>
-                              <option value="Sub 20" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 20</option>
-                              <option value="Sub 19" class="dark-option" v-show="afiliado.division == 'Liga MX Femenil'">Sub 19</option>                   
-                              <option value="Sub 18" class="dark-option">Sub 18</option>
-                              <option value="Sub 17" class="dark-option">Sub 17</option>
-                              <option value="Sub 16" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 16</option>
+                              <!-- <option value="Sub 23" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 23</option> -->
+                              <option value="Sub 21" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 21</option>
+                              <!-- <option value="Sub 20" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 20</option> -->
+                              <option value="Sub 19" class="dark-option">Sub 19</option>                   
+                              <!-- <option value="Sub 18" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 18</option> -->
+                              <option value="Sub 17" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 17</option>
+                              <!-- <option value="Sub 16" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 16</option> -->
                               <option value="Sub 15" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 15</option>
                               <option value="Sub 14" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 14</option>
-                              <option value="Sub 13" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 13</option>
+                              <!-- <option value="Sub 13" class="dark-option" v-show="afiliado.division == 'Liga MX'">Sub 13</option> -->
                             </select>
                             <label for="categoria">Categoría *</label>
                           </div>
