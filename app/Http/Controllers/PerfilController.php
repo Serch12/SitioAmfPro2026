@@ -156,7 +156,7 @@ class PerfilController extends Controller
         try {
             // Mail::to('emmanuel@amfpro.mx') 
             //     ->send(new ReporteJuridicoMail($datosSolicitud));
-            Mail::to('registro@amfpro.mx') 
+            Mail::to('juridico@amfpro.mx') 
                 ->send(new ReporteJuridicoMail($datosSolicitud));
 
             return response()->json([

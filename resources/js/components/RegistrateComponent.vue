@@ -147,7 +147,7 @@
                 <div class="row g-2 align-items-center">
                   <div class="col-12 col-md-8">
                     <div class="form-floating compact-floating">
-                      <input type="text" class="form-control custom-input" id="nuiPre" v-model="nuiPreValidacion" @input="limpiarNUIPre" placeholder="NUI" maxlength="7" @keyup.enter.prevent="verificarNuiInicial" />
+                      <input type="text" class="form-control custom-input" id="nuiPre" v-model="nuiPreValidacion" @input="limpiarNUIPre" placeholder="NUI" maxlength="6" @keyup.enter.prevent="verificarNuiInicial" />
                       <label for="nuiPre">Ingresa tu NUI *</label>
                     </div>
                   </div>
@@ -688,8 +688,8 @@
           <div class="laser-beam"></div>
           <i class="material-icons text-success scanner-icon">document_scanner</i>
         </div>
-       <h4 class="text-white mt-4 fw-bold text-uppercase tracking-wider text-glow-green">Análisis Inteligente</h4>
-<p class="text-slate-300 small mb-0">Autocompletando tu registro. Esto tomará solo unos segundos...</p>
+        <h4 class="text-white mt-4 fw-bold text-uppercase tracking-wider text-glow-green">Análisis Inteligente</h4>
+        <p class="text-slate-300 small mb-0">Autocompletando tu registro. Esto tomará solo unos segundos...</p>
       </div>
     </transition>
 
@@ -1140,6 +1140,12 @@ export default {
     
     verificarNuiInicial() {
         if(!this.nuiPreValidacion) return;
+
+        if(!/^[0-9]{5,6}$/.test(this.nuiPreValidacion)) {
+            toastr.warning('El NUI debe contener 5 o 6 dígitos numéricos.', 'Atención');
+            return;
+        }
+
         this.verificandoNuiInicial = true;
         
         axios.get(`registro/existe_nui/${this.nuiPreValidacion}`)
@@ -1301,8 +1307,8 @@ export default {
     ineFrenteManual(refName = 'filefrente') {
       this.file = this.$refs[refName].files[0];
       if(!this.file) return;
-      if (!['image/jpeg', 'image/jpg', 'image/png'].includes(this.file.type)) {
-        swal('Solo se permiten imágenes en formato JPEG, JPG o PNG', { position: 'center', icon: 'error', buttons: false, timer: 1600 });
+      if (!['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'].includes(this.file.type)) {
+        swal('Solo se permiten imágenes (JPEG, PNG) o PDF', { position: 'center', icon: 'error', buttons: false, timer: 1600 });
         this.$refs[refName].value = null; return;
       }
       this.afiliado.pdf = this.file;
@@ -1598,7 +1604,7 @@ export default {
     validarFormatoCorreo(correo) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo); },
     validarCaracteresEspeciales(texto) { return /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s\-_]+$/.test(texto); },
     validarCaracteresEspecialesTelefono(texto) { return texto.replace(/\D/g, '').length === 10; },
-    validarCaracteresEspecialesNUI(texto) { return /^[0-9]{1,6}$/.test(texto); },
+    validarCaracteresEspecialesNUI(texto) { return /^[0-9]{5,6}$/.test(texto); },
     ExisteNUI(nui) {
       if(!nui) return;
       axios.get(`registro/existe_nui/${nui}`).then(res => {
