@@ -938,6 +938,13 @@ export default {
   mounted() {
     toastr.options = { "closeButton": true, "progressBar": true, "positionClass": "toast-top-right", "timeOut": "4000" };
     
+    if (!document.getElementById('recaptcha-script-amfpro')) {
+      let script = document.createElement('script');
+      script.id = 'recaptcha-script-amfpro';
+      script.src = "https://www.google.com/recaptcha/api.js?render=6Lf1RX8tAAAAACmkjYFgZ69ee2vrZHK1OymyfiIV";
+      document.head.appendChild(script);
+    }
+
     const pendienteJuridico = localStorage.getItem('pendiente_juridico');
     if (pendienteJuridico) {
         const datosGuardados = JSON.parse(pendienteJuridico);
@@ -1476,7 +1483,6 @@ export default {
       if (this.afiliado.curp == "") { toastr.error('Ingresar registro de identidad'); this.afiliadoError.curp = true; valid = false; }
       if (this.afiliado.sexo == "") { toastr.error('Seleccionar sexo'); this.afiliadoError.sexo = true; valid = false; }
       if (this.afiliado.nacimiento == "") { toastr.error('Ingresar fecha de nacimiento'); this.afiliadoError.nacimiento = true; valid = false; }
-      // if (this.afiliado.escolaridad == "") { toastr.error('Seleccionar grado escolar'); this.afiliadoError.escolaridad = true; valid = false; }
       
       if (this.afiliado.calle == "") { toastr.error('Ingresa tu domicilio completo'); this.afiliadoError.calle = true; valid = false; }
       if (this.afiliado.celular == "") { toastr.error('Ingresar teléfono celular'); this.afiliadoError.celular = true; valid = false; } 
@@ -1501,70 +1507,99 @@ export default {
       const f = new Date();
       this.afiliado.fec_registro = `${f.getFullYear()}-${String(f.getMonth() + 1).padStart(2, '0')}-${String(f.getDate()).padStart(2, '0')}`;
 
-      let formData = new FormData();
-      const timestamp = new Date().getTime(); // Generamos un número único basado en la hora actual
-
-      Object.keys(this.afiliado).forEach(key => {
-        let valor = this.afiliado[key];
-
-        if(key === 'celular') {
-          formData.append(key, valor.replace(/\D/g, ''));
-        } else if (valor instanceof File || valor instanceof Blob) {
-          // Lógica inyectada: Modificar el nombre del archivo para que sea único
-          let extIndex = valor.name.lastIndexOf('.');
-          let baseName = extIndex !== -1 ? valor.name.substring(0, extIndex) : valor.name;
-          let extension = extIndex !== -1 ? valor.name.substring(extIndex) : '';
-          
-          // Quitamos espacios del nombre original por seguridad
-          baseName = baseName.replace(/\s+/g, '_');
-          
-          // Construimos el nuevo nombre: ejemplo_pdf_16987654321.jpg
-          let nuevoNombreArchivo = `${baseName}_${key}_${timestamp}${extension}`;
-          
-          formData.append(key, valor, nuevoNombreArchivo);
-        } else {
-          formData.append(key, valor);
-        }
-      });
-      
-      formData.append('es_mayor_edad', this.es_mayor_edad);
-      
-      axios.post('registro/create', formData).then(res => {
-        localStorage.removeItem('amfpro_registro_borrador');
-        this.verloading = false;
-        this.mostrarFormularioCompleto = false;
-        this.pasoPreValidacion = false;
-        this.registroExitoso = true; 
-      }).catch(error => {
-        this.verloading = false;
-        
-        let responseData = error.response?.data;
-        let errorMsg = responseData?.error || responseData?.message || 'Error de conexión al enviar el formulario.';
-        
-        if (
-          (responseData?.errors && responseData.errors.mail) || 
-          errorMsg.toLowerCase().includes('correo') || 
-          errorMsg.toLowerCase().includes('email') ||
-          errorMsg.toLowerCase().includes('mail')
-        ) {
-            toastr.error('El correo electrónico ya se encuentra registrado o ocupado.', 'Atención');
-            this.afiliadoError.mail = true;
+      // ==============================================================
+      // INICIO INTEGRACIÓN RECAPTCHA
+      // ==============================================================
+      if (window.grecaptcha) {
+        window.grecaptcha.ready(() => {
+          // Asegúrate de colocar tu CLAVE DE SITIO PÚBLICA aquí
+          window.grecaptcha.execute('6Lf1RX8tAAAAACmkjYFgZ69ee2vrZHK1OymyfiIV', { action: 'registro' }).then((token) => {
             
-            setTimeout(() => {
-                const el = document.getElementById('email');
-                if(el) { el.focus(); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-            }, 300);
-            return;
-        }
-        
-        if ((responseData?.errors && responseData.errors.nui) || errorMsg.toLowerCase().includes('nui')) {
-            toastr.error('Este NUI ya se encuentra en nuestros registros.');
-            this.afiliadoError.nui = true;
-            return;
-        }
+            let formData = new FormData();
+            const timestamp = new Date().getTime(); // Generamos un número único basado en la hora actual
 
-        toastr.error(errorMsg);
-      });
+            Object.keys(this.afiliado).forEach(key => {
+              let valor = this.afiliado[key];
+
+              if(key === 'celular') {
+                formData.append(key, valor.replace(/\D/g, ''));
+              } else if (valor instanceof File || valor instanceof Blob) {
+                // Lógica inyectada: Modificar el nombre del archivo para que sea único
+                let extIndex = valor.name.lastIndexOf('.');
+                let baseName = extIndex !== -1 ? valor.name.substring(0, extIndex) : valor.name;
+                let extension = extIndex !== -1 ? valor.name.substring(extIndex) : '';
+                
+                // Quitamos espacios del nombre original por seguridad
+                baseName = baseName.replace(/\s+/g, '_');
+                
+                // Construimos el nuevo nombre: ejemplo_pdf_16987654321.jpg
+                let nuevoNombreArchivo = `${baseName}_${key}_${timestamp}${extension}`;
+                
+                formData.append(key, valor, nuevoNombreArchivo);
+              } else {
+                formData.append(key, valor);
+              }
+            });
+            
+            formData.append('es_mayor_edad', this.es_mayor_edad);
+            formData.append('recaptcha_token', token); // Adjuntamos el token invisible generado por Google
+
+            axios.post('registro/create', formData).then(res => {
+              localStorage.removeItem('amfpro_registro_borrador');
+              this.verloading = false;
+              this.mostrarFormularioCompleto = false;
+              this.pasoPreValidacion = false;
+              this.registroExitoso = true; 
+            }).catch(error => {
+              this.verloading = false;
+              
+              let responseData = error.response?.data;
+              let errorMsg = responseData?.error || responseData?.message || 'Error de conexión al enviar el formulario.';
+
+              // Atrapamos si Google reCAPTCHA bloquea la petición en Laravel
+              if (error.response?.status === 403) {
+                  toastr.error('Actividad sospechosa detectada por el sistema de seguridad. Intenta de nuevo.', 'Error');
+                  return;
+              }
+              
+              if (
+                (responseData?.errors && responseData.errors.mail) || 
+                errorMsg.toLowerCase().includes('correo') || 
+                errorMsg.toLowerCase().includes('email') ||
+                errorMsg.toLowerCase().includes('mail')
+              ) {
+                  toastr.error('El correo electrónico ya se encuentra registrado o ocupado.', 'Atención');
+                  this.afiliadoError.mail = true;
+                  
+                  setTimeout(() => {
+                      const el = document.getElementById('email');
+                      if(el) { el.focus(); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                  }, 300);
+                  return;
+              }
+              
+              if ((responseData?.errors && responseData.errors.nui) || errorMsg.toLowerCase().includes('nui')) {
+                  toastr.error('Este NUI ya se encuentra en nuestros registros.');
+                  this.afiliadoError.nui = true;
+                  return;
+              }
+
+              toastr.error(errorMsg);
+            });
+
+          }).catch(err => {
+             this.verloading = false;
+             toastr.error('No se pudo verificar la seguridad de reCAPTCHA.', 'Error');
+             console.error(err);
+          });
+        });
+      } else {
+         this.verloading = false;
+         toastr.error('El sistema anti-spam (reCAPTCHA) no cargó correctamente. Refresca la página.', 'Error');
+      }
+      // ==============================================================
+      // FIN INTEGRACIÓN RECAPTCHA
+      // ==============================================================
     },
     
     esMexicano(nacionalidad, isDraft = false) {
@@ -1903,4 +1938,7 @@ $size: 50px; $primary-color: green;
 
 .hover-white:hover { color: #ffffff !important; opacity: 1 !important; transform: translateY(-1px); }
 .border-light-glass { border-color: rgba(255,255,255,0.1) !important; }
+.grecaptcha-badge { 
+    visibility: hidden !important; 
+}
 </style>

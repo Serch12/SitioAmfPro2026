@@ -52,9 +52,7 @@ Route::get('/torneos_agrupados_ano', [TalentosController::class, 'torneosAgrupad
 Route::get('/datos_talentos', [TalentosController::class, 'datosTorneos'])->name('torneos.datos');
 Route::get('/filtra_torneo/{ano_seleccionado}', [TalentosController::class, 'filtraTorneo'])->name('torneos.filtro');
 Route::get('/imagenes_torneo/{id_talento}', [TalentosController::class, 'imagenesTorneo'])->name('torneos.imagenes');
-
 Route::post('/registro/devuelve-equipos', [RegistrateController::class, 'listaEquipos'])->name('registro.equipos');
-Route::post('/registro/create', [RegistrateController::class, 'createAfiliado'])->name('registro.create');
 
 // ¡CORREGIDO! Se quitó la variable {nui} del nombre
 Route::get('/registro/existe_nui/{nui}', [RegistrateController::class, 'existeNUI'])->name('registro.existe_nui');
@@ -97,14 +95,6 @@ Route::get('/noticias/{ruta}', function ($ruta) {
 });
 
 // ==========================================
-// 5. NUEVA RUTA PARA EL REPORTE JURÍDICO
-// ==========================================
-Route::post('/juridico/enviar-reporte', [PerfilController::class, 'enviarReporte'])->name('juridico.reporte');
-// ===========================================
-// Ruta para recibir la solicitud del modal de convenios
-Route::post('convenios/enviar-solicitud', [PerfilController::class, 'enviarSolicitudConvenios']);
-
-// ==========================================
 // 6. RUTA COMODÍN (Catch-all) para Vue
 // (¡ESTRICTAMENTE AL FINAL DEL ARCHIVO!)
 // ==========================================
@@ -113,5 +103,15 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 
 Route::post('registro/escanear-ine', [App\Http\Controllers\RegistrateController::class, 'escanearIne']);
+// ==========================================
+// RUTAS PROTEGIDAS CONTRA SPAM (MÁX 5 PETICIONES POR MINUTO)
+// ==========================================
+Route::middleware(['throttle:5,1'])->group(function () {
+    // Registro
+    Route::post('/registro/create', [RegistrateController::class, 'createAfiliado'])->name('registro.create');
+    // Jurídico y Convenios
+    Route::post('/juridico/enviar-reporte', [PerfilController::class, 'enviarReporte'])->name('juridico.reporte');
+    Route::post('convenios/enviar-solicitud', [PerfilController::class, 'enviarSolicitudConvenios']);
 
+});
 

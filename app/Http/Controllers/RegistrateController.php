@@ -36,6 +36,20 @@ class RegistrateController extends Controller
      * funcion que crea un afiliado
      */
     public function createAfiliado(Request $request){
+        // 1. VALIDACIÓN INVISIBLE RECAPTCHA V3
+        $recaptchaResponse = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => env('RECAPTCHA_SECRET_KEY'),
+            'response' => $request->recaptcha_token,
+        ]);
+
+        $googleData = $recaptchaResponse->json();
+
+        // Si Google dice que es falso o el score de humanidad es menor a 0.5 (muy robótico), bloqueamos.
+        if (!isset($googleData['success']) || !$googleData['success'] || $googleData['score'] < 0.5) {
+            return response()->json([
+                'error' => 'Actividad sospechosa detectada. Si eres humano, recarga la página e intenta de nuevo.'
+            ], 403);
+        }
         
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'mail' => 'required|email|unique:afiliados,mail' 

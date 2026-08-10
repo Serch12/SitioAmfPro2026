@@ -98,10 +98,10 @@
                             <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                                 <tr>
                                     <td style="padding: 0 12px;">
-                                        <a href="https://www.facebook.com/AMFproMX" target="_blank"><img alt="Facebook" src="https://amfpro.mx/estilos_pagina/assets/images/Fverde.png" width="32" style="display: block; border: 0;"></a>
+                                        <a href="https://www.facebook.com/AMFproMX" target="_blank"><img alt="Facebook" src="https://amfpro.mx/public/estilos_pagina/assets/images/Fverde.png" width="32" style="display: block; border: 0;"></a>
                                     </td>
                                     <td style="padding: 0 12px;">
-                                        <a href="https://twitter.com/AMFproMX" target="_blank"><img alt="Twitter" src="https://amfpro.mx/estilos_pagina/assets/images/Xverde.png" width="32" style="display: block; border: 0;"></a>
+                                        <a href="https://twitter.com/AMFproMX" target="_blank"><img alt="Twitter" src="https://amfpro.mx/public/estilos_pagina/assets/images/Xverde.png" width="32" style="display: block; border: 0;"></a>
                                     </td>
                                     <td style="padding: 0 12px;">
                                         <a href="https://www.instagram.com/amfpromx" target="_blank"><img alt="Instagram" src="https://amfpro.mx/estilos_pagina/assets/images/Iverde.png" width="32" style="display: block; border: 0;"></a>
