@@ -114,3 +114,4 @@ Route::get('/{any}', function () {
 
 Route::post('registro/escanear-ine', [App\Http\Controllers\RegistrateController::class, 'escanearIne']);
 
+

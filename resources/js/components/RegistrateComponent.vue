@@ -1502,13 +1502,31 @@ export default {
       this.afiliado.fec_registro = `${f.getFullYear()}-${String(f.getMonth() + 1).padStart(2, '0')}-${String(f.getDate()).padStart(2, '0')}`;
 
       let formData = new FormData();
+      const timestamp = new Date().getTime(); // Generamos un número único basado en la hora actual
+
       Object.keys(this.afiliado).forEach(key => {
+        let valor = this.afiliado[key];
+
         if(key === 'celular') {
-          formData.append(key, this.afiliado[key].replace(/\D/g, ''));
+          formData.append(key, valor.replace(/\D/g, ''));
+        } else if (valor instanceof File || valor instanceof Blob) {
+          // Lógica inyectada: Modificar el nombre del archivo para que sea único
+          let extIndex = valor.name.lastIndexOf('.');
+          let baseName = extIndex !== -1 ? valor.name.substring(0, extIndex) : valor.name;
+          let extension = extIndex !== -1 ? valor.name.substring(extIndex) : '';
+          
+          // Quitamos espacios del nombre original por seguridad
+          baseName = baseName.replace(/\s+/g, '_');
+          
+          // Construimos el nuevo nombre: ejemplo_pdf_16987654321.jpg
+          let nuevoNombreArchivo = `${baseName}_${key}_${timestamp}${extension}`;
+          
+          formData.append(key, valor, nuevoNombreArchivo);
         } else {
-          formData.append(key, this.afiliado[key]);
+          formData.append(key, valor);
         }
       });
+      
       formData.append('es_mayor_edad', this.es_mayor_edad);
       
       axios.post('registro/create', formData).then(res => {
