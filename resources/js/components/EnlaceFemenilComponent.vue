@@ -32,7 +32,7 @@
          ========================================== -->
     <section class="hero-amfpro position-relative d-flex align-items-center">
       <div class="hero-bg-overlay"></div>
-      <div class="hero-bg-image" style="background-image: url('recursos/femenil/Banner.webp');"></div>
+      <div class="hero-bg-image" style="background-image: url('recursos/Femenil/Banner.webp');"></div>
       
       <div class="container-fluid px-4 px-xl-5 position-relative z-2">
         <div class="row min-vh-100 align-items-center pb-5 pt-5 pt-lg-0 mt-5 mt-lg-0">
@@ -360,9 +360,9 @@ export default {
       opcionesTema: ['Contratos o Finiquitos', 'Pagos o Adeudos', 'Maternidad y Lactancia', 'Acoso o Violencia', 'Otra situación'],
 
       comision: [
-        { nombre: "Mónica Ocampo", cargo: "EX FUTBOLISTA", img: "recursos/femenil/P-1.webp" },
-        { nombre: "Ana Gaby Paz", cargo: "CLUB TIJUANA", img: "recursos/femenil/P-2.webp" },
-        { nombre: "Dirce Delgado", cargo: "EX FUTBOLISTA", img: "recursos/femenil/P-3.webp" }
+        { nombre: "Mónica Ocampo", cargo: "EX FUTBOLISTA", img: "recursos/Femenil/P-1.webp" },
+        { nombre: "Ana Gaby Paz", cargo: "CLUB TIJUANA", img: "recursos/Femenil/P-2.webp" },
+        { nombre: "Dirce Delgado", cargo: "EX FUTBOLISTA", img: "recursos/Femenil/P-3.webp" }
       ],
       derechos: [
         { icono: "description", titulo: "Contrato", descripcion: ["Debe ser claro y estar firmado por ambas partes.", "Debes recibir una copia de tu contrato."] },
@@ -381,43 +381,43 @@ export default {
         {
           icono: 'favorite_border',
           titulo: 'DURANTE EL EMBARAZO',
-          imagen: 'recursos/femenil/F-4.webp',
+          imagen: 'recursos/Femenil/F-4.webp',
           texto: 'La validez de un contrato no puede estar condicionada a la realización de una prueba de embarazo, a su resultado, ni al hecho de que una Futbolista esté o quede embarazada durante la vigencia de su contrato. Tampoco puede ser motivo para terminar un contrato que la Futbolista se encuentre de baja por maternidad, permiso por adopción o permiso parental, o ejerciendo los derechos relacionados con estos permisos. La rescisión unilateral de un contrato por estas causas se considera una rescisión sin causa justificada y puede generar una indemnización a favor de la Futbolista, además de posibles sanciones deportivas para el club.'
         },
         {
           icono: 'sports_soccer',
           titulo: '¿PUEDES SEGUIR JUGANDO DURANTE EL EMBARAZO?',
-          imagen: 'recursos/femenil/F-2.webp',
+          imagen: 'recursos/Femenil/F-2.webp',
           texto: 'Sí, siempre que sea médicamente seguro. Después de la confirmación del especialista que lleva el embarazo y de un profesional médico independiente, elegido de común acuerdo entre la futbolista y el club, de que es seguro continuar con la actividad deportiva, la Futbolista tiene derecho a seguir jugando y entrenando. El club deberá respetar esta decisión y elaborar un plan oficial para que pueda continuar participando de manera segura, priorizando su salud y la del bebé. Durante este periodo, la Jugadora tiene derecho a recibir su salario completo hasta el momento en que decida iniciar su baja por maternidad.'
         },
         {
           icono: 'health_and_safety',
           titulo: 'SI NO PUEDE CONTINUAR CON LA ACTIVIDAD DEPORTIVA',
-          imagen: 'recursos/femenil/F-3.webp',
+          imagen: 'recursos/Femenil/F-3.webp',
           texto: 'Cuando un médico determine que no es seguro continuar con la actividad deportiva, o la Futbolista decida no ejercer su derecho a continuar jugando y entrenando, podrá prestar otros servicios para su club. El club deberá respetar esta decisión y colaborar con la Futbolista para elaborar un plan oficial que le permita desempeñar otras funciones. La Futbolista tendrá derecho a recibir su salario completo hasta el momento en que decida iniciar su baja por maternidad. Si, por motivos médicos relacionados con el embarazo, tampoco puede prestar otros servicios deportivos o laborales, tendrá derecho a una baja médica, previa presentación de un certificado médico válido expedido por su ginecólogo particular o médico especialista. En este caso, también tendrá derecho a recibir su salario completo hasta el momento en que decida iniciar su baja por maternidad.'
         },
         {
           icono: 'calendar_month',
           titulo: '¿QUIÉN DECIDE CUÁNDO INICIA LA BAJA?',
-          imagen: 'recursos/femenil/F-4.webp',
+          imagen: 'recursos/Femenil/F-4.webp',
           texto: 'La Jugadora embarazada, el progenitor adoptivo o la Futbolista que ejerza sus derechos relacionados con el permiso parental tienen derecho a determinar de manera independiente la fecha de inicio de su baja por maternidad, permiso por adopción o permiso parental, considerando los periodos mínimos establecidos en la normativa. El club no puede presionar ni obligar a una Futbolista a iniciar estos permisos en un momento determinado.'
         },
         {
           icono: 'replay',
           titulo: 'REGRESO AL FÚTBOL',
-          imagen: 'recursos/femenil/F-5.webp',
+          imagen: 'recursos/Femenil/F-5.webp',
           texto: 'Después de la baja por maternidad, permiso por adopción o permiso parental, la Futbolista tiene derecho a retomar su actividad futbolística durante la vigencia de su contrato. En el caso de la baja por maternidad, el regreso deberá contar con la confirmación del especialista que llevó el embarazo y de un profesional médico independiente, elegido de común acuerdo entre la Futbolista y el club, de que es seguro retomar la actividad. El club deberá respetar su decisión, facilitar su reincorporación a la actividad futbolística y ofrecerle apoyo médico continuo. Al retomar su actividad futbolística, la Jugadora tiene derecho a percibir su salario completo.'
         },
         {
           icono: 'child_care',
           titulo: 'LACTANCIA',
-          imagen: 'recursos/femenil/F-6.webp',
+          imagen: 'recursos/Femenil/F-6.webp',
           texto: 'Mientras la Futbolista esté prestando servicios deportivos a su club, deberá poder amamantar a su bebé o realizar la extracción de leche materna. El club deberá proporcionar un lugar adecuado para ello. La reducción de la jornada laboral por estas razones se considera justificada y no puede implicar una reducción del salario.'
         },
         {
           icono: 'gavel',
           titulo: 'PROTECCIÓN DEL CONTRATO',
-          imagen: 'recursos/femenil/F-7.webp',
+          imagen: 'recursos/Femenil/F-7.webp',
           texto: 'Si el contrato de una Futbolista vence durante su baja por maternidad, el club deberá velar por su salud e integridad de conformidad con lo establecido en el Reglamento de Transferencias y Contrataciones. Además, la normativa contempla mecanismos para que una Futbolista pueda ser sustituida temporalmente durante su baja por maternidad y pueda ser registrada fuera del periodo ordinario de inscripción después de finalizar la baja por maternidad, el permiso por adopción, el permiso parental o el periodo de recuperación posterior al embarazo, dependiendo de su situación contractual.'
         }
       ]
