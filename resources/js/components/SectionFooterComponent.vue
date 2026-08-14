@@ -11,7 +11,7 @@
             </div>
             
             <div class="goal-wrapper reveal-up delay-1">
-              <img src="recursos/porteria-area-footer-2-blanco.png" class="goal-footer" alt="Portería Contacto">
+              <img src="recursos/porteria-area-footer-2-blanco.webp" class="goal-footer" alt="Portería Contacto">
             </div>
 
           </div>
@@ -192,7 +192,7 @@ p, span, div, a {
     .goal-wrapper {
       position: relative;
       z-index: 10;
-      margin-bottom: -564px; 
+      margin-bottom: -563px; 
       width: 106%;
       display: flex;
       justify-content: center;

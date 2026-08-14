@@ -1,12 +1,12 @@
 <template>
-  <div class="registro-page-wrapper" style="--bg-desktop: url('estilos_login/assets/img/amfpro/banner_login.png'); --bg-mobile: url('estilos_login/assets/img/amfpro/banner_login_dispositivo.jpg');">
+  <div class="registro-page-wrapper" style="--bg-desktop: url('estilos_login/assets/img/amfpro/banner_login.webp'); --bg-mobile: url('estilos_login/assets/img/amfpro/banner_login_dispositivo.webp');">
     
     <header class="header-main border-bottom fixed-top glass-header">
       <div class="container-fluid py-2 px-3 px-lg-5">
         <div class="row align-items-center justify-content-center m-0">
           <div class="col-12 text-center px-0">
             <a href="/">
-              <img src="recursos/logo.png" alt="Logo AMFPRO" class="logo-header rounded px-2" style="max-height: 45px;" /> 
+              <img src="recursos/logo.webp" alt="Logo AMFPRO" class="logo-header rounded px-2" style="max-height: 45px;" /> 
             </a>
           </div>
         </div>
@@ -52,13 +52,13 @@
                 <div class="credential-shine"></div>
                 
                 <div class="credential-header">
-                  <img src="recursos/logo.png" alt="AMFpro" class="credential-logo">
+                  <img src="recursos/logo.webp" alt="AMFpro" class="credential-logo">
                   <span class="credential-badge">AFILIADO OFICIAL</span>
                 </div>
                 
                 <div class="credential-body">
                   <div class="credential-photo">
-                    <img :src="fotoPreview || 'recursos/default-avatar.png'" alt="Foto Perfil">
+                    <img :src="fotoPreview || 'recursos/default-avatar.webp'" alt="Foto Perfil">
                   </div>
                   
                   <div class="credential-data">
@@ -756,7 +756,7 @@
             <div class="container-fluid max-w-800 mx-auto">
               
               <div class="text-center pb-4 mb-4 border-bottom border-light">
-                <img src="recursos/logo.png" width="160px" alt="Logo AMFpro" class="mb-3" />
+                <img src="recursos/logo.webp" width="160px" alt="Logo AMFpro" class="mb-3" />
                 <h3 class="fw-black text-dark display-6 mb-2" style="letter-spacing: -1px;">AM FUT PRO, A.C.</h3>
                 <h6 class="text-muted fw-bold text-uppercase tracking-wider">Aviso de Privacidad del Registro de Afiliados</h6>
               </div>

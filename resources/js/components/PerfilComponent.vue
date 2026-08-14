@@ -13,7 +13,7 @@
               
               <div class="col-5 col-md-4 text-center px-0">
                 <a href="">
-                  <img src="recursos/logo.png" alt="Logo AMFPRO" class="logo-header">
+                  <img src="recursos/logo.webp" alt="Logo AMFPRO" class="logo-header">
                 </a>
               </div>
               
@@ -24,9 +24,9 @@
                 </button>
 
                 <div class="d-none d-sm-flex gap-2 border-start ps-2">
-                    <img src="recursos/x.png" alt="X" class="social-nav">
-                    <img src="recursos/facebook.png" alt="FB" class="social-nav">
-                    <img src="recursos/instagram.png" alt="IG" class="social-nav">
+                    <img src="recursos/x.webp" alt="X" class="social-nav">
+                    <img src="recursos/facebook.webp" alt="FB" class="social-nav">
+                    <img src="recursos/instagram.webp" alt="IG" class="social-nav">
                 </div>
               </div>
 

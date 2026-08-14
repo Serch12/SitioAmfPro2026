@@ -31,7 +31,7 @@
       /* Fondo de la página */
       .login-bg {
         min-height: 100vh;
-        background-image: url('{{ asset("estilos_login/assets/img/amfpro/banner_login.png") }}');
+        background-image: url('{{ asset("estilos_login/assets/img/amfpro/banner_login.webp") }}');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
@@ -53,7 +53,7 @@
 
       @media (max-width: 767px) {
         .login-bg {
-          background-image: url('{{ asset("estilos_login/assets/img/amfpro/banner_login_dispositivo.jpg") }}');
+          background-image: url('{{ asset("estilos_login/assets/img/amfpro/banner_login_dispositivo.webp") }}');
         }
       }
 

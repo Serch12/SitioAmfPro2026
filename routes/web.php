@@ -32,7 +32,7 @@ Route::get('/afiliacion', function () {
     return view('Afiliacion');
 })->name('afiliacion');
 
-Route::get('/femenil', function () {
+Route::get('/enlace-comision-femenil', function () {
     return view('EnlaceFemenil');
 })->name('femenil');
 

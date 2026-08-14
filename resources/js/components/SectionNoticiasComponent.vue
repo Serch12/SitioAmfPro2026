@@ -24,7 +24,7 @@
                     class="news-col-transition reveal-up"
                     :class="getColClass(noticia.id)">
                   
-                  <div class="premium-news-card bg-white rounded-4 overflow-hidden h-100 shadow-sm border border-light d-flex flex-column"
+                  <div class="premium-news-card bg-white rounded-4 overflow-hidden h-100 shadow-sm border border-light d-flex flex-column interactive-element"
                       @click="irAlDetalle(noticia)">
                     
                     <div class="news-img-wrapper position-relative overflow-hidden">
@@ -66,15 +66,15 @@
                 <nav>
                   <ul class="pagination custom-pagination shadow-sm rounded-pill overflow-hidden">
                     <li class="page-item" :class="{ disabled: currentPage === 1 }">
-                      <a class="page-link" @click.prevent="changePage(currentPage - 1)" href="#">
+                      <a class="page-link interactive-element" @click.prevent="changePage(currentPage - 1)" href="#">
                         <i class="material-icons">chevron_left</i>
                       </a>
                     </li>
                     <li v-for="page in totalPages" :key="page" class="page-item" :class="{ active: currentPage === page }">
-                      <a class="page-link std-text-small fw-bold" @click.prevent="changePage(page)" href="#">{{ page }}</a>
+                      <a class="page-link std-text-small fw-bold interactive-element" @click.prevent="changePage(page)" href="#">{{ page }}</a>
                     </li>
                     <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-                      <a class="page-link" @click.prevent="changePage(currentPage + 1)" href="#">
+                      <a class="page-link interactive-element" @click.prevent="changePage(currentPage + 1)" href="#">
                         <i class="material-icons">chevron_right</i>
                       </a>
                     </li>
@@ -86,7 +86,7 @@
 
           <div class="col-lg-4 order-1 order-lg-2 mb-5 mb-lg-0 reveal-up delay-2">
             <div class="sidebar-news sticky-top" style="top: 100px;">
-              <button class="btn btn-premium-green w-100 fw-bold text-uppercase std-subtitle mb-4 rounded-pill py-3 shadow-sm" @click="resetFiltros">
+              <button class="btn btn-premium-green w-100 fw-bold text-uppercase std-subtitle mb-4 rounded-pill py-3 shadow-sm interactive-element" @click="resetFiltros">
                 Mostrar Todas
               </button>
 
@@ -97,7 +97,7 @@
                 </div>
                 
                 <p class="std-subtitle text-muted mb-2">Categoría</p>
-                <select class="form-select premium-input rounded-3 mb-4 shadow-none std-text-small" v-model="filtros.categoria" @change="getNoticias">
+                <select class="form-select premium-input rounded-3 mb-4 shadow-none std-text-small interactive-element" v-model="filtros.categoria" @change="getNoticias">
                   <option value="">Todas las categorías</option>
                   <option value="Noticias">Noticias</option>
                   <option value="Comunicados">Comunicados</option>
@@ -105,7 +105,7 @@
                 
                 <p class="std-subtitle text-muted mb-2">Búsqueda</p>
                 <div class="position-relative">
-                  <input type="text" class="form-control premium-input rounded-3 pe-5 shadow-none std-text-small" placeholder="Buscar palabras clave..." v-model="filtros.busqueda" @input="debounceSearch">
+                  <input type="text" class="form-control premium-input rounded-3 pe-5 shadow-none std-text-small interactive-element" placeholder="Buscar palabras clave..." v-model="filtros.busqueda" @input="debounceSearch">
                   <i class="material-icons position-absolute top-50 end-0 translate-middle-y me-3 text-muted">search</i>
                 </div>
               </div>
@@ -124,11 +124,11 @@
                 <div v-else>
                   <div v-if="redes.instagram && redes.instagram.length > 0">
                     <p class="std-subtitle text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase">
-                      <img src="recursos/instagram.png" style="width:16px; margin-right:8px; filter: grayscale(100%);" loading="lazy"> Instagram
+                      <img src="recursos/instagram.webp" style="width:16px; margin-right:8px; filter: grayscale(100%);" loading="lazy"> Instagram
                     </p>
                     
                     <div v-for="(igPost, index) in redes.instagram" :key="'ig-'+index" class="social-embed-container mb-4">
-                      <a :href="igPost.permalink" target="_blank" class="text-decoration-none text-dark">
+                      <a :href="igPost.permalink" target="_blank" class="text-decoration-none text-dark interactive-element">
                         <div class="position-relative overflow-hidden rounded-3 shadow-sm mb-2 social-img-wrapper">
                           <img :src="igPost.media_url" class="w-100" style="height: 200px; object-fit: cover;" loading="lazy">
                           <div class="social-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
@@ -142,11 +142,11 @@
 
                   <div v-if="redes.facebook && redes.facebook.length > 0" class="mt-5">
                     <p class="std-subtitle text-dark mb-3 border-bottom pb-2 d-flex align-items-center text-uppercase">
-                      <img src="recursos/facebook.png" style="width:16px; margin-right:8px; filter: grayscale(100%);" loading="lazy"> Facebook
+                      <img src="recursos/facebook.webp" style="width:16px; margin-right:8px; filter: grayscale(100%);" loading="lazy"> Facebook
                     </p>
                     
                     <div v-for="(fbPost, index) in redes.facebook" :key="'fb-'+index" class="social-embed-container mb-4">
-                      <a :href="fbPost.permalink_url" target="_blank" class="text-decoration-none text-dark">
+                      <a :href="fbPost.permalink_url" target="_blank" class="text-decoration-none text-dark interactive-element">
                         <div class="position-relative overflow-hidden rounded-3 shadow-sm mb-2 social-img-wrapper" v-if="fbPost.full_picture">
                           <img :src="fbPost.full_picture" class="w-100" style="height: 200px; object-fit: cover;" loading="lazy">
                           <div class="social-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
@@ -315,7 +315,7 @@ export default {
           });
       },
       obtenerRutaImagen(nombreImagen) {
-          if (!nombreImagen) return 'recursos/default.png';
+          if (!nombreImagen) return 'recursos/default.webp';
           if (nombreImagen.startsWith('http')) return nombreImagen;
           return 'http://amfpro.mx/intranet/public/ArchivosSistema/Post/' + nombreImagen;
       },
@@ -368,7 +368,7 @@ export default {
               this.setMeta('description', "Entérate de las últimas noticias, comunicados y acciones de la Asociación Mexicana de Futbolistas.");
               this.setMeta('og:title', "Noticias y Comunicados - AMFpro", true);
               this.setMeta('og:description', "Entérate de las últimas noticias, comunicados y acciones de la Asociación Mexicana de Futbolistas.", true);
-              this.setMeta('og:image', "http://amfpro.mx/recursos/logo.png", true); 
+              this.setMeta('og:image', "http://amfpro.mx/recursos/logo.webp", true); 
               return;
           }
 

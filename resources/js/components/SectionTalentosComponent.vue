@@ -184,7 +184,7 @@
           </div>
           
           <div class="split-icon-container">
-              <img src="recursos/documento-reloj.png" alt="Documento y Reloj" style="width: 240px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));">
+              <img src="recursos/documento-reloj.webp" alt="Documento y Reloj" style="width: 240px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));">
           </div>
       </section>
 
@@ -303,14 +303,14 @@ export default {
             observer: null,
             numerosAnimados: false,
             listaCopas: [
-                { nombre: 'COPA BAJÍO', img: 'recursos/copa-1.png' },
-                { nombre: 'COPA CHIVAS', img: 'recursos/copa-2.png' },
-                { nombre: 'COPA SULTANES', img: 'recursos/copa-3.png' },
-                { nombre: 'COPA TECOS', img: 'recursos/copa-4.png' },
-                { nombre: 'USA CUP', img: 'recursos/copa-5.png' },
-                { nombre: 'COPA VALLARTA', img: 'recursos/copa-6.png' },
-                { nombre: 'COPA RECORD', img: 'recursos/copa-7.png' },
-                { nombre: 'COPA TITANES', img: 'recursos/copa-8.png' },
+                { nombre: 'COPA BAJÍO', img: 'recursos/copa-1.webp' },
+                { nombre: 'COPA CHIVAS', img: 'recursos/copa-2.webp' },
+                { nombre: 'COPA SULTANES', img: 'recursos/copa-3.webp' },
+                { nombre: 'COPA TECOS', img: 'recursos/copa-4.webp' },
+                { nombre: 'USA CUP', img: 'recursos/copa-5.webp' },
+                { nombre: 'COPA VALLARTA', img: 'recursos/copa-6.webp' },
+                { nombre: 'COPA RECORD', img: 'recursos/copa-7.webp' },
+                { nombre: 'COPA TITANES', img: 'recursos/copa-8.webp' },
             ],
             casosExito: [
               { id: 1, nombre: 'Osmar Piña', club: 'Academia de Toluca FC' },
@@ -407,7 +407,7 @@ export default {
           this.playersData = response.data.map((item, index) => {
             return {
               year: item.year,
-              img: `recursos/jugador${(index % 3) + 1}.png`, 
+              img: `recursos/jugador${(index % 3) + 1}.webp`, 
               copas: item.total_copas,
               cats: item.rango_categorias,
               parts: '270',
@@ -490,7 +490,7 @@ export default {
       },
 
       obtenerRutaImagen(nombreImagen) {
-          if (!nombreImagen) return 'recursos/default.png';
+          if (!nombreImagen) return 'recursos/default.webp';
           if (nombreImagen.startsWith('http')) return nombreImagen;
           return 'http://amfpro.mx/intranet/public/ArchivosSistema/GaleriaTalentos/' + nombreImagen;
       },

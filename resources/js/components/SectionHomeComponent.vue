@@ -63,7 +63,10 @@
                       <div class="widget-icon"><i class="material-icons">gavel</i></div>
                       <span class="widget-label">Jurídico</span>
                     </div>
-                    
+                     <a href="enlace-comision-femenil" class="bento-widget text-decoration-none">
+                      <div class="widget-icon"><i class="material-icons">woman</i></div>
+                      <span class="widget-label">Enlace Femenil</span>
+                    </a>
                     <div class="bento-widget" @click="scrollToSectionLocal('convenios')">
                       <div class="widget-icon"><i class="material-icons">school</i></div>
                       <span class="widget-label">Convenios</span>
@@ -74,15 +77,10 @@
                       <span class="widget-label">Talentos</span>
                     </div>
 
-                    <div class="bento-widget" @click="scrollToSectionLocal('noticias')">
+                    <!-- <div class="bento-widget" @click="scrollToSectionLocal('noticias')">
                       <div class="widget-icon"><i class="material-icons">article</i></div>
                       <span class="widget-label">Noticias</span>
-                    </div>
-
-                    <!-- <a href="femenil" class="bento-widget text-decoration-none">
-                      <div class="widget-icon"><i class="material-icons">woman</i></div>
-                      <span class="widget-label">Enlace Femenil</span>
-                    </a> -->
+                    </div> -->
                   </div>
                 </div>
             </div>
@@ -108,7 +106,7 @@
             <p class="std-subtitle text-muted">INTERNACIONALES</p>
             <!-- Enlace AIF -->
             <a href="https://aif-futbol.com/" target="_blank" rel="noopener noreferrer">
-              <img src="recursos/logo_aif.png" alt="AIF" class="circle-logo mx-auto reveal-scale-zoom delay-1" loading="lazy">
+              <img src="recursos/logo_aif.webp" alt="AIF" class="circle-logo mx-auto reveal-scale-zoom delay-1" loading="lazy">
             </a>
           </div>
           
@@ -118,15 +116,15 @@
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
               <!-- Enlace FIFA -->
               <a href="https://www.fifa.com/es" target="_blank" rel="noopener noreferrer">
-                <img src="recursos/logo_fifa.png" alt="FIFA" class="circle-logo reveal-scale-zoom delay-2" loading="lazy">
+                <img src="recursos/logo_fifa.webp" alt="FIFA" class="circle-logo reveal-scale-zoom delay-2" loading="lazy">
               </a>
               <!-- Enlace FMF -->
               <a href="https://fmf.mx/" target="_blank" rel="noopener noreferrer">
-                <img src="recursos/logo_seleccion.png" alt="FMF" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
+                <img src="recursos/logo_seleccion.webp" alt="FMF" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
               </a>
               <!-- Enlace Concacaf -->
               <a href="https://www.concacaf.com/es/" target="_blank" rel="noopener noreferrer">
-                <img src="recursos/logo_concacaf.png" alt="Concacaf" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
+                <img src="recursos/logo_concacaf.webp" alt="Concacaf" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
               </a>
             </div>
           </div>
@@ -137,23 +135,23 @@
             <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
               <!-- Enlace Liga MX -->
               <a href="https://ligamx.net/" target="_blank" rel="noopener noreferrer">
-                <img src="recursos/logo_ligamx.png" alt="Liga MX" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
+                <img src="recursos/logo_ligamx.webp" alt="Liga MX" class="circle-logo reveal-scale-zoom delay-3" loading="lazy">
               </a>
               <!-- Enlace Liga Expansión -->
               <a href="https://www.ligaexpansion.mx/" target="_blank" rel="noopener noreferrer">
-                <img src="recursos/logo_ligaexpansion.png" alt="Liga Expansión" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
+                <img src="recursos/logo_ligaexpansion.webp" alt="Liga Expansión" class="circle-logo reveal-scale-zoom delay-4" loading="lazy">
               </a>
               <!-- Enlace Liga Premier -->
               <a href="https://ligapremier.mx/home" target="_blank" rel="noopener noreferrer">
-                <img src="recursos/logo_ligapremier.png" alt="Liga Premier" class="circle-logo reveal-scale-zoom delay-5" loading="lazy">
+                <img src="recursos/logo_ligapremier.webp" alt="Liga Premier" class="circle-logo reveal-scale-zoom delay-5" loading="lazy">
               </a>
               <!-- Enlace Liga TDP -->
               <a href="https://ligatdp.mx/" target="_blank" rel="noopener noreferrer">
-                <img src="recursos/logo_ligatdp.png" alt="Liga TDP" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
+                <img src="recursos/logo_ligatdp.webp" alt="Liga TDP" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
               </a>
               <!-- Enlace Liga MX Femenil -->
               <a href="https://www.ligafemenil.mx/" target="_blank" rel="noopener noreferrer">
-                <img src="recursos/logo_ligamxfemenil.png" alt="Liga MX Femenil" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
+                <img src="recursos/logo_ligamxfemenil.webp" alt="Liga MX Femenil" class="circle-logo reveal-scale-zoom delay-6" loading="lazy">
               </a>
             </div>
           </div>
@@ -396,7 +394,7 @@ export default {
     return {
       isMobile: false, isModalOpen: false, observer: null,
       galeriaNosotrosAbierta: false, fotoNosotrosIndex: 0, touchStartY: 0, touchEndY: 0,
-      imagenesNosotros: ['recursos/Item.png', 'recursos/Item-2.png', 'recursos/Item-3.png'],
+      imagenesNosotros: ['recursos/Item.webp', 'recursos/Item-2.webp', 'recursos/Item-3.webp'],
       activeAsesorIndex: 0,
      asesoresEquipo: [
         {
@@ -404,17 +402,17 @@ export default {
           rol_2: 'DEPORTIVO',
           nombre_1: 'MELVIN BROWN',
           nombre_2: 'CASADOS',
-          foto: 'recursos/melvin-brown.png',
+          foto: 'recursos/melvin-brown.webp',
           correo: 'contacto@amfpro.mx',
           telefono_link: 'tel:7286906040',
           telefono_text: '(728) 690 6040',
           is_whatsapp: false, // Melvin mantiene llamada normal
           funciones_intro: 'Llevar el mensaje de la AMFpro en las visitas a los equipos de:',
           logos: [
-            { ruta: 'recursos/logo_ligamx.png', nombre: 'Liga MX' },
-            { ruta: 'recursos/logo_ligaexpansion.png', nombre: 'Liga Expansión' },
-            { ruta: 'recursos/logo_ligapremier.png', nombre: 'Liga Premier' },
-            { ruta: 'recursos/logo_ligatdp.png', nombre: 'Liga TDP' }
+            { ruta: 'recursos/logo_ligamx.webp', nombre: 'Liga MX' },
+            { ruta: 'recursos/logo_ligaexpansion.webp', nombre: 'Liga Expansión' },
+            { ruta: 'recursos/logo_ligapremier.webp', nombre: 'Liga Premier' },
+            { ruta: 'recursos/logo_ligatdp.webp', nombre: 'Liga TDP' }
           ],
           funciones: [
             'Presentar proyectos para beneficio de las y los Futbolistas profesionales de México.',
@@ -433,7 +431,7 @@ export default {
           rol_2: 'FEMENIL',
           nombre_1: 'DANIELA GÓMEZ',
           nombre_2: 'GONZÁLEZ',
-          foto: 'recursos/Daniela_amfpro_2.png',
+          foto: 'recursos/Daniela_amfpro_2.webp',
           correo: 'dgomez@amfpro.mx',
           // Enlace de WhatsApp con lada 52 y texto predefinido
           telefono_link: 'https://wa.me/525554557348?text=Hola%20Daniela,%20soy%20afiliada%20de%20la%20AMFpro%20y%20me%20gustar%C3%ADa%20recibir%20asistencia.',
@@ -441,7 +439,7 @@ export default {
           is_whatsapp: true, // Esta bandera activa el ícono y el comportamiento del modal
           funciones_intro: 'Llevar el mensaje de la AMFpro en las visitas a los equipos de:',
           logos: [
-            { ruta: 'recursos/logo_ligamxfemenil.png', nombre: 'Liga MX Femenil' }
+            { ruta: 'recursos/logo_ligamxfemenil.webp', nombre: 'Liga MX Femenil' }
           ],
           funciones: [
             'Atención y acompañamiento integral a las Futbolistas afiliadas.',

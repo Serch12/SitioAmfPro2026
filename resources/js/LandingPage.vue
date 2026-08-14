@@ -15,7 +15,7 @@
           
           <div class="header-center" @click="scrollToPosition(0)">
             <img 
-              src="recursos/logo.png" 
+              src="recursos/logo.webp" 
               alt="Logo AMFPRO" 
               class="logo-header"
             >
@@ -24,9 +24,9 @@
           <div class="header-side right-side d-flex align-items-center gap-3">
             
             <div class="social-group d-none d-sm-flex">
-              <a href="https://twitter.com/AMFproMX" class="social-item" target="_blank"><img src="recursos/x.png" alt="X"></a>
-              <a href="https://facebook.com/AMFproMX" class="social-item" target="_blank"><img src="recursos/facebook.png" alt="FB"></a>
-              <a href="https://instagram.com/AMFproMX" class="social-item" target="_blank"><img src="recursos/instagram.png" alt="IG"></a>
+              <a href="https://twitter.com/AMFproMX" class="social-item" target="_blank"><img src="recursos/x.webp" alt="X"></a>
+              <a href="https://facebook.com/AMFproMX" class="social-item" target="_blank"><img src="recursos/facebook.webp" alt="FB"></a>
+              <a href="https://instagram.com/AMFproMX" class="social-item" target="_blank"><img src="recursos/instagram.webp" alt="IG"></a>
             </div>
 
             <div class="vertical-divider d-none d-sm-block"></div>
@@ -57,6 +57,9 @@
       @go-to-section="scrollToSection" 
       @go-to-position="scrollToPosition" 
     />
+    <!-- <div class="custom-cursor d-none d-lg-block" :class="{ 'hovering': isCursorHover }" ref="customCursor"></div>
+    <div class="custom-cursor-follower d-none d-lg-block" :class="{ 'hovering': isCursorHover }" ref="cursorFollower"></div> -->
+
 
     <div v-if="!noticiaEnDetalle">
       <SectionHome :scrollPosition="scrollPosition" />
@@ -88,6 +91,7 @@ export default {
   },
   data() {
     return {
+      // isCursorHover: false,
       scrollPosition: 0,
       scrollPercentage: 0,
       noticiaEnDetalle: null,
@@ -98,11 +102,31 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
     this.checkAuthStatus();
+    // Eventos del Cursor Premium
+    // window.addEventListener('mousemove', this.updateCursor);
+    // this.$nextTick(() => {
+    //   this.attachCursorHoverEvents();
+    // });
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    // updateCursor(e) {
+    //   if(this.$refs.cursorFollower) {
+    //     this.$refs.cursorFollower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+    //   }
+    //   if(this.$refs.customCursor) {
+    //     this.$refs.customCursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+    //   }
+    // },
+    // attachCursorHoverEvents() {
+    //   document.querySelectorAll('a, button, .interactive-element, .pro-gallery-item').forEach(el => {
+    //     el.addEventListener('mouseenter', () => this.isCursorHover = true);
+    //     el.addEventListener('mouseleave', () => this.isCursorHover = false);
+    //   });
+    // },
+
     // --- LÓGICA DE AUTH ---
     checkAuthStatus() {
       axios.get('afiliado/datos').then(response => {
@@ -149,14 +173,35 @@ export default {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     cerrarDetalle() {
+      // 1. Limpiamos la variable
       this.noticiaEnDetalle = null;
+      
+      // 2. Limpiamos la URL
       const baseUrl = document.querySelector('base') ? document.querySelector('base').href : '/';
-      // Nos regresa limpiamente a la URL base de tu XAMPP o de Producción
       window.history.pushState(null, '', baseUrl);
-      this.$nextTick(() => {
-          const section = document.querySelector('.section-noticias'); 
-          if (section) section.scrollIntoView({ behavior: 'smooth' });
-      });
+      
+      // 3. APAGAMOS el scroll suave del CSS forzosamente
+      const htmlElement = document.documentElement;
+      htmlElement.style.scrollBehavior = 'auto';
+      
+      // 4. Calculamos y saltamos instantáneamente
+      setTimeout(() => {
+        const section = document.getElementById('noticias'); 
+        
+        if (section) {
+          const headerOffset = 75;
+          const elementPosition = section.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          // Salto seco e instantáneo
+          window.scrollTo(0, offsetPosition);
+          
+          // 5. Devolvemos el scroll suave a la normalidad después del salto
+          setTimeout(() => {
+            htmlElement.style.scrollBehavior = '';
+          }, 50);
+        }
+      }, 50); // Pequeño margen para asegurar que la cuadrícula se dibujó
     },
     
     scrollToPosition(pos) {
@@ -181,6 +226,22 @@ export default {
 
 $amf-main: #50c026;
 .bg-white { background-color: #FFFFFF; }
+
+// .custom-cursor {
+//   position: fixed; top: 0; left: 0; width: 8px; height: 8px; margin: -4px 0 0 -4px;
+//   background: #50c026; border-radius: 50%; pointer-events: none; z-index: 1000002;
+//   transition: width 0.3s, height 0.3s, margin 0.3s, background 0.3s;
+// }
+// .custom-cursor.hovering {
+//   width: 50px; height: 50px; margin: -25px 0 0 -25px;
+//   background: rgba(80, 192, 38, 0.1); border: 1px solid #50c026;
+// }
+// .custom-cursor-follower {
+//   position: fixed; top: 0; left: 0; width: 32px; height: 32px; margin: -16px 0 0 -16px;
+//   border: 1px solid rgba(80, 192, 38, 0.4); border-radius: 50%;
+//   pointer-events: none; z-index: 1000001; transition: transform 0.15s ease-out, opacity 0.3s;
+// }
+// .custom-cursor-follower.hovering { opacity: 0; }
 
 .header-main {
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);

@@ -4,7 +4,7 @@
       <!-- 1. SECCIÓN JURÍDICO -->
       <section class="py-6 bg-light text-center section-derechos relative-container" id="juridico">
          <div class="split-icon-container-2">
-            <img src="recursos/mazo-icon.png" alt="Contacto Icon">
+            <img src="recursos/mazo-icon.webp" alt="Contacto Icon">
         </div>
         <div class="container px-md-5 mt-4">
           <div class="row justify-content-center mb-5 reveal-up">
@@ -23,7 +23,7 @@
             
             <!-- Cinta de Título de la Categoría -->
             <div class="d-flex justify-content-start mb-4">
-              <div class="bg-success text-white px-4 py-2 rounded-end-pill fw-black text-uppercase tracking-wider shadow-sm d-flex align-items-center" style="font-size: 1.05rem; border-left: 6px solid #112a18;">
+              <div class="text-white px-4 py-2 rounded-end-pill fw-black text-uppercase tracking-wider shadow-sm d-flex align-items-center" style="font-size: 1.05rem; border-left: 6px solid #112a18;background-color: #7e8083;">
                 <i class="material-icons me-2">{{ categoria.iconHeader }}</i> {{ categoria.titulo }}
               </div>
             </div>
@@ -144,7 +144,7 @@
             <div class="stack-card reveal-up" id="card-1">
               <div class="row g-0 h-100 bg-white rounded-4 shadow-sm overflow-hidden border border-light premium-clean-card">
                 <div class="col-lg-8 p-4 p-md-5 d-flex flex-column justify-content-center">
-                  <img src="recursos/logo-cruyff.png" alt="Cruyff" class="mb-4 convenio-logo" style="max-height: 60px; width: auto; align-self: flex-start;">
+                  <img src="recursos/logo-cruyff.webp" alt="Cruyff" class="mb-4 convenio-logo" style="max-height: 60px; width: auto; align-self: flex-start;">
                   <h3 class="std-title-card fw-black text-dark mb-4">Posgrados y cursos en Administración y Negocios del Futbol ONLINE</h3>
                   <p class="std-text text-secondary text-justify mb-3">Sus programas de formación han sido diseñados por profesionales de la industria del deporte, enriquecidos por las experiencias personales de profesores y alumnos.</p>
                   <p class="std-text text-secondary text-justify mb-4 fw-bold text-dark">Modelo de aprendizaje basado en:</p>
@@ -224,7 +224,7 @@
             <div class="stack-card reveal-up" id="card-2">
               <div class="row g-0 h-100 bg-white rounded-4 shadow-sm overflow-hidden border border-light premium-clean-card">
                 <div class="col-lg-8 p-4 p-md-5 d-flex flex-column justify-content-center">
-                  <img src="recursos/logo-conamat.png" alt="CONAMAT" class="mb-4 convenio-logo" style="max-height: 60px; width: auto; align-self: flex-start;">
+                  <img src="recursos/logo-conamat.webp" alt="CONAMAT" class="mb-4 convenio-logo" style="max-height: 60px; width: auto; align-self: flex-start;">
                    <h3 class="std-title-card fw-black text-dark mb-4">Preparatoria en 4 meses con el “Curso de preparación para certificación en un sólo examen”</h3>
                   <p class="std-text text-secondary text-justify mb-0">Inscríbete al curso 100% en línea y obtén tu certificado con validez oficial de la SEP a través de una plataforma disponible las 24 horas al día.</p>
                 </div>
@@ -507,9 +507,9 @@ export default {
             ],
 
             docsData: [
-                { title: 'Reglamento de la Comisión de Conciliación y Resolución de Controversias 2024', icon_grey: 'recursos/documento-verde-2.png', url_link: 'https://fmf.mx/docs/reglamentos/441.pdf', isModal: false },
-                { title: 'Reglamento de Transferencias y Contrataciones 2026-2027', icon_grey: 'recursos/dobledocumento-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/521.pdf', isModal: false },
-                { title: 'Código de Ética', icon_grey: 'recursos/ball-verde.png', url_link: 'https://fmf.mx/docs/reglamentos/475.pdf', isModal: false },
+                { title: 'Reglamento de la Comisión de Conciliación y Resolución de Controversias 2024', icon_grey: 'recursos/documento-verde-2.webp', url_link: 'https://fmf.mx/docs/reglamentos/441.pdf', isModal: false },
+                { title: 'Reglamento de Transferencias y Contrataciones 2026-2027', icon_grey: 'recursos/dobledocumento-verde.webp', url_link: 'https://fmf.mx/docs/reglamentos/521.pdf', isModal: false },
+                { title: 'Código de Ética', icon_grey: 'recursos/ball-verde.webp', url_link: 'https://fmf.mx/docs/reglamentos/475.pdf', isModal: false },
                 { title: 'Derechos y Regulaciones del Fútbol Femenil', isModal: true }
             ],
             

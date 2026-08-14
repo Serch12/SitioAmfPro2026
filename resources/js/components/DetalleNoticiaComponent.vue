@@ -2,6 +2,24 @@
   <transition name="fade-slide">
     <div class="detalle-noticia-wrapper bg-white">
       
+      <!-- ==========================================
+           1. PRELOADER CINEMATOGRÁFICO
+           ========================================== -->
+      <transition name="fade-preloader">
+        <div v-if="isLoading" class="preloader-overlay d-flex align-items-center justify-content-center flex-column z-3">
+          <h2 class="preloader-text fw-black text-white tracking-wider mb-0 text-glow">
+            <span class="amf-green-text-2">#</span>UnidosSomosMasFuertes
+          </h2>
+          <div class="preloader-line mt-3"></div>
+        </div>
+      </transition>
+
+      <!-- ==========================================
+           2. CURSOR MAGNÉTICO (EFECTO PREMIUM)
+           ========================================== -->
+      <!-- <div class="custom-cursor d-none d-lg-block" :class="{ 'hovering': isCursorHover }" ref="customCursor"></div>
+      <div class="custom-cursor-follower d-none d-lg-block" :class="{ 'hovering': isCursorHover }" ref="cursorFollower"></div> -->
+
       <div class="reading-progress-bar" :style="{ width: scrollProgress + '%' }"></div>
 
       <div class="news-hero" :style="{ backgroundImage: `url('${obtenerRutaImagen(noticia.imagen)}')` }">
@@ -20,7 +38,7 @@
                 <i class="material-icons" style="font-size: 1.1rem;">schedule</i> {{ tiempoLectura }} min de lectura
               </span>
             </div>
-            <button @click="$emit('regresar')" class="btn-back m-0 flex-shrink-0">
+            <button @click="$emit('regresar')" class="btn-back m-0 flex-shrink-0 interactive-element">
               <i class="material-icons">arrow_back</i> <span>Regresar al listado</span>
             </button>
           </div>
@@ -37,7 +55,7 @@
               <span class="fw-bold text-muted">¿Te gustó esta noticia? Compártela:</span>
               
               <div class="d-flex gap-2">
-                <button @click="copiarEnlace" class="btn btn-success rounded-pill px-4 d-inline-flex align-items-center gap-2">
+                <button @click="copiarEnlace" class="btn btn-success rounded-pill px-4 d-inline-flex align-items-center gap-2 interactive-element">
                   <i class="material-icons" style="font-size: 1.2rem;">link</i> Copiar Link
                 </button>
               </div>
@@ -49,7 +67,7 @@
               </h3>
               
               <div class="pro-gallery-grid">
-                <div v-for="(img, idx) in galeriaImagenes" :key="idx" class="pro-gallery-item" @click="abrirLightbox(idx)">
+                <div v-for="(img, idx) in galeriaImagenes" :key="idx" class="pro-gallery-item interactive-element" @click="abrirLightbox(idx)">
                   <img :src="obtenerRutaImagen(img.nombre)" alt="Galería AMFPro">
                   
                   <div class="pro-gallery-overlay">
@@ -65,17 +83,17 @@
 
       <transition name="fade">
         <div v-if="lightboxVisible" class="lightbox-modal" @click.self="cerrarLightbox">
-          <button class="lightbox-close" @click="cerrarLightbox">
+          <button class="lightbox-close interactive-element" @click="cerrarLightbox">
             <i class="material-icons">close</i>
           </button>
           
-          <button class="lightbox-nav nav-prev" @click="prevImg" v-if="galeriaImagenes.length > 1">
+          <button class="lightbox-nav nav-prev interactive-element" @click="prevImg" v-if="galeriaImagenes.length > 1">
             <i class="material-icons">chevron_left</i>
           </button>
 
           <img :src="obtenerRutaImagen(galeriaImagenes[lightboxIndex].nombre)" class="lightbox-img">
 
-          <button class="lightbox-nav nav-next" @click="nextImg" v-if="galeriaImagenes.length > 1">
+          <button class="lightbox-nav nav-next interactive-element" @click="nextImg" v-if="galeriaImagenes.length > 1">
             <i class="material-icons">chevron_right</i>
           </button>
         </div>
@@ -92,6 +110,8 @@ export default {
   props: ['noticia'],
   data() {
     return {
+      isLoading: true,         // Variable para el Preloader Cinematográfico
+      // isCursorHover: false,    
       lightboxVisible: false,
       lightboxIndex: 0,
       galeriaImagenes: [], 
@@ -99,11 +119,23 @@ export default {
     }
   },
   mounted() {
+    // Apagar Preloader después de 1.5 segundos
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1500);
+
+    // Eventos del Cursor Premium
+    // window.addEventListener('mousemove', this.updateCursor);
+    // this.$nextTick(() => {
+    //   this.attachCursorHoverEvents();
+    // });
+
     this.cargarGaleria();
     window.addEventListener('scroll', this.calcularProgreso);
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.calcularProgreso);
+    window.removeEventListener('mousemove', this.updateCursor);
   },
   computed: {
     detalleProcesado() {
@@ -116,29 +148,45 @@ export default {
         return `src="http://amfpro.mx/intranet/public/ArchivosSistema/Post/${path}"`;
       });
     },
-    // NUEVA FUNCIÓN PREMIUM: Calcula el tiempo estimado de lectura
     tiempoLectura() {
       if (!this.noticia.detalle) return 1;
-      // Quitamos las etiquetas HTML para dejar solo el texto puro
       const textoPlano = this.noticia.detalle.replace(/<[^>]+>/g, '');
-      // Contamos las palabras dividiendo por los espacios
       const totalPalabras = textoPlano.split(/\s+/).filter(word => word.length > 0).length;
-      // Una persona promedio lee 200 palabras por minuto
       const minutos = Math.ceil(totalPalabras / 200);
       return minutos === 0 ? 1 : minutos;
     }
   },
   methods: {
+    // ----------------------------------------------------
+    // CURSOR MAGNÉTICO LÓGICA (EFECTO PREMIUM)
+    // ----------------------------------------------------
+    // updateCursor(e) {
+    //   if(this.$refs.cursorFollower) {
+    //     this.$refs.cursorFollower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+    //   }
+    //   if(this.$refs.customCursor) {
+    //     this.$refs.customCursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+    //   }
+    // },
+    // attachCursorHoverEvents() {
+    //   document.querySelectorAll('a, button, .interactive-element, .pro-gallery-item').forEach(el => {
+    //     el.addEventListener('mouseenter', () => this.isCursorHover = true);
+    //     el.addEventListener('mouseleave', () => this.isCursorHover = false);
+    //   });
+    // },
+
     async cargarGaleria() {
       try {
         const response = await axios.get(`noticias/${this.noticia.id}/galeria`);
         this.galeriaImagenes = response.data;
+        // Re-atacar eventos del cursor para las imágenes nuevas
+        this.$nextTick(() => { this.attachCursorHoverEvents(); });
       } catch (error) {
         console.error("Error al cargar la galería:", error);
       }
     },
     obtenerRutaImagen(nombreImagen) {
-      if (!nombreImagen) return 'recursos/default.png';
+      if (!nombreImagen) return 'recursos/default.webp';
       let ruta = nombreImagen.startsWith('http') 
         ? nombreImagen 
         : 'http://amfpro.mx/intranet/public/ArchivosSistema/Post/' + nombreImagen;
@@ -191,6 +239,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+/* ==============================================================
+   NUEVO: ANIMACIONES ULTRA PRO (CURSOR Y PRELOADER)
+   ============================================================== */
+
+/* PRELOADER CINEMATOGRÁFICO */
+.preloader-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0a0e12; z-index: 1000000; }
+.preloader-line { width: 0; height: 2px; background: #50c026; animation: loadLine 1.2s ease-in-out forwards; }
+@keyframes loadLine { 0% { width: 0; } 100% { width: 250px; } }
+.fade-preloader-leave-active { transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.fade-preloader-leave-to { opacity: 0; }
+
+/* CURSOR MAGNÉTICO PERSONALIZADO */
+// .custom-cursor {
+//   position: fixed; top: 0; left: 0; width: 8px; height: 8px; margin: -4px 0 0 -4px;
+//   background: #50c026; border-radius: 50%; pointer-events: none; z-index: 1000002;
+//   transition: width 0.3s, height 0.3s, margin 0.3s, background 0.3s;
+// }
+// .custom-cursor.hovering {
+//   width: 50px; height: 50px; margin: -25px 0 0 -25px;
+//   background: rgba(80, 192, 38, 0.1); border: 1px solid #50c026;
+// }
+// .custom-cursor-follower {
+//   position: fixed; top: 0; left: 0; width: 32px; height: 32px; margin: -16px 0 0 -16px;
+//   border: 1px solid rgba(80, 192, 38, 0.4); border-radius: 50%;
+//   pointer-events: none; z-index: 1000001; transition: transform 0.15s ease-out, opacity 0.3s;
+// }
+// .custom-cursor-follower.hovering { opacity: 0; }
+
+
 .reading-progress-bar {
   position: fixed;
   top: 65px; 
@@ -236,7 +314,7 @@ export default {
   .btn-back {
     display: inline-flex;
     align-items: center;
-    justify-content: center; /* Asegura el centrado en el eje flex */
+    justify-content: center; 
     gap: 6px; 
     background: rgba(255,255,255,0.15);
     border: 1px solid rgba(255,255,255,0.3);
@@ -249,11 +327,11 @@ export default {
     
     i { 
       font-size: 1.3rem; 
-      line-height: 0; /* Mata la caja invisible del ícono */
+      line-height: 0; 
     }
     span {
-      line-height: 1; /* Iguala la altura de la fuente */
-      padding-top: 2px; /* Ajuste óptico fino para la fuente Roboto */
+      line-height: 1; 
+      padding-top: 2px; 
     }
     
     &:hover { 
@@ -304,7 +382,7 @@ export default {
       margin: 2rem 0; 
       box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     }
-    ::v-deep a { color: #50c026; font-weight: bold; text-decoration: none; }
+    ::v-deep a { color: #50c026; font-weight: bold; text-decoration: none; cursor: pointer; }
   }
 
   .pro-gallery-grid {

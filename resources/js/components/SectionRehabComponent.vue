@@ -22,7 +22,7 @@
         <div class="row align-items-center mb-6 reveal-up delay-1 intro-rehab-container g-0 rounded-4 shadow-sm border border-light">
           <div class="col-12 col-lg-5 d-flex align-items-center justify-content-center bg-white rounded-start-4 id-divider-right position-relative">
             <div class="rehab-logo-hero-card text-center">
-              <img src="recursos/rehab_banner.png" alt="Rehab Evolution Logo" class="img-fluid rehab-main-logo">
+              <img src="recursos/rehab_banner.webp" alt="Rehab Evolution Logo" class="img-fluid rehab-main-logo">
               <!-- <span class="d-block text-muted small fw-bold tracking-widest mt-3 text-uppercase">Clínica Oficial</span> -->
             </div>
           </div>
