@@ -55,7 +55,7 @@
           </div>
 
           <!-- BANNER DE CONTACTO -->
-          <div class="row justify-content-center reveal-up delay-3 mt-4">
+          <!-- <div class="row justify-content-center reveal-up delay-3 mt-4">
             <div class="col-12">
               <div class="premium-info-banner bg-white rounded-4 shadow-sm border border-light p-4 d-flex flex-column flex-xl-row align-items-center justify-content-between gap-4">
                 <div class="d-flex align-items-start align-items-md-center flex-column flex-md-row gap-3 text-start text-md-start" style="max-width: 500px;">
@@ -88,7 +88,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </section>
 

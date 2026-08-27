@@ -26,10 +26,9 @@ class ReporteJuridicoMail extends Mailable
      */
     public function build()
     {
-        // Generamos el asunto dinámico
         $asunto = $this->datosSolicitud['tema']. ' [' . now()->format('d/m/Y H:i:s') . ']';
         
-        return $this->from(config('mail.from.address'), '⚠️ Asistencia Jurídica') // <-- Aquí agregamos a Ámbar
+        return $this->from(config('mail.from.address'), '⚠️ Asistencia Jurídica') 
                     ->subject($asunto)
                     ->view('Email.solicitud-juridico');
     }
