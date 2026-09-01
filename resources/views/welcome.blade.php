@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"aeafe5fd146cdba97b9c4bcfeb00a25a"})});</script>
     <base href="{{ url('/') }}/">
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
