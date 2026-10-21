@@ -86,9 +86,9 @@
 
         <!-- Sección de Foto de Perfil superpuesta -->
         <div class="relative flex justify-center -mt-20">
-            <img src="https://test-intranet.amfpro.mx/ArchivosSistema/Perfil/{{$$consulta->foto_perfil}}"
+            {{-- <img src="https://test-intranet.amfpro.mx/ArchivosSistema/Perfil/{{$$consulta->foto_perfil}}"
                  alt="Foto de Perfil" 
-                 class="w-36 h-36 rounded-full border-[6px] border-white object-cover shadow-lg bg-white relative z-10 transition-transform hover:scale-105 duration-300">
+                 class="w-36 h-36 rounded-full border-[6px] border-white object-cover shadow-lg bg-white relative z-10 transition-transform hover:scale-105 duration-300"> --}}
             
             <!-- Badge de estado (Rojo #ff0000) -->
             <div class="absolute bottom-2 right-[32%] w-6 h-6 bg-customRed border-2 border-white rounded-full z-20 flex items-center justify-center shadow-sm" title="Perfil Verificado">

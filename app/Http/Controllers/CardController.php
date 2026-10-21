@@ -27,7 +27,7 @@ class CardController extends Controller
         ->select('tbl_perfil.*', 'users.id', 'users.name', 'users.email')
         ->where('users.email', $correo)
         ->first();
-        
+
 
         return view('acceso', compact('consulta'));
         
