@@ -86,7 +86,7 @@
 
         <!-- Sección de Foto de Perfil superpuesta -->
         <div class="relative flex justify-center -mt-20">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=256&h=256" 
+            <img src="{{ asset('ArchivosSistema/Perfil/'.$consulta->foto_perfil)}}"
                  alt="Foto de Perfil" 
                  class="w-36 h-36 rounded-full border-[6px] border-white object-cover shadow-lg bg-white relative z-10 transition-transform hover:scale-105 duration-300">
             
