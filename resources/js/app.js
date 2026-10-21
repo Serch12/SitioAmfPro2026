@@ -22,6 +22,7 @@ Vue.component('landing-page', require('./LandingPage.vue').default);
 Vue.component('registrate-component', require('./components/RegistrateComponent.vue').default);
 Vue.component('perfil-component', require('./components/PerfilComponent.vue').default);
 Vue.component('femenil-component', require('./components/EnlaceFemenilComponent.vue').default);
+Vue.component('acceso-component', require('./components/AccesoComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

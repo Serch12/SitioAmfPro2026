@@ -7,6 +7,7 @@ use App\Http\Controllers\RegistrateController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CardController;
 
 // === IMPORTANTE: Importamos el modelo de Noticias ===
 use App\Models\Noticias;
@@ -115,3 +116,5 @@ Route::middleware(['throttle:5,1'])->group(function () {
 
 });
 
+/* RUTAS PARA MOSTRAR LA INFORMACION EN EL CARD  */
+Route::get('/perfil', [CardController::class, 'indexPerfil']);
