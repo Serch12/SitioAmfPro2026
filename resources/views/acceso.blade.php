@@ -86,7 +86,7 @@
 
         <!-- Sección de Foto de Perfil superpuesta -->
         <div class="relative flex justify-center -mt-20">
-            <img :src="`https://test-intranet.amfpro.mx/ArchivosSistema/Perfil/'.$consulta->foto_perfil)}}`"
+            <img src="{{`https://test-intranet.amfpro.mx/ArchivosSistema/Perfil/'.$consulta->foto_perfil)}}`}}"
                  alt="Foto de Perfil" 
                  class="w-36 h-36 rounded-full border-[6px] border-white object-cover shadow-lg bg-white relative z-10 transition-transform hover:scale-105 duration-300">
             
