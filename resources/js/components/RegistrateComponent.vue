@@ -1341,7 +1341,7 @@ export default {
         this.afiliado.nombre = obtenerValorOCR('Name');
         this.afiliado.apellido_pat = obtenerValorOCR('FatherSurname');
         this.afiliado.apellido_mat = obtenerValorOCR('MotherSurname');
-        this.afiliado.nacionalidad = obtenerValorOCR('AddressCountry')
+        // this.afiliado.nacionalidad = obtenerValorOCR('AddressCountry');
         this.afiliado.curp = obtenerValorOCR('PersonalNumber'); 
         
         const domicilioINE = obtenerValorOCR('PermanentAddress');
